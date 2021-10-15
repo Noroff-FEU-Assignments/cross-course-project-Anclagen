@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-gb">
   <head>
-    <title>My first website</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alexander Barrett" />
+    <meta name="description" content="First steps in html and css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Rainydays | Jackets for all outdoor activities</title>
+    <link rel="stylesheet" href="css/stylesheet.css" />
   </head>
   <body>
-    <h1>Hello world!</h1>
-    <p>Welcome to my first website.</p>
+    <header>
+      <nav>
+        <div class="wrapper main-nav">
+          <div class="logo left item">
+            <a href="index.html">
+              <img
+                src="images/interface and logo/RainyDays_Logo_white.png"
+                alt="Rainydays"
+              />
+            </a>
+          </div>
+          <div class="mid-nav item">
+            <div class="top">
+              <ul>
+                <li>
+                  <form action="#search">
+                    <input
+                      type="search"
+                      name="search"
+                      size="flex"
+                      class="search-bar"
+                    />
+                    <input type="submit" value="search" class="search" />
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="bottom">
+              <ul>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Brand</a></li>
+                <li><a href="#">New</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-nav item">
+            <div class="top">
+              <ul>
+                <li>
+                  <a href="#"> <img src="#" alt="" />Cart </a>
+                </li>
+                <li>
+                  <a href="#"> <img src="#" alt="" />Account </a>
+                </li>
+              </ul>
+            </div>
+            <div class="bottom">
+              <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="wrapper">
+      <section class="welcome-promo">
+        <h1>Welcome To Rainydays Winter Sale</h1>
+      </section>
+      <section></section>
+      <section>
+        <h2>Best Sellers</h2>
+      </section>
+    </main>
+    <footer class="wrapper"></footer>
   </body>
 </html>
