@@ -5,6 +5,18 @@ Light Blue #1d5ecc
 CTA Orange #db7c00
 CTA Green #1BC2A3
 Grey #ABABAB
+
+Font Sizes:
+10px = 0.625rem
+12px = 0.75rem      captions sorting
+14px = 0.875rem 
+16px = 1rem         (base) regular (400) - body, medium (500) - subhead 2
+18px = 1.125rem     medium (500)- buttons + subhead 1
+20px = 1.25rem      medium (500)- page header
+24px = 1.5rem       medium (500)- home pic caption text
+30px = 1.875rem
+32px = 2rem         regular (400) - picture headers
+
 */
 
 body {
@@ -17,7 +29,8 @@ body {
 }
 
 .header-background {
-  background: linear-gradient(#001e44, #001e44 55px, #1d5ecc 56px, #1d5ecc 99%, #fff 99%, #fff);
+  /* background: #001e44;
+  background: linear-gradient(#001e44, #001e44 55px, #1d5ecc 56px, #1d5ecc 99%, #fff 99%, #fff);*/
   width: 100%;
 }
 
@@ -29,12 +42,103 @@ header,
 footer {
   color: #fff;
 }
-/* Footer Fiddling*/
+
+header a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/*standard wrapper for content*/
+.page-wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0px auto;
+}
+
+/*-------  Navigation Mayhem  --------*/
+/* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
+ul {
+  background: #001e44;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/*align right side to right!*/
+.right {
+  text-align: right;
+}
+
+li {
+  background: #001e44;
+  display: block;
+  float: left;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+ul li ul {
+  background: #1d5ecc;
+  display: none;
+  position: absolute;
+  margin-top: 0px;
+  left: 0;
+}
+
+ul li ul li {
+  background: #1d5ecc;
+  /*-- not needed?
+  clear: both;
+  width: 100%; ---*/
+}
+
+/*hide the checkbox*/
+#menu-drop-down,
+#search-drop-down {
+  display: none;
+}
+
+#menu-drop-down:checked ~ ul {
+  display: block;
+}
+
+#search-drop-down:checked ~ ul {
+  display: block;
+}
+
+.logo_mobile {
+  padding-top: 10px;
+  min-width: 80px;
+  max-width: 180px;
+  width: 100%;
+}
+
+.navigation-icons {
+  min-width: 25px;
+  max-width: 50px;
+  width: 100%;
+  padding-top: 20px;
+  margin-bottom: 15px; /*to push drop downs down*/
+}
+
+.hamburger li {
+  width: 100vw;
+}
+
+.search li {
+  width: 100vw;
+}
+
+/*-------  Footer Fiddling  --------*/
+
 footer a,
 p {
   text-decoration: none;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 footer img {
@@ -51,115 +155,41 @@ footer p {
 }
 .foot-top {
   background: #1d5ecc;
+  padding: 20px 0px;
 }
 
 .foot-bot {
   background: #001e44;
-}
-/*standard wrapper for content*/
-.page-wrapper {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0px auto;
+  padding: 20px 0px;
 }
 
-.navigation-grid {
+footer input {
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  margin-right: -10px;
+  border-radius: 5px 0px 0px 5px;
+  width: 60%;
+  max-width: 250px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.submit-button {
+  margin: 0;
+  color: #fff;
+  background: #db7c00;
+  border-radius: 0px 5px 5px 0px;
+  width: 90px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #001e44;
+}
+
+.flex-social {
   display: flex;
   justify-content: space-between;
+  max-width: 500px;
 }
 
-.right {
-  text-align: right;
-}
-
-.flex {
-  flex: 1;
-  margin: 5px 10px 15px 10px;
-}
-
-.logo_mobile {
-  padding-top: 10px;
-  width: 100px;
-}
-.navigation-icons {
-  max-height: 30px;
-  width: 100%;
-  max-width: 30px;
-  padding-top: 9px;
-}
-/* grid madness 
-.navigation-grid {
-  display: grid;
-  grid-template-columns: repeat(5, auto [col-start]);
-  grid-template-rows: auto auto auto;
-  justify-content: space-between;
-  grid-gap: auto;
-  padding: 10px;
-}
-
-.main-nav {
-  grid-column: 3 / span 2;
-  grid-row: third-line / 4;
-}
-
-
-}
-
-} */
-/* Menu Drop*/
-div.main-nav,
-#hamburger-menu {
-  display: none;
-}
-
-.hamburger-label {
-  display: block;
-}
-
-#hamburger-menu:checked ~ div.main-nav {
-  display: block;
-}
-
-#hamburger-menu:checked ~ .header-background {
-  background: linear-gradient(#001e44, #001e44 10%, 10%, #1d5ecc);
-  width: 100%;
-}
-
-#hamburger-menu:checked ~ .right {
-  display: none;
-}
-
-nav ul {
-  padding: 0;
-}
-nav li {
-  display: block;
-  padding: 0;
-  font-size: 1.5rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #fff;
-  padding: 10px;
-  display: block;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Search Bar Drop*/
-
-div.search-bar,
-#search-drop-down {
-  display: none;
-}
-
-#search-drop-down:checked ~ div.search-bar {
-  display: block;
-}
-
-div.search-bar {
-  padding-top: 20px;
-}
+/*------- Home Page Content ------*/
