@@ -48,7 +48,7 @@ header a {
   color: #fff;
 }
 
-/*standard wrapper for content*/
+/*standard wrapper for content (don't add to nav bar! for mobile)*/
 .page-wrapper {
   max-width: 1200px;
   width: 90%;
@@ -89,6 +89,10 @@ ul li ul {
 
 ul li ul li {
   background: #1d5ecc;
+  position: relative;
+  z-index: 1;
+  /* put menu on top of page content highest number on top when multiples items use it*/
+
   /*-- not needed?
   clear: both;
   width: 100%; ---*/
@@ -129,6 +133,14 @@ ul li ul li {
 
 .search li {
   width: 100vw;
+}
+
+.blue-bar {
+  background: #1d5ecc;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /*-------  Footer Fiddling  --------*/
@@ -193,3 +205,35 @@ footer input {
 }
 
 /*------- Home Page Content ------*/
+
+.welcome-banner {
+  background-image: url("../images/home_banner_small_dark.jpg");
+  background-size: cover;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
+  position: relative;
+}
+
+.welcome-banner h1,
+p {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  margin-bottom: 0;
+}
+
+.welcome-banner p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.banner-content {
+  position: absolute;
+  right: auto;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
