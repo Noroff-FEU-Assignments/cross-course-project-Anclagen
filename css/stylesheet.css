@@ -1,0 +1,464 @@
+/*
+Colours:
+Dark Blue #001e44
+Light Blue #1d5ecc
+CTA Orange #db7c00
+CTA Green #1BC2A3
+Grey #ABABAB
+
+Font Sizes:
+10px = 0.625rem
+12px = 0.75rem      captions sorting
+14px = 0.875rem 
+16px = 1rem         (base) regular (400) - body, medium (500) - subhead 2
+18px = 1.125rem     medium (500)- buttons + subhead 1
+20px = 1.25rem      medium (500)- page header
+24px = 1.5rem       medium (500)- home pic caption text
+30px = 1.875rem
+32px = 2rem         regular (400) - picture headers
+
+*/
+
+body {
+  margin: auto;
+  padding-top: 0px;
+  font-family: roboto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.large-images {
+  display: none;
+}
+
+.medium-images {
+  display: none;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-background {
+  /* 
+  background: linear-gradient(#001e44, #001e44 55px, #1d5ecc 56px, #1d5ecc 99%, #fff 99%, #fff);*/
+  width: 100%;
+}
+
+a img:hover {
+  border: 2px solid black;
+}
+header {
+  background: #001e44;
+}
+header,
+footer {
+  color: #fff;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*standard wrapper for content (don't add to nav bar! for mobile)*/
+.page-wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0px auto;
+}
+
+/*-------  Navigation Mayhem  --------*/
+/* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
+
+.bottom-nav {
+  display: none;
+}
+
+ul {
+  background: #001e44;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/*align right side to right!*/
+.right {
+  text-align: right;
+}
+
+li {
+  background: #001e44;
+  display: block;
+  float: left;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+ul li ul {
+  background: #1d5ecc;
+  display: none;
+  position: absolute;
+  margin-top: 0px;
+  left: 0;
+}
+
+ul li ul li {
+  background: #1d5ecc;
+  position: relative;
+  z-index: 1;
+  /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
+
+  clear: both;
+  width: 100%;
+}
+
+/* search button might be better to combine some settings with other inputs also might
+ need to make these stay together on the same line better when screen sizes shrink*/
+.search-bar {
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  margin-right: -30px;
+  border-radius: 5px 0px 0px 5px;
+  width: 80%;
+  max-width: 250px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.search-button {
+  margin: 0;
+  color: #fff;
+  background: #db7c00;
+  border-radius: 0px 5px 5px 0px;
+  width: 90px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #001e44;
+}
+
+/*hide the checkbox*/
+#menu-drop-down,
+#search-drop-down {
+  display: none;
+}
+
+#menu-drop-down:checked ~ ul {
+  display: block;
+}
+
+#search-drop-down:checked ~ ul {
+  display: block;
+}
+
+.logo_mobile {
+  padding-top: 10px;
+  min-width: 80px;
+  max-width: 180px;
+  width: 100%;
+}
+
+.navigation-icons {
+  min-width: 25px;
+  max-width: 50px;
+  width: 100%;
+  padding-top: 20px;
+  margin-bottom: 15px; /*to push drop downs down*/
+}
+
+.hamburger li {
+  width: 100vw;
+}
+
+.search li {
+  width: 100vw;
+}
+
+.blue-bar {
+  background: #1d5ecc;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/*-------  Footer Fiddling  --------*/
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+footer img {
+  padding: 5px;
+}
+
+.payment-icons img {
+  max-width: 80px;
+}
+
+footer p {
+  margin: 0;
+  padding-top: 10px;
+}
+.foot-top {
+  background: #1d5ecc;
+  padding: 20px 0px;
+}
+
+.foot-bot {
+  background: #001e44;
+  padding: 20px 0px;
+}
+
+footer input {
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  margin-right: -10px;
+  border-radius: 5px 0px 0px 5px;
+  width: 60%;
+  max-width: 250px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.submit-button {
+  margin: 0;
+  color: #fff;
+  background: #db7c00;
+  border-radius: 0px 5px 5px 0px;
+  width: 90px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #001e44;
+}
+
+.flex-social {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+/*------- Home Page Content ------*/
+
+.welcome-banner {
+  background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
+  background-size: cover;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
+  position: relative;
+}
+
+section.welcome-banner h1 p {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  margin-bottom: 0;
+}
+
+section.welcome-banner a {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+section.welcome-banner a:hover {
+  text-decoration: underline;
+}
+
+section.welcome-banner,
+p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.banner-content {
+  position: absolute;
+
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*quick links*/
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 10px;
+}
+
+div.quick-links img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+div.quick-links h3 {
+  text-align: center;
+}
+
+/*promotional images section*/
+
+.image-container {
+  position: relative;
+  color: #fff;
+}
+
+.image-content {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+div.image-content h2 {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  font-size: 2rem;
+  margin: 10px 0px 0px 0px;
+}
+
+div.image-content p {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  margin: 0 30px 0 0;
+}
+
+section.promo-images img {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+/* bestsellers/product list page*/
+
+section.featured-products a {
+  text-decoration: none;
+  color: black;
+  margin: 0, 5, 5, 0;
+}
+
+.product-list-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.products-item {
+  background-color: #ababab;
+  display: grid;
+  flex-direction: column;
+  border: 1px black;
+}
+
+.product-item img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+}
+
+/* footer can double up at around 678px */
+@media only screen and (min-width: 700px) {
+  div.foot-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  section.foot-bot p {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .product-list-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 25px;
+  }
+
+  .promo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .small-wide-images {
+    display: none;
+  }
+
+  .medium-images {
+    display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .hide-quick-links {
+    display: none;
+  }
+
+  .small-images {
+    display: none;
+  }
+
+  .medium-images {
+    display: none;
+  }
+
+  .large-images {
+    display: inline-block;
+  }
+
+  .head-wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0px auto;
+  }
+
+  .bottom-nav {
+    display: flex;
+    width: 100%;
+  }
+  .bottom-nav ul {
+    text-align: center;
+  }
+
+  .bottom-nav li {
+    background: #1d5ecc;
+  }
+
+  .bottom-nav li:hover {
+    background: #001e44;
+  }
+
+  .blue-bar {
+    background: #1d5ecc;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .current li {
+    background: #001e44;
+  }
+
+  .welcome-banner {
+    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
+  }
+
+  .product-list-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
