@@ -32,6 +32,10 @@ body {
   display: none;
 }
 
+.medium-images {
+  display: none;
+}
+
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -272,6 +276,10 @@ section.welcome-banner a {
   color: #fff;
 }
 
+section.welcome-banner a:hover {
+  text-decoration: underline;
+}
+
 section.welcome-banner,
 p {
   font-size: 1.5rem;
@@ -304,6 +312,32 @@ div.quick-links h3 {
 
 /*promotional images section*/
 
+.image-container {
+  position: relative;
+  color: #fff;
+}
+
+.image-content {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+div.image-content h2 {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  font-size: 2rem;
+  margin: 10px 0px 0px 0px;
+}
+
+div.image-content p {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+  margin: 0 30px 0 0;
+}
+
 section.promo-images img {
   width: 100%;
   margin: 10px 0px;
@@ -335,8 +369,37 @@ section.featured-products a {
 }
 
 @media only screen and (min-width: 500px) {
+}
+
+/* footer can double up at around 678px */
+@media only screen and (min-width: 700px) {
+  div.foot-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  section.foot-bot p {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
   .product-list-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 25px;
+  }
+
+  .promo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .small-wide-images {
+    display: none;
+  }
+
+  .medium-images {
+    display: inline-block;
   }
 }
 
@@ -346,6 +409,10 @@ section.featured-products a {
   }
 
   .small-images {
+    display: none;
+  }
+
+  .medium-images {
     display: none;
   }
 
