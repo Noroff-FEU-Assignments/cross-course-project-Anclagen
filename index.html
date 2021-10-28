@@ -16,7 +16,7 @@
   </head>
   <body>
     <header>
-
+      <div class="head-wrapper">
         <ul>
           <li>
             <label class="hamburger-label" for="menu-drop-down">
@@ -46,8 +46,8 @@
             <input type="checkbox" id="search-drop-down" />
             <ul class="search">
               <li ><form action="#search">
-                <input type="search" name="search" size="flex" class="" />
-                <input type="submit" value="search" class="" /></li>
+                <input type="search" name="search" size="flex" class="search-bar" />
+                <input type="submit" value="search" class="search-button search-bar" /></li>
             </ul>
           </li>
           <li>              <img
@@ -58,11 +58,27 @@
           <li><img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" /></li>
           <li> <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" /></li>
         </ul>
-        <div class="blue-bar"></div>
+      </div>
+        <div class="blue-bar">
+          <div class="bottom-nav head-wrapper">
+              <ul>
+              <li class="current"><a href="index.html">Home</a></li>
+              <li><a href="products.html">Sale</a></li>
+              <li><a href="products.html">Men</a></li>
+              <li><a href="products.html">Women</a></li>
+              <li><a href="products.html">Kid</a></li>
+              <li><a href="products.html">Brand</a></li>
+              <li><a href="products.html">New</a></li>                
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+            </div>
+          </div>
+        </div>
     </header>
 
     <main>
-      
+      <!-- top banner -->
       <section class="welcome-banner">
         <div class="page-wrapper">
           <div class="banner-content ">
@@ -71,59 +87,93 @@
           </div>
         </div>
       </section>
+      <!-- Quick links to men, women, kids disappear on tablet? and Desktop-->
+      <section class="page-wrapper hide-quick-links">
+        <h2>Browse Our Jackets</h2>
+      <div class="quick-links">
+        <div>
+          <a href="products.html"><img src="images/promo_and_home_photos/men_small_square.jpg" alt="Men's Jackets"></a>
+          <h3>Men</h3>
+        </div>
+        <div>
+          <a href="products.html"><img src="images/promo_and_home_photos/women_small_square.jpg" alt="Women's Jackets"></a>
+          <h3>Women</h3>
+        </div>
+        <div>
+          <a href="products.html"><img src="images/promo_and_home_photos/kids_small_square.jpg" alt="Kid's Jackets"></a>
+          <h3>Kids</h3>
+        </div>
+      </div>
+      </section>
+      <!--  Promotional image section  -->
       <section class="promo-images page-wrapper">
         <div>
-          <a href="products.html"><img src="images/promo_and_home_photos/mountain_climbing_small.jpg" alt="Mountain climbing">
-        </div></a>
-        <div>
-          <a href="products.html"><img src="images/promo_and_home_photos/mountain_view_small.jpg" alt="People sitting, with mountain range view"></a>
+          <a href="products.html">
+            <img src="images/promo_and_home_photos/mountain_climbing_small.jpg" alt="Mountain climbing" class="small-images">
+            <img src="images/promo_and_home_photos/mountain_climbing_large.jpg" alt="Mountain climbing" class="large-images">
+          </a>
         </div>
         <div>
-          <a href="products.html"><img src="images/promo_and_home_photos/scenic_cycling_small.jpg" alt="Cycling through green scenery"></a>
+          <a href="products.html">
+            <img src="images/promo_and_home_photos/mountain_view_small.jpg" alt="People sitting, with mountain range view" class="small-images">
+            <img src="images/promo_and_home_photos/mountain_view_large.jpg" alt="People sitting, with mountain range view" class="large-images">
+          </a>
         </div>
         <div>
-          <a href="products.html"><img src="images/promo_and_home_photos/mountain_sitting_small.jpg" alt="Sitting up high with the mountains"></a>
+          <a href="products.html">
+            <img src="images/promo_and_home_photos/scenic_cycling_small.jpg" alt="Cycling through green scenery" class="small-images">
+            <img src="images/promo_and_home_photos/scenic_cycling_large.jpg" alt="Cycling through green scenery" class="large-images">
+          </a>
         </div>
         <div>
-          <a href="products.html"><img src="images/promo_and_home_photos/canoe_small.jpg" alt="Canoeing in turquoise waters"></a>
+          <a href="products.html">
+            <img src="images/promo_and_home_photos/mountain_sitting_small.jpg" alt="Sitting up high with the mountains" class="small-images">
+            <img src="images/promo_and_home_photos/mountain_sitting_large.jpg" alt="Sitting up high with the mountains" class="large-images">
+          </a>
+        </div>
+        <div>
+          <a href="products.html">
+            <img src="images/promo_and_home_photos/canoe_small.jpg" alt="Canoeing in turquoise waters" class="small-images">
+            <img src="images/promo_and_home_photos/canoe_large.jpg" alt="Canoeing in turquoise waters" class="large-images">
+
+          </a>
         </div>
       </section>
+      <!--  Best sellers section  -->
       <section class="featured-products page-wrapper">
         <h2>Best Sellers</h2>
         <div class="product-list-grid">
-          <a href="product.html">
-            <div class="product-item">
-              <img src="images/products/red_jacket_small.jpg" alt="Red Jacket"> 
+          <div class="product-item">
+            <a href="product.html">
+            <img src="images/products/red_jacket_small.jpg" alt="Red Jacket"> </a>
             <h3>Peter Storm <br> Men's Zip Down Waterproof II Jacket</h3>
             <p>Red, Black, Yellow</p>
             <p>£50</p>
-            </div>
-          </a>
-          <a href="product.html">
-            <div class="product-item">
-              <img src="images/products/green_jacket_small.jpg" alt="Green Jacket"> 
+          </div>
+          <div class="product-item">
+            <a href="product.html"> 
+               <img src="images/products/green_jacket_small.jpg" alt="Green Jacket"> 
+            </a>
             <h3>Snow Storm <br> Unisex Button Down Jacket</h3>
             <p>Green</p>
             <p>£44.99</p>
-          </a></div>
-          <a href="product.html">
-            <div class="product-item">
-              <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket"> 
+          </div>
+          <div class="product-item">          
+            <a href="product.html">
+            <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket"> 
+            </a>
             <h3>Mountain Gear <br> Men's Zip Down Waterproof I Jacket</h3>
             <p>Blue, Black</p>
             <p>£44.99</p>
-            </div>
-          </a>
-          <a href="product.html">
-            <div class="product-item">
-              <img src="images/products/black_jacket_small.jpg" alt="Black Jacket"> 
+          </div>
+          <div class="product-item">
+            <a href="product.html"> 
+              <img src="images/products/black_jacket_small.jpg" alt="Black Jacket">
+            </a>
             <h3>Hail Storm<br> Men's Zip Down I Jacket</h3>
             <p>Red, Black, Yellow</p>
             <p>£50</p>
-            </div>
-          </a>
-
-
+          </div>
         </div>
       </section>
     </main>
