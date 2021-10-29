@@ -36,6 +36,13 @@ body {
   display: none;
 }
 
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  opacity: 1;
+}
+
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -368,10 +375,6 @@ section.featured-products a {
   width: 100%;
 }
 
-@media only screen and (min-width: 500px) {
-}
-
-/* footer can double up at around 678px */
 @media only screen and (min-width: 700px) {
   div.foot-wrap {
     display: grid;
