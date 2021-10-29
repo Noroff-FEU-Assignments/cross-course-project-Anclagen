@@ -28,6 +28,16 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+header {
+  background: #001e44;
+}
+
+header,
+footer {
+  color: #fff;
+}
+
+/*image scaling*/
 .large-images {
   display: none;
 }
@@ -36,11 +46,45 @@ body {
   display: none;
 }
 
+/* Hidden for small screens*/
+.bottom-nav,
+.desktop-nav {
+  display: none;
+}
+
+/*general input styles*/
 input {
+  /*because safari is annoying!*/
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   opacity: 1;
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.submit-button,
+.search-button {
+  color: #fff;
+  background: #db7c00;
+}
+
+.cta-button {
+  background-color: #db7c00;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.cta-button:hover {
+  border: #db7c00;
+  background: #fff;
+  color: #db7c00;
+  text-decoration: none;
 }
 
 h2 {
@@ -48,33 +92,26 @@ h2 {
   font-weight: 600;
 }
 
-.header-background {
-  /* 
-  background: linear-gradient(#001e44, #001e44 55px, #1d5ecc 56px, #1d5ecc 99%, #fff 99%, #fff);*/
-  width: 100%;
+/*hover interactions*/
+
+section.featured-products a img:hover,
+section.promo-images a img:hover {
+  border: 3px solid #001e44;
 }
 
-a img:hover {
-  border: 2px solid black;
-}
-header {
-  background: #001e44;
-}
-header,
-footer {
-  color: #fff;
-}
-
-header a {
+header a,
+footer a {
   text-decoration: none;
   color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /*change for banner it looks shit*/
 }
 
-/*standard wrapper for content (don't add to nav bar! for mobile)*/
+/*standard wrapper for content (careful where adding to nav bar and footer)*/
 .page-wrapper {
   max-width: 1200px;
   width: 90%;
@@ -84,10 +121,6 @@ a:hover {
 /*-------  Navigation Mayhem  --------*/
 /* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
 
-.bottom-nav {
-  display: none;
-}
-
 ul {
   background: #001e44;
   margin: 0;
@@ -95,11 +128,6 @@ ul {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-}
-
-/*align right side to right!*/
-.right {
-  text-align: right;
 }
 
 li {
@@ -128,25 +156,21 @@ ul li ul li {
   width: 100%;
 }
 
+/*align right side icons to the right!*/
+.right {
+  text-align: right;
+}
+
 /* search button might be better to combine some settings with other inputs also might
  need to make these stay together on the same line better when screen sizes shrink*/
 .search-bar {
-  display: inline;
-  padding: 10px;
-  margin: 0;
-  border: none;
   margin-right: -30px;
   border-radius: 5px 0px 0px 5px;
   width: 80%;
   max-width: 250px;
-  font-size: 1.125rem;
-  font-weight: 500;
 }
 
 .search-button {
-  margin: 0;
-  color: #fff;
-  background: #db7c00;
   border-radius: 0px 5px 5px 0px;
   width: 90px;
   font-weight: 500;
@@ -158,7 +182,7 @@ ul li ul li {
 #search-drop-down {
   display: none;
 }
-
+/*show the check box menus*/
 #menu-drop-down:checked ~ ul {
   display: block;
 }
@@ -182,10 +206,7 @@ ul li ul li {
   margin-bottom: 15px; /*to push drop downs down*/
 }
 
-.hamburger li {
-  width: 100vw;
-}
-
+.hamburger li,
 .search li {
   width: 100vw;
 }
@@ -199,13 +220,6 @@ ul li ul li {
 }
 
 /*-------  Footer Fiddling  --------*/
-
-footer a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
 
 footer img {
   padding: 5px;
@@ -243,9 +257,6 @@ footer input {
 }
 
 .submit-button {
-  margin: 0;
-  color: #fff;
-  background: #db7c00;
   border-radius: 0px 5px 5px 0px;
   width: 90px;
   font-weight: 500;
@@ -352,15 +363,9 @@ section.promo-images img {
 
 /* bestsellers/product list page*/
 
-section.featured-products a {
-  text-decoration: none;
-  color: black;
-  margin: 0, 5, 5, 0;
-}
-
 .product-list-grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 1fr;
 }
 
@@ -387,7 +392,7 @@ section.featured-products a {
   }
 
   .product-list-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 25px;
   }
 
@@ -423,16 +428,50 @@ section.featured-products a {
     display: inline-block;
   }
 
-  .head-wrapper {
+  .mobile-nav {
+    display: none;
+  }
+
+  .navigation-icons {
+    display: inline-block;
+    max-height: 30px;
+    max-width: 30px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+  }
+
+  .desktop-nav {
+    display: flex;
     max-width: 1200px;
-    width: 90%;
-    margin: 0px auto;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .desktop-logo {
+    max-width: 150px;
+    padding: 10px 10px;
+  }
+
+  nav ul {
+    display: inline;
   }
 
   .bottom-nav {
     display: flex;
+    justify-content: space-between;
     width: 100%;
   }
+
+  .bottom-nav-right ul {
+    position: relative;
+  }
+
+  .head-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0px auto;
+  }
+
   .bottom-nav ul {
     text-align: center;
   }
@@ -445,6 +484,10 @@ section.featured-products a {
     background: #001e44;
   }
 
+  #current {
+    background: #001e44;
+  }
+
   .blue-bar {
     background: #1d5ecc;
     height: auto;
@@ -453,15 +496,11 @@ section.featured-products a {
     width: 100%;
   }
 
-  .current li {
-    background: #001e44;
-  }
-
   .welcome-banner {
     background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
   }
 
   .product-list-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 }
