@@ -37,16 +37,25 @@ footer {
   color: #fff;
 }
 
-/*image scaling*/
-.large-images {
-  display: none;
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.medium-images {
-  display: none;
+h3 {
+  font-size: 1.125rem;
 }
 
-/* Hidden for small screens*/
+footer p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/*Hidden for small screens and hamburgers*/
+#menu-drop-down,
+#search-drop-down,
+.large-images,
+.medium-images,
 .bottom-nav,
 .desktop-nav {
   display: none;
@@ -58,13 +67,14 @@ input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  opacity: 1;
+  opacity: 1; /*stops faded appearance*/
   display: inline;
   padding: 10px;
   margin: 0;
   border: none;
   font-size: 1.125rem;
   font-weight: 500;
+  border-radius: 5px 0px 0px 5px;
 }
 
 .submit-button,
@@ -73,26 +83,7 @@ input {
   background: #db7c00;
 }
 
-.cta-button {
-  background-color: #db7c00;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 0 auto;
-}
-
-.cta-button:hover {
-  border: #db7c00;
-  background: #fff;
-  color: #db7c00;
-  text-decoration: none;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-/*hover interactions*/
+/* general hover interactions*/
 
 section.featured-products a img:hover,
 section.promo-images a img:hover {
@@ -108,10 +99,11 @@ footer a {
 }
 
 a:hover {
-  text-decoration: underline; /*change for banner it looks shit*/
+  text-decoration: underline;
 }
 
-/*standard wrapper for content (careful where adding to nav bar and footer)*/
+/*standard wrappers for content (careful where adding to nav bar and footer)*/
+.head-wrapper,
 .page-wrapper {
   max-width: 1200px;
   width: 90%;
@@ -126,7 +118,6 @@ ul {
   margin: 0;
   padding-left: 0;
   display: flex;
-  align-items: stretch;
   justify-content: space-between;
 }
 
@@ -143,7 +134,7 @@ ul li ul {
   display: none;
   position: absolute;
   margin-top: 0px;
-  left: 0;
+  left: 0px;
 }
 
 ul li ul li {
@@ -151,9 +142,6 @@ ul li ul li {
   position: relative;
   z-index: 1;
   /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
-
-  clear: both;
-  width: 100%;
 }
 
 /*align right side icons to the right!*/
@@ -165,7 +153,6 @@ ul li ul li {
  need to make these stay together on the same line better when screen sizes shrink*/
 .search-bar {
   margin-right: -30px;
-  border-radius: 5px 0px 0px 5px;
   width: 80%;
   max-width: 250px;
 }
@@ -177,18 +164,15 @@ ul li ul li {
   text-shadow: 2px 2px 2px #001e44;
 }
 
-/*hide the checkbox*/
-#menu-drop-down,
-#search-drop-down {
-  display: none;
-}
 /*show the check box menus*/
+#search-drop-down:checked ~ ul,
 #menu-drop-down:checked ~ ul {
   display: block;
 }
 
-#search-drop-down:checked ~ ul {
-  display: block;
+.hamburger li,
+.search li {
+  width: 100vw;
 }
 
 .logo_mobile {
@@ -206,11 +190,6 @@ ul li ul li {
   margin-bottom: 15px; /*to push drop downs down*/
 }
 
-.hamburger li,
-.search li {
-  width: 100vw;
-}
-
 .blue-bar {
   background: #1d5ecc;
   height: 10px;
@@ -219,98 +198,6 @@ ul li ul li {
   width: 100%;
 }
 
-/*-------  Footer Fiddling  --------*/
-
-footer img {
-  padding: 5px;
-}
-
-.payment-icons img {
-  max-width: 80px;
-}
-
-footer p {
-  margin: 0;
-  padding-top: 10px;
-}
-.foot-top {
-  background: #1d5ecc;
-  padding: 20px 0px;
-}
-
-.foot-bot {
-  background: #001e44;
-  padding: 20px 0px;
-}
-
-footer input {
-  display: inline;
-  padding: 10px;
-  margin: 0;
-  border: none;
-  margin-right: -10px;
-  border-radius: 5px 0px 0px 5px;
-  width: 60%;
-  max-width: 250px;
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.submit-button {
-  border-radius: 0px 5px 5px 0px;
-  width: 90px;
-  font-weight: 500;
-  text-shadow: 2px 2px 2px #001e44;
-}
-
-.flex-social {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
-}
-
-/*------- Home Page Content ------*/
-
-.welcome-banner {
-  background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
-  background-size: cover;
-  min-height: 300px;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: top;
-  position: relative;
-}
-
-section.welcome-banner h1 p {
-  font-size: 2rem;
-  color: #fff;
-  text-shadow: 2px 2px 2px #001e44;
-  margin-bottom: 0;
-}
-
-section.welcome-banner a {
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-}
-
-section.welcome-banner a:hover {
-  text-decoration: underline;
-}
-
-section.welcome-banner,
-p {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.banner-content {
-  position: absolute;
-
-  top: 56%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 /*quick links*/
 
 .quick-links {
@@ -328,32 +215,122 @@ div.quick-links h3 {
   text-align: center;
 }
 
-/*promotional images section*/
+/*-------  Footer styling  --------*/
 
-.image-container {
+footer img {
+  padding: 5px;
+}
+
+.payment-icons img {
+  max-width: 80px;
+}
+
+footer p {
+  margin: 0;
+  padding-top: 10px;
+}
+
+.foot-top {
+  background: #1d5ecc;
+  padding: 20px 0px;
+}
+
+.foot-bot {
+  background: #001e44;
+  padding: 20px 0px;
+}
+
+footer input {
+  margin: 0;
+  border: none;
+  margin-right: -10px;
+  width: 60%;
+  max-width: 250px;
+}
+
+.submit-button {
+  border-radius: 0px 5px 5px 0px;
+  width: 90px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #001e44;
+}
+
+.footer-icon-flexbox {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+/*------- Home Page Content ------*/
+/*---banner and promo image styling --*/
+.welcome-banner {
+  background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
+  background-size: cover;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
   position: relative;
-  color: #fff;
 }
 
-.image-content {
+section.welcome-banner p {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.banner-content {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+.welcome-banner a {
+  font-size: 2rem;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 20px;
+}
+
+section.welcome-banner a:hover {
+  text-decoration: none;
+  text-shadow: 4px 4px 2px #1d5ecc;
+}
+
+.welcome-banner a,
+div.image-content p,
 div.image-content h2 {
   text-decoration: none;
   color: #fff;
   text-shadow: 2px 2px 2px #001e44;
+}
+
+div.image-content p,
+div.image-content h2 {
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 2px 2px 2px #001e44;
+}
+
+.promo-images-container {
+  position: relative;
+}
+
+.image-content {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+div.image-content h2 {
   font-size: 2rem;
   margin: 10px 0px 0px 0px;
 }
 
 div.image-content p {
-  text-decoration: none;
-  color: #fff;
-  text-shadow: 2px 2px 2px #001e44;
   margin: 0 30px 0 0;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 section.promo-images img {
@@ -381,9 +358,14 @@ section.promo-images img {
 }
 
 @media only screen and (min-width: 700px) {
-  div.foot-wrap {
+  .promo-images-grid,
+  .foot-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .promo-images-grid {
+    grid-gap: 20px;
   }
 
   section.foot-bot p {
@@ -396,12 +378,6 @@ section.promo-images img {
     grid-gap: 25px;
   }
 
-  .promo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-  }
-
   .small-wide-images {
     display: none;
   }
@@ -411,15 +387,11 @@ section.promo-images img {
   }
 }
 
+/*--- The Big Screen ---*/
 @media only screen and (min-width: 900px) {
-  .hide-quick-links {
-    display: none;
-  }
-
-  .small-images {
-    display: none;
-  }
-
+  .small-images,
+  .mobile-nav,
+  .hide-quick-links,
   .medium-images {
     display: none;
   }
@@ -428,8 +400,12 @@ section.promo-images img {
     display: inline-block;
   }
 
-  .mobile-nav {
-    display: none;
+  .welcome-banner {
+    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
+  }
+
+  .blue-bar {
+    height: auto;
   }
 
   .navigation-icons {
@@ -452,52 +428,23 @@ section.promo-images img {
     padding: 10px 10px;
   }
 
-  nav ul {
-    display: inline;
-  }
-
   .bottom-nav {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
 
-  .bottom-nav-right ul {
-    position: relative;
-  }
-
   .head-wrapper {
-    max-width: 1200px;
     width: 100%;
-    margin: 0px auto;
-  }
-
-  .bottom-nav ul {
-    text-align: center;
   }
 
   .bottom-nav li {
     background: #1d5ecc;
   }
 
+  #current,
   .bottom-nav li:hover {
     background: #001e44;
-  }
-
-  #current {
-    background: #001e44;
-  }
-
-  .blue-bar {
-    background: #1d5ecc;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  .welcome-banner {
-    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
   }
 
   .product-list-grid {
