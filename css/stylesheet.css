@@ -81,13 +81,20 @@ input {
 .search-button {
   color: #fff;
   background: #db7c00;
+  cursor: pointer;
 }
 
 /* general hover interactions*/
 
 section.featured-products a img:hover,
 section.promo-images a img:hover {
-  border: 3px solid #001e44;
+  outline: 5px solid #001e44;
+  outline-offset: -5px;
+}
+
+section.welcome-banner a:hover {
+  text-decoration: none;
+  text-shadow: 4px 4px 2px #1d5ecc;
 }
 
 header a,
@@ -140,6 +147,7 @@ ul li ul {
 ul li ul li {
   background: #1d5ecc;
   position: relative;
+  padding: 40px;
   z-index: 1;
   /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
 }
@@ -292,11 +300,6 @@ section.welcome-banner p {
   padding: 20px;
 }
 
-section.welcome-banner a:hover {
-  text-decoration: none;
-  text-shadow: 4px 4px 2px #1d5ecc;
-}
-
 .welcome-banner a,
 div.image-content p,
 div.image-content h2 {
@@ -338,7 +341,7 @@ section.promo-images img {
   margin: 10px 0px;
 }
 
-/* bestsellers/product list page*/
+/* bestsellers/product list page */
 
 .product-list-grid {
   display: grid;
