@@ -62,6 +62,8 @@ footer p {
 }
 
 /*general input styles*/
+/*trying to fix the 1px padding from firefox*/
+
 input {
   /*because safari is annoying!*/
   -webkit-appearance: none;
@@ -77,11 +79,44 @@ input {
   border-radius: 5px 0px 0px 5px;
 }
 
+.input-container {
+  display: block;
+  position: relative;
+  width: fit-content;
+  height: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  border-radius: 5px;
+  height: 41px;
+}
+
 .submit-button,
 .search-button {
+  position: absolute;
   color: #fff;
   background: #db7c00;
   cursor: pointer;
+  border-radius: 0px 5px 5px 0px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px #001e44;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.email-input,
+.search-bar {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  padding: 0px 155px 0px 5px;
+}
+.search-button,
+.submit-button {
+  height: 100%; /*needed to fix firefox 1px difference!*/
+  width: 150px;
 }
 
 /* general hover interactions*/
@@ -91,6 +126,7 @@ input {
   color: #db7c00;
   background-color: #fff;
   outline: 2px solid #db7c00;
+  text-shadow: none;
 }
 
 section.featured-products a img:hover,
@@ -162,21 +198,6 @@ ul li ul li {
 /*align right side icons to the right!*/
 .right {
   text-align: right;
-}
-
-/* search button might be better to combine some settings with other inputs also might
- need to make these stay together on the same line better when screen sizes shrink*/
-.search-bar {
-  margin-right: -30px;
-  width: 80%;
-  max-width: 250px;
-}
-
-.search-button {
-  border-radius: 0px 5px 5px 0px;
-  width: 90px;
-  font-weight: 500;
-  text-shadow: 2px 2px 2px #001e44;
 }
 
 /*show the check box menus*/
@@ -261,13 +282,6 @@ footer input {
   margin-right: -10px;
   width: 60%;
   max-width: 250px;
-}
-
-.submit-button {
-  border-radius: 0px 5px 5px 0px;
-  width: 90px;
-  font-weight: 500;
-  text-shadow: 2px 2px 2px #001e44;
 }
 
 .footer-icon-flexbox {
@@ -442,6 +456,15 @@ section.promo-images img {
     display: flex;
     justify-content: space-between;
     width: 100%;
+  }
+
+  .flex-one {
+    flex: 1;
+  }
+
+  .flex-wide {
+    flex: 2;
+    padding: 0px 40px;
   }
 
   .head-wrapper {

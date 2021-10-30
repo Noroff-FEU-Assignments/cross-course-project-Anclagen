@@ -21,7 +21,6 @@
         <nav role="navigation">
           <ul class="mobile-nav">
           <li>
-            
             <label class="hamburger-label" for="menu-drop-down" role="button">
               <img src="images/interface_and_logo/menu_icon_1@2x.png" alt="Menu drop down" class="navigation-icons" />
             </label>
@@ -39,7 +38,6 @@
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
             </ul>
-          
           </li>
           <li>
             <label class="search-label" for="search-drop-down" role="button">
@@ -49,8 +47,10 @@
             <ul class="search">
               <li>
                 <form action="#search">
+                  <div class="input-container">
                   <input type="search" name="search" size="flex" class="search-bar" />
-                  <input type="submit" value="search" class="search-button search-bar" />
+                  <input type="submit" value="search" class="search-button"/>
+                </div>
                 </form>
               </li>
             </ul>
@@ -75,7 +75,7 @@
       <div class="head-wrapper">
         <div>
           <div class="desktop-nav">
-            <div >
+            <div>
               <a href="index html">
                 <img
                 src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
@@ -84,14 +84,18 @@
               />
             </a>
             </div>
-            <div >
-              <p><form action="#search">
-                <input type="search" name="search" size="flex" class="search-bar" />
-                <input type="submit" value="search" class="search-button search-bar" />
-              </form></p>
+            <div class="flex-wide">
+              <p>
+                <form action="#search">
+                  <div class="input-container">
+                   <input type="search" name="search" size="flex" class="search-bar" />
+                   <input type="submit" value="search" class="search-button" />
+                  </div>
+               </form>
+              </p>
             </div>
             <div >
-              <ul class="">
+              <ul class="flex-one">
                 <li>
                   <a href="cart.html"
                     ><img
@@ -337,8 +341,10 @@
             <form class="sign-up">
               <p><label for="signup_email">Sign Up To Our Newsletter</label></p>
               <p>
-                <input type="email" name="email" id="email" class="email-input" />
+                <div class="input-container">
+                <input type="email" name="email" id="email" class="email-input" class="email-input"/>
                 <input type="submit" value="Submit" class="submit-button" />
+                </div>
               </p>
             </form>
           </div>
