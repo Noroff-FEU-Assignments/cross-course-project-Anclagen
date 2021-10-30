@@ -90,6 +90,10 @@ input {
   padding: 0;
   border-radius: 5px;
   height: 41px;
+  margin: 0;
+}
+.search li {
+  margin: 0 -30px;
 }
 
 .submit-button,
@@ -193,6 +197,15 @@ ul li ul li {
   padding: 40px;
   z-index: 1;
   /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
+}
+
+/*fix positioning on mobile drop down search bar*/
+ul.search li {
+  margin-left: -40px;
+}
+
+ul.search li div {
+  margin: 0 30px;
 }
 
 /*align right side icons to the right!*/
