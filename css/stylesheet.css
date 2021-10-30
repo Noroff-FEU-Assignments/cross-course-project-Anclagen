@@ -86,6 +86,13 @@ input {
 
 /* general hover interactions*/
 
+.submit-button:hover,
+.search-button:hover {
+  color: #db7c00;
+  background-color: #fff;
+  outline: 2px solid #db7c00;
+}
+
 section.featured-products a img:hover,
 section.promo-images a img:hover {
   outline: 5px solid #001e44;
