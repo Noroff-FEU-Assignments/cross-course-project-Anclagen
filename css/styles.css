@@ -31,6 +31,7 @@ body {
 
 header {
   background: #001e44;
+  z-index: 1; /*prevent banner link area covering parts of header*/
 }
 
 header,
