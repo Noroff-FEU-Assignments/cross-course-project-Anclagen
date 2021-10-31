@@ -29,6 +29,8 @@ body {
   overflow-x: hidden; /*fix white space*/
 }
 
+/*General styles*/
+
 header {
   background: #001e44;
   z-index: 1; /*prevent banner link area covering parts of header*/
@@ -53,13 +55,31 @@ footer p {
   font-weight: 500;
 }
 
+header a,
+footer a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/*standard wrappers for content (careful where adding to nav bar and footer)*/
+.head-wrapper,
+.page-wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0px auto;
+}
+
 /*Hidden for small screens and hamburgers*/
 .desktop-nav-account,
 #menu-drop-down,
 #search-drop-down,
 .large-images,
 .medium-images,
-.desktop-nav {
+.desktop-nav,
+.desktop-logo,
+.main-nav-contact {
   display: none;
 }
 
@@ -68,7 +88,7 @@ footer p {
   position: absolute;
 }
 
-/*general input styles*/
+/*general input, form and button styles*/
 
 input {
   /*because safari is annoying!*/
@@ -102,10 +122,12 @@ input {
 ul search {
   margin: 0 20px;
 }
+
 /*remove 30px push from lists*/
 ul.search li {
   margin-left: -30px;
 }
+
 /*adjust search bar for drop down to avoid hitting edges of screen */
 .search-drop-fix {
   margin: 0 30px;
@@ -168,24 +190,8 @@ section.welcome-banner a:hover {
   text-shadow: 4px 4px 2px #1d5ecc;
 }
 
-header a,
-footer a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
 a:hover {
   text-decoration: underline;
-}
-
-/*standard wrappers for content (careful where adding to nav bar and footer)*/
-.head-wrapper,
-.page-wrapper {
-  max-width: 1200px;
-  width: 90%;
-  margin: 0px auto;
 }
 
 /*-------  Navigation --------*/
@@ -255,10 +261,6 @@ ul li.main-nav-cart ul li {
   padding-top: 20px;
   margin-bottom: 15px; /*to push drop downs down*/
 }
-/* new rules */
-.desktop-logo {
-  display: none;
-}
 
 /*-------  Footer styling  --------*/
 
@@ -308,7 +310,9 @@ footer input {
   font-size: 0.9rem;
 }
 
-/*quick links*/
+/*------- Home Page Content ------*/
+
+/*quick links section on mobile*/
 
 .quick-links {
   display: grid;
@@ -325,7 +329,6 @@ div.quick-links h3 {
   text-align: center;
 }
 
-/*------- Home Page Content ------*/
 /*---banner and promo image styling --*/
 .welcome-banner {
   background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
@@ -426,6 +429,7 @@ dl {
 /*tablet styles*/
 
 @media only screen and (min-width: 700px) {
+  /*2 column grid for promo images and footer */
   .promo-images-grid,
   .foot-wrapper {
     display: grid;
@@ -441,11 +445,13 @@ dl {
     margin-right: 20px;
   }
 
+  /* added column to grid for product section*/
   .product-list-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 25px;
   }
 
+  /*swap out a promo image for a wider version*/
   .small-wide-images {
     display: none;
   }
@@ -456,6 +462,7 @@ dl {
 }
 
 @media only screen and (min-width: 945px) {
+  /*Hiding small images, quick links section, and un-need mobile elements */
   .small-images,
   .mobile-nav,
   .hide-quick-links,
@@ -467,20 +474,21 @@ dl {
   .flex-clear {
     position: relative;
   }
-
+  /*larger images added for desktop viewing*/
   .large-images {
     display: inline-block;
-  }
-
-  .product-list-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .welcome-banner {
     background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
   }
 
-  /*The hell that is my nav bar re-construction, still not happy with it!!!!*/
+  /* 4 column product grid*/
+  .product-list-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
   header {
     background: linear-gradient(#001e44, #001e44 112px, #1d5ecc 113px, #1d5ecc);
   }
@@ -506,7 +514,6 @@ dl {
   }
   .main-nav-menu {
     grid-area: nav;
-    display: grid;
   }
   .main-nav-contact {
     grid-area: contact;
@@ -532,7 +539,6 @@ dl {
   .desktop-logo {
     display: block;
     max-width: 200px;
-    padding-bottom: 30px;
   }
 
   .navigation-icons {
@@ -547,32 +553,35 @@ dl {
     display: inline;
   }
 
-  .desktop-nav-account {
-    margin-left: 10px;
-  }
-
   ul li ul,
   ul li ul li {
     background: none;
-    height: 100%;
   }
 
+  /*fix floats and absolutes from drop downs*/
   li {
-    display: inline-flex;
     float: none;
     position: relative;
   }
 
-  ul {
-    display: grid;
-  }
-
   ul li.main-nav-search ul,
   ul li.main-nav-menu ul,
-  ul li.main-nav-contact ul {
+  .main-nav-contact {
     display: inline-flex;
     position: relative;
     background: none;
-    height: fit-content;
+  }
+
+  /*two different hovers because one section has 4px more 
+  height than another and I couldn't find a way to increase the size nicely*/
+  #current,
+  .main-nav-menu div li:hover {
+    background: #001e44;
+    border: 2px solid #001e44;
+  }
+
+  #current-contact,
+  div li:hover {
+    background: #001e44;
   }
 }
