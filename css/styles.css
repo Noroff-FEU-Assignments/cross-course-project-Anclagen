@@ -26,6 +26,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  overflow: hidden; /*fix white space*/
 }
 
 header {
@@ -539,6 +540,7 @@ dl {
   ul li ul,
   ul li ul li {
     background: none;
+    height: 100%;
   }
 
   li {
