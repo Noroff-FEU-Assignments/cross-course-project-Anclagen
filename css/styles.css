@@ -63,8 +63,6 @@ footer p {
 }
 
 /*general input styles*/
-/*general input styles*/
-/*trying to fix the 1px padding from firefox*/
 
 input {
   /*because safari is annoying!*/
@@ -292,6 +290,15 @@ footer input {
   max-width: 500px;
 }
 
+.footer-copyright {
+  text-align: center;
+  padding: 30px 0px;
+}
+
+.footer-copyright p {
+  font-size: 0.9rem;
+}
+
 /*quick links*/
 
 .quick-links {
@@ -437,7 +444,7 @@ dl {
   }
 }
 
-@media only screen and (min-width: 940px) {
+@media only screen and (min-width: 945px) {
   .small-images,
   .mobile-nav,
   .hide-quick-links,
@@ -454,9 +461,13 @@ dl {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .welcome-banner {
+    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
+  }
+
   /*The hell that is my nav bar re-construction, still not happy with it!!!!*/
   header {
-    background: linear-gradient(#001e44, #001e44 129px, #1d5ecc 130px, #1d5ecc);
+    background: linear-gradient(#001e44, #001e44 112px, #1d5ecc 113px, #1d5ecc);
   }
 
   .main-nav-container {
@@ -506,10 +517,13 @@ dl {
   .desktop-logo {
     display: block;
     max-width: 200px;
+    padding-bottom: 30px;
   }
 
   .navigation-icons {
+    max-width: 30px;
     padding-top: 0px;
+    padding-left: 15px;
     margin-bottom: 0px; /*to push drop downs down*/
   }
 
