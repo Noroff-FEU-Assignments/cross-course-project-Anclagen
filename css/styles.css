@@ -58,9 +58,13 @@ footer p {
 #search-drop-down,
 .large-images,
 .medium-images,
-.bottom-nav,
 .desktop-nav {
   display: none;
+}
+
+/*prevent hidden nav item being part of flex calculation*/
+.flex-clear {
+  position: absolute;
 }
 
 /*general input styles*/
@@ -93,8 +97,17 @@ input {
   height: 41px;
   margin: 0;
 }
-.search li {
-  margin: 0 -30px;
+
+ul search {
+  margin: 0 20px;
+}
+/*remove 30px push from lists*/
+ul.search li {
+  margin-left: -30px;
+}
+/*adjust search bar for drop down to avoid hitting edges of screen */
+.search-drop-fix {
+  margin: 0 30px;
 }
 
 .submit-button,
@@ -122,6 +135,11 @@ input {
 .submit-button {
   height: 100%; /*needed to fix firefox 1px difference!*/
   width: 150px;
+}
+
+.search-bar {
+  margin-right: -30px;
+  width: 100%;
 }
 
 /* general hover interactions*/
@@ -209,11 +227,6 @@ ul li.main-nav-cart ul li {
 
 /* search button might be better to combine some settings with other inputs also might
  need to make these stay together on the same line better when screen sizes shrink*/
-.search-bar {
-  margin-right: -30px;
-  width: 80%;
-  max-width: 250px;
-}
 
 .search-button {
   border-radius: 0px 5px 5px 0px;
@@ -452,6 +465,10 @@ dl {
   .medium-images,
   .mobile-screen {
     display: none;
+  }
+  /* add flex cleared item to normal flow*/
+  .flex-clear {
+    position: relative;
   }
 
   .large-images {
