@@ -22,10 +22,11 @@ Font Sizes:
 body {
   margin: auto;
   padding-top: 0px;
-  font-family: roboto;
+  font-family: roboto, Arial, Helvetica, sans-serif;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  overflow: hidden; /*fix white space*/
 }
 
 header {
@@ -237,6 +238,7 @@ ul.search li div {
   width: 100%;
   padding-top: 20px;
   margin-bottom: 15px; /*to push drop downs down*/
+  margin-right: 0;
 }
 
 .blue-bar {
