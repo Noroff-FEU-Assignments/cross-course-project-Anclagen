@@ -12,135 +12,96 @@
       rel="stylesheet"
     />
     <title>Rainydays | Jackets for all outdoor activities</title>
-    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
-      <!-- Mobile navigation -->
-      <div class="head-wrapper">
-        <nav role="navigation">
-          <ul class="mobile-nav">
-          <li>
-            <label class="hamburger-label" for="menu-drop-down" role="button">
-              <img src="images/interface_and_logo/menu_icon_1@2x.png" alt="Menu drop down" class="navigation-icons" />
-            </label>
-            <input type="checkbox" id="menu-drop-down" />
-            <ul class="hamburger">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="products.html">Sale</a></li>
-              <li><a href="products.html">Men</a></li>
-              <li><a href="products.html">Women</a></li>
-              <li><a href="products.html">Kid</a></li>
-              <li><a href="products.html">Brand</a></li>
-              <li><a href="products.html">New</a></li>
+      <ul class="main-nav-container head-wrapper">
+        <li class="main-nav-menu">
+          <!-- menu drop down-->
+          <label class="hamburger-label" for="menu-drop-down" role="button">
+            <img
+              src="images/interface_and_logo/menu_icon_1@2x.png"
+              alt="Menu drop down"
+              class="navigation-icons mobile-screen"
+            />
+          </label>
+          <input type="checkbox" id="menu-drop-down" />
+          <ul class="hamburger">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Sale</a></li>
+            <li><a href="products.html">Men</a></li>
+            <li><a href="products.html">Women</a></li>
+            <li><a href="products.html">Kid</a></li>
+            <div class="mobile-screen">
               <li><a href="cart.html">Cart</a></li>
               <li><a href="account.html">Account</a></li>
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
-            </ul>
-          </li>
-          <li>
-            <label class="search-label" for="search-drop-down" role="button">
-              <img src="images/interface_and_logo/search_icon_1@2x.png" alt="Search" class="navigation-icons" />
-            </label>
-            <input type="checkbox" id="search-drop-down" />
-            <ul class="search">
-              <li>
-                <form action="#search">
-                  <div class="input-container">
+            </div>
+          </ul>
+        </li>
+         <!-- search drop down-->
+        <li class="main-nav-search">
+          <label class="search-label" for="search-drop-down" role="button">
+            <img
+              src="images/interface_and_logo/search_icon_1@2x.png"
+              alt="Search"
+              class="navigation-icons mobile-screen"
+            />
+          </label>
+          <input type="checkbox" id="search-drop-down" />
+          <ul class="search main-nav-search">
+            <li>
+              <form action="#search">
+                <div class="input-container">
                   <input type="search" name="search" size="flex" class="search-bar" />
-                  <input type="submit" value="search" class="search-button"/>
+                  <input type="submit" value="search" class="search-button" />
                 </div>
-                </form>
-              </li>
-            </ul>
-          </li>
-          <li>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <!--Logo-->
+        <li class="main-nav-logo">
+          <a href="index.html">
             <img
               src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
               alt="Rainydays Logo"
-              class="logo_mobile"
+              class="logo_mobile mobile-screen"
             />
-          </li>
-          <li>
+            <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo" />
+          </a>
+        </li>
+        <!--Cart-->
+        <li class="main-nav-cart right">
+          <a href="cart.html">
             <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" />
-          </li>
-          <li>
-            <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
-          </li>
-        </ul>
-      </nav>
-      </div>
-      <!-- Desktop Navigation -->
-      <div class="head-wrapper">
-        <div>
-          <div class="desktop-nav">
-            <div>
-              <a href="index.html">
-                <img
-                src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
-                alt="Rainydays Logo"
-                class="desktop-logo"
-              />
+            <span class="desktop-nav">Cart</span>
+          </a>
+          <!--Hidden on mobile displays on desktop avoid grid problems this way-->
+          <div class="desktop-nav-account">
+            <a href="account.html">
+              <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
+              <span class="desktop-nav">Account</span>
             </a>
-            </div>
-            <div class="flex-wide">
-              <p>
-                <form action="#search">
-                  <div class="input-container">
-                   <input type="search" name="search" size="flex" class="search-bar" />
-                   <input type="submit" value="search" class="search-button" />
-                  </div>
-               </form>
-              </p>
-            </div>
-            <div >
-              <ul class="flex-one">
-                <li>
-                  <a href="cart.html"
-                    ><img
-                      src="images/interface_and_logo/empty_cart_icon_1@2x.png"
-                      alt="Cart Empty"
-                      class="navigation-icons"
-                    />Cart</a
-                  >
-                </li>
-                <li>
-                  <a href="account.html"
-                    ><img
-                      src="images/interface_and_logo/account_icon_1@2x.png"
-                      alt="Account"
-                      class="navigation-icons"
-                    />Account
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
-        </div>
-      </div>
-      <div class="blue-bar">
-        <!-- also the blue bar on mobile navigation -->
-        <div class="bottom-nav head-wrapper">
-          <div>
-            <ul>
-            <li ><a href="index.html">Home</a></li>
-            <li id="current"><a href="products.html">Sale</a></li>
-            <li><a href="products.html">Men</a></li>
-            <li><a href="products.html">Women</a></li>
-            <li><a href="products.html">Kid</a></li>
-            <li><a href="products.html">Brand</a></li>
-            <li><a href="products.html">New</a></li>
-            </ul>
-          </div>
-          <div>
-            <ul class="bottom-nav-right">
+        </li>
+        <!-- account displays on mobile, hidden on desktop avoids flex problems-->
+        <li class="mobile-screen right">  
+          <a href="account.html">
+            <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
+            <span class="desktop-nav">Account</span>
+          </a>
+        </li>
+
+        <li class="main-nav-contact">
+          <ul>
             <li><a href="contact.html">Contact Us</a></li>
             <li><a href="about.html">About Us</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+          </ul>
+        </li>
+      </ul>
     </header>
   <main>
 
@@ -175,6 +136,7 @@
         <div class="page-wrapper">
           <p><a href="about.html" class="">About Us</a></p>
           <p><a href="contact.html" class="">Contact Us</a></p>
+          
         </div>
         <div class="page-wrapper payment-icons">
           <p>Accepted Payments</p>
@@ -187,7 +149,11 @@
           </div>
         </div>
       </div>
+      <div class="footer-copyright">
+        <p> Rainydays Copyright &copy; 2021 </p>
+      </div>
     </section>
+  </footer>
   </footer>
 </body>
 </html>
