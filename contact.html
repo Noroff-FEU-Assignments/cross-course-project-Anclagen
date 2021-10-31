@@ -4,35 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Barrett" />
-    <meta name="description" content="Rainydays sells jackets to suit all outdoor activities and weather conditions keeping you comfortable no matter the situation." />
+    <title>Rainydays | Jackets for all outdoor activities</title>
+    <meta
+      name="description"
+      content="Rainydays sells jackets to suit all outdoor activities and weather conditions keeping you comfortable no matter the situation."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Rainydays | Jackets for all outdoor activities</title>
+    
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
       <ul class="main-nav-container head-wrapper">
+        <!-- menu drop down-->
         <li class="main-nav-menu">
-          <!-- menu drop down-->
           <label class="hamburger-label" for="menu-drop-down" role="button">
             <img
               src="images/interface_and_logo/menu_icon_1@2x.png"
               alt="Menu drop down"
-              class="navigation-icons mobile-screen"
-            />
+              class="navigation-icons mobile-screen"/>
           </label>
-          <input type="checkbox" id="menu-drop-down" />
+          <input type="checkbox" id="menu-drop-down"/>
           <ul class="hamburger">
+            <div class="main-nav-padding">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Sale</a></li>
             <li><a href="products.html">Men</a></li>
             <li><a href="products.html">Women</a></li>
             <li><a href="products.html">Kid</a></li>
+            </div>
             <div class="mobile-screen">
               <li><a href="cart.html">Cart</a></li>
               <li><a href="account.html">Account</a></li>
@@ -47,16 +52,15 @@
             <img
               src="images/interface_and_logo/search_icon_1@2x.png"
               alt="Search"
-              class="navigation-icons mobile-screen"
-            />
+              class="navigation-icons mobile-screen"/>
           </label>
-          <input type="checkbox" id="search-drop-down" />
+          <input type="checkbox" id="search-drop-down"/>
           <ul class="search main-nav-search">
             <li>
               <form action="#search">
-                <div class="input-container">
-                  <input type="search" name="search" size="flex" class="search-bar" />
-                  <input type="submit" value="search" class="search-button" />
+                <div class="input-container search-drop-fix">
+                  <input type="search" name="search" size="flex" class="search-bar"/>
+                  <input type="submit" value="search" class="search-button"/>
                 </div>
               </form>
             </li>
@@ -68,39 +72,35 @@
             <img
               src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
               alt="Rainydays Logo"
-              class="logo_mobile mobile-screen"
-            />
-            <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo" />
+              class="logo_mobile mobile-screen"/>
+            <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo"/>
           </a>
         </li>
         <!--Cart-->
-        <li class="main-nav-cart right">
+        <li class="main-nav-cart">
           <a href="cart.html">
-            <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" />
+            <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons"/>
             <span class="desktop-nav">Cart</span>
           </a>
           <!--Hidden on mobile displays on desktop avoid grid problems this way-->
           <div class="desktop-nav-account">
             <a href="account.html">
-              <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
+              <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons"/>
               <span class="desktop-nav">Account</span>
             </a>
           </div>
         </li>
         <!-- account displays on mobile, hidden on desktop avoids flex problems-->
-        <li class="mobile-screen right">  
+        <li class="mobile-screen ">  
           <a href="account.html">
-            <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
+            <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons"/>
             <span class="desktop-nav">Account</span>
           </a>
         </li>
-
-        <li class="main-nav-contact">
-          <ul>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html">About Us</a></li>
-          </ul>
-        </li>
+        <div class="main-nav-contact flex-clear"> 
+          <li id="current-contact"><a href="contact.html">Contact Us</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </div>
       </ul>
     </header>
   <main>
