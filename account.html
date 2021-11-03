@@ -15,145 +15,125 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header>
-      <ul class="main-nav-container head-wrapper">
-        <!-- menu drop down-->
-        <li class="main-nav-menu">
-          <label class="hamburger-label" for="menu-drop-down" role="button">
-            <img
-              src="images/interface_and_logo/menu_icon_1@2x.png"
-              alt="Menu drop down"
-              class="navigation-icons mobile-screen"/>
-          </label>
-          <input type="checkbox" id="menu-drop-down"/>
-          <ul class="hamburger">
-            <div class="main-nav-padding">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Sale</a></li>
-            <li><a href="products.html">Men</a></li>
-            <li><a href="products.html">Women</a></li>
-            <li><a href="products.html">Kid</a></li>
-            </div>
-            <div class="mobile-screen">
-              <li><a href="cart.html">Cart</a></li>
-              <li><a href="account.html">Account</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="about.html">About Us</a></li>
-            </div>
-          </ul>
-        </li>
-         <!-- search drop down-->
-        <li class="main-nav-search">
-          <label class="search-label" for="search-drop-down" role="button">
-            <img
-              src="images/interface_and_logo/search_icon_1@2x.png"
-              alt="Search"
-              class="navigation-icons mobile-screen"/>
-          </label>
-          <input type="checkbox" id="search-drop-down"/>
-          <ul class="search main-nav-search">
-            <li>
-              <form action="#search">
-                <div class="input-container search-drop-fix">
-                  <input type="search" name="search" size="flex" class="search-bar"/>
-                  <input type="submit" value="search" class="search-button"/>
-                </div>
-              </form>
-            </li>
-          </ul>
-        </li>
-        <!--Logo-->
-        <li class="main-nav-logo">
-          <a href="index.html">
-            <img
-              src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
-              alt="Rainydays Logo"
-              class="logo_mobile mobile-screen"/>
-            <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo"/>
-          </a>
-        </li>
-        <!--Cart-->
-        <li class="main-nav-cart">
-          <a href="cart.html">
-            <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons"/>
-            <span class="desktop-nav">Cart</span>
-          </a>
-          <!--Hidden on mobile displays on desktop avoid grid problems this way-->
-          <div class="desktop-nav-account">
+      <nav>
+        <ul class="main-nav-container head-wrapper">
+          <!-- menu drop down-->
+          <li class="main-nav-menu">
+            <label class="hamburger-label" for="menu-drop-down" role="button">
+              <img
+                src="images/interface_and_logo/menu_icon_1@2x.png"
+                alt="Menu drop down"
+                class="navigation-icons mobile-screen"
+              />
+            </label>
+            <input type="checkbox" id="menu-drop-down" />
+            <ul class="hamburger main-nav-menu">
+              <a href="index.html"><li>Home</li></a>
+              <a href="products.html"><li>Sale</li></a>
+              <a href="products.html"><li>Men</li></a>
+              <a href="products.html"><li>Women</li></a>
+              <a href="products.html"><li>Kid</li></a>
+              <a href="contact.html"><li>Contact Us</li></a>
+              <a href="about.html"><li>About Us</li></a>
+            </ul>
+          </li>
+          <!-- search drop down-->
+          <li class="main-nav-search">
+            <label class="search-label" for="search-drop-down" role="button">
+              <img
+                src="images/interface_and_logo/search_icon_1@2x.png"
+                alt="Search"
+                class="navigation-icons mobile-screen"
+              />
+            </label>
+            <input type="checkbox" id="search-drop-down" />
+            <ul class="search main-nav-search">
+              <li>
+                <form action="#search">
+                  <div class="input-container search-drop">
+                    <input type="search" name="search" class="search-bar" />
+                    <input type="submit" value="search" class="search-button" />
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </li>
+          <!--Logo-->
+          <li class="main-nav-logo">
+            <a href="index.html">
+              <img
+                src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
+                alt="Rainydays Logo"
+                class="logo_mobile mobile-screen"
+              />
+              <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo" />
+            </a>
+          </li>
+          <!--Cart-->
+          <li class="main-nav-cart">
+            <a href="cart.html">
+              <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" />
+              <span class="desktop-nav">Cart</span>
+            </a>
+          </li>
+          <li class="main-nav-account">
             <a href="account.html">
-              <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons"/>
+              <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons" />
               <span class="desktop-nav">Account</span>
             </a>
-          </div>
-        </li>
-        <!-- account displays on mobile, hidden on desktop avoids flex problems-->
-        <li class="mobile-screen ">  
-          <a href="account.html">
-            <img src="images/interface_and_logo/account_icon_1@2x.png" alt="Account" class="navigation-icons"/>
-            <span class="desktop-nav">Account</span>
-          </a>
-        </li>
-        <div class="main-nav-contact flex-clear"> 
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </div>
-      </ul>
+          </li>
+        </ul>
+      </nav>
     </header>
-  <main>
-
-  </main>
-  <footer>
-    <section class="foot-top">
-      <div class="foot-wrapper page-wrapper">
-        <div class="page-wrapper">
-          <form class="sign-up">
-            <p><label for="signup_email">Sign Up To Our Newsletter</label></p>
-            <p>
+    <main> </main>
+    <footer>
+      <section class="foot-top">
+        <div class="foot-wrapper page-wrapper">
+          <div class="sign-up-container">
+            <form class="sign-up">
+              <label for="signup_email">Sign Up To Our Newsletter</label>
               <div class="input-container">
-              <input type="email" name="email" id="email" class="email-input" class="email-input"/>
-              <input type="submit" value="Submit" class="submit-button" />
+                <input type="email" name="email" id="email" class="email-input" class="email-input" />
+                <input type="submit" value="Submit" class="submit-button" />
               </div>
-            </p>
-          </form>
-        </div>
-        <div class="page-wrapper">
-          <p class="">Connect With Us On Social Media</p>
-          <div class="footer-icon-flexbox">
-            <img src="images/interface_and_logo/icons/Icon awesome-facebook.png" alt="Facebook Icon" />
-            <img src="images/interface_and_logo/icons/Icon awesome-twitter.png" alt="Twitter Icon" />
-            <img src="images/interface_and_logo/icons/Icon awesome-instagram.png" alt="Instagram Icon" />
-            <img src="images/interface_and_logo/icons/Icon awesome-youtube.png" alt="Youtube Icon" />
+            </form>
+          </div>
+          <div>
+            <p class="">Connect With Us On Social Media</p>
+            <div class="footer-icon-flexbox">
+              <img src="images/interface_and_logo/icons/Icon awesome-facebook.png" alt="Facebook Icon" />
+              <img src="images/interface_and_logo/icons/Icon awesome-twitter.png" alt="Twitter Icon" />
+              <img src="images/interface_and_logo/icons/Icon awesome-instagram.png" alt="Instagram Icon" />
+              <img src="images/interface_and_logo/icons/Icon awesome-youtube.png" alt="Youtube Icon" />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="foot-bot">
-      <div class="foot-wrapper page-wrapper">
-        <div class="page-wrapper">
-          <p><a href="about.html" class="">About Us</a></p>
-          <p><a href="contact.html" class="">Contact Us</a></p>
-          
-        </div>
-        <div class="page-wrapper payment-icons">
-          <p>Accepted Payments</p>
-          <div class="footer-icon-flexbox">
-            <img src="images/interface_and_logo/icons/mastercard_logo_1x.png" alt="Mastercard Logo" />
-            <img src="images/interface_and_logo/icons/maestro_logo_1x.png" alt="Maestro Logo" />
-            <img src="images/interface_and_logo/icons/visa_logo_1x.png" alt="Visa Logo" />
-            <img src="images/interface_and_logo/icons/american_express_logo_1x.png" alt="American Express Logo" />
-            <img src="images/interface_and_logo/icons/pay_pal_logo.png" alt="Pay Pal Logo" />
+      </section>
+      <section class="foot-bot">
+        <div class="foot-wrapper page-wrapper">
+          <div>
+            <p><a href="about.html" class="">About Us</a></p>
+            <p><a href="contact.html" class="">Contact Us</a></p>
+          </div>
+          <div class="payment-icons">
+            <p>Accepted Payments</p>
+            <div class="footer-icon-flexbox">
+              <img src="images/interface_and_logo/icons/mastercard_logo_1x.png" alt="Mastercard Logo" />
+              <img src="images/interface_and_logo/icons/maestro_logo_1x.png" alt="Maestro Logo" />
+              <img src="images/interface_and_logo/icons/visa_logo_1x.png" alt="Visa Logo" />
+              <img src="images/interface_and_logo/icons/american_express_logo_1x.png" alt="American Express Logo" />
+              <img src="images/interface_and_logo/icons/pay_pal_logo.png" alt="Pay Pal Logo" />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="footer-copyright">
-        <p> Rainydays Copyright &copy; 2021 </p>
-      </div>
-    </section>
-  </footer>
-  </footer>
-</body>
+        <div class="footer-copyright">
+          <p>Rainydays Copyright &copy; 2021</p>
+        </div>
+      </section>
+    </footer>
+  </body>
 </html>

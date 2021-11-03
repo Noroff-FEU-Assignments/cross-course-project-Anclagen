@@ -1,11 +1,13 @@
-/*
-Colours:
-Dark Blue #001e44
-Light Blue #1d5ecc
-CTA Orange #db7c00
-CTA Green #1BC2A3
-Grey #ABABAB
+/* colors */
+:root {
+  --dark-blue: #001e44;
+  --light-blue: #1d5ecc;
+  --cta-orange: #db7c00;
+  --cta-green: #1bc2a3;
+  --grey: #f0f0f0;
+}
 
+/*
 Font Sizes:
 10px = 0.625rem
 12px = 0.75rem      captions sorting
@@ -26,19 +28,21 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  overflow-x: hidden; /*fix white space*/
 }
 
 /*General styles*/
 
 header {
-  background: #001e44;
+  background: var(--dark-blue);
   z-index: 1; /*prevent banner link area covering parts of header*/
 }
 
 header,
 footer {
   color: #fff;
+}
+
+h1 {
 }
 
 h2 {
@@ -102,13 +106,13 @@ input {
   border: none;
   font-size: 1.125rem;
   font-weight: 500;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 5px;
 }
 
 .input-container {
   display: block;
   position: relative;
-  width: fit-content;
+  width: 90%;
   height: 100%;
   background-color: white;
   box-sizing: border-box;
@@ -119,75 +123,68 @@ input {
   margin: 0;
 }
 
-ul search {
-  margin: 0 20px;
-}
-
-/*remove 30px push from lists*/
-ul.search li {
-  margin-left: -30px;
-}
-
-/*adjust search bar for drop down to avoid hitting edges of screen */
-.search-drop-fix {
-  margin: 0 30px;
-}
-
-.submit-button,
-.search-button {
-  position: absolute;
-  color: #fff;
-  background: #db7c00;
-  cursor: pointer;
-  border-radius: 0px 5px 5px 0px;
-  font-weight: 500;
-  text-shadow: 2px 2px 2px #001e44;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.search-button {
-  width: 90px;
-}
-
 .email-input,
 .search-bar {
   height: 100%;
   width: 100%;
   background-color: transparent;
-  padding: 0px 155px 0px 5px;
+  padding: 0px 0px 0px 5px;
 }
+
+/*adjust search bar for drop down to avoid hitting edges of screen */
+ul search {
+  margin: 0 20px;
+}
+
+.search-drop {
+  margin: 0 20px;
+}
+
+/*input buttons*/
+.submit-button,
+.search-button {
+  position: absolute;
+  color: #fff;
+  background: var(--cta-orange);
+  cursor: pointer;
+  border-radius: 0px 5px 5px 0px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px var(--dark-blue);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .search-button,
 .submit-button {
   height: 100%; /*needed to fix firefox 1px difference!*/
-  width: 150px;
+  padding: 0 20px;
+  width: auto;
 }
 
-.search-bar {
-  margin-right: -30px;
-  width: 100%;
+span {
+  content: "\A";
+  white-space: pre;
 }
-
 /* general hover interactions*/
 
 .submit-button:hover,
 .search-button:hover {
-  color: #db7c00;
+  color: var(--cta-orange);
   background-color: #fff;
-  outline: 2px solid #db7c00;
+  outline: 2px solid var(--cta-orange);
   text-shadow: none;
 }
 
 section.featured-products a img:hover,
 section.promo-images a img:hover {
-  outline: 5px solid #001e44;
+  outline: 5px solid var(--dark-blue);
   outline-offset: -5px;
 }
 
-section.welcome-banner a:hover {
+.welcome-banner a:hover {
   text-decoration: none;
-  text-shadow: 4px 4px 2px #1d5ecc;
+  text-shadow: 4px 4px 2px var(--light-blue);
 }
 
 a:hover {
@@ -212,7 +209,7 @@ li {
 }
 
 ul li ul {
-  background: #1d5ecc;
+  background: var(--light-blue);
   display: none;
   position: absolute;
   margin-top: 0px;
@@ -226,7 +223,7 @@ ul li.main-nav-cart ul {
 }
 
 ul li ul li {
-  background: #1d5ecc;
+  background: var(--light-blue);
   position: relative;
   z-index: 1;
   /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
@@ -272,27 +269,36 @@ footer img {
   max-width: 80px;
 }
 
-footer p {
-  margin: 0;
-  padding-top: 10px;
-}
-
 .foot-top {
-  background: #1d5ecc;
+  background: var(--light-blue);
   padding: 20px 0px;
 }
 
 .foot-bot {
-  background: #001e44;
+  background: var(--dark-blue);
   padding: 20px 0px;
 }
 
 footer input {
-  margin: 0;
   border: none;
-  margin-right: -10px;
-  width: 60%;
-  max-width: 250px;
+  width: 80%;
+}
+
+div.sign-up-container {
+  margin-top: 9px;
+}
+
+footer div.input-container {
+  margin-top: 20px;
+}
+
+footer label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+footer form {
+  padding: 10px 0;
 }
 
 .footer-icon-flexbox {
@@ -330,10 +336,11 @@ div.quick-links h3 {
 }
 
 /*---banner and promo image styling --*/
+
 .welcome-banner {
   background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
   background-size: cover;
-  min-height: 300px;
+  min-height: 400px;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: top;
@@ -347,7 +354,7 @@ section.welcome-banner p {
 
 .banner-content {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -364,14 +371,7 @@ div.image-content p,
 div.image-content h2 {
   text-decoration: none;
   color: #fff;
-  text-shadow: 2px 2px 2px #001e44;
-}
-
-div.image-content p,
-div.image-content h2 {
-  text-decoration: none;
-  color: #fff;
-  text-shadow: 2px 2px 2px #001e44;
+  text-shadow: 2px 2px 2px var(--dark-blue);
 }
 
 .promo-images-container {
@@ -406,15 +406,15 @@ section.promo-images img {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 1fr;
-  row-gap: 22px;
+  row-gap: 25px;
   margin-bottom: 50px;
 }
 
 .product-item {
-  background-color: #f0f0f0;
+  background-color: var(--grey);
   display: grid;
+  border: 1px solid var(--dark-blue);
   grid-template-rows: auto 2/5 3/5 auto;
-  border: 1px black;
   height: 100%;
 }
 
@@ -422,8 +422,10 @@ section.promo-images img {
   width: 100%;
 }
 
-dl {
-  margin: 5px 0;
+.product-item dl,
+.product-item h3 {
+  margin: 5px 5px;
+  text-transform: capitalize;
 }
 
 /*tablet styles*/
@@ -434,6 +436,7 @@ dl {
   .foot-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 25px;
   }
 
   .promo-images-grid {
@@ -490,14 +493,14 @@ dl {
 
   /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
   header {
-    background: linear-gradient(#001e44, #001e44 112px, #1d5ecc 113px, #1d5ecc);
+    background: linear-gradient(var(--dark-blue), var(--dark-blue) 114px, var(--light-blue) 114px, var(--light-blue));
   }
 
   .main-nav-container {
     display: grid;
     grid-template-areas:
-      "logo search cart"
-      "logo nav contact";
+      "logo search cart account"
+      "logo nav nav nav";
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
     align-items: center;
@@ -512,11 +515,11 @@ dl {
   .main-nav-cart {
     grid-area: cart;
   }
+  .main-nav-account {
+    grid-area: account;
+  }
   .main-nav-menu {
     grid-area: nav;
-  }
-  .main-nav-contact {
-    grid-area: contact;
   }
 
   .hamburger li,
@@ -532,6 +535,10 @@ dl {
     width: 100%;
   }
 
+  .search-drop {
+    margin: 0;
+  }
+
   .head-wrapper {
     width: 100%;
   }
@@ -539,6 +546,7 @@ dl {
   .desktop-logo {
     display: block;
     max-width: 200px;
+    padding-top: 2px;
   }
 
   .navigation-icons {
@@ -575,13 +583,7 @@ dl {
   /*two different hovers because one section has 4px more 
   height than another and I couldn't find a way to increase the size nicely*/
   #current,
-  .main-nav-menu div li:hover {
-    background: #001e44;
-    border: 2px solid #001e44;
-  }
-
-  #current-contact,
-  div li:hover {
-    background: #001e44;
+  .main-nav-menu li:hover {
+    background: var(--dark-blue);
   }
 }
