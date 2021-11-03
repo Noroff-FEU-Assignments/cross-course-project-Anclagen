@@ -99,11 +99,6 @@ div.page-bread-crumbs {
   display: none;
 }
 
-/*prevent hidden nav item being part of flex calculation*/
-.flex-clear {
-  position: absolute;
-}
-
 /*general input, form and button styles*/
 
 footer input,
@@ -426,7 +421,7 @@ section.promo-images img {
 .product-item {
   background-color: var(--grey);
   display: grid;
-  border: 1px solid var(--dark-blue);
+  border: 2px solid var(--dark-blue);
   grid-template-rows: auto 2/5 3/5 auto;
   height: 100%;
 }
@@ -435,10 +430,14 @@ section.promo-images img {
   width: 100%;
 }
 
-.product-item dl,
+.product-item p,
 .product-item h3 {
   margin: 5px 5px;
   text-transform: capitalize;
+}
+
+.product-item p {
+  padding: 5px 0px;
 }
 
 /*tablet styles*/
