@@ -43,6 +43,9 @@ footer {
 }
 
 h1 {
+  font-size: 1.8rem;
+  margin-top: 10px;
+  text-align: center;
 }
 
 h2 {
@@ -59,12 +62,21 @@ footer p {
   font-weight: 500;
 }
 
+a {
+  cursor: pointer;
+  color: #001e44;
+}
+
 header a,
 footer a {
   text-decoration: none;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+div.page-bread-crumbs {
+  margin: 10px;
 }
 
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
@@ -94,7 +106,8 @@ footer a {
 
 /*general input, form and button styles*/
 
-input {
+footer input,
+nav input {
   /*because safari is annoying!*/
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -194,21 +207,21 @@ a:hover {
 /*-------  Navigation --------*/
 /* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
 
-ul {
+nav ul {
   margin: 0;
   padding-left: 0;
   display: flex;
   justify-content: space-between;
 }
 
-li {
+nav li {
   display: block;
   float: left;
   padding: 1rem;
   text-decoration: none;
 }
 
-ul li ul {
+nav ul li ul {
   background: var(--light-blue);
   display: none;
   position: absolute;
@@ -216,20 +229,20 @@ ul li ul {
   left: 0px;
 }
 
-ul li.main-nav-cart ul {
+nav ul li.main-nav-cart ul {
   display: inline-flex;
   position: relative;
   background: none;
 }
 
-ul li ul li {
+nav ul li ul li {
   background: var(--light-blue);
   position: relative;
   z-index: 1;
   /* put menu drop on top of page content highest number on top when multiples items use it, need pos fix/rel/absolute*/
 }
 
-ul li.main-nav-cart ul li {
+nav ul li.main-nav-cart ul li {
   background: none;
 }
 
@@ -561,19 +574,19 @@ section.promo-images img {
     display: inline;
   }
 
-  ul li ul,
-  ul li ul li {
+  nav ul li ul,
+  nav ul li ul li {
     background: none;
   }
 
   /*fix floats and absolutes from drop downs*/
-  li {
+  nav li {
     float: none;
     position: relative;
   }
 
-  ul li.main-nav-search ul,
-  ul li.main-nav-menu ul,
+  nav ul li.main-nav-search ul,
+  nav ul li.main-nav-menu ul,
   .main-nav-contact {
     display: inline-flex;
     position: relative;

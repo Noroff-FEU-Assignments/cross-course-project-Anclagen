@@ -10,7 +10,37 @@
 .filter {
   width: 100%;
   height: 100%;
-  background-color: var(--light-blue);
+  background: linear-gradient(var(--dark-blue), var(--dark-blue) 49px, var(--light-blue) 49px, var(--light-blue));
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 10px;
+  padding-left: 0;
+}
+
+div.filter {
+  text-transform: capitalize;
+}
+
+div.filter h3,
+h2 {
+  margin: 10px;
+}
+
+div.filter h2 {
+  background-color: var(--dark-blue);
+  margin-bottom: 20px;
+}
+
+li {
+  padding: 10px 0px;
+}
+
+div.filter li {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (min-width: 700px) {
@@ -21,7 +51,6 @@
   .products-lists-layout {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-row-template: 1fr;
     gap: 25px;
     margin-bottom: 50px;
   }
@@ -35,6 +64,5 @@
   .products-lists-layout {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-row-template: 1fr;
   }
 }
