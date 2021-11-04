@@ -2,6 +2,7 @@
   "liveServer.settings.port": 5501,
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "cSpell.words": [
+    "fadein",
     "fullname"
   ]
 }

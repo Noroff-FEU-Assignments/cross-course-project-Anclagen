@@ -8,15 +8,30 @@ section.contact-form {
   flex-direction: column;
 }
 
+.contact-form p,
+.contact-form a {
+  display: inline;
+}
+
 textarea {
   height: 85%;
   min-height: 150px;
+  resize: none;
+}
+
+label {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.cta {
+  margin: 20px 0px;
 }
 
 @media only screen and (min-width: 800px) {
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 25px;
   }
 }

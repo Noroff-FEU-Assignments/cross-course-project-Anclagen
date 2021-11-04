@@ -127,6 +127,24 @@ div.page-bread-crumbs {
 }
 
 /*general input, form and button styles*/
+label {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+textarea,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  opacity: 1;
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
 
 footer input,
 nav input {
@@ -197,10 +215,6 @@ ul search {
   width: auto;
 }
 
-span {
-  content: "\A";
-  white-space: pre;
-}
 /* general hover interactions*/
 
 .submit-button:hover,

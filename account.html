@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/account.css" />
   </head>
   <body>
     <header>
@@ -23,7 +24,7 @@
         <ul class="main-nav-container head-wrapper">
           <!-- menu drop down-->
           <li class="main-nav-menu">
-            <label class="hamburger-label" for="menu-drop-down" role="button">
+            <label class="hamburger-label" for="menu-drop-down">
               <img
                 src="images/interface_and_logo/menu_icon_1@2x.png"
                 alt="Menu drop down"
@@ -32,18 +33,18 @@
             </label>
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
-              <a href="index.html"><li>Home</li></a>
-              <a href="products.html"><li>Sale</li></a>
-              <a href="products.html"><li>Men</li></a>
-              <a href="products.html"><li>Women</li></a>
-              <a href="products.html"><li>Kid</li></a>
-              <a href="contact.html"><li>Contact Us</li></a>
-              <a href="about.html"><li>About Us</li></a>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="products.html">Sale</a></li>
+              <li><a href="products.html">Men</a></li>
+              <li><a href="products.html">Women</a></li>
+              <li><a href="products.html">Kid</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
             </ul>
           </li>
           <!-- search drop down-->
           <li class="main-nav-search">
-            <label class="search-label" for="search-drop-down" role="button">
+            <label class="search-label" for="search-drop-down">
               <img
                 src="images/interface_and_logo/search_icon_1@2x.png"
                 alt="Search"
@@ -89,15 +90,51 @@
         </ul>
       </nav>
     </header>
-    <main> </main>
+    <main class="login-wrapper">
+      <div class="page-bread-crumbs">
+        <a onclick="history.back()">&#60; previous page</a>
+      </div>
+      <h1>Account</h1>
+      <div class="login-signup-container">
+        <section class="login">
+          <h2>Login</h2>
+          <div class="login-container">
+            <img src="images/interface_and_logo/Icon-awesome-user-circle.png" alt="account-icon" class="user-icon" />
+            <form>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required />
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required />
+              <input type="submit" value="Login" class="cta" onclick="history.back()" />
+            </form>
+          </div>
+        </section>
+        <section class="signup">
+          <h2>Sign Up</h2>
+          <div class="login-container">
+            <form>
+              <label for="fullname">Name*</label>
+              <input type="text" id="fullname" name="fullname" required />
+              <label for="email">E-mail*</label>
+              <input type="email" id="email" name="email" required />
+              <label for="password">Password</label>
+              <input type="password" id="sign-password" name="password" required />
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" required />
+              <input type="submit" value="Sign Up" class="cta" onclick="history.back()" />
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
     <footer>
       <section class="foot-top">
         <div class="foot-wrapper page-wrapper">
           <div class="sign-up-container">
             <form class="sign-up">
-              <label for="signup_email">Sign Up To Our Newsletter</label>
+              <label for="signup-email">Sign Up To Our Newsletter</label>
               <div class="input-container">
-                <input type="email" name="email" id="email" class="email-input" class="email-input" />
+                <input type="email" name="signup-email" id="signup-email" class="email-input" />
                 <input type="submit" value="Submit" class="submit-button" />
               </div>
             </form>
@@ -105,10 +142,10 @@
           <div>
             <p class="">Connect With Us On Social Media</p>
             <div class="footer-icon-flexbox">
-              <img src="images/interface_and_logo/icons/Icon awesome-facebook.png" alt="Facebook Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-twitter.png" alt="Twitter Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-instagram.png" alt="Instagram Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-youtube.png" alt="Youtube Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-facebook.png" alt="Facebook Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-twitter.png" alt="Twitter Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-instagram.png" alt="Instagram Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-youtube.png" alt="Youtube Icon" />
             </div>
           </div>
         </div>

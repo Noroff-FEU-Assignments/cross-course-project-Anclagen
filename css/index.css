@@ -27,28 +27,6 @@ div.quick-links h3 {
   margin-bottom: 50px;
 }
 
-.product-item {
-  background-color: var(--grey);
-  display: grid;
-  border: 2px solid var(--dark-blue);
-  grid-template-rows: auto 2/5 3/5 auto;
-  height: 100%;
-}
-
-.product-item img {
-  width: 100%;
-}
-
-.product-item p,
-.product-item h3 {
-  margin: 5px 5px;
-  text-transform: capitalize;
-}
-
-.product-item p {
-  padding: 5px 0px;
-}
-
 /*---banner and promo image styling --*/
 
 .welcome-banner {
@@ -139,12 +117,6 @@ section.promo-images img {
 @media only screen and (min-width: 700px) {
   .promo-images-grid {
     grid-gap: 20px;
-  }
-
-  /* added column to grid for product section*/
-  .product-list-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 25px;
   }
 
   .promo-images-grid {

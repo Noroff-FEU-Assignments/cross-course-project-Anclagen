@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/contacts.css" />
+    <link rel="stylesheet" href="css/account.css" />
   </head>
   <body>
     <header>
@@ -38,7 +38,7 @@
               <li><a href="products.html">Men</a></li>
               <li><a href="products.html">Women</a></li>
               <li><a href="products.html">Kid</a></li>
-              <li id="current"><a href="contact.html">Contact Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
             </ul>
           </li>
@@ -90,62 +90,28 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <h1>Contact Us</h1>
-      <div class="page-wrapper contact-grid">
-        <section class="contact-details">
-          <h2>Returns</h2>
-          <p>
-            Returns can be found by logging into your account
-            <a href="#">here</a>
-            or by entering your order number
-            <a href="#">here</a>
-            if you didn't make an account when you ordered. If you have other questions you can contact us by phone,
-            mail, or complete a query form.
-          </p>
-          <h2>Questions About Orders</h2>
-          <p>
-            Questions about orders can be found in are
-            <a href="#">FAQ</a>
-            , if you have other questions you can contact us by phone, mail, or complete a query form.
-          </p>
-          <h2>Phone Us</h2>
-          <p>Monday to Friday 8:00am - 6:00pm</p>
-          <p>Saturday to Sunday 9:00am - 5:00pm</p>
-          <p>UK phone: 47 47 47 47</p>
-          <p>International phone: +44 47 47 47 47</p>
-          <h2>Write To Us</h2>
-          <p>Write to us at:</p>
-          <address>
-            Rainydays 47
-            <br />
-            Rainy Days Street
-            <br />
-            London
-            <br />
-            SF6 795
-          </address>
-        </section>
-        <section class="contact-form">
-          <h2>Query Form</h2>
-          <form>
-            <label for="fullname">Name*</label>
-            <input type="text" id="fullname" name="fullname" required />
-            <label for="email">E-mail*</label>
-            <input type="email" id="email" name="email" required />
-            <label for="message">Message*</label>
-            <textarea id="message" name="message" required></textarea>
-            <label for="Order-number">Order Number</label>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" id="order-number" name="order-number" />
-            <input type="submit" value="Submit" class="cta" />
-          </form>
-          <p>
-            All queries are be subject to are
-            <a href="#">privacy policy</a>
-            .
-          </p>
-        </section>
+    <main class="oneclick-wrapper">
+      <div class="page-bread-crumbs">
+        <a onclick="history.back()">&#60; previous page</a>
       </div>
+      <h1>Account</h1>
+      <section class="login">
+        <h2>Login</h2>
+        <div class="login-container">
+          <img src="images/interface_and_logo/Icon-awesome-user-circle.png" alt="account-icon" class="user-icon" />
+          <form>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" value="The_Rain_Maker@Rainydays.com" required />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required value="Password" />
+            <a href="summary.html" class="login-button cta">
+              <!--<input type="submit" value="Login" class="cta" />-->
+              <!--removed so I can use a link to demonstrate.-->
+              Login
+            </a>
+          </form>
+        </div>
+      </section>
     </main>
     <footer>
       <section class="foot-top">
