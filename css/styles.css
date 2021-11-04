@@ -30,6 +30,20 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+/*messing around with animations*/
+main {
+  animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /*General styles*/
 
 header {
@@ -57,6 +71,10 @@ h3 {
   font-size: 1.125rem;
 }
 
+p {
+  font-size: 1rem;
+}
+
 footer p {
   font-size: 1.2rem;
   font-weight: 500;
@@ -79,6 +97,17 @@ div.page-bread-crumbs {
   margin: 10px;
 }
 
+.cta {
+  padding: 10px 20px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  background: var(--cta-orange);
+  border-radius: 5px;
+  text-shadow: 2px 2px 2px var(--dark-blue);
+  color: white;
+  text-decoration: none;
+}
+
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
 .head-wrapper,
 .page-wrapper {
@@ -91,8 +120,6 @@ div.page-bread-crumbs {
 .desktop-nav-account,
 #menu-drop-down,
 #search-drop-down,
-.large-images,
-.medium-images,
 .desktop-nav,
 .desktop-logo,
 .main-nav-contact {
@@ -177,7 +204,9 @@ span {
 /* general hover interactions*/
 
 .submit-button:hover,
-.search-button:hover {
+.search-button:hover,
+.cta:hover {
+  transition: 700ms;
   color: var(--cta-orange);
   background-color: #fff;
   outline: 2px solid var(--cta-orange);
@@ -188,11 +217,6 @@ section.featured-products a img:hover,
 section.promo-images a img:hover {
   outline: 5px solid var(--dark-blue);
   outline-offset: -5px;
-}
-
-.welcome-banner a:hover {
-  text-decoration: none;
-  text-shadow: 4px 4px 2px var(--light-blue);
 }
 
 a:hover {
@@ -324,100 +348,7 @@ footer form {
   font-size: 0.9rem;
 }
 
-/*------- Home Page Content ------*/
-
-/*quick links section on mobile*/
-
-.quick-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 10px;
-}
-
-div.quick-links img {
-  border-radius: 50%;
-  width: 100%;
-}
-
-div.quick-links h3 {
-  text-align: center;
-}
-
-/*---banner and promo image styling --*/
-
-.welcome-banner {
-  background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
-  background-size: cover;
-  min-height: 400px;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: top;
-  position: relative;
-}
-
-section.welcome-banner p {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.banner-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.welcome-banner a {
-  font-size: 2rem;
-  margin-bottom: 0;
-  text-align: center;
-  padding: 20px;
-}
-
-.welcome-banner a,
-div.image-content p,
-div.image-content h2 {
-  text-decoration: none;
-  color: #fff;
-  text-shadow: 2px 2px 2px var(--dark-blue);
-}
-
-.promo-images-container {
-  position: relative;
-}
-
-.image-content {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-}
-
-div.image-content h2 {
-  font-size: 2rem;
-  margin: 10px 0px 0px 0px;
-}
-
-div.image-content p {
-  margin: 0 30px 0 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-section.promo-images img {
-  width: 100%;
-  margin: 10px 0px;
-}
-
-/* bestsellers/product list page */
-
-.product-list-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: 1fr;
-  row-gap: 25px;
-  margin-bottom: 50px;
-}
-
+/*Product item displays for home/products/product page*/
 .product-item {
   background-color: var(--grey);
   display: grid;
@@ -451,56 +382,28 @@ section.promo-images img {
     gap: 25px;
   }
 
-  .promo-images-grid {
-    grid-gap: 20px;
-  }
-
   section.foot-bot p {
     display: inline-block;
     margin-right: 20px;
   }
 
-  /* added column to grid for product section*/
+  /* added column to grid for product section/product page*/
   .product-list-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 25px;
-  }
-
-  /*swap out a promo image for a wider version*/
-  .small-wide-images {
-    display: none;
-  }
-
-  .medium-images {
-    display: inline-block;
   }
 }
 
 @media only screen and (min-width: 945px) {
   /*Hiding small images, quick links section, and un-need mobile elements */
-  .small-images,
   .mobile-nav,
   .hide-quick-links,
-  .medium-images,
   .mobile-screen {
     display: none;
   }
-  /* add flex cleared item to normal flow*/
+  /* add flex cleared item to normal flow navbar!*/
   .flex-clear {
     position: relative;
-  }
-  /*larger images added for desktop viewing*/
-  .large-images {
-    display: inline-block;
-  }
-
-  .welcome-banner {
-    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
-  }
-
-  /* 4 column product grid*/
-  .product-list-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
@@ -534,15 +437,39 @@ section.promo-images img {
     grid-area: nav;
   }
 
-  .hamburger li,
+  .hamburger li {
+    width: auto;
+    margin: 0;
+  }
+
+  #menu-drop-down ~ ul {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+  }
+
+  /*pushes the second to last and inturn last li item to the right*/
+  li:nth-last-of-type(2) {
+    margin-left: auto;
+  }
+
   .search li {
     display: inline;
     margin: 0;
     width: 80%;
   }
 
-  #search-drop-down ~ ul,
-  #menu-drop-down ~ ul {
+  .main-nav-menu a {
+    display: block;
+    padding: 16px;
+  }
+  .main-nav-menu li,
+  .main-nav-menu {
+    padding: 0;
+  }
+
+  #search-drop-down ~ ul {
     display: block;
     width: 100%;
   }
@@ -585,8 +512,7 @@ section.promo-images img {
   }
 
   nav ul li.main-nav-search ul,
-  nav ul li.main-nav-menu ul,
-  .main-nav-contact {
+  nav ul li.main-nav-menu ul {
     display: inline-flex;
     position: relative;
     background: none;
@@ -596,6 +522,7 @@ section.promo-images img {
   height than another and I couldn't find a way to increase the size nicely*/
   #current,
   .main-nav-menu li:hover {
+    transition: 750ms;
     background: var(--dark-blue);
   }
 }

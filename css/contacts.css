@@ -1,0 +1,22 @@
+section.contact-details,
+section.contact-form {
+  margin-bottom: 50px;
+}
+
+.contact-form > * {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 85%;
+  min-height: 150px;
+}
+
+@media only screen and (min-width: 800px) {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
