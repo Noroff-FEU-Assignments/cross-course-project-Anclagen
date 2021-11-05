@@ -15,6 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -23,7 +25,7 @@
         <ul class="main-nav-container head-wrapper">
           <!-- menu drop down-->
           <li class="main-nav-menu">
-            <label class="hamburger-label" for="menu-drop-down" role="button">
+            <label class="hamburger-label" for="menu-drop-down">
               <img
                 src="images/interface_and_logo/menu_icon_1@2x.png"
                 alt="Menu drop down"
@@ -32,18 +34,18 @@
             </label>
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
-              <a href="index.html"><li>Home</li></a>
-              <a href="products.html"><li>Sale</li></a>
-              <a href="products.html"><li>Men</li></a>
-              <a href="products.html"><li>Women</li></a>
-              <a href="products.html"><li>Kid</li></a>
-              <a href="contact.html"><li>Contact Us</li></a>
-              <a href="about.html"><li>About Us</li></a>
+              <li id="current"><a href="index.html">Home</a></li>
+              <li><a href="products.html">Sale</a></li>
+              <li><a href="products.html">Men</a></li>
+              <li><a href="products.html">Women</a></li>
+              <li><a href="products.html">Kid</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
             </ul>
           </li>
           <!-- search drop down-->
           <li class="main-nav-search">
-            <label class="search-label" for="search-drop-down" role="button">
+            <label class="search-label" for="search-drop-down">
               <img
                 src="images/interface_and_logo/search_icon_1@2x.png"
                 alt="Search"
@@ -89,15 +91,15 @@
         </ul>
       </nav>
     </header>
-    <main> </main>
+    <main class="page-wrapper"></main>
     <footer>
       <section class="foot-top">
         <div class="foot-wrapper page-wrapper">
           <div class="sign-up-container">
             <form class="sign-up">
-              <label for="signup_email">Sign Up To Our Newsletter</label>
+              <label for="signup-email">Sign Up To Our Newsletter</label>
               <div class="input-container">
-                <input type="email" name="email" id="email" class="email-input" class="email-input" />
+                <input type="email" name="signup-email" id="signup-email" class="email-input" />
                 <input type="submit" value="Submit" class="submit-button" />
               </div>
             </form>
@@ -105,10 +107,10 @@
           <div>
             <p class="">Connect With Us On Social Media</p>
             <div class="footer-icon-flexbox">
-              <img src="images/interface_and_logo/icons/Icon awesome-facebook.png" alt="Facebook Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-twitter.png" alt="Twitter Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-instagram.png" alt="Instagram Icon" />
-              <img src="images/interface_and_logo/icons/Icon awesome-youtube.png" alt="Youtube Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-facebook.png" alt="Facebook Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-twitter.png" alt="Twitter Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-instagram.png" alt="Instagram Icon" />
+              <img src="images/interface_and_logo/icons/Icon-awesome-youtube.png" alt="Youtube Icon" />
             </div>
           </div>
         </div>

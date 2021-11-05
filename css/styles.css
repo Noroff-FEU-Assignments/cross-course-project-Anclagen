@@ -133,8 +133,8 @@ label {
   margin: 10px 0;
 }
 
-textarea,
-input {
+section.contact-form textarea,
+section.contact-form input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -383,6 +383,7 @@ footer form {
   margin-top: auto;
 }
 
+.product-image-container img,
 .product-item img {
   width: 100%;
 }
