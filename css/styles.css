@@ -28,6 +28,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  overflow-x: hidden; /*prevent drop down menu overflow*/
 }
 
 /*messing around with animations*/
@@ -237,6 +238,12 @@ a:hover {
   text-decoration: underline;
 }
 
+#current,
+.main-nav-menu li:hover {
+  transition: 750ms;
+  background: var(--dark-blue);
+}
+
 /*-------  Navigation --------*/
 /* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
 
@@ -365,10 +372,15 @@ footer form {
 /*Product item displays for home/products/product page*/
 .product-item {
   background-color: var(--grey);
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex: start;
   border: 2px solid var(--dark-blue);
-  grid-template-rows: auto 2/5 3/5 auto;
   height: 100%;
+}
+
+.product-item div:last-child {
+  margin-top: auto;
 }
 
 .product-item img {
@@ -402,10 +414,6 @@ footer form {
   }
 
   /* added column to grid for product section/product page*/
-  .product-list-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 25px;
-  }
 }
 
 @media only screen and (min-width: 945px) {
@@ -418,6 +426,12 @@ footer form {
   /* add flex cleared item to normal flow navbar!*/
   .flex-clear {
     position: relative;
+  }
+
+  /*prevents open drop-down affecting desktop layout*/
+  #search-drop-down:checked ~ ul,
+  #menu-drop-down:checked ~ ul {
+    display: flex;
   }
 
   /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
@@ -530,13 +544,5 @@ footer form {
     display: inline-flex;
     position: relative;
     background: none;
-  }
-
-  /*two different hovers because one section has 4px more 
-  height than another and I couldn't find a way to increase the size nicely*/
-  #current,
-  .main-nav-menu li:hover {
-    transition: 750ms;
-    background: var(--dark-blue);
   }
 }

@@ -3,6 +3,8 @@
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "cSpell.words": [
     "fadein",
-    "fullname"
+    "fullname",
+    "oneclick",
+    "signup"
   ]
 }

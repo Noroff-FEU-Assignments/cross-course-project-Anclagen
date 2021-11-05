@@ -17,16 +17,6 @@ div.quick-links h3 {
   text-align: center;
 }
 
-/* bestsellers/product list page */
-
-.product-list-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: 1fr;
-  row-gap: 25px;
-  margin-bottom: 50px;
-}
-
 /*---banner and promo image styling --*/
 
 .welcome-banner {
@@ -112,6 +102,16 @@ section.promo-images img {
   display: none;
 }
 
+/* bestsellers/product list page */
+
+.product-list-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
+  row-gap: 25px;
+  margin-bottom: 50px;
+}
+
 /*tablet styles*/
 
 @media only screen and (min-width: 700px) {
@@ -130,6 +130,11 @@ section.promo-images img {
 
   .medium-images {
     display: inline-block;
+  }
+
+  .product-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
   }
 }
 
