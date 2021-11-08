@@ -118,21 +118,25 @@ div.page-bread-crumbs {
   display: block;
   width: 80%;
   text-align: center;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
 .head-wrapper,
-.page-wrapper {
+.page-wrapper,
+.page-wrapper-medium,
+.page-wrapper-small {
   max-width: 1200px;
   width: 90%;
   margin: 0px auto;
 }
 
+.page-wrapper-medium {
+  max-width: 800px;
+}
+
 .page-wrapper-small {
   max-width: 600px;
-  width: 90%;
-  margin: 0px auto;
 }
 
 /*Hidden for small screens and hamburgers*/

@@ -1,0 +1,48 @@
+div.cart-product-item-grid img {
+  width: 100%;
+}
+
+hr {
+  margin: 40px 0px;
+}
+
+.radio-delivery-type {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+section h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+section.payment-summary span {
+  float: right;
+}
+
+.total-price {
+  font-weight: 600;
+}
+
+section.payment-summary a.cta-green {
+  margin-top: 0;
+}
+
+.remove-button {
+  color: var(--dark-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 700px) {
+  .cart-product-item-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 50px;
+  }
+
+  .last-item-cart-divider {
+    display: none;
+  }
+}

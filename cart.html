@@ -98,41 +98,81 @@
       <h1>Your Cart</h1>
       <div class="two-column-grid">
         <section class="cart-items">
-          <div><img src="" alt="Red Jacket" /></div>
-          <h2>Peter Storm - Men's Zip Down Waterproof II Jacket</h2>
-          <p>Size: large</p>
-          <p>Colour: Red</p>
-          <p>Price: £50.00</p>
-          <p>Quantity: 1 Remove</p>
+          <div class="cart-product-item-grid">
+            <div><img src="images/products/red_jacket_small.jpg" alt="Red Jacket" /></div>
+            <div>
+              <h2>Peter Storm - Men's Zip Down Waterproof II Jacket</h2>
+              <p>Size: large</p>
+              <p>Colour: Red</p>
+              <p>Price: £50.00</p>
+              <p>
+                Quantity: 1
+                <span class="remove-button">Remove</span>
+              </p>
+            </div>
+          </div>
           <hr />
-          <div><img src="" alt="Red Jacket" /></div>
-          <h2>Peter Storm - Men's Zip Down Waterproof II Jacket</h2>
-          <p>Size: large</p>
-          <p>Colour: Red</p>
-          <p>Price: £50.00</p>
-          <p>Quantity: 1 Remove</p>
-          <hr />
+          <div class="cart-product-item-grid toggle">
+            <div><img src="images/products/red_jacket_small.jpg" alt="Red Jacket" /></div>
+            <div>
+              <h2>Peter Storm - Men's Zip Down Waterproof II Jacket</h2>
+              <p>Size: large</p>
+              <p>Colour: Red</p>
+              <p>Price: £50.00</p>
+              <p>
+                Quantity: 1
+                <span class="remove-button">Remove</span>
+              </p>
+            </div>
+          </div>
+          <hr class="last-item-cart-divider" />
         </section>
         <section class="payment-summary">
           <div class="button-container">
             <a href="account_one_click.html" class="cta cta-green">Sign In, 1-Click Checkout</a>
           </div>
           <h2>Choose Delivery Type</h2>
-          <label for="standard-delivery">Standard 3-5 days</label>
-          <input type="radio" name="delivery" id="standard-delivery" value="standard-delivery" class="input-checked" />
-          <label for="express-delivery">Express 1-3 days</label>
-          <input type="radio" name="delivery" id="express-delivery" value="express-delivery" />
-          <label for="next-day-delivery">Next Day (Order before 14.00)</label>
-          <input type="radio" name="delivery" id="express-delivery" value="express-delivery" />
-          <hr />
-          <h2>Summary</h2>
-          <p>Subtotal £100.00</p>
-          <p>Delivery £0.00</p>
-          <p>VAT £12.50</p>
-          <p>Total Price £100.00</p>
-          <div class="button-container">
-            <a href="details_checkout.html" class="cta">Checkout</a>
+          <div class="radio-delivery-type">
+            <label for="standard-delivery">Standard 3-5 days</label>
+            <input
+              type="radio"
+              name="delivery"
+              id="standard-delivery"
+              value="standard-delivery"
+              class="input-checked"
+            />
           </div>
+          <form>
+            <div class="radio-delivery-type">
+              <label for="express-delivery">Express 1-3 days</label>
+              <input type="radio" name="delivery" id="express-delivery" value="express-delivery" />
+            </div>
+            <div class="radio-delivery-type">
+              <label for="next-day-delivery">Next Day (Order before 14.00)</label>
+              <input type="radio" name="delivery" id="next-day-delivery" value="next-day-delivery" />
+            </div>
+            <hr />
+            <h2>Summary</h2>
+            <p>
+              Subtotal
+              <span>£100.00</span>
+            </p>
+            <p>
+              Delivery
+              <span>£0.00</span>
+            </p>
+            <p>
+              VAT
+              <span>£12.50</span>
+            </p>
+            <p class="total-price">
+              Total Price
+              <span>£100.00</span>
+            </p>
+            <div class="button-container">
+              <a href="details_checkout.html" class="cta">Checkout</a>
+            </div>
+          </form>
         </section>
       </div>
     </main>

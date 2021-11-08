@@ -21,9 +21,13 @@ textarea {
 
 label {
   font-size: 1rem;
-  margin: 10px 0;
+  margin: 20px 0 5px 0;
 }
 
-.cta {
-  margin: 20px 0px;
+input {
+  margin-bottom: 20px;
+}
+
+section.contact-form input.cta {
+  margin: 20px 0;
 }
