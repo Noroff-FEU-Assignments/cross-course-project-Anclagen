@@ -4,8 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Barrett" />
-    <title>Rainydays | Login or Sign Up</title>
-    <meta name="description" content="Login to your account, or make an account with us here at Rainydays" />
+    <title>Rainydays | Jackets for all outdoor activities</title>
+    <meta
+      name="description"
+      content="Rainydays sells jackets to suit all outdoor activities and weather conditions keeping you comfortable no matter the situation."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,7 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/pages/account.css" />
+    <link rel="stylesheet" href="css/pages/details_checkout.css" />
   </head>
   <body>
     <header>
@@ -87,39 +90,57 @@
         </ul>
       </nav>
     </header>
-    <main class="login-wrapper">
+    <main class="page-wrapper">
       <div class="page-bread-crumbs">
-        <a onclick="history.back()">&#60; previous page</a>
+        <p><a onclick="history.back()">&#60; Cart </a> &#60; Delivery and Payment </p>
       </div>
-      <h1>Account</h1>
+      <h1>Your Details</h1>
       <div class="two-column-grid">
-        <section class="login">
-          <h2>Login</h2>
-          <div class="login-container">
-            <img src="images/interface_and_logo/Icon-awesome-user-circle.png" alt="account-icon" class="user-icon" />
-            <form>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required />
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required />
-              <input type="submit" value="Login" class="cta" onclick="history.back()" />
-            </form>
-          </div>
+        <section class="delivery-details">
+          <h2>Delivery Details</h2>
+          <form>
+            <label for="first-name">First Name*</label>
+            <input type="text" id="first-name" name="first-name" required />
+            <label for="last-name">Last Name*</label>
+            <input type="text" id="last-name" name="last-name" required />
+            <label for="address-1">Address Line 1*</label>
+            <input type="text" id="address-1" name="address-1" required />
+            <label for="address-2">Address Line 2</label>
+            <input type="text" id="address-2" name="address-2" />
+            <label for="town-city">Town/City*</label>
+            <input type="text" id="town-city" name="town-city" required />
+            <label for="post-code">Post Code</label>
+            <input type="text" id="post-code" name="post-code" required />
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" required />
+            <label for="email">E-mail*</label>
+            <input type="email" id="email" name="email" required />
+          
         </section>
-        <section class="signup">
-          <h2>Sign Up</h2>
-          <div class="login-container">
-            <form>
-              <label for="fullname">Name*</label>
-              <input type="text" id="fullname" name="fullname" required />
-              <label for="email">E-mail*</label>
-              <input type="email" id="email" name="email" required />
-              <label for="password">Password*</label>
-              <input type="password" id="sign-password" name="password" required />
-              <label for="confirm-password">Confirm Password*</label>
-              <input type="password" id="confirm-password" name="confirm-password" required />
-              <input type="submit" value="Sign Up" class="cta" onclick="history.back()" />
-            </form>
+        <section>
+          <h2>Payment Details</h2>
+          <label for="visa" class="label-checked">Visa/Credit Card</label>
+          <input type="radio" name="payment-type" id="visa" value="visa">
+
+          
+          <label for="last-name">Last Name*</label>
+          <input type="text" id="last-name" name="last-name" required />
+          <label for="last-name">Last Name*</label>
+          <input type="text" id="last-name" name="last-name" required />
+          <label for="last-name">Last Name*</label>
+          <input type="text" id="last-name" name="last-name" required />
+          <label for="last-name">Last Name*</label>
+          <input type="text" id="last-name" name="last-name" required />
+
+          <label for="pay-pal">Pay Pal</label>
+          <input type="radio" name="payment-type" id="pay-pal" value="pay-pal">
+          <label for="pay-later">Pay Later (90 days)</label>
+          <input type="radio" name="payment-type" id="pay-later" value="pay-later">
+
+          </form>
+
+          <div class="button-container">
+            <a href="order_confirmation.html" class="cta">Confirmation</a>
           </div>
         </section>
       </div>

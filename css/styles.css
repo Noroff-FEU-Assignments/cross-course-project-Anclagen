@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  overflow-x: hidden; /*prevent drop down menu overflow*/
+  /* overflow-x: hidden; /*prevent drop down menu overflow*/
 }
 
 /*messing around with animations*/
@@ -109,10 +109,28 @@ div.page-bread-crumbs {
   text-decoration: none;
 }
 
+.cta-green {
+  background-color: var(--cta-green);
+}
+
+.button-container a,
+.button-container input {
+  display: block;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
 .head-wrapper,
 .page-wrapper {
   max-width: 1200px;
+  width: 90%;
+  margin: 0px auto;
+}
+
+.page-wrapper-small {
+  max-width: 600px;
   width: 90%;
   margin: 0px auto;
 }
@@ -191,7 +209,7 @@ ul search {
 }
 
 .search-drop {
-  margin: 0 20px;
+  margin: 0 50px 0 auto;
 }
 
 /*input buttons*/
@@ -225,6 +243,14 @@ ul search {
   color: var(--cta-orange);
   background-color: #fff;
   outline: 2px solid var(--cta-orange);
+  text-shadow: none;
+}
+
+.cta-green:hover {
+  transition: 700ms;
+  color: var(--cta-green);
+  background-color: #fff;
+  outline: 2px solid var(--cta-green);
   text-shadow: none;
 }
 
@@ -295,6 +321,8 @@ nav ul li.main-nav-cart ul li {
 .hamburger li,
 .search li {
   width: 100vw;
+  overflow-x: hidden; /*prevent drop down menu overflow*/
+  box-shadow: -1px 10px 5px var(--dark-blue);
 }
 
 .logo_mobile {
@@ -398,12 +426,22 @@ footer form {
   padding: 5px 0px;
 }
 
+/*allows down to around 300px width smallest screen on data shows 320px*/
+@media only screen and (max-width: 359px) {
+  nav li {
+    padding: 0.6rem;
+  }
+
+  .footer-icon-flexbox {
+    flex-wrap: wrap;
+  }
+}
+
 /*tablet styles*/
 
 @media only screen and (min-width: 700px) {
   /*2 column grid for promo images and footer */
-  .promo-images-grid,
-  .foot-wrapper {
+  .two-column-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
@@ -438,6 +476,11 @@ footer form {
   /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
   header {
     background: linear-gradient(var(--dark-blue), var(--dark-blue) 114px, var(--light-blue) 114px, var(--light-blue));
+  }
+
+  .hamburger li,
+  .search li {
+    box-shadow: none;
   }
 
   .main-nav-container {

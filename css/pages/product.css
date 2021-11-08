@@ -39,18 +39,20 @@ h1 {
 .size-selection label {
   border: 1px solid black;
   display: inline-block;
-  width: 49px;
+  width: 41px;
   text-align: center;
-  padding: 15px 0px;
+  padding: 11px 0px;
 }
 
 .size-selection input:checked + label {
   border: 3px solid black;
+  width: 37px;
+  padding: 9px 0px;
   font-weight: 700;
 }
 
 /*add to cart button*/
-.add-cart-container input {
+.button-container input {
   display: block;
   width: 100%;
 }

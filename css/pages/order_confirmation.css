@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 5px 10px;
+}
+
+.product-name {
+  max-width: 50%;
+}

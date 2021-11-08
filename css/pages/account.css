@@ -47,10 +47,3 @@ div.login-container a {
   /* width: 100%;*/
   text-align: center;
 }
-
-@media only screen and (min-width: 700px) {
-.login-signup-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-}

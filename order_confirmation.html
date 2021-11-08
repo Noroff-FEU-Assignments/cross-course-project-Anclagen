@@ -4,16 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Barrett" />
-    <title>Rainydays | Login or Sign Up</title>
-    <meta name="description" content="Login to your account, or make an account with us here at Rainydays" />
+    <title>Rainydays | Summary of your order</title>
+    <meta name="description" content="Summary of your order." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="css/pages/order_confirmation.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/pages/account.css" />
   </head>
   <body>
     <header>
@@ -30,7 +31,7 @@
             </label>
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
-              <li><a href="index.html">Home</a></li>
+              <li id="current"><a href="index.html">Home</a></li>
               <li><a href="products.html">Sale</a></li>
               <li><a href="products.html">Men</a></li>
               <li><a href="products.html">Women</a></li>
@@ -87,42 +88,52 @@
         </ul>
       </nav>
     </header>
-    <main class="login-wrapper">
+    <main class="page-wrapper-small">
       <div class="page-bread-crumbs">
-        <a onclick="history.back()">&#60; previous page</a>
+        <p>
+          <a href="cart.html">&#60; Cart</a>
+          <a onclick="history.back()">&#60; Delivery and Payment</a>
+          &#60;Confirmation
+        </p>
       </div>
-      <h1>Account</h1>
-      <div class="two-column-grid">
-        <section class="login">
-          <h2>Login</h2>
-          <div class="login-container">
-            <img src="images/interface_and_logo/Icon-awesome-user-circle.png" alt="account-icon" class="user-icon" />
-            <form>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required />
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required />
-              <input type="submit" value="Login" class="cta" onclick="history.back()" />
-            </form>
-          </div>
-        </section>
-        <section class="signup">
-          <h2>Sign Up</h2>
-          <div class="login-container">
-            <form>
-              <label for="fullname">Name*</label>
-              <input type="text" id="fullname" name="fullname" required />
-              <label for="email">E-mail*</label>
-              <input type="email" id="email" name="email" required />
-              <label for="password">Password*</label>
-              <input type="password" id="sign-password" name="password" required />
-              <label for="confirm-password">Confirm Password*</label>
-              <input type="password" id="confirm-password" name="confirm-password" required />
-              <input type="submit" value="Sign Up" class="cta" onclick="history.back()" />
-            </form>
-          </div>
-        </section>
-      </div>
+      <h1>Order Summary</h1>
+      <section>
+        <h2>Delivery address</h2>
+        <address>
+          Rain Maker
+          <br />
+          24 Blue Meadow Drive
+          <br />
+          Hertford
+          <br />
+          QD5 Y87
+          <br />
+          UK
+        </address>
+        <p>A copy of your invoice will be sent to The_Rain_Maker@Rainydays.com</p>
+        <h2>Payment Type</h2>
+        <p>Visa/Credit Card ending in: 7878</p>
+        <h2>Items</h2>
+        <table>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td class="product-name"><a href="product.html">Peter Storm - Men's Zip Down Waterproof II Jacket</a></td>
+            <td>1</td>
+            <td>£50.00</td>
+          </tr>
+        </table>
+        <h2>Delivery</h2>
+        <p>Standard 3-5 days £0.00</p>
+        <h2>Total Price</h2>
+        <p>£50.00</p>
+        <div class="button-container">
+          <a href="order_success.html" class="cta">Place Order</a>
+        </div>
+      </section>
     </main>
     <footer>
       <section class="foot-top">

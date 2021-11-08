@@ -20,7 +20,7 @@ div.quick-links h3 {
 /*---banner and promo image styling --*/
 
 .welcome-banner {
-  background-image: url("../images/promo_and_home_photos/home_banner_small_dark.jpg");
+  background-image: url("../../images/promo_and_home_photos/home_banner_small_dark.jpg");
   background-size: cover;
   min-height: 400px;
   background-repeat: no-repeat;
@@ -151,7 +151,7 @@ section.promo-images img {
   }
 
   .welcome-banner {
-    background-image: url("../images/promo_and_home_photos/home_banner_large_dark.jpg");
+    background-image: url("../../images/promo_and_home_photos/home_banner_large_dark.jpg");
   }
 
   /* 4 column product grid*/
