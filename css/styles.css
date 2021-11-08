@@ -315,13 +315,13 @@ nav ul li.main-nav-cart ul li {
 /*show the check box menus*/
 #search-drop-down:checked ~ ul,
 #menu-drop-down:checked ~ ul {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
 }
 
 .hamburger li,
 .search li {
-  width: 100vw;
-  overflow-x: hidden; /*prevent drop down menu overflow*/
   box-shadow: -1px 10px 5px var(--dark-blue);
 }
 
@@ -471,6 +471,8 @@ footer form {
   #search-drop-down:checked ~ ul,
   #menu-drop-down:checked ~ ul {
     display: flex;
+    flex-direction: row;
+    width: auto;
   }
 
   /*The Nav bar re-construction to grid, needs more work to shrink it a bit*/
