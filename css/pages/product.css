@@ -29,6 +29,40 @@ h1 {
   font-weight: 700;
 }
 
+.product-thumbnails {
+  display: flex;
+  gap: 5px;
+}
+
+.product-thumbnails > label {
+  max-width: 100px;
+}
+
+.product-image-container label {
+  border: 2px solid grey;
+  cursor: pointer;
+}
+
+.product-image-container label:hover {
+  border: 2px solid black;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] ~ img {
+  display: none;
+}
+
+input[type="radio"]:checked ~ img {
+  display: block;
+}
+
+input[type="radio"]:checked + label {
+  border: 2px solid black;
+}
+
 /*input styling*/
 
 /*size selector*/
