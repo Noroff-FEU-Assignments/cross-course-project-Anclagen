@@ -18,6 +18,10 @@ section {
   margin-bottom: 50px;
 }
 
+p {
+  margin: 0 20px 20px 20px;
+}
+
 @media only screen and (min-width: 600px) {
   .about-grid-even {
     display: grid;
@@ -27,7 +31,7 @@ section {
 
   .about-grid-third {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     gap: 25px;
   }
 }

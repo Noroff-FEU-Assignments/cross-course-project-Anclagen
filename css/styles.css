@@ -430,6 +430,34 @@ footer form {
   padding: 5px 0px;
 }
 
+/*tool tip fun*/
+span[data-tool-tip] {
+  position: relative;
+  cursor: pointer;
+  font-size: 0.8rem;
+  background-color: var(--grey);
+  padding: 1px 5px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+span[data-tool-tip]::after {
+  content: attr(data-tool-tip);
+  position: absolute;
+  background: var(--grey);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  bottom: 100%;
+  left: 100%;
+  width: 120px;
+  display: none;
+}
+
+span[data-tool-tip]:hover::after {
+  display: block;
+}
+
 /*allows down to around 300px width smallest screen on data shows 320px*/
 @media only screen and (max-width: 359px) {
   nav li {

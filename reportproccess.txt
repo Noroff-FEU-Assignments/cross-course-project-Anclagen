@@ -30,6 +30,9 @@ css
 considering size of css file, decided to have a general style sheet with all the reusable styles and navigation and footer styles, and then a css for each page to make fixing problems easier and avoid conflicts
 
 
+hover tool tip;
+https://www.youtube.com/watch?v=xoRbkm8XgfQ&t
+
 grids;
 products grid on home couldn't be reused on products as I wanted 1/2/3 not 1/2/4 because of filter.
 

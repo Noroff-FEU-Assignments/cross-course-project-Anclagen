@@ -90,53 +90,67 @@
         </ul>
       </nav>
     </header>
-    <main class="page-wrapper">
+    <main class="page-wrapper-medium">
       <div class="page-bread-crumbs">
         <p><a onclick="history.back()">&#60; Cart </a> &#60; Delivery and Payment </p>
       </div>
       <h1>Your Details</h1>
       <div class="two-column-grid">
         <section class="delivery-details">
-          <h2>Delivery Details</h2>
-          <form>
-            <label for="first-name">First Name*</label>
-            <input type="text" id="first-name" name="first-name" required />
-            <label for="last-name">Last Name*</label>
-            <input type="text" id="last-name" name="last-name" required />
-            <label for="address-1">Address Line 1*</label>
-            <input type="text" id="address-1" name="address-1" required />
-            <label for="address-2">Address Line 2</label>
-            <input type="text" id="address-2" name="address-2" />
-            <label for="town-city">Town/City*</label>
-            <input type="text" id="town-city" name="town-city" required />
-            <label for="post-code">Post Code</label>
-            <input type="text" id="post-code" name="post-code" required />
-            <label for="country">Country</label>
-            <input type="text" id="country" name="country" required />
-            <label for="email">E-mail*</label>
-            <input type="email" id="email" name="email" required />
           
+            <h2 class="remove-margin-bottom">Delivery Details</h2>
+            <form> 
+            <div class="payment-details-form">
+              <label for="first-name" >First Name*</label>
+              <input type="text" id="first-name" name="first-name" required />
+              <label for="last-name">Last Name*</label>
+              <input type="text" id="last-name" name="last-name" required />
+              <label for="address-1">Address Line 1*</label>
+              <input type="text" id="address-1" name="address-1" required />
+              <label for="address-2">Address Line 2</label>
+              <input type="text" id="address-2" name="address-2" />
+              <label for="town-city">Town/City*</label>
+              <input type="text" id="town-city" name="town-city" required />
+              <label for="post-code">Post Code</label>
+              <input type="text" id="post-code" name="post-code" required />
+              <label for="country">Country</label>
+              <input type="text" id="country" name="country" required />
+              <label for="email">E-mail*</label>
+              <input type="email" id="email" name="email" required />
+            </div>
         </section>
         <section>
           <h2>Payment Details</h2>
-          <label for="visa" class="label-checked">Visa/Credit Card</label>
-          <input type="radio" name="payment-type" id="visa" value="visa">
-
-          
-          <label for="last-name">Last Name*</label>
-          <input type="text" id="last-name" name="last-name" required />
-          <label for="last-name">Last Name*</label>
-          <input type="text" id="last-name" name="last-name" required />
-          <label for="last-name">Last Name*</label>
-          <input type="text" id="last-name" name="last-name" required />
-          <label for="last-name">Last Name*</label>
-          <input type="text" id="last-name" name="last-name" required />
-
-          <label for="pay-pal">Pay Pal</label>
-          <input type="radio" name="payment-type" id="pay-pal" value="pay-pal">
-          <label for="pay-later">Pay Later (90 days)</label>
-          <input type="radio" name="payment-type" id="pay-later" value="pay-later">
-
+          <div class="payment-details-form">
+            <div class="payment-type-select">
+              <label for="visa" class="label-checked">Visa/Credit Card</label>
+              <input type="radio" name="payment-type" id="visa" value="visa">
+            </div>
+            <label for="card-number">Card Number*</label>
+            <input type="number" id="card-number" name="card-number" required />
+            <label for="name-card">Name on Card*</label>
+            <input type="text" id="name-card"  name="name-card" required />
+            <div class="security-expiration-grid">
+              <div>
+                <label for="security-code">Security Code* <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span></label>
+                <input type="number" id="security-code" name="security-code"  min="001" max="999" required />
+              </div>
+              <div>
+                <label for="expiration-date-month expiration-date-year">Expiration MM/YY*</label>
+                <input type="number"  id="expiration-date-month" maxlength="2" name="expiration-date"  required />
+                <input type="number"  id="expiration-date-year" maxlength="2" name="expiration-date" required />
+              </div>
+            </div>
+            <div class="payment-type-select">
+              <label for="pay-pal">Pay Pal</label>
+              <input type="radio" name="payment-type" id="pay-pal" value="pay-pal">
+              
+            </div>
+            <div class="payment-type-select">
+              <label for="pay-later">Pay Later (90 days)</label>
+              <input type="radio" name="payment-type" id="pay-later" value="pay-later">
+            </div>
+          </div>
           </form>
 
           <div class="button-container">
