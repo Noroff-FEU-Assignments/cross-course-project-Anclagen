@@ -4,14 +4,18 @@
   margin-bottom: 50px;
 }
 
+.payment-security-code {
+  display: block;
+}
+
 .payment-details-form label {
-  margin: 20px 0 5px 0;
+  margin: 10px 0 5px 0;
 }
 
 .payment-details-form input {
   font-size: 1rem;
   border-radius: 5px;
-  margin-right: 30px;
+  padding: 5px;
 }
 
 .remove-margin-bottom {
@@ -23,19 +27,11 @@
   justify-content: space-between;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 #expiration-date-month,
 #expiration-date-year {
   max-width: 20px;
+  margin-right: 0px;
+  margin-bottom: 30px;
 }
 
 #security-code {

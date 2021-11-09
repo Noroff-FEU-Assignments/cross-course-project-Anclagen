@@ -162,7 +162,7 @@ section.contact-form input {
   appearance: none;
   opacity: 1;
   display: inline;
-  padding: 10px;
+  padding: 5px;
   margin: 0;
   font-size: 1.125rem;
   font-weight: 500;
@@ -185,6 +185,10 @@ nav input {
   border-radius: 5px;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .input-container {
   display: block;
   position: relative;
@@ -205,6 +209,34 @@ nav input {
   width: 100%;
   background-color: transparent;
   padding: 0px 0px 0px 5px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="radio"]::after {
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--grey);
+  border: 1px solid black;
+}
+
+input[type="radio"]:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  content: "";
+  background: var(--cta-orange);
+  border: black;
+  border: 1px solid black;
+  display: inline-block;
+  box-shadow: inset 0 0 0 2px white;
 }
 
 /*adjust search bar for drop down to avoid hitting edges of screen */
