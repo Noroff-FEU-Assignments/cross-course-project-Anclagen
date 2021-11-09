@@ -45,6 +45,8 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 
 flex guide:
 
+tool-tip
+https://www.youtube.com/watch?v=xoRbkm8XgfQ&t=207s
 
 responsive nav:
 
