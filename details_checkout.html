@@ -92,15 +92,19 @@
     </header>
     <main class="page-wrapper-medium">
       <div class="page-bread-crumbs">
-        <p><a onclick="history.back()">&#60; Cart </a> &#60; Delivery and Payment </p>
+        <p>
+          <a onclick="history.back()">&#60; Cart</a>
+          &#60; Delivery and Payment
+        </p>
       </div>
       <h1>Your Details</h1>
       <div class="two-column-grid">
-        <section class="delivery-details">
+        <form>
+          <section class="delivery-details">
             <h2 class="remove-margin-bottom">Delivery Details</h2>
-            <form> 
+
             <div class="payment-details-form">
-              <label for="first-name" >First Name*</label>
+              <label for="first-name">First Name*</label>
               <input type="text" id="first-name" name="first-name" required />
               <label for="last-name">Last Name*</label>
               <input type="text" id="last-name" name="last-name" required />
@@ -117,47 +121,69 @@
               <label for="email">E-mail*</label>
               <input type="email" id="email" name="email" required />
             </div>
-        </section>
-        <section>
-          <h2>Payment Details</h2>
-          <div class="payment-details-form">
-            <div class="payment-type-select">
-              <label for="visa" class="label-checked">Visa/Credit Card</label>
-              <input type="radio" name="payment-type" id="visa" value="visa">
-            </div>
-            <label for="card-number">Card Number*</label>
-            <input type="number" id="card-number" name="card-number" required />
-            <label for="name-card">Name on Card*</label>
-            <input type="text" id="name-card"  name="name-card" required />
-            <div class="security-expiration-grid">
-              <div class="payment-security-code">
-                <label for="security-code">Security Code* <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span></label>
-                <div>
-                  <input type="number" id="security-code" name="security-code"  min="001" max="999" required />
+          </section>
+          <section>
+            <h2>Payment Details</h2>
+            <div class="payment-details-form">
+              <div class="payment-type-select">
+                <label for="visa" class="label-checked">Visa/Credit Card</label>
+                <input type="radio" name="payment-type" id="visa" value="visa" />
+              </div>
+              <label for="card-number">Card Number*</label>
+              <input type="number" id="card-number" name="card-number" required />
+              <label for="name-card">Name on Card*</label>
+              <input type="text" id="name-card" name="name-card" required />
+              <div class="security-expiration-grid">
+                <div class="payment-security-code">
+                  <label for="security-code">
+                    Security Code*
+                    <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span>
+                  </label>
+                  <div>
+                    <input type="number" id="security-code" name="security-code" min="001" max="999" required />
+                  </div>
+                </div>
+                <div class="payment-security-code">
+                  <label for="expiration-date-month">Expiration MM</label>
+                  <label for="expiration-date-year">/ YY*</label>
+                  <div>
+                    <input
+                      type="number"
+                      id="expiration-date-month"
+                      pattern="[0-9]*"
+                      min="1"
+                      max="12"
+                      name="expiration-date"
+                      required
+                    />
+                    <span>/</span>
+                    <input
+                      type="number"
+                      id="expiration-date-year"
+                      pattern="[0-9]*"
+                      min="0"
+                      max="99"
+                      name="expiration-date"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="payment-security-code">
-                <label for="expiration-date-month expiration-date-year">Expiration MM/YY*</label>
-                <div>
-                  <input type="number"  id="expiration-date-month" maxlength="2" name="expiration-date"  required /><span> / </span>
-                  <input type="number"  id="expiration-date-year" maxlength="2" name="expiration-date" required />
-                </div>
+              <div class="payment-type-select">
+                <label for="pay-pal">Pay Pal</label>
+                <input type="radio" name="payment-type" id="pay-pal" value="pay-pal" />
+              </div>
+              <div class="payment-type-select">
+                <label for="pay-later">Pay Later (90 days)</label>
+                <input type="radio" name="payment-type" id="pay-later" value="pay-later" />
               </div>
             </div>
-            <div class="payment-type-select">
-              <label for="pay-pal">Pay Pal</label>
-              <input type="radio" name="payment-type" id="pay-pal" value="pay-pal">
+
+            <div class="button-container">
+              <a href="order_confirmation.html" class="cta">Confirmation</a>
             </div>
-            <div class="payment-type-select">
-              <label for="pay-later">Pay Later (90 days)</label>
-              <input type="radio" name="payment-type" id="pay-later" value="pay-later">
-            </div>
-          </div>
-          </form>
-          <div class="button-container">
-            <a href="order_confirmation.html" class="cta">Confirmation</a>
-          </div>
-        </section>
+          </section>
+        </form>
       </div>
     </main>
     <footer>

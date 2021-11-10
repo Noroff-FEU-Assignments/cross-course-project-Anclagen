@@ -185,6 +185,7 @@ nav input {
   border-radius: 5px;
 }
 
+#order-number,/*refused to change??*/
 input[type="number"] {
   -moz-appearance: textfield;
 }

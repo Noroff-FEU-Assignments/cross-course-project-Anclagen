@@ -95,96 +95,123 @@
         <a onclick="history.back()">&#60; previous page</a>
       </div>
       <h1>Peter Storm - Men's Zip Down Waterproof II Jacket</h1>
-      <div class="product-page-container">
-        <div class="product-image-container">
-          <div>
+      <section>
+        <div class="product-page-container">
+          <div class="product-image-container">
             <div>
-              <input type="radio" name="image-selector" id="red-jacket" value="red-jacket" checked="checked" />
-              <img src="images/products/red_jacket_small.jpg" alt="Red Jacket"/> 
+              <div>
+                <input type="radio" name="image-selector" id="red-jacket" value="red-jacket" checked="checked" />
+                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
+              </div>
+              <div>
+                <input type="radio" name="image-selector" id="yellow-jacket" value="yellow-jacket" />
+                <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" />
+              </div>
+              <div>
+                <input type="radio" name="image-selector" id="black-jacket" value="black-jacket" />
+                <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
+              </div>
             </div>
-            <div>
-              <input type="radio" name="image-selector" id="yellow-jacket" value="yellow-jacket" />
-              <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" /> 
-            </div>
-            <div>
-              <input type="radio" name="image-selector" id="black-jacket" value="black-jacket" />
-              <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
+            <div class="product-thumbnails">
+              <label for="red-jacket" class="checked">
+                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
+              </label>
+              <label for="yellow-jacket" class="checked">
+                <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" />
+              </label>
+              <label for="black-jacket" class="checked">
+                <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
+              </label>
             </div>
           </div>
-          <div class="product-thumbnails">
-            <label for="red-jacket" class="checked">
-              <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-            </label>
-            <label for="yellow-jacket" class="checked">
-              <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" /> 
-            </label>
-            <label for="black-jacket" class="checked">
-              <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
-            </label>
+          <div class="product-specification-selection">
+            <h2>Product Specification</h2>
+
+            <h3>
+              Price:
+              <span class="sale-price">£50.00</span>
+              <span class="previous-price">£74.99</span>
+              <span class="save-price">Save £24.99</span>
+            </h3>
+
+            <form>
+              <div class="colour-selection">
+                <label for="colour">Choose Your Colour:</label>
+                <select name="colour" id="colour">
+                  <option value="red">
+                    Red
+                    <span class="red-box"></span>
+                  </option>
+                  <option value="yellow">
+                    Yellow
+                    <span class="yellow-box"></span>
+                  </option>
+                  <option value="black">
+                    Black
+                    <span class="black-box"></span>
+                  </option>
+                </select>
+              </div>
+              <div class="size-selection">
+                <p>Choose Your Size:</p>
+                <input type="radio" name="size" id="small" value="small" class="input-checked" />
+                <label for="small" class="label-checked">S</label>
+                <input type="radio" name="size" id="medium" value="medium" />
+                <label for="medium">M</label>
+                <input type="radio" name="size" id="large" value="large" />
+                <label for="large">L</label>
+                <input type="radio" name="size" id="x-large" value="x-large" />
+                <label for="x-large">XL</label>
+                <input type="radio" name="size" id="xx-large" value="xx-large" />
+                <label for="xx-large">XXL</label>
+                <input type="radio" name="size" id="3x-large" value="3x-large" />
+                <label for="3x-large">3XL</label>
+              </div>
+              <div>
+                <h3>Product Details</h3>
+                <ul>
+                  <li>
+                    <span class="details-title">Hooded Jacket</span>
+                    - 100% Waterproof lightweight jacket, keeping you dry at all times.
+                  </li>
+                  <li>
+                    <span class="details-title">Adjustable</span>
+                    - With draw cords on waist, arms and hood.
+                  </li>
+                  <li>
+                    <span class="details-title">Multiple Pockets</span>
+                    - Waterproof zippers on 2 hand pockets, and 2 internal pockets.
+                  </li>
+                  <li>
+                    <span class="details-title">Activities</span>
+                    - Men's waterproof jacket great for camping, hiking, walking, mountaineering, and many other outdoor
+                    activities.
+                  </li>
+                </ul>
+              </div>
+              <div class="button-container">
+                <input type="submit" value="Add To Cart" class="cta" />
+              </div>
+            </form>
+            <h2>Delivery</h2>
+            <ul>
+              <li>Free Standard Delivery (3-5 working days) - On all orders.</li>
+              <li>First Class Delivery (2-3 working days) - Additional £5 delivery charge</li>
+              <li>Next Day Delivery (1-2 working days) - Additional £10 delivery charge (order before 14.00)</li>
+            </ul>
           </div>
         </div>
-        <div class="product-specification-selection">
-          <h2>Product Specification</h2>
-
-          <h3>Price: <span class="sale-price">£50.00</span>  <span class="previous-price">£74.99</span> <span class="save-price">Save £24.99</span></h3>
-          
-          <form>
-
-            <div class="colour-selection">
-              <label for="colour">Choose Your Colour:</label>
-              <select name="colour" id="colour">
-                <option value="red">Red <span class="red-box"></span></option>
-                <option value="yellow">Yellow <span class="yellow-box"></span></option>
-                <option value="black">Black <span class="black-box"></span></option>
-              </select>
-            </div>
-            <div class="size-selection">
-              <p>Choose Your Size:</p>
-              <input type="radio" name="size" id="small" value="small" class="input-checked">
-              <label for="small" class="label-checked">S</label>
-              <input type="radio" name="size" id="medium" value="medium">
-              <label for="medium">M</label>
-              <input type="radio" name="size" id="large" value="large">
-              <label for="large">L</label>
-              <input type="radio" name="size" id="x-large" value="x-large">
-              <label for="x-large">XL</label>
-              <input type="radio" name="size" id="xx-large" value="xx-large">
-              <label for="xx-large">XXL</label>
-              <input type="radio" name="size" id="3x-large" value="3x-large">
-              <label for="3x-large">3XL</label>
-            </div>
-            <div>
-              <h3>Product Details</h3>
-              <ul>
-                <li><span class="details-title">Hooded Jacket</span> - 100% Waterproof lightweight jacket, keeping you dry at all times.</li>
-                <li><span class="details-title">Adjustable</span> - With draw cords on waist, arms and hood.</li>
-                <li><span class="details-title">Multiple Pockets</span> - Waterproof zippers on 2 hand pockets, and 2 internal pockets.</li>
-                <li><span class="details-title">Activities</span> - Men's waterproof jacket great for camping, hiking, walking, mountaineering, and many other outdoor activities. </li>
-              </ul>
-            </div>
-            <div class="button-container">
-              <input type="submit" value="Add To Cart" class="cta" />
-            </div>
-          </form>
-          <h2>Delivery</h2>
-          <ul>
-            <li>Free Standard Delivery (3-5 working days) - On all orders.</li>
-            <li>First Class Delivery (2-3 working days) - Additional £5 delivery charge</li>
-            <li>Next Day Delivery (1-2 working days) - Additional £10 delivery charge (order before 14.00)</li>
-          </ul>
-        </div>
-      </div>
       </section>
       <section class="further-details product-page-container">
         <div>
           <h2>Product Specification</h2>
           <ul>
             <li>Material: 100% Nylon Shell, 60% Polyester 40% Cotton interior lining</li>
-            <li>Fit: Regular-Stretch </li>
-            <li>Style: Hooded </li>
-            <li>Colours: Red, Yellow, Black </li>
+            <li>Fit: Regular-Stretch</li>
+            <li>Style: Hooded</li>
+            <li>Colours: Red, Yellow, Black</li>
             <li>Suitability: Waterproof / Windproof / Lightweight</li>
-            <li>Weight: 500-900g </li>
+            <li>Weight: 500-900g</li>
           </ul>
         </div>
         <div>
@@ -234,7 +261,6 @@
             </tr>
           </table>
         </div>
-        
       </section>
       <section>
         <h2>Related Jackets</h2>
