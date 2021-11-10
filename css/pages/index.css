@@ -36,9 +36,16 @@ section.welcome-banner p {
   text-shadow: 2px 2px 2px var(--dark-blue);
 }
 
-section.welcome-banner a {
+section.welcome-banner a.cta {
   display: inline-block;
   text-align: center;
+}
+
+.promo-images-container:hover h2,
+.promo-images-container:hover p,
+.image-text-links:hover p,
+.image-text-links:hover h1 {
+  text-shadow: 3px 3px 3px var(--light-blue);
 }
 
 section.welcome-banner h1 {
@@ -47,6 +54,7 @@ section.welcome-banner h1 {
 
 section.welcome-banner p {
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .banner-content {

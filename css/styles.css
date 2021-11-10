@@ -99,7 +99,7 @@ div.page-bread-crumbs {
 }
 
 .cta {
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-size: 1.125rem;
   font-weight: 500;
   background: var(--cta-orange);
@@ -116,7 +116,7 @@ div.page-bread-crumbs {
 .button-container a,
 .button-container input {
   display: block;
-  width: 80%;
+  width: 90%;
   text-align: center;
   margin: 40px auto;
 }
@@ -291,10 +291,10 @@ ul search {
   text-shadow: none;
 }
 
-section.featured-products a img:hover,
-section.promo-images a img:hover {
-  outline: 5px solid var(--dark-blue);
-  outline-offset: -5px;
+.promo-images-container:hover a img,
+.product-item a img:hover {
+  outline: 500px solid rgba(0, 30, 68, 0.3);
+  outline-offset: -500px;
 }
 
 a:hover {
@@ -305,6 +305,45 @@ a:hover {
 .main-nav-menu li:hover {
   transition: 750ms;
   background: var(--dark-blue);
+}
+
+/*tool tip fun*/
+
+span[data-tool-tip] {
+  position: relative;
+  cursor: pointer;
+  font-size: 0.8rem;
+  background-color: var(--grey);
+  padding: 1px 5px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+label[data-tool-tip],
+a[data-tool-tip] {
+  position: relative;
+}
+
+label[data-tool-tip]::after,
+a[data-tool-tip]::after,
+span[data-tool-tip]::after {
+  content: attr(data-tool-tip);
+  position: absolute;
+  background: var(--grey);
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  bottom: 100%;
+  left: 100%;
+  width: 120px;
+  display: none;
+}
+
+label[data-tool-tip]:hover::after,
+a[data-tool-tip]:hover::after,
+span[data-tool-tip]:hover::after {
+  display: block;
 }
 
 /*-------  Navigation --------*/
@@ -442,6 +481,8 @@ footer form {
   flex: start;
   border: 2px solid var(--dark-blue);
   height: 100%;
+  border-radius: 5px;
+  box-shadow: 3px 5px 8px var(--dark-blue);
 }
 
 .product-item div:last-child {
@@ -451,6 +492,7 @@ footer form {
 .product-image-container img,
 .product-item img {
   width: 100%;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .product-item p,
@@ -461,34 +503,6 @@ footer form {
 
 .product-item p {
   padding: 5px 0px;
-}
-
-/*tool tip fun*/
-span[data-tool-tip] {
-  position: relative;
-  cursor: pointer;
-  font-size: 0.8rem;
-  background-color: var(--grey);
-  padding: 1px 5px;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
-span[data-tool-tip]::after {
-  content: attr(data-tool-tip);
-  position: absolute;
-  background: var(--grey);
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  bottom: 100%;
-  left: 100%;
-  width: 120px;
-  display: none;
-}
-
-span[data-tool-tip]:hover::after {
-  display: block;
 }
 
 /*allows down to around 300px width smallest screen on data shows 320px*/

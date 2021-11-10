@@ -45,6 +45,8 @@ h1 {
 
 .product-image-container label:hover {
   border: 2px solid black;
+  outline: 500px solid rgba(0, 30, 68, 0.3);
+  outline-offset: -500px;
 }
 
 input[type="radio"] {

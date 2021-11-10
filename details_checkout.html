@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Barrett" />
     <title>Rainydays | Jackets for all outdoor activities</title>
-    <meta
-      name="description"
-      content="Rainydays sells jackets to suit all outdoor activities and weather conditions keeping you comfortable no matter the situation."
-    />
+    <meta name="description" content="Rainydays sells jackets to suit all outdoor activities and weather conditions keeping you comfortable no matter the situation." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/pages/details_checkout.css" />
   </head>
@@ -25,11 +19,7 @@
           <!-- menu drop down-->
           <li class="main-nav-menu">
             <label class="hamburger-label" for="menu-drop-down">
-              <img
-                src="images/interface_and_logo/menu_icon_1@2x.png"
-                alt="Menu drop down"
-                class="navigation-icons mobile-screen"
-              />
+              <img src="images/interface_and_logo/menu_icon_1@2x.png" alt="Menu drop down" class="navigation-icons mobile-screen" />
             </label>
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
@@ -45,11 +35,7 @@
           <!-- search drop down-->
           <li class="main-nav-search">
             <label class="search-label" for="search-drop-down">
-              <img
-                src="images/interface_and_logo/search_icon_1@2x.png"
-                alt="Search"
-                class="navigation-icons mobile-screen"
-              />
+              <img src="images/interface_and_logo/search_icon_1@2x.png" alt="Search" class="navigation-icons mobile-screen" />
             </label>
             <input type="checkbox" id="search-drop-down" />
             <ul class="search main-nav-search">
@@ -66,11 +52,7 @@
           <!--Logo-->
           <li class="main-nav-logo">
             <a href="index.html">
-              <img
-                src="images/interface_and_logo/RainyDays_Logo_white_mobile.png"
-                alt="Rainydays Logo"
-                class="logo_mobile mobile-screen"
-              />
+              <img src="images/interface_and_logo/RainyDays_Logo_white_mobile.png" alt="Rainydays Logo" class="logo_mobile mobile-screen" />
               <img src="images/interface_and_logo/RainyDays_Logo_white.png" alt="Rainydays Logo" class="desktop-logo" />
             </a>
           </li>
@@ -98,28 +80,28 @@
         </p>
       </div>
       <h1>Your Details</h1>
-      <form>
+      <form action="order_confirmation.html" method="get">
         <div class="two-column-grid">
           <section class="delivery-details">
             <h2 class="remove-margin-bottom">Delivery Details</h2>
 
             <div class="payment-details-form">
               <label for="first-name">First Name*</label>
-              <input type="text" id="first-name" name="first-name" required />
+              <input type="text" id="first-name" name="first-name" value="Rain" required />
               <label for="last-name">Last Name*</label>
-              <input type="text" id="last-name" name="last-name" required />
+              <input type="text" id="last-name" name="last-name" value="Maker" required />
               <label for="address-1">Address Line 1*</label>
-              <input type="text" id="address-1" name="address-1" required />
+              <input type="text" id="address-1" name="address-1" value="24 Blue Meadow Drive " required />
               <label for="address-2">Address Line 2</label>
               <input type="text" id="address-2" name="address-2" />
               <label for="town-city">Town/City*</label>
-              <input type="text" id="town-city" name="town-city" required />
+              <input type="text" id="town-city" name="town-city" value="Hertford" required />
               <label for="post-code">Post Code</label>
-              <input type="text" id="post-code" name="post-code" required />
+              <input type="text" id="post-code" name="post-code" value="QD5 Y87" required />
               <label for="country">Country</label>
-              <input type="text" id="country" name="country" required />
+              <input type="text" id="country" name="country" value="UK" required />
               <label for="email">E-mail*</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" value="The_Rain_Maker@Rainydays.com" required />
             </div>
           </section>
           <section>
@@ -127,12 +109,12 @@
             <div class="payment-details-form">
               <div class="payment-type-select">
                 <label for="visa" class="label-checked">Visa/Credit Card</label>
-                <input type="radio" name="payment-type" id="visa" value="visa" />
+                <input type="radio" name="payment-type" id="visa" value="visa" checked="checked" />
               </div>
               <label for="card-number">Card Number*</label>
-              <input type="number" id="card-number" name="card-number" required />
+              <input type="number" id="card-number" name="card-number" min="1000000000000000" max="9999999999999999" value="1234567890123456" required />
               <label for="name-card">Name on Card*</label>
-              <input type="text" id="name-card" name="name-card" required />
+              <input type="text" id="name-card" name="name-card" value="Rain Maker" required />
               <div class="security-expiration-grid">
                 <div class="payment-security-code">
                   <label for="security-code">
@@ -140,16 +122,16 @@
                     <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span>
                   </label>
                   <div>
-                    <input type="number" id="security-code" name="security-code" min="001" max="999" required />
+                    <input type="number" id="security-code" name="security-code" min="001" max="999" value="999" required />
                   </div>
                 </div>
                 <div class="payment-security-code">
                   <label for="expiration-date-month">Expiration MM</label>
                   <label for="expiration-date-year">/ YY*</label>
                   <div>
-                    <input type="number" id="expiration-date-month" min="1" max="12" name="expiration-date" required />
+                    <input type="number" id="expiration-date-month" min="1" max="12" name="expiration-date" value="11" required />
                     <span>/</span>
-                    <input type="number" id="expiration-date-year" min="0" max="99" name="expiration-date" required />
+                    <input type="number" id="expiration-date-year" min="21" max="99" name="expiration-date" value="22" required />
                   </div>
                 </div>
               </div>
@@ -164,7 +146,7 @@
             </div>
 
             <div class="button-container">
-              <a href="order_confirmation.html" class="cta">Confirmation</a>
+              <input type="submit" value="Confirmation" class="cta" />
             </div>
           </section>
         </div>
