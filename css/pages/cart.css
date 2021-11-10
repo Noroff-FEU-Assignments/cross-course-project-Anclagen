@@ -35,7 +35,7 @@ section.payment-summary a.cta-green {
   cursor: pointer;
 }
 
-input {
+input[type="number"] {
   max-width: 10px;
   padding: 5px 8px;
   font-size: 1rem;
