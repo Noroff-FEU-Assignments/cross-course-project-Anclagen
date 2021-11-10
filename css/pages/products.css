@@ -91,6 +91,57 @@ li {
   padding: 10px 0px;
 }
 
+/*Bottom list navigation product page*/
+
+.centre-page-list {
+  width: 100%;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.change-list-page-pre,
+.change-list-page-next,
+.change-list-page {
+  display: inline-block;
+  border: 2px solid var(--grey);
+  width: 40px;
+  padding: 11px 0;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+.current-list-page {
+  background: var(--grey);
+  border: 1px solid black;
+}
+
+.change-list-page:hover,
+.change-list-page-pre:hover,
+.change-list-page-next:hover {
+  background: var(--grey);
+  text-decoration: none;
+}
+
+.change-list-page-next {
+  width: 60px;
+}
+
+.change-list-page-pre {
+  width: 70px;
+}
+
+.change-page-span {
+  margin-right: 20px;
+}
+
+.change-page-span::after {
+  content: " ...";
+  position: absolute;
+  right: -20px;
+}
+
 @media only screen and (min-width: 700px) {
   .filter {
     min-width: 230px;
