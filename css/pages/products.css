@@ -15,7 +15,7 @@
   margin-top: 10px;
 }
 
-.filter-label h2 {
+.filter-label {
   background: var(--cta-green);
   padding: 5px;
   margin-bottom: 20px;
@@ -23,6 +23,7 @@
   margin: 0px auto;
   font-size: 1.5rem;
   font-weight: 600;
+  width: 100%;
 }
 
 .filter h3 {
@@ -91,7 +92,7 @@ li {
     color: white;
   }
 
-  .filter h2 {
+  .filter-label {
     background: none;
     padding: 0;
     margin: 10px 0 0 0;
