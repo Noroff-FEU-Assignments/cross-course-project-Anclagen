@@ -102,7 +102,12 @@ div.image-content p {
 
 section.promo-images img {
   width: 100%;
-  margin: 10px 0px;
+  margin: 0px;
+  vertical-align: bottom;
+}
+
+a {
+  display: inherit;
 }
 
 .large-images,

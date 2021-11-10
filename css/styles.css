@@ -291,10 +291,30 @@ ul search {
   text-shadow: none;
 }
 
-.promo-images-container:hover a img,
-.product-item a img:hover {
-  outline: 500px solid rgba(0, 30, 68, 0.3);
-  outline-offset: -500px;
+.overlay-container {
+  margin-top: 25px;
+}
+
+.product-item a,
+.overlay-container {
+  position: relative;
+  width: 100%;
+}
+
+.product-item .overlay,
+.overlay-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.product-item a:hover .overlay,
+.overlay-container:hover .overlay {
+  display: block;
+  background: rgba(0, 30, 68, 0.3);
 }
 
 a:hover {
@@ -303,7 +323,7 @@ a:hover {
 
 #current,
 .main-nav-menu li:hover {
-  transition: 750ms;
+  transition: 600ms;
   background: var(--dark-blue);
 }
 
