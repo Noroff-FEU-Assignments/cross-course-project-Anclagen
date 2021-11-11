@@ -106,6 +106,7 @@ section.promo-images img {
   vertical-align: bottom;
 }
 
+/*fix white space under promos getting hover-overlay*/
 a {
   display: inherit;
 }
