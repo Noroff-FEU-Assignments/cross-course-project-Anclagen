@@ -176,7 +176,8 @@ nav input {
 }
 
 /*because safari is annoying!*/
-input,
+header input,
+footer input,
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -186,8 +187,7 @@ textarea {
   opacity: 1; /*stops faded appearance*/
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
