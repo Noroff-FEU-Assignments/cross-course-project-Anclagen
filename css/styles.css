@@ -155,6 +155,8 @@ label {
   margin: 10px 0;
 }
 
+footer input,
+nav input,
 section.contact-form textarea,
 section.contact-form input {
   display: inline;
@@ -165,6 +167,13 @@ section.contact-form input {
   border-radius: 5px;
 }
 
+footer input,
+nav input {
+  padding: 10px;
+  border: none;
+}
+
+/*because safari is annoying!*/
 input,
 textarea {
   -webkit-appearance: none;
@@ -172,29 +181,19 @@ textarea {
   appearance: none;
   border-radius: 0;
   margin: 0;
-  opacity: 1;
+  opacity: 1; /*stops faded appearance*/
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  appearance: none;
+}
+
+/*gotta stop those number spinners*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-footer input,
-nav input {
-  /*because safari is annoying!*/
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  opacity: 1; /*stops faded appearance*/
-  display: inline;
-  padding: 10px;
-  margin: 0;
-  border: none;
-  font-size: 1.125rem;
-  font-weight: 500;
-  border-radius: 5px;
 }
 
 #order-number,/*refused to change??*/
