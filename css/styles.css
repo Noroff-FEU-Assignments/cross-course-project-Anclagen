@@ -193,6 +193,7 @@ input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  opacity: 1;
 }
 
 /*gotta stop those number spinners*/
