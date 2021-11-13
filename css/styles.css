@@ -249,6 +249,14 @@ input[type="radio"]:checked:after {
   box-shadow: inset 0 0 0 2px white;
 }
 
+select {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 /*adjust search bar for drop down to avoid hitting edges of screen */
 ul search {
   margin: 0 20px;
