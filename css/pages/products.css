@@ -142,6 +142,13 @@ li {
   right: -20px;
 }
 
+@media only screen and (min-width: 500px) {
+  .products-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0;
+  }
+}
+
 @media only screen and (min-width: 700px) {
   .filter {
     min-width: 230px;
@@ -164,11 +171,6 @@ li {
   ul.filter-menu li,
   ul.filter-menu ul {
     display: block;
-  }
-
-  .products-page-grid {
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 0;
   }
 
   .products-lists-layout {
