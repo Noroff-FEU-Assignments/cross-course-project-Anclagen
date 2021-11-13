@@ -232,8 +232,9 @@ input[type="number"] {
 }
 
 /*radio inputs on cart, and payment plus check box on filters*/
-
+input[type="checkbox"],
 input[type="radio"] {
+  position: relative;
   width: 0;
   height: 0;
   margin-right: 20px;
@@ -241,6 +242,9 @@ input[type="radio"] {
 
 input[type="checkbox"]::after,
 input[type="radio"]::after {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-block;
   content: "";
   width: 25px;
@@ -253,6 +257,9 @@ input[type="radio"]::after {
 
 input[type="checkbox"]:checked::after,
 input[type="radio"]:checked:after {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 25px;
   height: 25px;
   border-radius: 50%;
