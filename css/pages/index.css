@@ -116,16 +116,6 @@ a {
   display: none;
 }
 
-/* bestsellers/product list page */
-
-.product-list-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: 1fr;
-  row-gap: 25px;
-  margin-bottom: 50px;
-}
-
 /*tablet styles*/
 
 @media only screen and (min-width: 700px) {
@@ -145,11 +135,6 @@ a {
   .medium-images {
     display: inline-block;
   }
-
-  .product-list-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 25px;
-  }
 }
 
 @media only screen and (min-width: 945px) {
@@ -166,10 +151,5 @@ a {
 
   .welcome-banner {
     background-image: url("../../images/promo_and_home_photos/home_banner_large_dark.jpg");
-  }
-
-  /* 4 column product grid*/
-  .product-list-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 }

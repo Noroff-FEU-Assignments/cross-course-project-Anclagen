@@ -18,6 +18,10 @@
   margin: 20px 0px;
 }
 
+.login-container input[type="submit"] {
+  margin-top: 50px;
+}
+
 .login {
   border: 2px solid var(--light-blue);
   padding: 20px;
