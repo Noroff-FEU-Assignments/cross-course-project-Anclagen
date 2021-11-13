@@ -188,6 +188,7 @@ textarea {
   opacity: 1; /*stops faded appearance*/
 }
 
+input[type="checkbox"],
 input[type="submit"],
 input[type="radio"] {
   appearance: none;
@@ -232,6 +233,7 @@ input[type="number"] {
 
 /*radio inputs on cart, and payment*/
 
+input[type="checkbox"]::after,
 input[type="radio"]::after {
   display: inline-block;
   content: "";
@@ -242,6 +244,7 @@ input[type="radio"]::after {
   border: 1px solid black;
 }
 
+input[type="checkbox"]:checked::after,
 input[type="radio"]:checked:after {
   width: 20px;
   height: 20px;
@@ -252,6 +255,13 @@ input[type="radio"]:checked:after {
   border: 1px solid black;
   display: inline-block;
   box-shadow: inset 0 0 0 2px white;
+}
+
+input[type="checkbox"]::after,
+input[type="checkbox"]:checked::after {
+  border-radius: 0;
+  width: 18px;
+  height: 18px;
 }
 
 select {
