@@ -462,7 +462,7 @@ nav ul li.main-nav-cart ul li {
 #menu-drop-down:checked ~ ul {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
 }
 
 .hamburger li,
