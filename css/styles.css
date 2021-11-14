@@ -533,7 +533,12 @@ footer form {
   max-width: 500px;
 }
 
-.footer-copyright {
+section.foot-bot div a {
+  display: inline-block;
+  margin: 15px 20px 30px 0px;
+}
+
+footer .footer-copyright {
   text-align: center;
   padding: 30px 0px;
 }
@@ -608,11 +613,6 @@ footer form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
-  }
-
-  section.foot-bot div a {
-    display: inline-block;
-    margin: 15px 20px 30px 0px;
   }
 
   /* added column to grid for product section/product page*/

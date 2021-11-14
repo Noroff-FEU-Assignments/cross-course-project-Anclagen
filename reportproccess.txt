@@ -65,3 +65,11 @@ https://css-tricks.com/solved-with-css-dropdown-menus/
 
 mimicked interactions
 login page, cart, details, products page and product page.
+
+ Website testing 
+
+Lambdatest, https://www.lambdatest.com/ 
+
+Am I responsive design, http://ami.responsivedesign.is/# 
+
+Browser Stack, www.browserstack.com 
