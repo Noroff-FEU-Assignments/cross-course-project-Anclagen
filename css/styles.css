@@ -52,6 +52,8 @@ header {
   z-index: 1; /*prevent banner link area covering parts of header*/
 }
 
+header a,
+footer a,
 header,
 footer {
   color: #fff;
@@ -76,7 +78,7 @@ p {
   font-size: 1rem;
 }
 
-footer p {
+footer h2 {
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -89,7 +91,6 @@ a {
 header a,
 footer a {
   text-decoration: none;
-  color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -98,33 +99,7 @@ div.page-bread-crumbs {
   margin: 10px;
 }
 
-.cta {
-  padding: 10px 15px;
-  font-size: 1.125rem;
-  font-weight: 500;
-  background: var(--cta-orange);
-  border-radius: 5px;
-  text-shadow: 2px 2px 2px var(--dark-blue);
-  color: white;
-  text-decoration: none;
-  border-color: var(--cta-orange);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.cta-green {
-  background-color: var(--cta-green);
-}
-
-.button-container a,
-.button-container input {
-  display: block;
-  width: 90%;
-  text-align: center;
-  margin: 40px auto;
-}
-
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
-.head-wrapper,
 .page-wrapper,
 .page-wrapper-medium,
 .page-wrapper-small {
@@ -149,6 +124,32 @@ div.page-bread-crumbs {
 .desktop-logo,
 .main-nav-contact {
   display: none;
+}
+
+/*button colours and styles*/
+.cta {
+  padding: 10px 15px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  background: var(--cta-orange);
+  border-radius: 5px;
+  text-shadow: 2px 2px 2px var(--dark-blue);
+  color: white;
+  text-decoration: none;
+  border-color: var(--cta-orange);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.cta-green {
+  background-color: var(--cta-green);
+}
+
+.button-container a,
+.button-container input {
+  display: block;
+  width: 90%;
+  text-align: center;
+  margin: 40px auto;
 }
 
 /*general input, form and button styles*/
@@ -234,7 +235,7 @@ input[type="number"] {
 /*radio inputs on cart, and payment plus check box on filters*/
 input[type="checkbox"],
 input[type="radio"] {
-  position: relative;
+  position: relative; /*make container to position after on top*/
   width: 0;
   height: 0;
   margin-right: 20px;
@@ -324,6 +325,7 @@ ul search {
 
 /* general hover interactions*/
 
+/*button hover*/
 .submit-button:hover,
 .search-button:hover,
 .cta:hover {
@@ -342,6 +344,14 @@ ul search {
   text-shadow: none;
 }
 
+/*nav button*/
+#current,
+.main-nav-menu li:hover {
+  transition: 600ms;
+  background: var(--dark-blue);
+}
+
+/*image hover overlay*/
 .overlay-container {
   margin-top: 25px;
 }
@@ -372,13 +382,7 @@ ul search {
   text-decoration: underline;
 }
 
-#current,
-.main-nav-menu li:hover {
-  transition: 600ms;
-  background: var(--dark-blue);
-}
-
-/*tool tip avoid on anything not position left*/
+/*tool tip avoid on anything not position left or that has variable positioning*/
 
 * [data-tool-tip] {
   position: relative;
@@ -413,7 +417,6 @@ ul search {
 }
 
 /*-------  Navigation --------*/
-/* need to add a drop shadow to the menu element maybe on smaller pages when it hits footer*/
 
 nav ul {
   margin: 0;
@@ -535,7 +538,7 @@ footer form {
   padding: 30px 0px;
 }
 
-.footer-copyright p {
+.footer-copyright span {
   font-size: 0.9rem;
 }
 
@@ -607,9 +610,9 @@ footer form {
     gap: 25px;
   }
 
-  section.foot-bot p {
+  section.foot-bot div a {
     display: inline-block;
-    margin-right: 20px;
+    margin: 15px 20px 30px 0px;
   }
 
   /* added column to grid for product section/product page*/
@@ -622,6 +625,7 @@ footer form {
   .mobile-screen {
     display: none;
   }
+
   /* add flex cleared item to normal flow navbar!*/
   .flex-clear {
     position: relative;
@@ -659,6 +663,7 @@ footer form {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto;
     align-items: center;
+    width: 100%;
   }
 
   .main-nav-logo {
@@ -716,10 +721,6 @@ footer form {
 
   .search-drop {
     margin: 0;
-  }
-
-  .head-wrapper {
-    width: 100%;
   }
 
   .desktop-logo {
