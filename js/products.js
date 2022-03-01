@@ -16,7 +16,7 @@ if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
   } else if (sex === data.sex){
     return true;
   }else {
-    return products
+    return true
   }
 } 
 
