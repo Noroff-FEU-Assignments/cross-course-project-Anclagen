@@ -587,6 +587,22 @@ footer .footer-copyright {
   margin-bottom: 50px;
 }
 
+/* shared colours for prices */
+
+.sale-price {
+  color: var(--cta-orange);
+}
+
+.previous-price {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.save-price {
+  background: var(--cta-orange);
+  color: white;
+}
+
 /*allows down to around 300px width smallest screen on data shows 320px*/
 @media only screen and (max-width: 359px) {
   nav li {
