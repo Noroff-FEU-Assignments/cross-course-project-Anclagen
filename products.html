@@ -24,10 +24,9 @@
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
               <li><a href="index.html">Home</a></li>
-              <li><a href="products.html">Sale</a></li>
-              <li id="current"><a href="products.html">Men</a></li>
-              <li><a href="products.html">Women</a></li>
-              <li><a href="products.html">Kid</a></li>
+              <li><a href="products.html?on_sale=true">Sale</a></li>
+              <li id="current"><a href="products.html?sex=men">Men</a></li>
+              <li><a href="products.html?sex=women">Women</a></li>
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
             </ul>
@@ -87,23 +86,20 @@
                 <ul>
                   <li><h3>Category</h3></li>
                   <li>
-                    <label for="waterproof-jackets">Waterproof Jackets</label>
-                    <label for="waterproof-jackets" class="checkbox-container">
-                      <input type="checkbox" id="waterproof-jackets" name="waterproof-jackets" />
-                      <span class="custom-checkbox"></span>
-                    </label>
+                    <label for="waterproof">Waterproof Jackets</label>
+                    <input type="checkbox" id="waterproof" name="waterproof" key="category" />
                   </li>
                   <li>
-                    <label for="hiking-jackets">Hiking Jackets</label>
-                    <input type="checkbox" id="hiking-jackets" name="hiking-jackets" />
+                    <label for="hiking">Hiking Jackets</label>
+                    <input type="checkbox" id="hiking" name="hiking" key="category" />
                   </li>
                   <li>
-                    <label for="ski-jackets">Ski Jackets</label>
-                    <input type="checkbox" id="ski-jackets" name="ski-jackets" />
+                    <label for="ski">Ski Jackets</label>
+                    <input type="checkbox" id="ski" name="ski" key="category" />
                   </li>
                   <li>
-                    <label for="water-jackets">Water Sports Jackets</label>
-                    <input type="checkbox" id="water-jackets" name="water-jackets" />
+                    <label for="watersports">Water Sports Jackets</label>
+                    <input type="checkbox" id="watersports" name="watersports" key="category" />
                   </li>
                 </ul>
               </li>
@@ -112,19 +108,19 @@
                   <li><h3>Brands</h3></li>
                   <li>
                     <label for="hail-storm">Hail Storm</label>
-                    <input type="checkbox" id="hail-storm" name="hail-storm" />
+                    <input type="checkbox" id="hail-storm" name="Hail Storm" key="brand" />
                   </li>
                   <li>
                     <label for="mountain-gear">Mountain Gear</label>
-                    <input type="checkbox" id="mountain-gear" name="mountain-gear" />
+                    <input type="checkbox" id="mountain-gear" name="Mountain Gear" key="brand" />
                   </li>
                   <li>
                     <label for="peter-storm">Peter Storm</label>
-                    <input type="checkbox" id="peter-storm" name="peter-storm" />
+                    <input type="checkbox" id="peter-storm" name="Peter Storm" key="brand" />
                   </li>
                   <li>
                     <label for="snow-storm">Snow Storm</label>
-                    <input type="checkbox" id="snow-storm" name="snow-storm" />
+                    <input type="checkbox" id="snow-storm" name="Snow Storm" key="brand" />
                   </li>
                 </ul>
               </li>
@@ -132,28 +128,28 @@
                 <ul>
                   <li><h3>Size</h3></li>
                   <li>
-                    <label for="small">Small</label>
-                    <input type="checkbox" id="small" name="small" />
+                    <label for="s">Small</label>
+                    <input type="checkbox" id="s" name="s" key="sizes" />
                   </li>
                   <li>
-                    <label for="medium">Medium</label>
-                    <input type="checkbox" id="medium" name="medium" />
+                    <label for="m">Medium</label>
+                    <input type="checkbox" id="m" name="m" key="sizes" />
                   </li>
                   <li>
-                    <label for="large">Large</label>
-                    <input type="checkbox" id="large" name="large" />
+                    <label for="l">Large</label>
+                    <input type="checkbox" id="l" name="l" key="sizes" />
                   </li>
                   <li>
-                    <label for="x-large">X Large</label>
-                    <input type="checkbox" id="x-large" name="x-large" />
+                    <label for="xl">X Large</label>
+                    <input type="checkbox" id="xl" name="xl" key="sizes" />
                   </li>
                   <li>
-                    <label for="xx-large">XX Large</label>
-                    <input type="checkbox" id="xx-large" name="xx-large" />
+                    <label for="xxl">XX Large</label>
+                    <input type="checkbox" id="xxl" name="xxl" key="sizes" />
                   </li>
                   <li>
-                    <label for="3x-large">3X Large</label>
-                    <input type="checkbox" id="3x-large" name="3x-large" />
+                    <label for="3xl">3X Large</label>
+                    <input type="checkbox" id="3xl" name="3xl" key="sizes" />
                   </li>
                 </ul>
               </li>
@@ -162,31 +158,31 @@
                   <li><h3>Colour</h3></li>
                   <li>
                     <label for="black">Black</label>
-                    <input type="checkbox" id="black" name="black" />
+                    <input type="checkbox" id="black" name="black" key="colours" />
                   </li>
                   <li>
                     <label for="blue">Blue</label>
-                    <input type="checkbox" id="blue" name="blue" />
+                    <input type="checkbox" id="blue" name="blue" key="colours" />
                   </li>
                   <li>
                     <label for="brown">Brown</label>
-                    <input type="checkbox" id="brown" name="brown" />
+                    <input type="checkbox" id="brown" name="brown" key="colours" />
                   </li>
                   <li>
                     <label for="green">Green</label>
-                    <input type="checkbox" id="green" name="green" />
+                    <input type="checkbox" id="green" name="green" key="colours" />
                   </li>
                   <li>
                     <label for="grey">Grey</label>
-                    <input type="checkbox" id="grey" name="grey" />
+                    <input type="checkbox" id="grey" name="grey" key="colours" />
                   </li>
                   <li>
                     <label for="red">Red</label>
-                    <input type="checkbox" id="red" name="red" />
+                    <input type="checkbox" id="red" name="red" key="colours" />
                   </li>
                   <li>
                     <label for="yellow">Yellow</label>
-                    <input type="checkbox" id="yellow" name="yellow" />
+                    <input type="checkbox" id="yellow" name="yellow" key="colours" />
                   </li>
                 </ul>
               </li>
@@ -195,23 +191,23 @@
                   <li><h3>Price</h3></li>
                   <li>
                     <label for="39-less">£39.99 or less</label>
-                    <input type="checkbox" id="39-less" name="39-less" />
+                    <input type="checkbox" id="39-less" name="39-less" key="price" />
                   </li>
                   <li>
                     <label for="40-59">£40.00-£59.99</label>
-                    <input type="checkbox" id="40-59" name="40-59" />
+                    <input type="checkbox" id="40-59" name="40-59" key="price" />
                   </li>
                   <li>
                     <label for="60-79">£60.00-£79.99</label>
-                    <input type="checkbox" id="60-79" name="60-79" />
+                    <input type="checkbox" id="60-79" name="60-79" key="price" />
                   </li>
                   <li>
                     <label for="80-99">£80.00-£99.99</label>
-                    <input type="checkbox" id="80-99" name="80-99" />
+                    <input type="checkbox" id="80-99" name="80-99" key="price" />
                   </li>
                   <li>
                     <label for="100-more">£100.00 or more</label>
-                    <input type="checkbox" id="100-more" name="100-more" />
+                    <input type="checkbox" id="100-more" name="100-more" key="price" />
                   </li>
                 </ul>
               </li>
@@ -228,7 +224,8 @@
                 <option value="Newest">Newest</option>
               </select>
             </div>
-            <div class="product-item">
+
+            <!-- <div class="product-item">
               <a href="product.html">
                 <div class="overlay"></div>
                 <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
@@ -239,139 +236,7 @@
                 <p>Red, Black, Yellow</p>
                 <p>£50.00</p>
               </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/green_jacket_small.jpg" alt="Green Jacket" />
-              </a>
-              <h3>Women's Water-Resistant Jacket</h3>
-              <div>
-                <p>Snow Storm</p>
-                <p>Green</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Mountain Gear</p>
-                <p>Blue, Black</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/black_jacket_small.jpg" alt="Black Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Hail Storm</p>
-                <p>Blue, Red, Black</p>
-                <p>£50.00</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof II Jacket</h3>
-              <div>
-                <p>Peter Storm</p>
-                <p>Red, Black, Yellow</p>
-                <p>£50.00</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/green_jacket_small.jpg" alt="Green Jacket" />
-              </a>
-              <h3>Women's Water-Resistant Jacket</h3>
-              <div>
-                <p>Snow Storm</p>
-                <p>Green</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Mountain Gear</p>
-                <p>Blue, Black</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/black_jacket_small.jpg" alt="Black Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Hail Storm</p>
-                <p>Blue, Red, Black</p>
-                <p>£50.00</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof II Jacket</h3>
-              <div>
-                <p>Peter Storm</p>
-                <p>Red, Black, Yellow</p>
-                <p>£50.00</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/green_jacket_small.jpg" alt="Green Jacket" />
-              </a>
-              <h3>Women's Water-Resistant Jacket</h3>
-              <div>
-                <p>Snow Storm</p>
-                <p>Green</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Mountain Gear</p>
-                <p>Blue, Black</p>
-                <p>£44.99</p>
-              </div>
-            </div>
-            <div class="product-item">
-              <a href="product.html">
-                <div class="overlay"></div>
-                <img src="images/products/black_jacket_small.jpg" alt="Black Jacket" />
-              </a>
-              <h3>Men's Zip Down Waterproof I Jacket</h3>
-              <div>
-                <p>Hail Storm</p>
-                <p>Blue, Red, Black</p>
-                <p>£50.00</p>
-              </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="centre-page-list">
@@ -428,5 +293,6 @@
         </div>
       </section>
     </footer>
+    <script src="js/products.js" type="module"></script>
   </body>
 </html>

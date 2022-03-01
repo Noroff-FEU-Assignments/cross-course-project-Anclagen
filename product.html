@@ -24,10 +24,9 @@
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
               <li><a href="index.html">Home</a></li>
-              <li><a href="products.html">Sale</a></li>
-              <li><a href="products.html">Men</a></li>
-              <li><a href="products.html">Women</a></li>
-              <li><a href="products.html">Kid</a></li>
+              <li><a href="products.html?on_sale=true">Sale</a></li>
+              <li id="current"><a href="products.html?sex=men">Men</a></li>
+              <li><a href="products.html?sex=women">Women</a></li>
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
             </ul>
@@ -80,8 +79,8 @@
       <section>
         <div class="product-page-container">
           <div class="product-image-container">
-            <div>
-              <div>
+            <div class="images-container">
+              <!-- <div>
                 <input type="radio" name="image-selector" id="red-jacket" value="red-jacket" checked="checked" />
                 <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
               </div>
@@ -92,10 +91,10 @@
               <div>
                 <input type="radio" name="image-selector" id="black-jacket" value="black-jacket" />
                 <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
-              </div>
+              </div> -->
             </div>
             <div class="product-thumbnails">
-              <label for="red-jacket" class="checked">
+              <!-- <label for="red-jacket" class="checked">
                 <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
               </label>
               <label for="yellow-jacket" class="checked">
@@ -103,30 +102,30 @@
               </label>
               <label for="black-jacket" class="checked">
                 <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
-              </label>
+              </label> -->
             </div>
           </div>
           <div class="product-specification-selection">
             <h2>Product Specification</h2>
 
-            <h3>
-              Price:
+            <h3 class="price-container">
+              <!-- Price:
               <span class="sale-price">£50.00</span>
               <span class="previous-price">£74.99</span>
-              <span class="save-price">Save £24.99</span>
+              <span class="save-price">Save £24.99</span> -->
             </h3>
 
             <form action="cart.html" method="get">
               <div class="colour-selection">
                 <label for="colour">Choose Your Colour:</label>
                 <select name="colour" id="colour">
-                  <option value="red">Red</option>
+                  <!-- <option value="red">Red</option>
                   <option value="yellow">Yellow</option>
-                  <option value="black">Black</option>
+                  <option value="black">Black</option> -->
                 </select>
               </div>
               <div class="size-selection">
-                <p>Choose Your Size:</p>
+                <!-- <p>Choose Your Size:</p>
                 <input type="radio" name="size" id="small" value="small" class="input-checked" />
                 <label for="small" class="label-checked">S</label>
                 <input type="radio" name="size" id="medium" value="medium" checked="checked" />
@@ -138,12 +137,12 @@
                 <input type="radio" name="size" id="xx-large" value="xx-large" />
                 <label for="xx-large">XXL</label>
                 <input type="radio" name="size" id="3x-large" value="3x-large" />
-                <label for="3x-large">3XL</label>
+                <label for="3x-large">3XL</label> -->
               </div>
               <div>
                 <h3>Product Details</h3>
-                <ul>
-                  <li>
+                <ul class="product-details-container">
+                  <!-- <li>
                     <span class="details-title">Hooded Jacket</span>
                     - 100% Waterproof lightweight jacket, keeping you dry at all times.
                   </li>
@@ -158,7 +157,7 @@
                   <li>
                     <span class="details-title">Activities</span>
                     - Men's waterproof jacket great for camping, hiking, walking, mountaineering, and many other outdoor activities.
-                  </li>
+                  </li> -->
                 </ul>
               </div>
               <div class="button-container">
@@ -177,7 +176,7 @@
       <section class="further-details product-page-container">
         <div>
           <h2>Product Specification</h2>
-          <ul>
+          <ul class="product-specification-container">
             <li>Material: 100% Nylon Shell, 60% Polyester 40% Cotton interior lining</li>
             <li>Fit: Regular-Stretch</li>
             <li>Style: Hooded</li>
@@ -237,7 +236,7 @@
       <section>
         <h2>Related Jackets</h2>
         <div class="product-list-grid">
-          <div class="product-item">
+          <!-- <div class="product-item">
             <a href="product.html">
               <div class="overlay"></div>
               <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
@@ -283,7 +282,7 @@
               <p>Hail Storm</p>
               <p>Blue, Red, Black</p>
               <p>£50.00</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -333,5 +332,6 @@
         </div>
       </section>
     </footer>
+    <script src="js/product.js" type="module"></script>
   </body>
 </html>
