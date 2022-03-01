@@ -19,7 +19,12 @@ if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
 } 
 
 //initial page list for sale/men/women
-const initialFilteredList = products.filter(filterSexSale);
+let initialFilteredList = [];
+if (saleOn === null && sex === null){
+  initialFilteredList = products;
+}else {
+  initialFilteredList = products.filter(filterSexSale);
+};
 
 
 //trying to assign event listener to all checkboxes
