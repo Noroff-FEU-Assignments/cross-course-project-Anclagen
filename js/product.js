@@ -86,7 +86,7 @@ for (let i = 0; i < product.product_details.length; i++){
   productSpecification += `<li>${specs}</li>`;
 }
 
-function createHTML(data){
+async function createHTML(data){
   headingContainer.innerHTML = data.name;
   priceContainer.innerHTML = `Price: ${price}`;
   colourSelector.innerHTML = colourSelections;
@@ -107,7 +107,6 @@ if(product.sex === "men"){
   for (let i=0; i < products.length; i++){
     if(products[i].sex === "men" && products[i].id !== product.id){
       j = j + 1; 
-      console.log(j);
       if(j > 4){break}
       relatedProducts += `<div class="product-item">
                             <a href="product.html?id=${products[i].id}">
@@ -129,7 +128,6 @@ if(product.sex === "men"){
     if(products[i].sex === "women" && products[i].id !== product.id){
       j = j + 1; 
       if(j > 4){break}
-      console.log(j);
       relatedProducts += `<div class="product-item">
                             <a href="product.html?id=${products[i].id}">
                               <div class="overlay"></div>
@@ -149,3 +147,36 @@ relatedProductsContainer.innerHTML = relatedProducts;
 }
 
 createRelatedProducts();
+
+//add product to local storage
+
+function submitItemDetails(submission){
+  submission.preventDefault();
+  submitProductToLocalStorage();
+}
+
+function submitProductToLocalStorage(){
+
+  const colourSelected = document.querySelector("#colour");
+  const sizeRadioButtons = document.querySelector(".input-checked:checked");
+  const quantityInput = document.querySelector("#quantity");
+  const getCart = JSON.parse(localStorage.getItem("cart"));
+  let item = [];
+  
+  if (getCart !== null){
+    item = getCart;
+  }
+
+  let colour = colourSelected.value;
+  let size = sizeRadioButtons.value;
+  let quantity = quantityInput.value;
+  let currentItem = [idNumber, colour, size, quantity];
+
+  item.push(currentItem);
+
+  localStorage.setItem("cart", JSON.stringify(item));
+}
+
+
+const productForm = document.querySelector(".product-form");
+productForm.addEventListener("submit", submitItemDetails)

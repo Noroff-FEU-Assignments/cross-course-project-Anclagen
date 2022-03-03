@@ -91,88 +91,41 @@
         <div class="product-page-container">
           <div class="product-image-container">
             <div class="images-container">
-              <!-- <div>
-                <input type="radio" name="image-selector" id="red-jacket" value="red-jacket" checked="checked" />
-                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-              </div>
-              <div>
-                <input type="radio" name="image-selector" id="yellow-jacket" value="yellow-jacket" />
-                <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" />
-              </div>
-              <div>
-                <input type="radio" name="image-selector" id="black-jacket" value="black-jacket" />
-                <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
-              </div> -->
+              <!-- JS adds radio inputs and images to flick between -->
             </div>
             <div class="product-thumbnails">
-              <!-- <label for="red-jacket" class="checked">
-                <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-              </label>
-              <label for="yellow-jacket" class="checked">
-                <img src="images/products/yellow_jacket_small.jpg" alt="Yellow Jacket" />
-              </label>
-              <label for="black-jacket" class="checked">
-                <img src="images/products/black_rain_jacket_small.jpg" alt="Black Jacket" />
-              </label> -->
+              <!-- JS adds thumbnail images as radio button labels -->
             </div>
           </div>
           <div class="product-specification-selection">
             <h2>Product Specification</h2>
 
             <h3 class="price-container">
-              <!-- Price:
-              <span class="sale-price">£50.00</span>
-              <span class="previous-price">£74.99</span>
-              <span class="save-price">Save £24.99</span> -->
+              <!-- Js adds prices -->
             </h3>
 
-            <form action="cart.html" method="get">
+            <form action="" method="get" class="product-form">
               <div class="colour-selection">
                 <label for="colour">Choose Your Colour:</label>
                 <select name="colour" id="colour">
-                  <!-- <option value="red">Red</option>
-                  <option value="yellow">Yellow</option>
-                  <option value="black">Black</option> -->
+                  <!-- Js adds colour options -->
                 </select>
               </div>
               <div class="size-selection">
-                <!-- <p>Choose Your Size:</p>
-                <input type="radio" name="size" id="small" value="small" class="input-checked" />
-                <label for="small" class="label-checked">S</label>
-                <input type="radio" name="size" id="medium" value="medium" checked="checked" />
-                <label for="medium">M</label>
-                <input type="radio" name="size" id="large" value="large" />
-                <label for="large">L</label>
-                <input type="radio" name="size" id="x-large" value="x-large" />
-                <label for="x-large">XL</label>
-                <input type="radio" name="size" id="xx-large" value="xx-large" />
-                <label for="xx-large">XXL</label>
-                <input type="radio" name="size" id="3x-large" value="3x-large" />
-                <label for="3x-large">3XL</label> -->
+                <!-- JS adds radio buttons for available sizes -->
+              </div>
+              <div class="quantity">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity">
               </div>
               <div>
                 <h3>Product Details</h3>
                 <ul class="product-details-container">
-                  <!-- <li>
-                    <span class="details-title">Hooded Jacket</span>
-                    - 100% Waterproof lightweight jacket, keeping you dry at all times.
-                  </li>
-                  <li>
-                    <span class="details-title">Adjustable</span>
-                    - With draw cords on waist, arms and hood.
-                  </li>
-                  <li>
-                    <span class="details-title">Multiple Pockets</span>
-                    - Waterproof zippers on 2 hand pockets, and 2 internal pockets.
-                  </li>
-                  <li>
-                    <span class="details-title">Activities</span>
-                    - Men's waterproof jacket great for camping, hiking, walking, mountaineering, and many other outdoor activities.
-                  </li> -->
+                  <!-- JS fills product details-->
                 </ul>
               </div>
               <div class="button-container">
-                <input type="submit" value="Add To Cart" class="cta" />
+                <input type="submit" value="Add To Cart" class="cta" id="submit-product"/>
               </div>
             </form>
             <h2>Delivery</h2>
