@@ -1,12 +1,12 @@
 import products from "./data/data.js";
+import {checkCart} from "./data/components.js"
+checkCart();
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const idNumber = Number(id) - 1;
 const product = products[idNumber];
-
-console.log(product);
 
 //selectors for page containers
 const headingContainer = document.querySelector("h1");
@@ -45,14 +45,16 @@ let checked = "";
 for (let i = 0; i < product.images.length; i++){
   let imageSRC = product.images[i].src
   let imageAlt = product.images[i].alt
+
   if(i === 0){
-    checked = ` checked="checked"`;
+    checked = `checked="checked"`;
   } else{
     checked = "";
   }
+
   let imageIDLowerCase = product.images[i].alt.replace(/ /g,"-").toLowerCase();
   productImage += `<div>
-                    <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase}${checked} />
+                    <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
                     <img src=${imageSRC} alt=${imageAlt} />
                   </div>`;
 
@@ -101,54 +103,30 @@ createHTML(product);
 
 // related products
 function createRelatedProducts() {
-let relatedProducts = ""
-if(product.sex === "men"){
-  let j = 0;
-  for (let i=0; i < products.length; i++){
-    if(products[i].sex === "men" && products[i].id !== product.id){
-      j = j + 1; 
-      if(j > 4){break}
-      relatedProducts += `<div class="product-item">
-                            <a href="product.html?id=${products[i].id}">
-                              <div class="overlay"></div>
-                              <img src="${products[i].images[0].src}" alt="${products[i].images[0].alt}" />
-                            </a>
-                            <h3>${products[i].name}</h3>
-                            <div>
-                              <p>${products[i].brand}</p>
-                              <p>${products[i].colours}</p>
-                              <p>£${products[i].price[0]}</p>
-                            </div>
-                          </div>`
-    }
+  let relatedProducts = ""
+  let related = products.filter(products => products.id !== product.id && products.sex === product.sex).slice(0, 4);
+  
+  for (let i=0; i < related.length; i++){
+    relatedProducts += `<div class="product-item">
+                          <a href="product.html?id=${related[i].id}">
+                            <div class="overlay"></div>
+                            <img src="${related[i].images[0].src}" alt="${products[i].images[0].alt}" />
+                          </a>
+                          <h3>${related[i].name}</h3>
+                          <div>
+                            <p>${related[i].brand}</p>
+                            <p>${related[i].colours}</p>
+                            <p>£${related[i].price[0]}</p>
+                          </div>
+                        </div>`
   }
-} else {
-  let j = 0;
-  for (let i=0; i < products.length; i++){
-    if(products[i].sex === "women" && products[i].id !== product.id){
-      j = j + 1; 
-      if(j > 4){break}
-      relatedProducts += `<div class="product-item">
-                            <a href="product.html?id=${products[i].id}">
-                              <div class="overlay"></div>
-                              <img src="${products[i].images[0].src}" alt="${products[i].images[0].alt}" />
-                            </a>
-                            <h3>${products[i].name}</h3>
-                            <div>
-                              <p>${products[i].brand}</p>
-                              <p>${products[i].colours}</p>
-                              <p>£${products[i].price[0]}</p>
-                            </div>
-                          </div>`
-    }
-  }
-}
-relatedProductsContainer.innerHTML = relatedProducts;
+
+  relatedProductsContainer.innerHTML = relatedProducts;
 }
 
 createRelatedProducts();
 
-//add product to local storage
+//add product to local storage/ cart
 
 function submitItemDetails(submission){
   submission.preventDefault();

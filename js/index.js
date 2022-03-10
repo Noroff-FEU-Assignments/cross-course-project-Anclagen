@@ -1,4 +1,6 @@
 import products from "./data/data.js";
+import {checkCart} from "./data/components.js"
+checkCart();
 
 const bestSellersContainer = document.querySelector(".product-list-grid")
 

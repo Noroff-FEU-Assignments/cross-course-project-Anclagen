@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Barrett" />
-    <title>Rainydays | Browse Men's Jackets</title>
+    <title>Rainydays | Browse All Jackets</title>
     <meta name="description" content="Browsing our selection of men's jackets. With jackets for to suit a wide range of outdoor activities" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +73,7 @@
           </li>
           <!--Cart-->
           <li class="main-nav-cart">
-            <a href="cart.html">
+            <a href="cart.html" id="cart">
               <img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" />
               <span class="desktop-nav">Cart</span>
             </a>
@@ -92,7 +92,7 @@
         <a onclick="history.back()">&#60; previous page</a>
       </div>
       <section>
-        <h1 id="heading">Men's Jackets</h1>
+        <h1>Men's Jackets</h1>
         <div class="products-lists-layout">
           <div class="filter">
             <label class="filter-label" for="filter-drop-down">Filter</label>
@@ -174,31 +174,23 @@
                   <li><h3>Colour</h3></li>
                   <li>
                     <label for="black">Black</label>
-                    <input type="checkbox" id="black" name="black" key="colours" />
+                    <input type="checkbox" id="black" name="Black" key="colours" />
                   </li>
                   <li>
                     <label for="blue">Blue</label>
-                    <input type="checkbox" id="blue" name="blue" key="colours" />
-                  </li>
-                  <li>
-                    <label for="brown">Brown</label>
-                    <input type="checkbox" id="brown" name="brown" key="colours" />
+                    <input type="checkbox" id="blue" name="Blue" key="colours" />
                   </li>
                   <li>
                     <label for="green">Green</label>
-                    <input type="checkbox" id="green" name="green" key="colours" />
-                  </li>
-                  <li>
-                    <label for="grey">Grey</label>
-                    <input type="checkbox" id="grey" name="grey" key="colours" />
+                    <input type="checkbox" id="green" name="Green" key="colours" />
                   </li>
                   <li>
                     <label for="red">Red</label>
-                    <input type="checkbox" id="red" name="red" key="colours" />
+                    <input type="checkbox" id="red" name="Red" key="colours" />
                   </li>
                   <li>
                     <label for="yellow">Yellow</label>
-                    <input type="checkbox" id="yellow" name="yellow" key="colours" />
+                    <input type="checkbox" id="yellow" name="Yellow" key="colours" />
                   </li>
                 </ul>
               </li>
@@ -207,23 +199,23 @@
                   <li><h3>Price</h3></li>
                   <li>
                     <label for="39-less">£39.99 or less</label>
-                    <input type="checkbox" id="39-less" name="39-less" key="price" />
+                    <input type="checkbox" id="39-less" name="[0, 39.99]" key="price" />
                   </li>
                   <li>
                     <label for="40-59">£40.00-£59.99</label>
-                    <input type="checkbox" id="40-59" name="40-59" key="price" />
+                    <input type="checkbox" id="40-59" name="[40, 59.99]" key="price" />
                   </li>
                   <li>
                     <label for="60-79">£60.00-£79.99</label>
-                    <input type="checkbox" id="60-79" name="60-79" key="price" />
+                    <input type="checkbox" id="60-79" name="[60, 79.99]" key="price" />
                   </li>
                   <li>
                     <label for="80-99">£80.00-£99.99</label>
-                    <input type="checkbox" id="80-99" name="80-99" key="price" />
+                    <input type="checkbox" id="80-99" name="[80, 99.99]" key="price" />
                   </li>
                   <li>
                     <label for="100-more">£100.00 or more</label>
-                    <input type="checkbox" id="100-more" name="100-more" key="price" />
+                    <input type="checkbox" id="100-more" name="[100, 1000]" key="price" />
                   </li>
                 </ul>
               </li>
