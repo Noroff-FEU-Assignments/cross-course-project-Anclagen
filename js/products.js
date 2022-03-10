@@ -17,7 +17,7 @@ console.log(sex)
 //filters for sex and sale
 function filterSexSale(data){
 if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
-  title.innerText = `Rainydays | Browse Sale Jackets`
+    title.innerText = `Rainydays | Browse Sale Jackets`
     h1.innerText = "Sale Items";
     return true;
   } else if (sex === data.sex){

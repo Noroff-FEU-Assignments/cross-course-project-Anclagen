@@ -1,4 +1,6 @@
 import products from "./data/data.js";
+import {checkCart} from "./data/components.js"
+checkCart();
 
 const cartItemsContainer = document.querySelector(".cart-items");
 const subtotalContainer = document.querySelector(".subtotal");

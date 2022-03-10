@@ -131,6 +131,7 @@ createRelatedProducts();
 function submitItemDetails(submission){
   submission.preventDefault();
   submitProductToLocalStorage();
+  checkCart();
 }
 
 function submitProductToLocalStorage(){
