@@ -177,6 +177,22 @@ nav input {
   border: none;
 }
 
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.success {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+.success p {
+  text-align: center;
+  margin: 10px 10px;
+}
+
 /*because safari is annoying!*/
 header input,
 footer input,

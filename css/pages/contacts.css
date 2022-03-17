@@ -31,3 +31,23 @@ input {
 section.contact-form input.cta {
   margin: 20px 0;
 }
+
+.error {
+  min-height: 1rem;
+}
+
+#fullname {
+  max-width: 20rem;
+}
+
+#email {
+  max-width: 25rem;
+}
+
+#subject {
+  max-width: 15rem;
+}
+
+#order-number {
+  max-width: 7.75rem;
+}
