@@ -101,6 +101,106 @@ async function createHTML(data){
 
 createHTML(product);
 
+
+
+//add product to local storage/ cart
+
+function submitItemDetails(submission){
+  submission.preventDefault();
+  
+  submitProductToLocalStorage();
+}
+
+function submitProductToLocalStorage(){
+
+  const colourSelected = document.querySelector("#colour");
+  const sizeRadioButtons = document.querySelector(".input-checked:checked");
+  const quantityInput = document.querySelector("#quantity");
+  const getCart = JSON.parse(localStorage.getItem("cart"));
+  const errorSelectSize = document.querySelector(".select-size-error");
+
+  let item = [];
+
+  if(sizeRadioButtons){
+    if (getCart !== null){
+    item = getCart;
+    }
+    let colour = colourSelected.value;
+    let size = sizeRadioButtons.value;
+    let quantity = quantityInput.value;
+    let currentItem = [idNumber, colour, size, quantity];
+    item.push(currentItem);
+    localStorage.setItem("cart", JSON.stringify(item));
+    errorSelectSize.innerText = "";
+    createSuccessLightbox (colour, size, quantity);
+  } else {
+    errorSelectSize.innerText = "Please select a size.";
+  }
+  
+}
+
+function createSuccessLightbox (colour, size, quantity){
+
+  checkCart();
+
+  const lightboxPageContainer = document.querySelector("#lightbox-container");
+
+  //creating required elements
+  const lightboxContainer = document.createElement("div");
+  lightboxContainer.classList = "lightbox-background";
+
+  const contentContainer = document.createElement("div");
+  contentContainer.classList = "lightbox-content";
+
+  const h2 = document.createElement("h2");
+  h2.innerText = "Success, added to cart.";
+
+  const h3 = document.createElement("h3");
+  h3.innerText = product.name;
+
+  const imageDiv = document.createElement("div");
+  imageDiv.innerHTML = productImage;
+
+  const colourP = document.createElement("p");
+  colourP.innerText = "Colour: " + colour;
+
+  const sizeP = document.createElement("p");
+  sizeP.innerText = "Size: " + size.toUpperCase();
+
+  const quantityP = document.createElement("p");
+  quantityP.innerText = "Quantity: " + quantity;
+
+  const buttonDiv = document.createElement("div");
+  buttonDiv.classList = "lightbox-button-container";
+
+  const cartLink = document.createElement("button");
+  cartLink.innerText = "Go to cart";
+  cartLink.classList = "cta cta-green";
+  cartLink.addEventListener("click", function gotoCart(){window.location.href="cart.html";});
+
+  const continueShoppingLink = document.createElement("button");
+  continueShoppingLink.innerText = "Close";
+  continueShoppingLink.classList = "cta";
+  continueShoppingLink.addEventListener("click", function removeLightbox(){lightboxPageContainer.innerHTML = "";});
+
+  //adding to light box container
+  lightboxPageContainer.appendChild(lightboxContainer);
+  lightboxContainer.appendChild(contentContainer);
+  contentContainer.appendChild(h2);
+  contentContainer.appendChild(h3);
+  contentContainer.appendChild(imageDiv);
+  contentContainer.appendChild(colourP);
+  contentContainer.appendChild(sizeP);
+  contentContainer.appendChild(quantityP);
+  contentContainer.appendChild(buttonDiv);
+  buttonDiv.appendChild(continueShoppingLink);
+  buttonDiv.appendChild(cartLink);
+
+}
+
+const productForm = document.querySelector(".product-form");
+productForm.addEventListener("submit", submitItemDetails)
+
 // related products
 function createRelatedProducts() {
   let relatedProducts = ""
@@ -125,37 +225,3 @@ function createRelatedProducts() {
 }
 
 createRelatedProducts();
-
-//add product to local storage/ cart
-
-function submitItemDetails(submission){
-  submission.preventDefault();
-  submitProductToLocalStorage();
-  checkCart();
-}
-
-function submitProductToLocalStorage(){
-
-  const colourSelected = document.querySelector("#colour");
-  const sizeRadioButtons = document.querySelector(".input-checked:checked");
-  const quantityInput = document.querySelector("#quantity");
-  const getCart = JSON.parse(localStorage.getItem("cart"));
-  let item = [];
-  
-  if (getCart !== null){
-    item = getCart;
-  }
-
-  let colour = colourSelected.value;
-  let size = sizeRadioButtons.value;
-  let quantity = quantityInput.value;
-  let currentItem = [idNumber, colour, size, quantity];
-
-  item.push(currentItem);
-
-  localStorage.setItem("cart", JSON.stringify(item));
-}
-
-
-const productForm = document.querySelector(".product-form");
-productForm.addEventListener("submit", submitItemDetails)

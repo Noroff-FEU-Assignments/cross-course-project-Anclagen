@@ -15,7 +15,6 @@ let totalPrice = 0;
 function createCartHtml(){
   cartItemsContainer.innerHTML = "";
   
-
   if (cartItems[0] !== undefined){
    for(let i = 0; i < cartItems.length; i++){
       let index = cartItems[i][0];
@@ -61,7 +60,7 @@ function createCartHtml(){
       h2.textContent = `${brand} -${name}`;
       pSize.textContent = `Size: ${size}`;
       pColour.textContent = `Colour: ${colour}`;
-      pPrice.textContent = `Price: ${price}`;
+      pPrice.textContent = `Price: £${price}`;
       pQuantity.innerHTML = `Quantity: ${quantity}`;
       btnRemove.textContent = "remove";
 
@@ -75,38 +74,11 @@ function createCartHtml(){
       detailsItem.appendChild(pPrice);
       detailsItem.appendChild(pQuantity);
       detailsItem.appendChild(btnRemove);
-
-      // cartItemsContainer.innerHTML += `<div class="cart-product-item-grid">
-      //                                   <div><img src=${imageSrc} alt=${imageAlt} /></div>
-      //                                   <div>
-      //                                     <h2>${brand} -${name}</h2>
-      //                                     <p>Size: ${size}</p>
-      //                                     <p>Colour: ${colour}</p>
-      //                                     <p>Price: ${price}</p>
-      //                                     <p>
-      //                                       Quantity: ${quantity}
-      //                                       <button class="remove-button btn${i}">Remove</button>
-      //                                     </p>
-      //                                   </div>
-      //                                 </div>
-      //                                 <hr />`
-      
-      
-
-      // let currentBtn = `"btn${i}"`;
-      // let removeBtn = document.querySelector(currentBtn);
-
-      // function currentItemToRemove(){
-      //   removeItem(i);
-      // }
-      
-      // removeBtn.addEventListener("onclick", currentItemToRemove(){removeItem(i)})
     }
-
-
   } else{
     cartItemsContainer.innerHTML = "<p>Nothing in cart</p>"
   }
+
   let subtotal = totalPrice * 0.875;
   let vat = totalPrice * 0.125;
   //js does some random math some times fixed to 2 dp.
@@ -156,6 +128,7 @@ function removeItem(index){
   cartItems.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems));
   createCartHtml();
+  checkCart();
 }
 
 
