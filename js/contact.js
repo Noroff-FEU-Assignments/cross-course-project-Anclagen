@@ -18,7 +18,7 @@ const successContainer = document.querySelector(".success");
 
 // return grey borders on form submission
 function resetBorders(input){
-  input.style.border = "2px solid grey"
+  input.style.border = "2px solid grey";
 }
 
 //validate form
@@ -43,8 +43,8 @@ function validateContactForm(submission){
   //if all variables true form submitted and success div displayed 
   if(a && b && c && d && e) {
     successContainer.classList.add("main-item");
-    successContainer.innerHTML = "<p>Success, your query has been submitted.</p>"
-    //scrolls to success container on submit.
+    successContainer.innerHTML = "<p>Success, your query has been submitted.</p>";
+    //scrolls to success container on submit. useful for phones
 
     successContainer.scrollIntoView();
     contactForm.reset();
