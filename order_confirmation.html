@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/pages/order_confirmation.css" />
+    <script src="js/order_confirmation.js" type="module" defer></script>
     <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
     <script>
       (function (h, o, t, j, a, r) {
@@ -99,20 +100,13 @@
       <h1>Order Summary</h1>
       <section>
         <h2>Delivery address</h2>
-        <address>
-          Rain Maker
-          <br />
-          24 Blue Meadow Drive
-          <br />
-          Hertford
-          <br />
-          QD5 Y87
-          <br />
-          UK
-        </address>
-        <p>A copy of your invoice will be sent to The_Rain_Maker@Rainydays.com</p>
+        <address></address>
+        <p>
+          A copy of your invoice will be sent to
+          <span class="email-container">The_Rain_Maker@Rainydays.com</span>
+        </p>
         <h2>Payment Type</h2>
-        <p>Visa/Credit Card ending in: 3456</p>
+        <p id="payment-type">Visa/Credit Card ending in:</p>
         <h2>Items</h2>
         <table>
           <tr>
@@ -120,23 +114,14 @@
             <th>Quantity</th>
             <th>Price</th>
           </tr>
-          <tr>
-            <td class="product-name"><a href="product.html">Peter Storm - Men's Zip Down Waterproof II Jacket</a></td>
-            <td>1</td>
-            <td>£50.00</td>
-          </tr>
-          <tr>
-            <td class="product-name"><a href="product.html">Peter Storm - Men's Zip Down Waterproof II Jacket</a></td>
-            <td>1</td>
-            <td>£50.00</td>
-          </tr>
         </table>
         <h2>Delivery</h2>
-        <p>Standard 3-5 days £0.00</p>
+        <p id="delivery-type"></p>
         <h2>Total Price</h2>
-        <p>£100.00</p>
+        <p id="total-price">£0.00</p>
         <div class="button-container">
-          <a href="order_success.html" class="cta">Place Order</a>
+          <button class="cta">Place Order</button>
+          <!-- <a href="order_success.html" class="cta">Place Order</a> -->
         </div>
       </section>
     </main>

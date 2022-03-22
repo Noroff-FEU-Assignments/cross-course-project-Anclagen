@@ -8,6 +8,7 @@ const deliveryContainer = document.querySelector(".delivery");
 const vatContainer = document.querySelector(".vat");
 const totalPriceContainer = document.querySelector(".total");
 const form = document.querySelector("#delivery-type");
+const submitBtn = document.querySelector("#submit-btn");
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 let deliveryPrice = 0;
 let totalPrice = 0;
@@ -76,6 +77,7 @@ function createCartHtml(){
       detailsItem.appendChild(btnRemove);
     }
   } else{
+    submitBtn.disabled = true;
     cartItemsContainer.innerHTML = "<p>Nothing in cart</p>"
   }
 
@@ -94,9 +96,8 @@ const expressDeliveryBtn = document.querySelector("#express-delivery");
 const nextDayDeliveryBtn = document.querySelector("#next-day-delivery");
 const deliveryRadioBtns = document.querySelectorAll('input[type="radio"]');
 
-deliveryRadioBtns.forEach(function(e){
-  e.addEventListener("click", updateDeliveryPrice);
-  console.log(e)
+deliveryRadioBtns.forEach(function(event){
+  event.addEventListener("click", updateDeliveryPrice);
 })
 
 
@@ -138,9 +139,11 @@ createCartHtml()
 
 
 // add relevant details to a local storage value for use later, and go to next page
+
 form.addEventListener("submit", submitAndPay);
 
 function submitAndPay(submit){
+  updateDeliveryPrice();
   submit.preventDefault();
   localStorage.setItem("delivery", JSON.stringify(deliveryDetails))
   window.location = "details_checkout.html"

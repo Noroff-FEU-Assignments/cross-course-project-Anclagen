@@ -1,5 +1,13 @@
 {
   "liveServer.settings.port": 5501,
   "prettier.htmlWhitespaceSensitivity": "ignore",
-  "cSpell.words": ["Btns", "fadein", "fullname", "lightbox", "oneclick", "signup"]
+  "cSpell.words": [
+    "Btns",
+    "fadein",
+    "fullname",
+    "lightbox",
+    "MMYY",
+    "oneclick",
+    "signup"
+  ]
 }

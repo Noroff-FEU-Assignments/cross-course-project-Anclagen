@@ -48,7 +48,10 @@ let filteredList = [];
 checkboxes.forEach(function(checkbox) {
   //assign event listener to all checkboxes
   checkbox.addEventListener('change', function() {
+    //create an array with category(key) and name from each checkbox when any check box is checked
     filterSettings = Array.from(checkboxes).filter(i => i.checked).map(i => [i.getAttribute("key"), i.name]);
+
+    //sorts the array into an object with keys for all categories, and arrays of the values
     filter = {category:[], brand:[], sizes:[], colours:[], price:[]};
     for (let i = 0; i < filterSettings.length; i++){
       if(filterSettings[i][0] === "category"){
@@ -61,7 +64,8 @@ checkboxes.forEach(function(checkbox) {
         filter.colours.push(filterSettings[i][1]);
       } else if(filterSettings[i][0] === "price"){
         filter.price.push(JSON.parse(filterSettings[i][1]));
-      }
+      } //else if required in case other checkboxes checked.
+
     }
 
       filteredList = createFilteredArray(filter, initialFilteredList);
@@ -72,9 +76,8 @@ checkboxes.forEach(function(checkbox) {
   
 });
 
-let arrr = [0, 39.99];
-console.log(JSON.stringify(arrr))
 
+// creates a new list of products based on the initial list and the filter settings
 function createFilteredArray(filter, initialFilteredList){
   let list = [];
 
@@ -92,6 +95,7 @@ function createFilteredArray(filter, initialFilteredList){
     }
   }
 
+  //uses filters out results based on filter object settings
   for(let i = 0; i < initialFilteredList.length; i++){
     if (filter.category.length === 0 || compareArrays(initialFilteredList[i].category, filter.category)){
       if (filter.brand.length === 0 || filter.brand.includes(initialFilteredList[i].brand)){

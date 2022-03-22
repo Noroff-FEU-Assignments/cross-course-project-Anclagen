@@ -42,6 +42,12 @@ input[type="number"] {
   border-radius: 5px;
 }
 
+input[type="submit"]:disabled {
+  background-color: grey;
+  border-color: grey;
+  opacity: 0.3;
+}
+
 @media only screen and (min-width: 700px) {
   .cart-product-item-grid {
     display: grid;

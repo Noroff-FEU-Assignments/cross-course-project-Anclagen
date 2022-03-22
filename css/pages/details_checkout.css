@@ -6,6 +6,7 @@
 
 .payment-security-code {
   display: block;
+  margin-bottom: 20px;
 }
 
 .payment-details-form label {
@@ -29,13 +30,13 @@
 
 #expiration-date-month,
 #expiration-date-year {
-  max-width: 20px;
+  max-width: 1.1rem;
   margin-right: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 #security-code {
-  max-width: 25px;
+  max-width: 2rem;
 }
 
 .security-expiration-grid {
@@ -44,6 +45,47 @@
   gap: 25px;
   margin-top: 20px;
 }
+
 div.security-expiration-grid div + label {
   margin-bottom: 50px;
+}
+
+#first-name,
+#last-name {
+  max-width: 13rem;
+}
+
+#town-city {
+  max-width: 8rem;
+}
+
+#post-code {
+  max-width: 6rem;
+}
+
+#country {
+  max-width: 9rem;
+}
+
+#email,
+#name-card {
+  max-width: 20rem;
+}
+
+#card-number {
+  max-width: 10rem;
+}
+
+.remember-details {
+  position: relative;
+}
+
+.remember-details label {
+  position: absolute;
+  top: 3px;
+  left: 30px;
+}
+
+.disabled {
+  opacity: 0.2;
 }

@@ -118,12 +118,24 @@ div.page-bread-crumbs {
 
 /*Hidden for small screens and hamburgers*/
 .desktop-nav-account,
-#menu-drop-down,
-#search-drop-down,
 .desktop-nav,
 .desktop-logo,
 .main-nav-contact {
   display: none;
+}
+
+/*visually hidden*/
+#search-drop-down,
+#menu-drop-down {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /*button colours and styles*/
@@ -179,7 +191,7 @@ nav input {
 
 .error {
   color: red;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .success {

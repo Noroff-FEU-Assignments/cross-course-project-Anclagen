@@ -1,3 +1,4 @@
+// --- Icon Status Updates (cart, account) ---
 
 // updates cart status on pages
 export function checkCart(){
@@ -14,8 +15,9 @@ export function checkCart(){
       cartContainer.innerHTML = `<img src="images/interface_and_logo/empty_cart_icon_1@2x.png" alt="Cart Empty" class="navigation-icons" /> <span class="desktop-nav">Cart</span>`;
     }
   }
-
 }
+
+// --- Input Validations ---
 
 //validates text inputs
 export function validatedInputLength(input, length, errorContainer) {
@@ -38,8 +40,16 @@ export function validatedNumberInputLength(input, length, errorContainer){
     input.style.border ="2px solid green";
     return true;
   } else {
-    errorContainer.innerText = "Please enter a 12 digit order number."
+    errorContainer.innerText = `Please enter a ${length} digit number.`
     input.style.border ="2px solid red";
+  }
+}
+
+// validate date input
+export function validateDateMMYY(mm, yy, error){
+  if(validatedNumberInputLength(mm, 2, error) && validatedNumberInputLength(yy, 2, error)){
+
+    return true;
   }
 }
 
@@ -55,4 +65,10 @@ export function validateEmailInput(email, errorContainer) {
     errorContainer.innerText = `Please enter a valid email address`;
     email.style.border ="2px solid red";
   }
+}
+
+// --- Content Creators ---
+
+export function createAddressText(){
+  
 }

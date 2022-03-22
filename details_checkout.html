@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/pages/details_checkout.css" />
+    <script src="js/details_checkout.js" type="module" defer></script>
     <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
     <script>
       (function (h, o, t, j, a, r) {
@@ -96,28 +97,36 @@
         </p>
       </div>
       <h1>Your Details</h1>
-      <form action="order_confirmation.html" method="get">
+      <form id="details-form" action="order_confirmation.html" method="get">
         <div class="two-column-grid">
           <section class="delivery-details">
             <h2 class="remove-margin-bottom">Delivery Details</h2>
 
             <div class="payment-details-form">
               <label for="first-name">First Name*</label>
-              <input type="text" id="first-name" name="first-name" value="Rain" required />
+              <input type="text" id="first-name" name="first-name" value="Rain" />
+              <div class="error" id="error-first-name"></div>
               <label for="last-name">Last Name*</label>
-              <input type="text" id="last-name" name="last-name" value="Maker" required />
+              <input type="text" id="last-name" name="last-name" value="Maker" />
+              <div class="error" id="error-last-name"></div>
               <label for="address-1">Address Line 1*</label>
-              <input type="text" id="address-1" name="address-1" value="24 Blue Meadow Drive " required />
+              <input type="text" id="address-1" name="address-1" value="24 Blue Meadow Drive " />
+              <div class="error" id="error-address-1"></div>
               <label for="address-2">Address Line 2</label>
               <input type="text" id="address-2" name="address-2" />
+              <!-- <div class="error" id="error-address-2"></div> -->
               <label for="town-city">Town/City*</label>
-              <input type="text" id="town-city" name="town-city" value="Hertford" required />
-              <label for="post-code">Post Code</label>
-              <input type="text" id="post-code" name="post-code" value="QD5 Y87" required />
+              <input type="text" id="town-city" name="town-city" value="Hertford" />
+              <div class="error" id="error-town-city"></div>
+              <label for="post-code">Post Code / Area Code</label>
+              <input type="text" id="post-code" name="post-code" value="QD5 Y87" />
+              <div class="error" id="error-post-code"></div>
               <label for="country">Country</label>
-              <input type="text" id="country" name="country" value="UK" required />
+              <input type="text" id="country" name="country" value="UK" />
+              <div class="error" id="error-country"></div>
               <label for="email">E-mail*</label>
-              <input type="email" id="email" name="email" value="The_Rain_Maker@Rainydays.com" required />
+              <input type="email" id="email" name="email" value="therainmaker@rainydays.com" />
+              <div class="error" id="error-email"></div>
             </div>
           </section>
           <section>
@@ -128,9 +137,11 @@
                 <input type="radio" name="payment-type" id="visa" value="visa" checked="checked" />
               </div>
               <label for="card-number">Card Number*</label>
-              <input type="number" id="card-number" name="card-number" min="1000000000000000" max="9999999999999999" value="1234567890123456" required />
+              <input type="number" id="card-number" name="card-number" min="1000000000000000" max="9999999999999999" value="1234567890123456" />
+              <div class="error" id="error-card-number"></div>
               <label for="name-card">Name on Card*</label>
-              <input type="text" id="name-card" name="name-card" value="Rain Maker" required />
+              <input type="text" id="name-card" name="name-card" value="Rain Maker" />
+              <div class="error" id="error-name-card"></div>
               <div class="security-expiration-grid">
                 <div class="payment-security-code">
                   <label for="security-code">
@@ -138,29 +149,34 @@
                     <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span>
                   </label>
                   <div>
-                    <input type="number" id="security-code" name="security-code" min="001" max="999" value="999" required />
+                    <input type="number" id="security-code" name="security-code" min="001" max="999" value="999" />
+                    <div class="error" id="error-security-code"></div>
                   </div>
                 </div>
                 <div class="payment-security-code">
                   <label for="expiration-date-month">Expiration MM</label>
                   <label for="expiration-date-year">/ YY*</label>
                   <div>
-                    <input type="number" id="expiration-date-month" min="1" max="12" name="expiration-date" value="11" required />
+                    <input type="number" id="expiration-date-month" min="1" max="12" name="expiration-date" value="11" />
                     <span>/</span>
-                    <input type="number" id="expiration-date-year" min="21" max="99" name="expiration-date" value="22" required />
+                    <input type="number" id="expiration-date-year" min="22" max="99" name="expiration-date" value="22" />
                   </div>
+                  <div class="error" id="error-date"></div>
                 </div>
               </div>
-              <div class="payment-type-select">
+              <div class="payment-type-select disabled">
                 <label for="pay-pal">Pay Pal</label>
-                <input type="radio" name="payment-type" id="pay-pal" value="pay-pal" />
+                <input type="radio" name="payment-type" id="pay-pal" value="pay-pal" disabled />
               </div>
-              <div class="payment-type-select">
+              <div class="payment-type-select disabled">
                 <label for="pay-later">Pay Later (90 days)</label>
-                <input type="radio" name="payment-type" id="pay-later" value="pay-later" />
+                <input type="radio" name="payment-type" id="pay-later" value="pay-later" disabled />
               </div>
             </div>
-
+            <div class="remember-details">
+              <input type="checkbox" id="remember-me" name="" checked />
+              <label for="remember-me">Remember my details</label>
+            </div>
             <div class="button-container">
               <input type="submit" value="Confirmation" class="cta" />
             </div>

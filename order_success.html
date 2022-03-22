@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/pages/order_success.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/order_success.js" type="module" defer></script>
     <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
     <script>
       (function (h, o, t, j, a, r) {
@@ -92,21 +93,11 @@
       <h1>Success, Order Has Been Placed</h1>
       <section>
         <h2>Your Order Number</h2>
-        <a href="account.html">0000032453246546</a>
+        <div id="order-number"></div>
         <h2>Your Order Will Be Delivered To:</h2>
-        <address>
-          Rain Maker
-          <br />
-          24 Blue Meadow Drive
-          <br />
-          Hertford
-          <br />
-          QD5 Y87
-          <br />
-          UK
-        </address>
+        <address></address>
         <h2>Expected Delivery</h2>
-        <p>
+        <p id="delivery-date">
           19
           <sup>th</sup>
           November to 22

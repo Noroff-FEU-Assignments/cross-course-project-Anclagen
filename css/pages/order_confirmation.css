@@ -11,3 +11,8 @@ th {
 .product-name {
   max-width: 50%;
 }
+
+button {
+  width: 100%;
+  margin-bottom: 40px;
+}

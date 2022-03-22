@@ -34,6 +34,8 @@ function validateContactForm(submission){
   const b = validatedInputLength(message, 29, messageError);
   const c = validateEmailInput(email, emailError);
   const d = validatedInputLength(subject, 5, subjectError);
+  
+  //order number optional but needs validating if entered.
   let e = true;
   orderNumberError.innerText = "";
   if(orderNumber.value.length > 0){
