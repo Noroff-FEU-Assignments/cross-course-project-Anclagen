@@ -1,4 +1,4 @@
-import {checkCart, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateMMYY} from "./data/components.js"
+import {checkCart, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js"
 checkCart();
 
 // Page containers and inputs
@@ -46,7 +46,7 @@ function createPaymentDetails(){
     nameCard: "",
     securityCode: "",
     expirationDate:[],
-  }
+  };
 
   details.firstName = firstName.value;
   details.lastName = lastName.value;
@@ -81,10 +81,17 @@ function validatePaymentDetails(submission){
   const h = validatedNumberInputLength(cardNumber, 16, cardNumberError);
   const i = validatedInputLength(nameCard, 2, nameCardError);
   const j = validatedNumberInputLength(securityCode, 3, securityCodeError);
-  const k = validateDateMMYY(month, year, dateError);
+  const k = validateDateMM(month);
+  const l = validateDateYY(year);
+
+  if(!l || !k){
+    dateError.innerText = "Please enter valid date";
+  }else {
+    dateError.innerText = "";
+  }
 
   //if all variables true goes to order summary/confirmation 
-  if(a && b && c && d && e && f && g && h && i && j && k) {
+  if(a && b && c && d && e && f && g && h && i && j && k && l) {
     const paymentDetails = createPaymentDetails();
 
     if(rememberDetails.checked){
@@ -94,9 +101,8 @@ function validatePaymentDetails(submission){
     }
 
     window.location.href="order_confirmation.html";
-
   }
-}
+};
 
 //on submit run form validation
 paymentForm.addEventListener("submit", validatePaymentDetails);

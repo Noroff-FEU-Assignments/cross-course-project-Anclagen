@@ -46,10 +46,24 @@ export function validatedNumberInputLength(input, length, errorContainer){
 }
 
 // validate date input
-export function validateDateMMYY(mm, yy, error){
-  if(validatedNumberInputLength(mm, 2, error) && validatedNumberInputLength(yy, 2, error)){
 
+export function validateDateMM(mm){
+    if(mm.value.length === 2 && mm.value > 0 && mm.value < 13){
+      mm.style.border ="2px solid green";
+      return true;
+    } else {
+      mm.style.border ="2px solid red";
+      return false;
+    }
+}
+
+export function validateDateYY(yy){
+  if(yy.value.length === 2 && yy.value > 21){
+    yy.style.border ="2px solid green";
     return true;
+  } else {
+    yy.style.border ="2px solid red";
+    return false;
   }
 }
 
