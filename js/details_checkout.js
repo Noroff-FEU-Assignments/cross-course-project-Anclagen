@@ -30,6 +30,37 @@ const year = document.querySelector("#expiration-date-year");
 const dateError = document.querySelector("#error-date");
 const rememberDetails = document.querySelector("#remember-me");
 
+// session storage get requests
+const detailsSessionStorage = window.sessionStorage.getItem("Payment Details");
+const detailsLocalStorage = localStorage.getItem("Payment Details");
+
+//function to prefill form with existing user data
+function prefillFormFields(storage){
+  const userDetails = JSON.parse(storage)
+  firstName.value = userDetails.firstName;
+  lastName.value = userDetails.lastName;
+  addressLine1.value = userDetails.addressLine1;
+  addressLine2.value = userDetails.addressLine2;
+  city.value = userDetails.townCity;
+  postCode.value = userDetails.postCode;
+  country.value = userDetails.country;
+  email.value = userDetails.email;
+  //probably not good security to store card info in local storage
+  cardNumber.value = userDetails.cardNumber;
+  nameCard.value = userDetails.nameCard;
+  securityCode.value = userDetails.securityCode;
+  month.value = userDetails.expirationDate[0];
+  year.value = userDetails.expirationDate[1];
+};
+
+// check if user details exist to fill page on load defaults to session storage for the moment.
+if(detailsSessionStorage){
+  console.log("WOO!!");
+  prefillFormFields(detailsSessionStorage);
+}else if(detailsLocalStorage){
+  console.log("YEAH!!");
+  prefillFormFields(detailsLocalStorage);
+};
 
 // creates payment details for next page as well as to save for user
 function createPaymentDetails(){
@@ -62,7 +93,7 @@ function createPaymentDetails(){
   details.expirationDate = [month.value, year.value];
 
   return JSON.stringify(details);
-}
+};
 
 
 //---- validating the whole form -----
@@ -86,9 +117,9 @@ function validatePaymentDetails(submission){
 
   if(!l || !k){
     dateError.innerText = "Please enter valid date";
-  }else {
+  } else {
     dateError.innerText = "";
-  }
+  };
 
   //if all variables true goes to order summary/confirmation 
   if(a && b && c && d && e && f && g && h && i && j && k && l) {
