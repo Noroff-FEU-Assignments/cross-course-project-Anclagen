@@ -136,9 +136,9 @@ function submitProductToLocalStorage(){
   } else {
     errorSelectSize.innerText = "Please select a size.";
   }
-  
 }
 
+// create a success lightbox
 function createSuccessLightbox (colour, size, quantity){
 
   checkCart();
@@ -158,8 +158,11 @@ function createSuccessLightbox (colour, size, quantity){
   const h3 = document.createElement("h3");
   h3.innerText = product.name;
 
+  const lightboxImage = `<img src=${product.images[0].src} alt=${product.images[0].alt} class="lightbox-image"/>`
   const imageDiv = document.createElement("div");
-  imageDiv.innerHTML = productImage;
+  imageDiv.innerHTML = lightboxImage;
+
+  
 
   const colourP = document.createElement("p");
   colourP.innerText = "Colour: " + colour;
@@ -195,7 +198,6 @@ function createSuccessLightbox (colour, size, quantity){
   contentContainer.appendChild(buttonDiv);
   buttonDiv.appendChild(continueShoppingLink);
   buttonDiv.appendChild(cartLink);
-
 }
 
 const productForm = document.querySelector(".product-form");

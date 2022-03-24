@@ -98,7 +98,7 @@ tr:nth-child(even) {
 .lightbox-background {
   position: fixed;
   z-index: 1000;
-  padding-top: 100px;
+  padding: 10px;
   left: 0;
   top: 0;
   width: 100%;
@@ -110,10 +110,17 @@ tr:nth-child(even) {
 .lightbox-content {
   margin: auto;
   padding: 20px;
-  width: fit-content;
+  width: 280px;
   background-color: var(--light-blue);
   color: white;
   border: 2px solid white;
+  overflow: scroll;
+}
+
+.lightbox-image {
+  display: block;
+  margin: auto;
+  width: 80%;
 }
 
 .lightbox-button-container {
@@ -137,5 +144,9 @@ tr:nth-child(even) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
+  }
+
+  .lightbox-background {
+    padding-top: 100px;
   }
 }
