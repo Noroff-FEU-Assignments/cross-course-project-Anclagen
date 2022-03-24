@@ -126,6 +126,12 @@ tr:nth-child(even) {
   margin: 0 auto;
 }
 
+#quantity {
+  width: 2rem;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
 @media only screen and (min-width: 700px) {
   .product-page-container {
     display: grid;

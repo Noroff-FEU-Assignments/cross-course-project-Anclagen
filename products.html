@@ -41,9 +41,9 @@
             <input type="checkbox" id="menu-drop-down" />
             <ul class="hamburger main-nav-menu">
               <li><a href="index.html">Home</a></li>
-              <li><a href="products.html?on_sale=true">Sale</a></li>
-              <li id="current"><a href="products.html?sex=men">Men</a></li>
-              <li><a href="products.html?sex=women">Women</a></li>
+              <li class="sale-products"><a href="products.html?on_sale=true">Sale</a></li>
+              <li class="mens-products"><a href="products.html?sex=men">Men</a></li>
+              <li class="womens-products"><a href="products.html?sex=women">Women</a></li>
               <li><a href="contact.html">Contact Us</a></li>
               <li><a href="about.html">About Us</a></li>
             </ul>
@@ -100,8 +100,8 @@
             <input type="checkbox" id="filter-drop-down" />
             <ul class="filter-menu">
               <li>
-                <ul>
-                  <li><h3>Category</h3></li>
+                <ul class="collapsed-filter filter-container">
+                  <li class="filter-items"><h3>Category</h3></li>
                   <li>
                     <label for="waterproof">Waterproof Jackets</label>
                     <input type="checkbox" id="waterproof" name="waterproof" key="category" />
@@ -121,8 +121,8 @@
                 </ul>
               </li>
               <li>
-                <ul>
-                  <li><h3>Brands</h3></li>
+                <ul class="collapsed-filter filter-container">
+                  <li class="filter-items"><h3>Brands</h3></li>
                   <li>
                     <label for="hail-storm">Hail Storm</label>
                     <input type="checkbox" id="hail-storm" name="Hail Storm" key="brand" />
@@ -142,8 +142,8 @@
                 </ul>
               </li>
               <li>
-                <ul>
-                  <li><h3>Size</h3></li>
+                <ul class="collapsed-filter filter-container">
+                  <li class="filter-items"><h3>Size</h3></li>
                   <li>
                     <label for="s">Small</label>
                     <input type="checkbox" id="s" name="s" key="sizes" />
@@ -171,8 +171,8 @@
                 </ul>
               </li>
               <li>
-                <ul>
-                  <li><h3>Colour</h3></li>
+                <ul class="collapsed-filter filter-container">
+                  <li class="filter-items"><h3>Colour</h3></li>
                   <li>
                     <label for="black">Black</label>
                     <input type="checkbox" id="black" name="Black" key="colours" />
@@ -196,8 +196,8 @@
                 </ul>
               </li>
               <li>
-                <ul>
-                  <li><h3>Price</h3></li>
+                <ul class="collapsed-filter filter-container">
+                  <li class="filter-items"><h3>Price</h3></li>
                   <li>
                     <label for="39-less">£39.99 or less</label>
                     <input type="checkbox" id="39-less" name="[0, 39.99]" key="price" />
@@ -224,6 +224,7 @@
             <label class="filter-label close-filter" for="filter-drop-down">close</label>
           </div>
           <div class="products-page-grid">
+            <!-- Add back once js is created.
             <div class="sort-products">
               <label for="sort">Sort By:</label>
               <select name="sort" id="sort">
@@ -232,9 +233,10 @@
                 <option value="price-low-high">Price; Low-High</option>
                 <option value="Newest">Newest</option>
               </select>
-            </div>
+            </div> -->
 
-            <!-- <div class="product-item">
+            <!-- Example of product item code.
+            <div class="product-item">
               <a href="product.html">
                 <div class="overlay"></div>
                 <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
@@ -248,13 +250,13 @@
             </div> -->
           </div>
         </div>
-        <div class="centre-page-list">
+        <!-- <div class="centre-page-list">
           <a href="#heading" class="change-list-page-pre">Previous</a>
           <a href="#heading" class="change-list-page current-list-page">1</a>
           <a href="#heading" class="change-list-page change-page-span">2</a>
           <a href="#heading" class="change-list-page">23</a>
           <a href="#heading" class="change-list-page-next">Next</a>
-        </div>
+        </div> -->
       </section>
     </main>
     <footer>

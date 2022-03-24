@@ -176,6 +176,7 @@ label {
   margin: 10px 0;
 }
 
+#quantity,
 .login-container input,
 footer input,
 nav input,
@@ -587,7 +588,7 @@ footer .footer-copyright {
   display: flex;
   flex-direction: column;
   flex: start;
-  border: 2px solid var(--dark-blue);
+  /*border: 2px solid var(--dark-blue);*/
   height: 100%;
   border-radius: 5px;
   box-shadow: 3px 5px 8px var(--dark-blue);

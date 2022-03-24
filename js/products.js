@@ -6,12 +6,31 @@ const productList = document.querySelector(".products-page-grid");
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
-const sex = params.get("sex")
-const saleOn = params.get("on_sale")
-const h1 = document.querySelector("h1")
-const title = document.querySelector("title")
-console.log(saleOn)
-console.log(sex)
+const sex = params.get("sex");
+const saleOn = params.get("on_sale");
+const h1 = document.querySelector("h1");
+const title = document.querySelector("title");
+const saleLink = document.querySelector(".sale-products");
+const mensLink = document.querySelector(".mens-products");
+const womensLink = document.querySelector(".womens-products");
+const filterCategoriesLiHeading = document.querySelectorAll(".filter-items");
+const filterCategoriesUl = document.querySelectorAll(".filter-container");
+
+//set the current page to sale/men/women
+if(sex === "women"){
+  console.log("woohoo")
+  womensLink.setAttribute("id","current");
+} else if(sex === "men"){
+  mensLink.setAttribute("id", "current");
+} else if(saleOn === "true"){
+  saleLink.setAttribute("id","current");
+}
+
+for(let i=0; i < filterCategoriesLiHeading.length; i++){
+  filterCategoriesLiHeading[i].addEventListener("click", function(){
+    filterCategoriesUl[i].classList.toggle("collapsed-filter");
+  })
+}
 
 
 //filters for sex and sale
@@ -19,6 +38,7 @@ function filterSexSale(data){
 if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
     title.innerText = `Rainydays | Browse Sale Jackets`
     h1.innerText = "Sale Items";
+    
     return true;
   } else if (sex === data.sex){
     const capSex = data.sex.charAt(0).toUpperCase() + data.sex.slice(1);
