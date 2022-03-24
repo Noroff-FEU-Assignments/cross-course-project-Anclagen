@@ -102,8 +102,7 @@ div.page-bread-crumbs {
 /*standard wrappers for content (careful where adding to nav bar and footer)*/
 .page-wrapper,
 .page-wrapper-medium,
-.page-wrapper-small,
-.page-wrapper-xsmall {
+.page-wrapper-small {
   max-width: 1200px;
   width: 90%;
   margin: 0px auto;
@@ -115,10 +114,6 @@ div.page-bread-crumbs {
 
 .page-wrapper-small {
   max-width: 600px;
-}
-
-.page-wrapper-xsmall {
-  max-width: 350px;
 }
 
 /*Hidden for small screens and hamburgers*/
@@ -159,7 +154,6 @@ div.page-bread-crumbs {
 
 .cta-green {
   background-color: var(--cta-green);
-  border-color: #001e44;
 }
 
 .button-container a,

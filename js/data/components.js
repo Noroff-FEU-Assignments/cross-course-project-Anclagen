@@ -81,6 +81,60 @@ export function validateEmailInput(email, errorContainer) {
   }
 }
 
+// --- Payment details and account details page ---
+
+//function to prefill form with existing user data, probably a tidier way to do this.
+export function prefillFormFields(storage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year){
+  const userDetails = JSON.parse(storage)
+  firstName.value = userDetails.firstName;
+  lastName.value = userDetails.lastName;
+  addressLine1.value = userDetails.addressLine1;
+  addressLine2.value = userDetails.addressLine2;
+  city.value = userDetails.townCity;
+  postCode.value = userDetails.postCode;
+  country.value = userDetails.country;
+  email.value = userDetails.email;
+  //probably not good security to store card info in local storage
+  cardNumber.value = userDetails.cardNumber;
+  nameCard.value = userDetails.nameCard;
+  securityCode.value = userDetails.securityCode;
+  month.value = userDetails.expirationDate[0];
+  year.value = userDetails.expirationDate[1];
+};
+
+// creates payment details for next page as well as to save for user
+export function createPaymentDetails(firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year){
+  let details = {
+    firstName: "",
+    lastName: "",
+    addressLine1: "",
+    addressLine2: "",
+    townCity: "",
+    postCode: "",
+    country: "",
+    email: "",
+    cardNumber: "",
+    nameCard: "",
+    securityCode: "",
+    expirationDate:[],
+  };
+
+  details.firstName = firstName.value;
+  details.lastName = lastName.value;
+  details.addressLine1 = addressLine1.value;
+  details.addressLine2 = addressLine2.value;
+  details.townCity = city.value;
+  details.postCode = postCode.value;
+  details.country = country.value;
+  details.email = email.value;
+  details.cardNumber = cardNumber.value;
+  details.nameCard = nameCard.value;
+  details.securityCode = securityCode.value;
+  details.expirationDate = [month.value, year.value];
+
+  return JSON.stringify(details);
+};
+
 // --- Content Creators ---
 
 export function createAddressText(){

@@ -38,7 +38,8 @@ const delivery = `${deliveryDetails[0]} £${deliveryDetails[1]}.00 `;
 let totalPrice = deliveryDetails[1];
 
 
-
+console.log(cartItems[0][0]);
+console.log(products[3].id)
 
 //  creates order summary based on stored info from cart, delivery, and payment details.
 function createOrderSummary(){
@@ -59,18 +60,18 @@ function createOrderSummary(){
     totalPrice += products[id].price[0];
 
     //creates a table item for each item in cart
-    itemsContainer.innerHTML +=  `<td class="product-name">
-                                    <a href="product.html?id=${products[id].id}"  target="_blank">${products[id].name}</a>
-                                  </td>
-                                  <td>${cartItems[i][3]}</td>
-                                  <td>£${price}</td>`;
+    itemsContainer.innerHTML +=    `<tr>
+                                      <td class="product-name">
+                                        <a href="product.html?id=${products[id].id}"  target="_blank">${products[id].name}</a>
+                                      </td>
+                                      <td>${cartItems[i][3]}</td>
+                                      <td>£${price}</td>
+                                    </tr>`;
   }
 
   // delivery and total price values
   deliveryContainer.innerText = delivery;
   priceContainer.innerText = `£${totalPrice}`;
-
-
 }
 
 createOrderSummary()

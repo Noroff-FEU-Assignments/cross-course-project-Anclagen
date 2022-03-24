@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/pages/account.css" />
+    <script src="js/account.js" type="module" defer></script>
     <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
     <script>
       (function (h, o, t, j, a, r) {
@@ -93,35 +94,105 @@
         <a onclick="history.back()">&#60; previous page</a>
       </div>
       <h1>Account</h1>
-      <div class="two-column-grid">
-        <section class="login">
-          <h2>Login</h2>
+      <div class="">
+        <section class="login page-wrapper-xsmall">
+          <h2 id="login-heading">Login</h2>
           <div class="login-container">
-            <img src="images/interface_and_logo/Icon-awesome-user-circle.png" alt="account-icon" class="user-icon" />
-            <form>
+            <form id="login-form">
               <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email-login" name="email" required />
               <label for="password">Password</label>
               <input type="password" id="password" name="password" required />
-              <input type="submit" value="Login" class="cta" onclick="history.back()" />
+              <label for="confirm-password" class="hidden" id="confirm-password-label">Confirm Password*</label>
+              <input type="password" id="confirm-password" name="confirm-password" class="hidden" required />
+              <input type="submit" value="Login" class="cta" id="submit-btn" />
+              <hr />
+              <p class="paragraph">Don't have an account?</p>
+              <button class="cta cta-green" id="sign-up">Sign Up</button>
             </form>
           </div>
         </section>
-        <section class="signup">
-          <h2>Sign Up</h2>
-          <div class="login-container">
-            <form>
-              <label for="fullname">Name*</label>
-              <input type="text" id="fullname" name="fullname" required />
-              <label for="account-signup-email">E-mail*</label>
-              <input type="email" id="account-signup-email" name="account-signup-email" required />
-              <label for="password">Password*</label>
-              <input type="password" id="sign-password" name="password" required />
-              <label for="confirm-password">Confirm Password*</label>
-              <input type="password" id="confirm-password" name="confirm-password" required />
-              <input type="submit" value="Sign Up" class="cta" onclick="history.back()" />
-            </form>
-          </div>
+        <section class="account-details hidden">
+          <h2>Account Details</h2>
+          <form id="details-form" method="get">
+            <div class="two-column-grid">
+              <div class="delivery-details">
+                <h3 class="remove-margin-bottom">Your Details</h3>
+                <div class="payment-details-form">
+                  <label for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="first-name" />
+                  <div class="error" id="error-first-name"></div>
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="last-name" />
+                  <div class="error" id="error-last-name"></div>
+                  <label for="address-1">Address Line 1</label>
+                  <input type="text" id="address-1" name="address-1" />
+                  <div class="error" id="error-address-1"></div>
+                  <label for="address-2">Address Line 2</label>
+                  <input type="text" id="address-2" name="address-2" />
+                  <!-- <div class="error" id="error-address-2"></div> -->
+                  <label for="town-city">Town/City</label>
+                  <input type="text" id="town-city" name="town-city" />
+                  <div class="error" id="error-town-city"></div>
+                  <label for="post-code">Post Code / Area Code</label>
+                  <input type="text" id="post-code" name="post-code" />
+                  <div class="error" id="error-post-code"></div>
+                  <label for="country">Country</label>
+                  <input type="text" id="country" name="country" />
+                  <div class="error" id="error-country"></div>
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" />
+                  <div class="error" id="error-email"></div>
+                </div>
+              </div>
+              <div>
+                <h3>Payment Details</h3>
+                <div class="payment-details-form">
+                  <label for="card-number">Card Number*</label>
+                  <input type="number" id="card-number" name="card-number" />
+                  <div class="error" id="error-card-number"></div>
+                  <label for="name-card">Name on Card*</label>
+                  <input type="text" id="name-card" name="name-card" />
+                  <div class="error" id="error-name-card"></div>
+                  <div class="security-expiration-grid">
+                    <div class="payment-security-code">
+                      <label for="security-code">
+                        Security Code*
+                        <span data-tool-tip="Last 3 digits of cvv code on back of card">?</span>
+                      </label>
+                      <div>
+                        <input type="number" id="security-code" name="security-code" />
+                        <div class="error" id="error-security-code"></div>
+                      </div>
+                    </div>
+                    <div class="payment-security-code">
+                      <label for="expiration-date-month">Expiration MM</label>
+                      <label for="expiration-date-year">/ YY*</label>
+                      <div>
+                        <input type="number" id="expiration-date-month" name="expiration-date" />
+                        <span>/</span>
+                        <input type="number" id="expiration-date-year" name="expiration-date" />
+                      </div>
+                      <div class="error" id="error-date"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="button-container">
+                  <input type="submit" value="Update Details" class="cta" />
+                </div>
+              </div>
+            </div>
+
+        </section>
+        <section class="order-history hidden">
+          <h2>Order History</h2>
+          <table>
+            <tr>
+              <th>Order Number</th>
+              <th>Product Summary</th>
+              <th>Order Cost</th>
+            </tr>
+          </table>
         </section>
       </div>
     </main>
