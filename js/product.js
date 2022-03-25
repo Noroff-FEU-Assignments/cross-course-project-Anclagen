@@ -1,5 +1,5 @@
 import products from "./data/data.js";
-import {checkCart} from "./data/components.js"
+import {checkCart, createProductItemHTML, getProductPriceHTML, createSuccessLightbox, createColourSelector, createSizeSelector, createToggleContent} from "./data/components.js"
 checkCart();
 
 const queryString = document.location.search;
@@ -18,40 +18,29 @@ const sizeSelector = document.querySelector(".size-selection");
 const productDetailsContainer = document.querySelector(".product-details-container");
 const productSpecificationContainer = document.querySelector(".product-specification-container");
 const relatedProductsContainer = document.querySelector(".product-list-grid");
+const lightboxPageContainer = document.querySelector("#lightbox-container");
+const sectionHeading = document.querySelectorAll(".product-section-heading");
+const sectionContainer = document.querySelectorAll(".product-section");
 
-//price variable assignment for sale or not
-let price = "";
-if (!product.on_sale){
-  price = "£" + product.price[0];
-} else {
-  //get ride of decimal madness
-  let savings = Math.round((product.price[0] - product.sale_price[0])* 100 + Number.EPSILON ) / 100;
-  price = `<span class="sale-price">£${product.sale_price[0]}</span>
-           <span class="previous-price"> £${product.price[0]}</span>
-           <span class="save-price"> Save £${savings}</span>`
-}
+//creating price html, colour selector, and size selector.
+let price =  getProductPriceHTML(product.price[0], product.on_sale, product.sale_price[0]);
+let colourSelections = createColourSelector(product.colours);
+let sizeSelection = createSizeSelector(product.sizes);
 
-//variable options creation
-let colourSelections = ""
-for (let i = 0; i < product.colours.length; i++){
-  let colour = product.colours[i].charAt(0).toUpperCase() + product.colours[i].slice(1);
-  colourSelections += `<option value="${product.colours[i]}">${colour}</option>`;
-}
 
-//variables for image and thumbs
+//variables for image and thumbs.
 let thumbnails = "";
 let productImage = "";
 let checked = "";
+//creating product images
 for (let i = 0; i < product.images.length; i++){
   let imageSRC = product.images[i].src
   let imageAlt = product.images[i].alt
-
   if(i === 0){
     checked = `checked="checked"`;
   } else{
     checked = "";
   }
-
   let imageIDLowerCase = product.images[i].alt.replace(/ /g,"-").toLowerCase();
   productImage += `<div>
                     <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
@@ -61,15 +50,6 @@ for (let i = 0; i < product.images.length; i++){
   thumbnails += `<label for=${imageIDLowerCase} class="checked">
                     <img src=${imageSRC} alt=${imageAlt} />
                  </label>`;       
-}
-
-//variable for size selector
-let sizeSelection = "<p>Choose Your Size:</p>"
-for (let i = 0; i < product.sizes.length; i++){
-  let size = product.sizes[i];
-  let sizeCapital = size.toLocaleUpperCase();
-  sizeSelection += `<input type="radio" name="size" id=${size} value=${size} class="input-checked" />
-                    <label for=${size} class="label-checked">${sizeCapital}</label>`;
 }
 
 //Product details list
@@ -88,6 +68,8 @@ for (let i = 0; i < product.product_details.length; i++){
   productSpecification += `<li>${specs}</li>`;
 }
 
+createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product");
+
 async function createHTML(data){
   headingContainer.innerHTML = data.name;
   priceContainer.innerHTML = `Price: ${price}`;
@@ -101,16 +83,7 @@ async function createHTML(data){
 
 createHTML(product);
 
-
-
-//add product to local storage/ cart
-
-function submitItemDetails(submission){
-  submission.preventDefault();
-  
-  submitProductToLocalStorage();
-}
-
+//add product to local storage/cart
 function submitProductToLocalStorage(){
 
   const colourSelected = document.querySelector("#colour");
@@ -132,98 +105,32 @@ function submitProductToLocalStorage(){
     item.push(currentItem);
     localStorage.setItem("cart", JSON.stringify(item));
     errorSelectSize.innerText = "";
-    createSuccessLightbox (colour, size, quantity);
+    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, product.name, product.images[0].src, product.images[0].alt);
   } else {
     errorSelectSize.innerText = "Please select a size.";
   }
 }
 
-// create a success lightbox
-function createSuccessLightbox (colour, size, quantity){
-
-  checkCart();
-
-  const lightboxPageContainer = document.querySelector("#lightbox-container");
-
-  //creating required elements
-  const lightboxContainer = document.createElement("div");
-  lightboxContainer.classList = "lightbox-background";
-
-  const contentContainer = document.createElement("div");
-  contentContainer.classList = "lightbox-content";
-
-  const h2 = document.createElement("h2");
-  h2.innerText = "Success, added to cart.";
-
-  const h3 = document.createElement("h3");
-  h3.innerText = product.name;
-
-  const lightboxImage = `<img src=${product.images[0].src} alt=${product.images[0].alt} class="lightbox-image"/>`
-  const imageDiv = document.createElement("div");
-  imageDiv.innerHTML = lightboxImage;
-
-  
-
-  const colourP = document.createElement("p");
-  colourP.innerText = "Colour: " + colour;
-
-  const sizeP = document.createElement("p");
-  sizeP.innerText = "Size: " + size.toUpperCase();
-
-  const quantityP = document.createElement("p");
-  quantityP.innerText = "Quantity: " + quantity;
-
-  const buttonDiv = document.createElement("div");
-  buttonDiv.classList = "lightbox-button-container";
-
-  const cartLink = document.createElement("button");
-  cartLink.innerText = "Go to cart";
-  cartLink.classList = "cta cta-green";
-  cartLink.addEventListener("click", function gotoCart(){window.location.href="cart.html";});
-
-  const continueShoppingLink = document.createElement("button");
-  continueShoppingLink.innerText = "Close";
-  continueShoppingLink.classList = "cta";
-  continueShoppingLink.addEventListener("click", function removeLightbox(){lightboxPageContainer.innerHTML = "";});
-
-  //adding to light box container
-  lightboxPageContainer.appendChild(lightboxContainer);
-  lightboxContainer.appendChild(contentContainer);
-  contentContainer.appendChild(h2);
-  contentContainer.appendChild(h3);
-  contentContainer.appendChild(imageDiv);
-  contentContainer.appendChild(colourP);
-  contentContainer.appendChild(sizeP);
-  contentContainer.appendChild(quantityP);
-  contentContainer.appendChild(buttonDiv);
-  buttonDiv.appendChild(continueShoppingLink);
-  buttonDiv.appendChild(cartLink);
+function submitItemDetails(submission){
+  submission.preventDefault();
+  submitProductToLocalStorage();
 }
 
 const productForm = document.querySelector(".product-form");
-productForm.addEventListener("submit", submitItemDetails)
+productForm.addEventListener("submit", submitItemDetails);
+
+
 
 // related products
 function createRelatedProducts() {
-  let relatedProducts = ""
+  let relatedProducts = "";
+  //gets 4 products matching sex and not the id of the current product, and slices them into an array.
   let related = products.filter(products => products.id !== product.id && products.sex === product.sex).slice(0, 4);
-  
   for (let i=0; i < related.length; i++){
-    relatedProducts += `<div class="product-item">
-                          <a href="product.html?id=${related[i].id}">
-                            <div class="overlay"></div>
-                            <img src="${related[i].images[0].src}" alt="${products[i].images[0].alt}" />
-                          </a>
-                          <h3>${related[i].name}</h3>
-                          <div>
-                            <p>${related[i].brand}</p>
-                            <p>${related[i].colours}</p>
-                            <p>£${related[i].price[0]}</p>
-                          </div>
-                        </div>`
+    let price = getProductPriceHTML(related[i].price[0], related[i].on_sale, related[i].sale_price[0]);
+    relatedProducts += createProductItemHTML(related[i].id, related[i].images[0].src, products[i].images[0].alt, related[i].name, related[i].brand, related[i].colours, price);
   }
-
   relatedProductsContainer.innerHTML = relatedProducts;
 }
 
-createRelatedProducts();
+// createRelatedProducts();

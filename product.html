@@ -12,17 +12,22 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/pages/product.css" />
     <script src="js/product.js" type="module" defer></script>
-        <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
-        <script>
-          (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:2855898,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
+    <!-- Hotjar Tracking Code for https://a-j-barrett.netlify.app/ -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 2855898, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
   </head>
   <body>
     <!-- Lightbox after adding to cart, at top to cover whole page-->
@@ -118,41 +123,38 @@
               <div class="select-size-error"></div>
               <div class="quantity">
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" value="1">
-              </div>
-              <div>
-                <h3>Product Details</h3>
-                <ul class="product-details-container">
-                  <!-- JS fills product details-->
-                </ul>
+                <input type="number" id="quantity" value="1" />
               </div>
               <div class="button-container">
-                <input type="submit" value="Add To Cart" class="cta" id="submit-product"/>
+                <input type="submit" value="Add To Cart" class="cta" id="submit-product" />
               </div>
             </form>
-            <h2>Delivery</h2>
-            <ul>
-              <li>Free Standard Delivery (3-5 working days) - On all orders.</li>
-              <li>First Class Delivery (2-3 working days) - Additional £5 delivery charge</li>
-              <li>Next Day Delivery (1-2 working days) - Additional £10 delivery charge (order before 14.00)</li>
-            </ul>
+            <div class="">
+              <h2 class="">Delivery</h2>
+              <ul>
+                <li>Free Standard Delivery (3-5 working days) - On all orders.</li>
+                <li>First Class Delivery (2-3 working days) - Additional £5 delivery charge</li>
+                <li>Next Day Delivery (1-2 working days) - Additional £10 delivery charge (order before 14.00)</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-      <section class="further-details product-page-container">
-        <div>
-          <h2>Product Specification</h2>
-          <ul class="product-specification-container">
-            <li>Material: 100% Nylon Shell, 60% Polyester 40% Cotton interior lining</li>
-            <li>Fit: Regular-Stretch</li>
-            <li>Style: Hooded</li>
-            <li>Colours: Red, Yellow, Black</li>
-            <li>Suitability: Waterproof / Windproof / Lightweight</li>
-            <li>Weight: 500-900g</li>
+      <section class="further-details">
+        <div class="collapsed-section-product product-section">
+          <h2 class="product-section-heading">Product Details</h2>
+          <ul class="product-details-container">
+            <!-- JS fills product details-->
           </ul>
         </div>
-        <div>
-          <h2>Size Guide</h2>
+        <div class="collapsed-section-product product-section">
+          <h2 class="product-section-heading">Product Specification</h2>
+          <ul class="product-specification-container">
+            <!-- JS created list -->
+          </ul>
+        </div>
+        <div class="collapsed-section-product product-section">
+          <h2 class="product-section-heading">Size Guide</h2>
           <table>
             <tr>
               <th>Product Size</th>
@@ -199,59 +201,13 @@
           </table>
         </div>
       </section>
-      <section>
+      <!-- <section>
         <h2>Related Jackets</h2>
         <div class="product-list-grid">
-          <!-- <div class="product-item">
-            <a href="product.html">
-              <div class="overlay"></div>
-              <img src="images/products/red_jacket_small.jpg" alt="Red Jacket" />
-            </a>
-            <h3>Men's Zip Down Waterproof II Jacket</h3>
-            <div>
-              <p>Peter Storm</p>
-              <p>Red, Black, Yellow</p>
-              <p>£50.00</p>
-            </div>
-          </div>
-          <div class="product-item">
-            <a href="product.html">
-              <div class="overlay"></div>
-              <img src="images/products/green_jacket_small.jpg" alt="Green Jacket" />
-            </a>
-            <h3>Women's Water-Resistant Jacket</h3>
-            <div>
-              <p>Snow Storm</p>
-              <p>Green</p>
-              <p>£44.99</p>
-            </div>
-          </div>
-          <div class="product-item">
-            <a href="product.html">
-              <div class="overlay"></div>
-              <img src="images/products/blue_jacket_small.jpg" alt="Blue Jacket" />
-            </a>
-            <h3>Men's Zip Down Waterproof I Jacket</h3>
-            <div>
-              <p>Mountain Gear</p>
-              <p>Blue, Black</p>
-              <p>£44.99</p>
-            </div>
-          </div>
-          <div class="product-item">
-            <a href="product.html">
-              <div class="overlay"></div>
-              <img src="images/products/black_jacket_small.jpg" alt="Black Jacket" />
-            </a>
-            <h3>Men's Zip Down Waterproof I Jacket</h3>
-            <div>
-              <p>Hail Storm</p>
-              <p>Blue, Red, Black</p>
-              <p>£50.00</p>
-            </div> -->
+          
           </div>
         </div>
-      </section>
+      </section> -->
     </main>
     <footer>
       <section class="foot-top">

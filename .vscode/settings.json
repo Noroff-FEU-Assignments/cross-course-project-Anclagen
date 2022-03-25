@@ -3,6 +3,7 @@
   "prettier.htmlWhitespaceSensitivity": "ignore",
   "cSpell.words": [
     "Btns",
+    "clickables",
     "fadein",
     "fullname",
     "lightbox",

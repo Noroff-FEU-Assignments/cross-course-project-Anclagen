@@ -16,6 +16,25 @@ export function checkCart(){
     }
   }
 }
+// --- utilities ---
+
+// collapsable content toggle toggles a class, accepts node list of clickables and containers.
+export function createToggleContent(clickables, contentContainer, toggleClass){
+  for(let i=0; i < clickables.length; i++){
+    clickables[i].addEventListener("click", function(){
+      contentContainer[i].classList.toggle(toggleClass);
+    })
+  }
+}
+
+// toggle for individual items
+export function createToggleContentSingle(clickables, contentContainer){
+    clickables.addEventListener("click", function(){
+      contentContainer.classList.toggle("collapsed-section");
+    })
+}
+
+
 
 // --- Input Validations ---
 
@@ -137,6 +156,117 @@ export function createPaymentDetails(firstName, lastName, addressLine1, addressL
 
 // --- Content Creators ---
 
-export function createAddressText(){
-  
+// create a products price html depending on if on sale
+export function getProductPriceHTML(itemPrice, onSale, salePrice){
+  let price = "";
+  if (!onSale){
+    price = "£" + itemPrice;
+  } else {
+    // get rid of decimal madness
+    let savings = Math.round((itemPrice - salePrice)* 100 + Number.EPSILON ) / 100;
+    price = `<span class="sale-price">£${salePrice}</span> 
+            <span class="previous-price"> £${itemPrice}</span> 
+            <span class="save-price"> Save £${savings}</span>`
+  }
+
+  return price;
+}
+
+// create the html for product cards on various pages
+export function createProductItemHTML(id, imageSrc, imageAlt, name, brand, colours, price){
+  let item = `<div class="product-item">
+                <a href="product.html?id=${id}">
+                  <div class="overlay"></div>
+                  <img src="${imageSrc}" alt="${imageAlt}" />
+                </a>
+                <h3>${name}</h3>
+                <div>
+                  <p>${brand}</p>
+                  <p>${colours}</p>
+                  <p>${price}</p>
+                </div>
+              </div> `
+  return item
+}
+
+// create a success lightbox
+export function createSuccessLightbox (container, colour, size, quantity, name, imageSrc, imageAlt){
+  checkCart();
+
+  //creating required elements
+  const lightboxContainer = document.createElement("div");
+  lightboxContainer.classList = "lightbox-background";
+
+  const contentContainer = document.createElement("div");
+  contentContainer.classList = "lightbox-content";
+
+  const h2 = document.createElement("h2");
+  h2.innerText = "Success, added to cart.";
+
+  const h3 = document.createElement("h3");
+  h3.innerText = name;
+
+  const lightboxImage = `<img src=${imageSrc} alt=${imageAlt} class="lightbox-image"/>`
+  const imageDiv = document.createElement("div");
+  imageDiv.innerHTML = lightboxImage;
+
+  const colourP = document.createElement("p");
+  colourP.innerText = "Colour: " + colour;
+
+  const sizeP = document.createElement("p");
+  sizeP.innerText = "Size: " + size.toUpperCase();
+
+  const quantityP = document.createElement("p");
+  quantityP.innerText = "Quantity: " + quantity;
+
+  const buttonDiv = document.createElement("div");
+  buttonDiv.classList = "lightbox-button-container";
+
+  const cartLink = document.createElement("button");
+  cartLink.innerText = "Go to cart";
+  cartLink.classList = "cta cta-green";
+  cartLink.addEventListener("click", function gotoCart(){window.location.href="cart.html";});
+
+  const continueShoppingLink = document.createElement("button");
+  continueShoppingLink.innerText = "Close";
+  continueShoppingLink.classList = "cta";
+  continueShoppingLink.addEventListener("click", function removeLightbox(){container.innerHTML = "";});
+
+  //adding to light box container
+  container.appendChild(lightboxContainer);
+  lightboxContainer.appendChild(contentContainer);
+  contentContainer.appendChild(h2);
+  contentContainer.appendChild(h3);
+  contentContainer.appendChild(imageDiv);
+  contentContainer.appendChild(colourP);
+  contentContainer.appendChild(sizeP);
+  contentContainer.appendChild(quantityP);
+  contentContainer.appendChild(buttonDiv);
+  buttonDiv.appendChild(continueShoppingLink);
+  buttonDiv.appendChild(cartLink);
+}
+
+// create colour selector
+export function createColourSelector(colours){
+  let colourSelections = "";
+  for (let i = 0; i < colours.length; i++){
+    let colour = colours[i].charAt(0).toUpperCase() + colours[i].slice(1);
+    colourSelections += `<option value="${colours[i]}">${colour}</option>`;
+  }
+
+  return colourSelections;
+}
+
+//create size selector
+
+export function createSizeSelector(sizes){
+  let sizeSelection = `<p class="size-label">Choose Your Size:</p>`
+  for (let i = 0; i < sizes.length; i++){
+    let size = sizes[i];
+    let sizeCapital = size.toLocaleUpperCase();
+    sizeSelection += `<input type="radio" name="size" id=${size} value=${size} class="input-checked" />
+                      <label for=${size} class="label-checked">${sizeCapital}</label>`;
+  }
+
+  return sizeSelection
 }

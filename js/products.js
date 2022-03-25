@@ -1,24 +1,26 @@
 import products from "./data/data.js";
-import {checkCart} from "./data/components.js"
+import {checkCart, createProductItemHTML, getProductPriceHTML, createToggleContent} from "./data/components.js"
 checkCart();
 
-const productList = document.querySelector(".products-page-grid");
-
+//query string grabs
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const sex = params.get("sex");
 const saleOn = params.get("on_sale");
+
+//containers and elements
 const h1 = document.querySelector("h1");
 const title = document.querySelector("title");
+const productList = document.querySelector(".products-page-grid");
 const saleLink = document.querySelector(".sale-products");
 const mensLink = document.querySelector(".mens-products");
 const womensLink = document.querySelector(".womens-products");
 const filterCategoriesLiHeading = document.querySelectorAll(".filter-items");
 const filterCategoriesUl = document.querySelectorAll(".filter-container");
+const checkboxes = document.querySelectorAll("input[type=checkbox]");
 
-//set the current page to sale/men/women
+//set the current page on navigation
 if(sex === "women"){
-  console.log("woohoo")
   womensLink.setAttribute("id","current");
 } else if(sex === "men"){
   mensLink.setAttribute("id", "current");
@@ -26,19 +28,11 @@ if(sex === "women"){
   saleLink.setAttribute("id","current");
 }
 
-for(let i=0; i < filterCategoriesLiHeading.length; i++){
-  filterCategoriesLiHeading[i].addEventListener("click", function(){
-    filterCategoriesUl[i].classList.toggle("collapsed-filter");
-  })
-}
-
-
-//filters for sex and sale
+//filters products for sex or on-sale
 function filterSexSale(data){
 if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
     title.innerText = `Rainydays | Browse Sale Jackets`
     h1.innerText = "Sale Items";
-    
     return true;
   } else if (sex === data.sex){
     const capSex = data.sex.charAt(0).toUpperCase() + data.sex.slice(1);
@@ -48,7 +42,7 @@ if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
   }
 } 
 
-//initial page list for sale/men/women
+//initial page list for sale/men/women/all
 let initialFilteredList = [];
 if (saleOn === null && sex === null){
   initialFilteredList = products;
@@ -57,14 +51,15 @@ if (saleOn === null && sex === null){
   initialFilteredList = products.filter(filterSexSale);
 };
 
+// collapsable filter categories, toggles a class
+createToggleContent(filterCategoriesLiHeading, filterCategoriesUl, "collapsed-section");
 
-
-
-const checkboxes = document.querySelectorAll("input[type=checkbox]");
+//defining filter variables
 let filterSettings = [];
 let filter = {};
 let filteredList = [];
 
+//looping through all the checkboxes, to push the values for the filter settings
 checkboxes.forEach(function(checkbox) {
   //assign event listener to all checkboxes
   checkbox.addEventListener('change', function() {
@@ -93,7 +88,6 @@ checkboxes.forEach(function(checkbox) {
       productList.innerHTML = "";
       getProductList(filteredList, productList);
   })  
-  
 });
 
 
@@ -101,6 +95,7 @@ checkboxes.forEach(function(checkbox) {
 function createFilteredArray(filter, initialFilteredList){
   let list = [];
 
+  //function for comparing Arrays from filter object to initial product list array
   function compareArrays(list, filter) {
     return list.some(property => filter.includes(property));
   }
@@ -115,7 +110,7 @@ function createFilteredArray(filter, initialFilteredList){
     }
   }
 
-  //uses filters out results based on filter object settings
+  // used to filter out results based on filter object settings
   for(let i = 0; i < initialFilteredList.length; i++){
     if (filter.category.length === 0 || compareArrays(initialFilteredList[i].category, filter.category)){
       if (filter.brand.length === 0 || filter.brand.includes(initialFilteredList[i].brand)){
@@ -132,9 +127,6 @@ function createFilteredArray(filter, initialFilteredList){
   return list
 }
 
-
-
-
 //loops through data to get product list and creates html
 function getProductList(data, container){
 for (let i = 0; i < data.length; i++){
@@ -145,29 +137,9 @@ for (let i = 0; i < data.length; i++){
 //function to create product items for lists
 function createProductItem(product, container) {
   const colours = product.colours;
-  let price = "";
-  if (!product.on_sale){
-    price = "£" + product.price[0];
-  } else {
-    //get ride of decimal madness
-    let savings = Math.round((product.price[0] - product.sale_price[0])* 100 + Number.EPSILON ) / 100;
-    price = `<span class="sale-price">£${product.sale_price[0]}</span> 
-            <span class="previous-price"> £${product.price[0]}</span> 
-            <span class="save-price"> Save £${savings}</span>`
-  }
-
-  container.innerHTML +=`<div class="product-item">
-                              <a href="product.html?id=${product.id}">
-                                <div class="overlay"></div>
-                                <img src="${product.images[0].src}" alt="${product.images[0].alt}" />
-                              </a>
-                              <h3>${product.name}</h3>
-                              <div>
-                                <p>${product.brand}</p>
-                                <p>${colours}</p>
-                                <p>${price}</p>
-                              </div>
-                            </div>`
+  let price = getProductPriceHTML(product.price[0], product.on_sale, product.sale_price[0]);
+  container.innerHTML += createProductItemHTML(product.id, product.images[0].src, product.images[0].alt, product.name, product.brand, colours, price);
 }
+
 
 getProductList(initialFilteredList, productList);

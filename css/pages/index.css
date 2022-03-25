@@ -32,10 +32,11 @@ div.quick-links h3 {
   background-size: cover;
   min-height: 400px;
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: top;
+  background-position: center center;
   position: relative;
   text-align: center;
+  background-size: 100% 100%;
+  animation: zoom-in-out 10s infinite alternate linear;
 }
 
 section.welcome-banner h1,
@@ -47,6 +48,7 @@ section.welcome-banner p {
 section.welcome-banner a.cta {
   display: inline-block;
   text-align: center;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.7);
 }
 
 .promo-images-container:hover h2,
@@ -92,7 +94,7 @@ div.image-content h2 {
 
 .image-content-button {
   position: absolute;
-  top: 80%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -142,6 +144,21 @@ a {
 
   .medium-images {
     display: inline-block;
+  }
+
+  section.welcome-banner a.cta {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+  }
+
+  @keyframes zoom-in-out {
+    0% {
+      background-size: 120% 120%;
+    }
+    100% {
+      background-size: 100% 100%;
+    }
   }
 }
 

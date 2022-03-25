@@ -411,6 +411,7 @@ ul search {
 .overlay-container:hover .overlay {
   display: block;
   background: rgba(0, 30, 68, 0.3);
+  border-radius: 5px 5px 0 0;
 }
 
 .page-bread-crumbs a:hover {
@@ -636,6 +637,98 @@ footer .footer-copyright {
 .save-price {
   background: var(--cta-orange);
   color: white;
+}
+
+/* light box pop-up*/
+
+.lightbox-background {
+  position: fixed;
+  z-index: 1000;
+  padding: 10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 30, 68, 0.7);
+}
+
+.lightbox-content {
+  margin: auto;
+  padding: 20px;
+  width: 280px;
+  background-color: var(--light-blue);
+  color: white;
+  border: 2px solid white;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.lightbox-content::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox-image {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+.lightbox-button-container {
+  display: inline-flex;
+  width: 100%;
+}
+
+.lightbox-button-container button {
+  width: 120px;
+  margin: 0 auto;
+}
+
+/* js toggles filter settings visibility on click*/
+
+.collapsed-section-product,
+.collapsed-section {
+  overflow: hidden;
+  height: 40px;
+}
+
+.collapsed-section-product {
+  height: 60px;
+}
+
+.product-section-heading,
+.filter-items {
+  position: relative;
+}
+
+.product-section-heading {
+  width: fit-content;
+}
+
+.product-section-heading::after,
+.filter-items::after {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  content: "";
+  rotate: 90deg;
+  border-top: 10px solid transparent;
+  border-left: 10px solid white;
+  border-bottom: 10px solid transparent;
+}
+
+.product-section-heading::after {
+  top: 3px;
+  right: -20px;
+  border-top: 8px solid transparent;
+  border-left: 8px solid black;
+  border-bottom: 8px solid transparent;
+}
+
+.collapsed-section-product .product-section-heading::after,
+.collapsed-section .filter-items::after {
+  rotate: 0deg;
 }
 
 /*allows down to around 300px width smallest screen on data shows 320px*/

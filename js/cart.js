@@ -78,7 +78,7 @@ function createCartHtml(){
     }
   } else{
     submitBtn.disabled = true;
-    cartItemsContainer.innerHTML = "<p>Nothing in cart</p>"
+    cartItemsContainer.innerHTML = "<p>Nothing in cart =(</p>"
   }
 
   let subtotal = totalPrice * 0.875;
@@ -132,19 +132,14 @@ function removeItem(index){
   checkCart();
 }
 
-
 createCartHtml()
 
-
-
-
 // add relevant details to a local storage value for use later, and go to next page
-
-form.addEventListener("submit", submitAndPay);
-
 function submitAndPay(submit){
   updateDeliveryPrice();
   submit.preventDefault();
   localStorage.setItem("delivery", JSON.stringify(deliveryDetails))
   window.location = "details_checkout.html"
 }
+
+form.addEventListener("submit", submitAndPay);
