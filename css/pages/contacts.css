@@ -37,7 +37,7 @@ section.contact-form input.cta {
 }
 
 #fullname {
-  max-width: 20rem;
+  max-width: 15rem;
 }
 
 #email {
@@ -45,7 +45,7 @@ section.contact-form input.cta {
 }
 
 #subject {
-  max-width: 15rem;
+  max-width: 8rem;
 }
 
 #order-number {

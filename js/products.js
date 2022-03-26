@@ -63,7 +63,7 @@ let filteredList = [];
 checkboxes.forEach(function(checkbox) {
   //assign event listener to all checkboxes
   checkbox.addEventListener('change', function() {
-    //create an array with category(key) and name from each checkbox when any check box is checked
+    //create an array with category(key) and name from each checked checkbox when any check box is checked
     filterSettings = Array.from(checkboxes).filter(i => i.checked).map(i => [i.getAttribute("key"), i.name]);
 
     //sorts the array into an object with keys for all categories, and arrays of the values
@@ -83,6 +83,7 @@ checkboxes.forEach(function(checkbox) {
 
     }
 
+    //filters initial product list with current filter setting and updates the html
       filteredList = createFilteredArray(filter, initialFilteredList);
       console.log(filter)
       productList.innerHTML = "";

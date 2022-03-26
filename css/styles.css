@@ -700,6 +700,7 @@ footer .footer-copyright {
 .product-section-heading,
 .filter-items {
   position: relative;
+  cursor: pointer;
 }
 
 .product-section-heading {

@@ -4,12 +4,6 @@ checkCart();
 
 const bestSellersContainer = document.querySelector(".product-list-grid")
 
-var currentDate = new Date();
-var offerExpiryDate = new Date();
-offerExpiryDate.setMonth(offerExpiryDate.getMonth() + 1);
-console.log(currentDate);
-console.log(offerExpiryDate);
-
 // related products
 
 function createBestSellers() {
