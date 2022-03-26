@@ -14,8 +14,8 @@ let deliveryPrice = 0;
 let totalPrice = 0;
 
 function createCartHtml(){
+  totalPrice = 0;
   cartItemsContainer.innerHTML = "";
-  
   if (cartItems[0] !== undefined){
    for(let i = 0; i < cartItems.length; i++){
       let index = cartItems[i][0];
@@ -99,8 +99,6 @@ const deliveryRadioBtns = document.querySelectorAll('input[type="radio"]');
 deliveryRadioBtns.forEach(function(event){
   event.addEventListener("click", updateDeliveryPrice);
 })
-
-
 
 let deliveryType = "";
 let deliveryDetails = [];

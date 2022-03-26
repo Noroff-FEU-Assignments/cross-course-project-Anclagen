@@ -95,14 +95,28 @@ function submitProductToLocalStorage(){
   let item = [];
 
   if(sizeRadioButtons){
-    if (getCart !== null){
-    item = getCart;
-    }
+ 
     let colour = colourSelected.value;
     let size = sizeRadioButtons.value;
     let quantity = quantityInput.value;
     let currentItem = [idNumber, colour, size, quantity];
-    item.push(currentItem);
+    let duplicateCheck = false;
+
+    //check if existing cart contains same item and updates quantity if true
+    if (getCart !== null){
+      item = getCart;
+      for (let i = 0; i < item.length; i++)
+        if(idNumber === item[i][0] && colour === item[i][1] && size === item[i][2]){
+          item[i][3] = Number(item[i][3]) + Number(quantity);
+          duplicateCheck = true;
+        }
+    }
+
+    //if not a duplicate pushes to current item
+    if(!duplicateCheck){
+      item.push(currentItem);
+    }
+
     localStorage.setItem("cart", JSON.stringify(item));
     errorSelectSize.innerText = "";
     createSuccessLightbox (lightboxPageContainer, colour, size, quantity, product.name, product.images[0].src, product.images[0].alt);

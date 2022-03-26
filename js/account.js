@@ -7,9 +7,11 @@ checkCart();
 const loginSection = document.querySelector(".login");
 const loginForm = document.querySelector("#login-form");
 const loginEmail = document.querySelector("#email-login");
+const emailLoginError = document.querySelector("#error-email-login");
 const detailsForm = document.querySelector("#details-form");
 const itemsContainer = document.querySelector("table");
 const passwordInput = document.querySelector("#password");
+const passwordErrorContainer = document.querySelector("#error-password");
 const confirmPasswordLabel = document.querySelector("#confirm-password-label")
 const confirmPasswordInput = document.querySelector("#confirm-password");
 const submitBtn = document.querySelector("#submit-btn");
@@ -20,62 +22,111 @@ const orderHistorySection = document.querySelector(".order-history");
 
 // local storage grabs
 const orderHistoryJSON = localStorage.getItem("Order History");
+const userLoginJSON = localStorage.getItem("User Login");
+
+//user login info variable
+let userLoginData = {email: "", password: "", loggedIn: false,}
+//checks if there is stored login info before filling data
+if(userLoginJSON){
+  userLoginData = JSON.parse(userLoginJSON);
+  loginEmail.value = userLoginData.email;
+}
+
 
 // check if user details exist to fill page on load defaults to session storage for the moment.
 if(detailsLocalStorage){
   prefillFormFields(detailsLocalStorage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year);
-  loginEmail.value = JSON.parse(detailsLocalStorage).email;
-} else {
 
+} else {
   itemsContainer.innerHTML = "<p>No Orders Found<p>"
 }
 
+
 // --- Login/Sign Up Form ---
-function validateLoginSignUp(submit){
-  submit.preventDefault();
 
-  if(submitBtn.value === "Login"){
-    console.log("cheese");
-    loginSection.classList.toggle("hidden");
-    accountDetailsSection.classList.toggle("hidden");
-    orderHistorySection.classList.toggle("hidden");
-  } else {
-    
-  }
-
-
-}
-
-function displaySignUpForm(click){
-  click.preventDefault();
-
+// swaps between login/signup
+function displaySignUpForm(){
   if(signUpBtn.innerText === "Sign Up"){
     signUpBtn.innerText = "Login";
   } else {
     signUpBtn.innerText = "Sign Up"
   }
-
   if(submitBtn.value === "Sign Up"){
     submitBtn.value = "Login";
   } else {
     submitBtn.value = "Sign Up"
   }
-
   if(signUpText.innerText === "Don't have an account?"){
     signUpText.innerText = "Already have an account?"
   } else {
     signUpText.innerText = "Don't have an account?"
   }
-
   confirmPasswordInput.classList.toggle("hidden");
   confirmPasswordLabel.classList.toggle("hidden");
+}
 
+// password match for signup
+function matchPasswords(){
+  if(passwordInput.value === confirmPasswordInput.value && passwordInput.value.length > 8){
+    return true
+  } else if(passwordInput.value.length <= 8){
+    passwordErrorContainer.innerText = `Your passwords must be more than 8 characters`
+    return false
+  } else {
+    passwordErrorContainer.innerText = `Your passwords don't match.`
+    return false
+  }
+}
+
+//user details object for login
+let UserLoginDetails = {email: "",
+                        password: "",
+                        loggedIn: false,}
+
+//checks if user is logged in already
+if(userLoginData.loggedIn){
+  loginSection.classList.toggle("hidden");
+  accountDetailsSection.classList.toggle("hidden");
+  orderHistorySection.classList.toggle("hidden");
+}
+
+//validates login or signup
+function validateLoginSignUp(submit){
+  submit.preventDefault();
+  
+  //checks if form is login or sign up
+  if(submitBtn.value === "Login"){
+    if(userLoginData.email === loginEmail.value && userLoginData.password === passwordInput.value && userLoginData.email !== ""){
+      loginSection.classList.toggle("hidden");
+      accountDetailsSection.classList.toggle("hidden");
+      orderHistorySection.classList.toggle("hidden");
+    } else if(userLoginData.email === loginEmail.value || userLoginData.email === ""){
+      passwordErrorContainer.innerText = `User doesn't exist, please sign up`
+    } else {
+      passwordErrorContainer.innerText = `Incorrect Password`
+    }
+  } else if(submitBtn.value === "Sign Up"){
+      let passMatch = false;
+      passMatch = matchPasswords()
+      const validEmail = validateEmailInput(loginEmail, emailLoginError);
+
+      if(passMatch && validEmail){
+        loginSection.classList.toggle("hidden");
+        accountDetailsSection.classList.toggle("hidden");
+        orderHistorySection.classList.toggle("hidden");
+        UserLoginDetails = {email: loginEmail.value,
+                        password: passwordInput.value,
+                        loggedIn: true}
+        }
+        
+        localStorage.setItem("User Login", JSON.stringify(UserLoginDetails));
+  }
 }
 
 // --- Account Logged In Code ---
-
-submitBtn.addEventListener("click", validateLoginSignUp);
+loginForm.addEventListener("submit", validateLoginSignUp);
 signUpBtn.addEventListener("click", displaySignUpForm);
+
 
 // validate the users updates
 function validateUpdatedDetails(submission){
