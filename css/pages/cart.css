@@ -29,6 +29,10 @@ section.payment-summary a.cta-green {
   margin-top: 0;
 }
 
+section.payment-summary {
+  margin-top: 20px;
+}
+
 .remove-button {
   color: var(--dark-blue);
   text-decoration: underline;
@@ -48,11 +52,38 @@ input[type="submit"]:disabled {
   opacity: 0.3;
 }
 
+.cart-product-item-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  margin-bottom: -1px;
+  gap: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.cart-product-item-grid div img {
+  margin-top: 30px;
+}
+
+.cart-product-item-grid div h2,
+.cart-product-item-grid div p {
+  margin: 5px 0;
+}
+
+.edit-button,
+.remove-button {
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  margin-top: -40px;
+  float: right;
+}
+
 @media only screen and (min-width: 700px) {
-  .cart-product-item-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    margin-bottom: 50px;
+  section.payment-summary {
+    margin-top: 0px;
   }
 
   .last-item-cart-divider {

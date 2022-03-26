@@ -48,7 +48,7 @@ function validateContactForm(submission){
     successContainer.innerHTML = "<p>Success, your query has been submitted.</p>";
     //scrolls to success container on submit. useful for phones
 
-    successContainer.scrollIntoView();
+    successContainer.scrollIntoView({behavior: "smooth", block: "center"});
     contactForm.reset();
     resetBorders(fullname);
     resetBorders(message);
