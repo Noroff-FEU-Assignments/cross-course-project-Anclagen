@@ -31,12 +31,12 @@ if(sex === "women"){
 //filters products for sex or on-sale
 function filterSexSale(data){
 if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
-    title.innerText = `Rainydays | Browse Sale Jackets`
+    title.innerText = `Browse Sale Jackets | Rainydays`
     h1.innerText = "Sale Items";
     return true;
   } else if (sex === data.sex){
     const capSex = data.sex.charAt(0).toUpperCase() + data.sex.slice(1);
-    title.innerText = `Rainydays | Browse ${capSex}'s Jackets`
+    title.innerText = `Browse ${capSex}'s Jackets | Rainydays`
     h1.innerText = `${capSex}'s Products`;
     return true;
   }

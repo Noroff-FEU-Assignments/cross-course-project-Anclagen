@@ -9,6 +9,7 @@ const idNumber = Number(id) - 1;
 const product = products[idNumber];
 
 //selectors for page containers
+const title = document.querySelector("title");
 const headingContainer = document.querySelector("h1");
 const priceContainer  = document.querySelector(".price-container");
 const colourSelector = document.querySelector("#colour");
@@ -22,6 +23,8 @@ const lightboxPageContainer = document.querySelector("#lightbox-container");
 const sectionHeading = document.querySelectorAll(".product-section-heading");
 const sectionContainer = document.querySelectorAll(".product-section");
 
+title.innerText = `${product.name} || Rainydays`
+
 //creating price html, colour selector, and size selector.
 let price =  getProductPriceHTML(product.price[0], product.on_sale, product.sale_price[0]);
 let colourSelections = createColourSelector(product.colours);
@@ -32,6 +35,7 @@ let sizeSelection = createSizeSelector(product.sizes);
 let thumbnails = "";
 let productImage = "";
 let checked = "";
+
 //creating product images
 for (let i = 0; i < product.images.length; i++){
   let imageSRC = product.images[i].src
@@ -70,7 +74,7 @@ for (let i = 0; i < product.product_details.length; i++){
 
 createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product");
 
-async function createHTML(data){
+function createHTML(data){
   headingContainer.innerHTML = data.name;
   priceContainer.innerHTML = `Price: ${price}`;
   colourSelector.innerHTML = colourSelections;

@@ -100,7 +100,7 @@ function validateLoginSignUp(submit){
       loginSection.classList.toggle("hidden");
       accountDetailsSection.classList.toggle("hidden");
       orderHistorySection.classList.toggle("hidden");
-    } else if(userLoginData.email === loginEmail.value || userLoginData.email === ""){
+    } else if(userLoginData.email !== loginEmail.value || userLoginData.email === ""){
       passwordErrorContainer.innerText = `User doesn't exist, please sign up`
     } else {
       passwordErrorContainer.innerText = `Incorrect Password`
@@ -118,7 +118,7 @@ function validateLoginSignUp(submit){
                         password: passwordInput.value,
                         loggedIn: true}
         }
-        
+        // The high point of poor security.
         localStorage.setItem("User Login", JSON.stringify(UserLoginDetails));
   }
 }

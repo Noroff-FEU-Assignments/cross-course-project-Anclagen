@@ -33,6 +33,21 @@ section.payment-summary {
   margin-top: 20px;
 }
 
+.plus-button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.minus-button {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.minus-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .remove-button {
   color: var(--dark-blue);
   text-decoration: underline;
@@ -70,14 +85,13 @@ input[type="submit"]:disabled {
   margin: 5px 0;
 }
 
-.edit-button,
 .remove-button {
   border: none;
   text-decoration: none;
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
-  margin-top: -40px;
+  margin-top: -30px;
   float: right;
 }
 
