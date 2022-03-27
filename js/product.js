@@ -119,7 +119,7 @@ function submitProductToLocalStorage(){
 
     localStorage.setItem("cart", JSON.stringify(item));
     errorSelectSize.innerText = "";
-    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, product.name, product.images[0].src, product.images[0].alt);
+    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, product.name, product.images[0].src, product.images[0].alt)
   } else {
     errorSelectSize.innerText = "Please select a size.";
   }

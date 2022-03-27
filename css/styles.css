@@ -129,7 +129,7 @@ div.page-bread-crumbs {
   display: none;
 }
 
-/*visually hidden*/
+/*visually hidden so screen readers tab on them on smaller screens*/
 #search-drop-down,
 #menu-drop-down {
   position: absolute;
@@ -141,6 +141,21 @@ div.page-bread-crumbs {
   width: 1px;
   overflow: hidden;
   white-space: nowrap;
+}
+
+#skip a {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#skip a:focus {
+  position: static;
+  width: auto;
+  height: auto;
 }
 
 /*button colours and styles*/
@@ -733,7 +748,7 @@ footer .footer-copyright {
 }
 
 /*allows down to around 300px width smallest screen on data shows 320px*/
-@media only screen and (max-width: 359px) {
+@media only screen and (max-width: 380px) {
   nav li {
     padding: 0.6rem;
   }

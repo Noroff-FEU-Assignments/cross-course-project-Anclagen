@@ -31,6 +31,7 @@
   </head>
   <body>
     <header>
+        <div id="skip"><a href="#main-content">Skip to Main Content</a></div>
       <nav>
         <ul class="main-nav-container page-wrapper">
           <!-- menu drop down-->
@@ -92,13 +93,13 @@
       <div class="page-bread-crumbs">
         <a onclick="history.back()">&#60; previous page</a>
       </div>
-      <h1>Account</h1>
+      <h1 id="main-content">Account</h1>
       <div class="">
         <section class="login page-wrapper-xsmall">
           <h2 id="login-heading">Login</h2>
           <div class="login-container">
             <form id="login-form" novalidate>
-              <label for="email">E-mail</label>
+              <label for="email-login">E-mail</label>
               <input type="email" id="email-login" name="email" required />
               <div id="error-email-login" class="error"></div>
               <label for="password">Password</label>

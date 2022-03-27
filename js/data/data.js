@@ -4,7 +4,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "ski", "watersports"],
     brand: "Peter Storm",
-    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Men's Zip Down Waterproof II Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Men's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof II Jacket"}],
     colours: ["Red", "Black", "Yellow"],
     sizes: ["m", "l", "xl", "xxl", "3xl"],
     price: [74.99, 89.99, 950.00], //pounds, euros, kroner
@@ -18,7 +18,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "ski", "watersports"],
     brand: "Peter Storm",
-    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Women's Zip Down Waterproof II Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Women's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof II Jacket"}],
     colours: ["Red", "Black", "Yellow"],
     sizes: ["s", "m", "l", "xl"],
     price: [74.99, 89.99, 950.00], //pounds, euros, kroner2
@@ -32,7 +32,7 @@ export default [
     sex: "women",
     category: ["hiking", "ski"],
     brand: "Snow Storm",
-    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Women's Water-Resistant Jacket"}],
     colours: ["Green"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -46,7 +46,7 @@ export default [
     sex: "men",
     category: ["hiking", "casual"],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/grey_jacket_small_2.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/grey_jacket_small_2.jpg", alt:"Green Water-Resistant Jacket"}],
     colours: ["Grey"],
     sizes: ["l", "xl", "xxl", "3xl"],
     price: [46.99, 64.99, 700.00], //pounds, euros, kroner
@@ -60,7 +60,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "ski"],
     brand: "Peter Storm",
-    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Men's Zip Down Waterproof I Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["m", "l", "xl", "xxl", "3xl"],
     price: [64.99, 79.99, 850.00], //pounds, euros, kroner
@@ -74,7 +74,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "ski", ],
     brand: "Peter Storm",
-    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Women's Zip Down Waterproof I Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [64.99, 79.99, 850.00], //pounds, euros, kroner
@@ -88,7 +88,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [34.99, 49.99, 550.00], //pounds, euros, kroner
@@ -102,7 +102,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof I Jacke"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [34.99, 49.99, 550.00], //pounds, euros, kroner
@@ -116,7 +116,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking"],
     brand: "Peter Storm",
-    images:[{src:"images/products/yellow_jacket_small_3.jpg", alt:"Yellow jacket"}],
+    images:[{src:"images/products/yellow_jacket_small_3.jpg", alt:"Yellow Men's Zip Down Waterproof II Jacket"}],
     colours: ["Yellow"],
     sizes: [ "m", "l", "xl", "xxl"],
     price: [54.99, 69.99, 750.00], //pounds, euros, kroner
@@ -130,7 +130,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking"],
     brand: "Peter Storm",
-    images:[{src:"images/products/yellow_jacket_small_3.jpg", alt:"Yellow jacket"}],
+    images:[{src:"images/products/yellow_jacket_small_3.jpg", alt:"Yellow Women's Zip Down Waterproof II Jacket"}],
     colours: ["Yellow"],
     sizes: ["s", "m", "l", "xl"],
     price: [54.99, 69.99, 750.00], //pounds, euros, kroner
@@ -144,7 +144,7 @@ export default [
     sex: "women",
     category: ["hiking", "casual"],
     brand: "Snow Storm",
-    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Women's Water-Resistant Jacket"}],
     colours: ["Green"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -158,7 +158,7 @@ export default [
     sex: "men",
     category: ["hiking", "casual"],
     brand: "Snow Storm",
-    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Men's Water-Resistant Jacket"}],
     colours: ["Green"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -172,7 +172,7 @@ export default [
     sex: "men",
     category: [ "hiking", "casual"],
     brand: "Harmless",
-    images:[{src: "images/products/blue_jacket_armless_2_small.jpg", alt:"Blue Armless Jacket"}, {src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless jacket"}],
+    images:[{src: "images/products/blue_jacket_armless_2_small.jpg", alt:"Blue Armless Men's Body Warmer Jacket"}, {src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless Men's Body Warmer Jacket"}],
     colours: ["Blue", "Black"],
     sizes: [ "l", "xl", "xxl", "3xl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -186,7 +186,7 @@ export default [
     sex: "women",
     category: ["hiking", "casual" ],
     brand: "Harmless",
-    images:[{src: "images/products/blue_jacket_armless_2_small.jpg", alt:"Blue Armless Jacket"}, {src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless jacket"}],
+    images:[{src: "images/products/blue_jacket_armless_2_small.jpg", alt:"Blue Armless Women's Body Warmer Jacket"}, {src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless Women's Body Warmer Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -200,7 +200,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [39.99, 54.99, 650.00], //pounds, euros, kroner
@@ -214,7 +214,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [39.99, 54.99, 650.00], //pounds, euros, kroner
@@ -228,7 +228,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "ski", "watersports"],
     brand: "Mountain Gear",
-    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Men's Zip Down Waterproof II Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Men's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof II Jacket"}],
     colours: ["Red", "Black", "Yellow"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [74.99, 89.99, 950.00], //pounds, euros, kroner
@@ -242,7 +242,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "ski", "watersports"],
     brand: "Mountain Gear",
-    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/red_jacket_small.jpg", alt:"Red Women's Zip Down Waterproof II Jacket"}, {src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Women's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof II Jacket"}],
     colours: ["Red", "Black", "Yellow"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [74.99, 89.99, 950.00], //pounds, euros, kroner
@@ -256,7 +256,7 @@ export default [
     sex: "women",
     category: ["hiking", "casual"],
     brand: "Snow Storm",
-    images:[{src: "images/products/yellow_jacket_small_2.jpg", alt:"yellow Jacket"}],
+    images:[{src: "images/products/yellow_jacket_small_2.jpg", alt:"yellow Women's Warm Button Up Jacket"}],
     colours: ["Yellow"],
     sizes: [ "m", "l", "xl", "xxl", "3xl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -270,7 +270,7 @@ export default [
     sex: "men",
     category: ["hiking", "casual"],
     brand: "Snow Storm",
-    images:[{src: "images/products/yellow_jacket_small_2.jpg", alt:"yellow Jacket"}],
+    images:[{src: "images/products/yellow_jacket_small_2.jpg", alt:"yellow Men's Warm Button Up Jacket"}],
     colours: ["Yellow"],
     sizes: [ "m", "l", "xl", "xxl", "3xl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -284,7 +284,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "ski"],
     brand: "Mountain Gear",
-    images:[{src:"images/products/black_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof Hooded I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [64.99, 79.99, 850.00], //pounds, euros, kroner
@@ -298,7 +298,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "ski", ],
     brand: "Mountain Gear",
-    images:[{src:"images/products/black_jacket_small.jpg", alt:"Black jacket"},{src: "images/products/blue_jacket_small.jpg", alt:"Blue Jacket"}],
+    images:[{src:"images/products/black_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof Hooded I Jacket"},{src: "images/products/blue_jacket_small.jpg", alt:"Blue Women's Zip Down Waterproof Hooded I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [64.99, 79.99, 850.00], //pounds, euros, kroner
@@ -312,7 +312,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "casual"],
     brand: "Harmless",
-    images:[{src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless jacket"}],
+    images:[{src:"images/products/black_jacket_armless_small.jpg", alt:"Black Men's Zip Down Armless Jacket"}],
     colours: ["Black"],
     sizes: ["m", "l", "xl", "xxl", "3xl"],
     price: [34.99, 49.99, 550.00], //pounds, euros, kroner
@@ -326,7 +326,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual"],
     brand: "Harmless",
-    images:[{src:"images/products/black_jacket_armless_small.jpg", alt:"Black Armless jacket"}],
+    images:[{src:"images/products/black_jacket_armless_small.jpg", alt:"Black Women's Zip Down Armless Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [34.99, 49.99, 550.00], //pounds, euros, kroner
@@ -340,7 +340,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking"],
     brand: "Snow Storm",
-    images:[{src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Men's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof II Jacket"}],
     colours: ["Black", "Yellow"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [54.99, 69.99, 750.00], //pounds, euros, kroner
@@ -354,7 +354,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking"],
     brand: "Snow Storm",
-    images:[{src:"images/products/yellow_jacket_small.jpg", alt:"Yellow jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/yellow_jacket_small.jpg", alt:"Yellow Women's Zip Down Waterproof II Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof II Jacket"}],
     colours: ["Black", "Yellow"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [54.99, 69.99, 750.00], //pounds, euros, kroner
@@ -368,7 +368,7 @@ export default [
     sex: "women",
     category: ["hiking", "ski"],
     brand: "Snow Storm",
-    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Women's Water-Resistant Jacket"}],
     colours: ["Green"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -382,7 +382,7 @@ export default [
     sex: "men",
     category: ["hiking", "ski"],
     brand: "Snow Storm",
-    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Jacket"}],
+    images:[{src: "images/products/green_jacket_small.jpg", alt:"Green Men's Water-Resistant Jacket"}],
     colours: ["Green"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [44.99, 64.99, 700.00], //pounds, euros, kroner
@@ -396,7 +396,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "casual"],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/blue_jacket_small_3.jpg", alt:"Blue Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small_3.jpg", alt:"Blue Men's Button Down Waterproof I Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Button Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -410,7 +410,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual", ],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/blue_jacket_small_3.jpg", alt:"Blue Jacket"}, {src: "images/products/blue_jacket_small_3_side.jpg", alt:"Blue Jacket"}, {src:"images/products/black_jacket_small_2.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small_3.jpg", alt:"Blue Women's Button Down Waterproof I Jacket"}, {src: "images/products/blue_jacket_small_3_side.jpg", alt:"Blue Women's Button Down Waterproof I Jacket"}, {src:"images/products/black_jacket_small_2.jpg", alt:"Black Women's Button Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -424,7 +424,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [39.99, 54.99, 650.00], //pounds, euros, kroner
@@ -438,7 +438,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof I Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [39.99, 54.99, 650.00], //pounds, euros, kroner
@@ -452,7 +452,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "ski"],
     brand: "Peter Storm",
-    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Men's Zip Down Waterproof I Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Men's Zip Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -466,7 +466,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "ski", ],
     brand: "Peter Storm",
-    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/blue_jacket_small.jpg", alt:"Blue Women's Zip Down Waterproof I Jacket"}, {src:"images/products/black_rain_jacket_small.jpg", alt:"Black Women's Zip Down Waterproof I Jacket"}],
     colours: ["Blue", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -480,7 +480,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "casual"],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/grey_jacket_small.jpg", alt:"Grey Jacket"}, {src:"images/products/black_jacket_small_2.jpg", alt:"Black jacket"}],
+    images:[{src: "images/products/grey_jacket_small.jpg", alt:"Grey Men's Button Down Waterproof Jacket"}, {src:"images/products/black_jacket_small_2.jpg", alt:"Black Men's Button Down Waterproof Jacket"}],
     colours: ["Grey", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -494,7 +494,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual" ],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/red_leather_jacket_small.jpg", alt:"Red Leather Jacket"}, {src: "images/products/red_leather_jacket_small_side.jpg", alt:"Red Leather Jacket Side"}],
+    images:[{src: "images/products/red_leather_jacket_small.jpg", alt:"Red Women's Zip Down Stylish Leather Jacket"}, {src: "images/products/red_leather_jacket_small_side.jpg", alt:"Red Women's Zip Down Stylish Leather Jacket Side"}],
     colours: ["Red"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -508,7 +508,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual" ],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/red_leather_jacket_small_2.jpg", alt:"Red Leather Jacket"}],
+    images:[{src: "images/products/red_leather_jacket_small_2.jpg", alt:"Red Women's Button Down Stylish Leather Jacket"}],
     colours: ["Red"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -522,7 +522,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual" ],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/black_leather_jacket_small.jpg", alt:"Black Leather Jacket"}],
+    images:[{src: "images/products/black_leather_jacket_small.jpg", alt:"Black Women's Zip Down Stylish Leather Jacket"}],
     colours: ["Black"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [94.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -536,7 +536,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "casual"],
     brand: "Harmless",
-    images:[{src:"images/products/blue_jacket_armless_small.jpg", alt:"Blue Armless Jacket with Black Scarf"}],
+    images:[{src:"images/products/blue_jacket_armless_small.jpg", alt:"Blue Armless Men's Zip Down Armless Jacket, Free Scarf!"}],
     colours: ["Blue"],
     sizes: ["m", "l", "xl", "xxl", "3xl"],
     price: [54.99, 49.99, 550.00], //pounds, euros, kroner
@@ -550,7 +550,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "casual" ],
     brand: "Jackson's Jackets",
-    images:[{src: "images/products/blue_jacket_small_2.jpg", alt:"Blue Leather Jacket"}],
+    images:[{src: "images/products/blue_jacket_small_2.jpg", alt:"Blue Men's Zip Down Not So Stylish Leather Jacket"}],
     colours: ["Blue"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [84.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -564,7 +564,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "casual"],
     brand: "Jackson's Jackets",
-    images:[{src:"images/products/black_jacket_small_2.jpg", alt:"Black jacket"}, {src: "images/products/grey_jacket_small.jpg", alt:"Grey Jacket"}],
+    images:[{src:"images/products/black_jacket_small_2.jpg", alt:"Black Men's Button Down Waterproof Jacket"}, {src: "images/products/grey_jacket_small.jpg", alt:"Grey Men's Button Down Waterproof Jacket"}],
     colours: ["Grey", "Black"],
     sizes: ["s", "m", "l", "xl", "xxl", "3xl"],
     price: [74.99, 109.99, 1150.00], //pounds, euros, kroner
@@ -578,7 +578,7 @@ export default [
     sex: "women",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/blue_jacket_small_4.jpg", alt:"Blue jacket"}],
+    images:[{src:"images/products/blue_jacket_small_4.jpg", alt:"Blue Women's Zip Down Waterproof Fur Lined Jacket"}],
     colours: ["Blue"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [104.99, 99.99, 1200.00], //pounds, euros, kroner
@@ -592,7 +592,7 @@ export default [
     sex: "men",
     category: ["waterproof", "hiking", "watersports"],
     brand: "Hail Storm",
-    images:[{src:"images/products/blue_jacket_small_4.jpg", alt:"Blue jacket"}],
+    images:[{src:"images/products/blue_jacket_small_4.jpg", alt:"Blue Men's Zip Down Waterproof Fur Lined Jacket"}],
     colours: ["Blue"],
     sizes: ["s", "m", "l", "xl", "xxl"],
     price: [104.99, 99.99, 1200.00], //pounds, euros, kroner

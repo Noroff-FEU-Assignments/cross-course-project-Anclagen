@@ -35,6 +35,10 @@ div.filter {
   display: block;
 }
 
+.filter-label h2 {
+  margin: 0;
+}
+
 .close-filter,
 ul.filter-menu li {
   display: none;
