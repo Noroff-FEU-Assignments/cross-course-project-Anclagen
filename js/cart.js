@@ -13,6 +13,7 @@ let cartItems = JSON.parse(localStorage.getItem("cart"));
 let deliveryPrice = 0;
 let totalPrice = 0;
 
+//creates cart items and updates prices.
 function createCartHtml(){
   totalPrice = 0;
   cartItemsContainer.innerHTML = "";
@@ -105,131 +106,57 @@ function createCartHtml(){
     cartItemsContainer.innerHTML = "<p>Nothing in cart =(</p>"
   }
 
+  createCartPrices()
+
+}
+
+//add to quantity
 function addItem(i){
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity + 1;
 
+  //enables minus button
   if(newQuantity > 1){
     minusButton[i].disabled = false;
   }
 
+  totalPrice = totalPrice + products[cartItems[i][0]].price[0]
+  createCartPrices()
   quantityContainer[i].innerText = newQuantity;
   cartItems[i][3] = newQuantity;
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
+//minus quantity
 function minusItem(i){
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity - 1;
 
+  //disables minus button at 1 quantity
   if(newQuantity < 2){
     minusButton[i].disabled = true;
   }
 
+  totalPrice = totalPrice - products[cartItems[i][0]].price[0]
+  createCartPrices()
   quantityContainer[i].innerText = newQuantity;
   cartItems[i][3] = newQuantity;
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
 
-
+//fills in the cart prices
+function createCartPrices(){
   let subtotal = totalPrice * 0.875;
   let vat = totalPrice * 0.125;
   //js does some random math some times fixed to 2 dp.
   subtotalContainer.innerHTML = "£" + subtotal.toFixed(2);
   vatContainer.innerHTML = "£" + vat.toFixed(2);
-  totalPriceContainer.innerHTML = "£" + totalPrice.toFixed(2);
-
+  totalPriceContainer.innerHTML = "£" + (totalPrice + deliveryPrice).toFixed(2);
 }
-  // function createCartHtml(){
-  //   totalPrice = 0;
-  //   cartItemsContainer.innerHTML = "";
-  //   if (cartItems[0] !== undefined){
-  //    for(let i = 0; i < cartItems.length; i++){
-  //       let index = cartItems[i][0];
-  //       let colour = cartItems[i][1];
-  //       let size = cartItems[i][2];
-  //       let quantity = cartItems[i][3];
-  //       let imageSrc = products[index].images[0].src;
-  //       let imageAlt = products[index].images[0].alt;
-  //       let brand = products[index].brand;
-  //       let name = products[index].name;
-  //       let price = products[index].price[0];
-  
-  //       if(products[index].on_sale){
-  //         price = products[index].sale_price[0];
-  //       }
-  
-  //       totalPrice += (price * quantity);
-  
-  //       //create initial container
-  //       let cartItem = document.createElement("div");
-  //       cartItem.classList.add(`cart-product-item-grid`);
-  
-  //       //create image container and images
-  //       let imageContainer = document.createElement("div");
-  //       let imageItem = document.createElement("img");
-  //       imageItem.src=`${imageSrc}`;
-  //       imageItem.alt=`${imageAlt}`;
-  //       imageContainer.appendChild(imageItem);
-  
-  //       //create item details
-  //       let detailsItem = document.createElement("div");
-  //       let h2 = document.createElement("h2");
-  //       let pSize = document.createElement("p");
-  //       let pColour = document.createElement("p");
-  //       let pPrice = document.createElement("p");
-  //       pPrice.classList.add("items-price");
-  //       let pQuantity = document.createElement("p");
-  //       pQuantity.classList.add("quantity-value");
-  //       let btnAdd = document.createElement("button");
-  //       let btnMinus = document.createElement("button");
-  //       btnAdd.classList.add("remove-button");
-  //       btnMinus.classList.add("remove-button");
-  
-  //       let btnRemove = document.createElement("button");
-  //       btnRemove.classList.add("remove-button");
-  
-  //       //if calling a function with parameters create it inside another as it will run automatically.
-  //       btnRemove.addEventListener("click", function(){removeItem(i)});
-  //       btnRemove.addEventListener("click", function(){addItem(i)});
-  //       btnRemove.addEventListener("click", function(){removeItem(i)});
-  
-  //       h2.textContent = `${brand} -${name}`;
-  //       pSize.textContent = `Size: ${size}`;
-  //       pColour.textContent = `Colour: ${colour}`;
-  //       pPrice.textContent = `Price: £${price}`;
-  //       pQuantity.innerHTML = `Quantity: ${quantity}`;
-  //       btnRemove.textContent = "remove";
-  
-  
-  //       cartItemsContainer.appendChild(cartItem);
-  //       cartItem.appendChild(imageContainer);
-  //       cartItem.appendChild(detailsItem);
-  //       detailsItem.appendChild(h2);
-  //       detailsItem.appendChild(pSize);
-  //       detailsItem.appendChild(pColour);
-  //       detailsItem.appendChild(pPrice);
-  //       detailsItem.appendChild(pQuantity);
-        
-  //       detailsItem.appendChild(btnRemove);
-  //     }
-  //   } else{
-  //     submitBtn.disabled = true;
-  //     cartItemsContainer.innerHTML = "<p>Nothing in cart =(</p>"
-  //   }
-
-//   let subtotal = totalPrice * 0.875;
-//   let vat = totalPrice * 0.125;
-//   //js does some random math some times fixed to 2 dp.
-//   subtotalContainer.innerHTML = "£" + subtotal.toFixed(2);
-//   vatContainer.innerHTML = "£" + vat.toFixed(2);
-//   totalPriceContainer.innerHTML = "£" + totalPrice.toFixed(2);
-
-// }
 
 // delivery options
 const standardDeliveryBtn = document.querySelector("#standard-delivery");
@@ -244,6 +171,7 @@ deliveryRadioBtns.forEach(function(event){
 let deliveryType = "";
 let deliveryDetails = [];
 
+//updates delivery price
 function updateDeliveryPrice(){
   if(standardDeliveryBtn.checked){
     deliveryPrice = 0;
