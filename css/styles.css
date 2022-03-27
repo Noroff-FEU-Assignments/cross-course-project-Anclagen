@@ -538,6 +538,10 @@ nav ul li.main-nav-cart ul li {
 
 /*-------  Footer styling  --------*/
 
+footer {
+  margin-top: 20px;
+}
+
 footer img {
   padding: 5px;
 }
