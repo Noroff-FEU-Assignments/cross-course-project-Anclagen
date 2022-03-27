@@ -641,7 +641,7 @@ footer .footer-copyright {
 /* shared colours for prices */
 
 .sale-price {
-  color: var(--cta-orange);
+  font-weight: bold;
 }
 
 .previous-price {
@@ -650,8 +650,13 @@ footer .footer-copyright {
 }
 
 .save-price {
+  display: inline-block;
   background: var(--cta-orange);
-  color: white;
+  padding: 0 5px;
+  color: black;
+  border-radius: 5px;
+  min-width: 94px;
+  text-align: center;
 }
 
 /* light box pop-up*/

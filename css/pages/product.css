@@ -3,18 +3,10 @@ h1 {
 }
 
 /* price details */
-.sale-price {
-  color: var(--cta-orange);
-}
 
 .previous-price {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
-}
-
-.save-price {
-  background: var(--cta-orange);
-  color: white;
 }
 
 .details-title {
