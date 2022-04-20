@@ -241,7 +241,7 @@ function removeItem(index) {
   cartItems.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems));
   //update cart array data and create new html
-  cartArrayData = createCartArrayData(data);
+  cartArrayData = createCartArrayData(data, cartItems);
   createCartHtml(cartArrayData);
   createCartPrices();
   checkCart();

@@ -184,7 +184,7 @@ async function callApiGenerateOrderHistory(){
     console.log(url)
     let data = await callApi(url);
     console.log(data)
-    createOrderHistory();
+    createOrderHistory(data);
   } catch(error){
     console.log(error);
     errorMessage(itemsContainer);
@@ -192,7 +192,7 @@ async function callApiGenerateOrderHistory(){
 }
 
 
-function createOrderHistory(){
+function createOrderHistory(data){
   let totalPrice = 0;
   const orderHistory = JSON.parse(orderHistoryJSON);
   for(let j = (orderHistory.length - 1); j >= 0; j--){
