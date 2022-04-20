@@ -10,8 +10,9 @@ const sex = params.get("sex");
 const saleOn = params.get("on_sale");
 const searchTerms = params.get("search");
 
- //containers and elements
+//containers and elements
 const h1 = document.querySelector("h1");
+const searchTermContainer = document.querySelector(".search-terms-container");
 const title = document.querySelector("title");
 const productList = document.querySelector(".products-page-grid");
 const saleLink = document.querySelector(".sale-products");
@@ -21,6 +22,7 @@ const filterCategoriesLiHeading = document.querySelectorAll(".filter-items");
 const filterCategoriesUl = document.querySelectorAll(".filter-container");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
 const productsContainer = document.querySelector(".products-page-grid");
+const selector = document.querySelector("#sort");
 
 //creating url to call
 let url = baseUrl + keys + increaseResults;
@@ -45,7 +47,14 @@ if(sex === "women"){
   h1.innerText = "Sale Items";
 } else if(searchTerms !== null){
   title.innerText = `Search Products | Rainydays`
-  h1.innerText = `Searching for: ${searchTerms}`;
+  h1.innerText = "Search Results:";
+  let searchTermsArray = searchTerms.split(",");
+  let searchText = searchTermsArray[0];
+  for(let i = 1; i < searchTermsArray.length; i++){
+    searchText += ", " + searchTermsArray[i];
+  }
+  searchTermContainer.innerHTML = `<p>Keywords: ${searchText}</p>`
+  console.log(searchTerms)
   url = baseUrl + keys + increaseResults + `&search=${searchTerms}`
 }
 
@@ -66,6 +75,22 @@ function filterSex(data){
 // collapsable filter categories, toggles a class
 createToggleContent(filterCategoriesLiHeading, filterCategoriesUl, "collapsed-section");
 
+//sort products
+selector.addEventListener("change", sortData);
+
+function sortData(){
+  productsContainer.innerHTML= "";
+  if(selector.value === "price-high-low"){
+    filteredData.sort((a, b) => b.price - a.price);
+  } else if(selector.value === "price-low-high"){
+    filteredData.sort((a, b) => a.price - b.price);
+  }
+  //maintains selected filter options 
+  filteredList = createFilteredArray(filter, filteredData);
+
+  createProductsHtml(filteredList);
+}
+
 async function buildPageContent(url) {
   try{
     const data = await callApi(url);
@@ -79,6 +104,8 @@ async function buildPageContent(url) {
       filteredData = data;
     }
 
+    // sorts pages initial results by default low-high
+    filteredData.sort((a, b) => a.price - b.price);
     createProductsHtml(filteredData);
   } catch(error){
     console.log(error);
@@ -109,7 +136,7 @@ function createProductsHtml(data){
 
 //defining filter variables
 let filterSettings = [];
-let filter = {};
+let filter = {category:[], brand:[], sizes:[], colours:[], price:[]};
 let filteredList = [];
 
 //looping through all the checkboxes, to push the values for the filter settings
@@ -146,7 +173,6 @@ checkboxes.forEach(function(checkbox) {
 // creates a new list of products based on the initial list and the filter settings
 function createFilteredArray(filter, filteredData){
   let list = [];
-  console.log(list);
   //function for comparing Arrays in the filter object and initial product list.
   function compareArrays(list, filter) {
     return list.some(property => filter.includes(property));

@@ -16,6 +16,8 @@
 
 Might be better to divide queries into individual words for better search results and use `search={word1},{word2},{word3}...`
 
+Search results are based on descriptions and name, as such I used the short description to add relevant information on the product. In retrospect I should of put the custom attribute for specification in the main description and used the short description for the page details on the product.
+
 # Product Setup
 
 ## **Price**
