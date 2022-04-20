@@ -1,38 +1,91 @@
-import products from "./data/data.js";
-import {checkCart} from "./data/components.js"
+import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import { checkCart, callApi, errorMessage, productSearch} from "./data/components.js"
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
+// DOM containers/inputs/etc..
 const cartItemsContainer = document.querySelector(".cart-items");
+// delivery options
+const standardDeliveryBtn = document.querySelector("#standard-delivery");
+const expressDeliveryBtn = document.querySelector("#express-delivery");
+const nextDayDeliveryBtn = document.querySelector("#next-day-delivery");
+const deliveryRadioBtns = document.querySelectorAll('input[type="radio"]');
+// Price outputs
 const subtotalContainer = document.querySelector(".subtotal");
 const deliveryContainer = document.querySelector(".delivery");
 const vatContainer = document.querySelector(".vat");
 const totalPriceContainer = document.querySelector(".total");
+// delivery selection form 
 const form = document.querySelector("#delivery-type");
 const submitBtn = document.querySelector("#submit-btn");
-let cartItems = JSON.parse(localStorage.getItem("cart"));
+
+//global variables for use
+let cartArrayData = [];
+let data = [];
 let deliveryPrice = 0;
 let totalPrice = 0;
+let deliveryType = "";
+let deliveryDetails = [];
+//Check if cart exist before parse avoid error on mobile and tablet.
+let cartItems = undefined;
+if(localStorage.getItem("cart") !== undefined){
+  cartItems = JSON.parse(localStorage.getItem("cart"));
+}
+
+async function callApiGenerateCart(){
+  if (cartItems[0] !== undefined){
+
+    //gets ids for api query
+    let id = cartItems[0][0];
+    for(let i = 1; i < cartItems.length; i++){
+      id += "," + cartItems[i][0];
+    }
+
+    //creates url to call
+    let url = baseUrl  + keys + "&includes=" + id + increaseResults;
+    data = await callApi(url);
+    console.log(data)
+    //creates an array of items as duplicate IDs in call are consolidated in the call data. Probably a better way of doing it, to explore later when I have more time but for now I am integrating the calls into existing code.
+    cartArrayData = createCartArrayData(data);
+    console.log(cartArrayData)
+    createCartHtml(cartArrayData);
+
+  } else {
+    cartItemsContainer.innerHTML = "<p>Nothing in cart :(</p>";
+  }
+
+}
+
+callApiGenerateCart()
+
+function createCartArrayData(data){
+  let arrayData = [];
+  for(let j = 0; j < cartItems.length; j++){
+    for(let i = 0; i < data.length; i++){
+      if(Number(cartItems[j][0]) === data[i].id){
+        arrayData.push(data[i]);
+        break;
+      }
+    }
+  }
+  return arrayData;
+}
 
 //creates cart items and updates prices.
-function createCartHtml(){
+function createCartHtml(products) {
   totalPrice = 0;
   cartItemsContainer.innerHTML = "";
-  if (cartItems[0] !== undefined){
-   for(let i = 0; i < cartItems.length; i++){
-      let index = cartItems[i][0];
+  if (cartItems[0] !== undefined) {
+    for (let i = 0; i < cartItems.length; i++) {
       let colour = cartItems[i][1];
       let size = cartItems[i][2];
       let quantity = cartItems[i][3];
 
-      let imageSrc = products[index].images[0].src;
-      let imageAlt = products[index].images[0].alt;
-      let brand = products[index].brand;
-      let name = products[index].name;
-      let price = products[index].price[0];
-
-      if(products[index].on_sale){
-        price = products[index].sale_price[0];
-      }
+      let imageSrc = products[i].images[0].src;
+      let imageAlt = products[i].images[0].alt;
+      let brand = getBrand(products[i]);
+      let name = products[i].name;
+      let price = Number(products[i].price);
 
       totalPrice += (price * quantity);
 
@@ -43,8 +96,8 @@ function createCartHtml(){
       //create image container and images
       let imageContainer = document.createElement("div");
       let imageItem = document.createElement("img");
-      imageItem.src=`${imageSrc}`;
-      imageItem.alt=`${imageAlt}`;
+      imageItem.src = `${imageSrc}`;
+      imageItem.alt = `${imageAlt}`;
       imageContainer.appendChild(imageItem);
 
       //create item details
@@ -63,7 +116,7 @@ function createCartHtml(){
       btnMinus.textContent = "-";
       btnMinus.classList.add("minus-button");
       //pre-disable button if quantity is 1
-      if(quantity < 2){
+      if (quantity < 2) {
         btnMinus.disabled = true;
       }
 
@@ -77,11 +130,11 @@ function createCartHtml(){
       btnRemove.classList.add("remove-button");
 
       //if calling a function with parameters create it inside another as it will run automatically.
-      btnMinus.addEventListener("click", function(){minusItem(i)});
-      btnAdd.addEventListener("click", function(){addItem(i)});
-      btnRemove.addEventListener("click", function(){removeItem(i)});
+      btnMinus.addEventListener("click", function () { minusItem(i) });
+      btnAdd.addEventListener("click", function () { addItem(i) });
+      btnRemove.addEventListener("click", function () { removeItem(i) });
 
-      h2.innerHTML = `<a href="product.html?id=${index+1}">${brand} -${name}</a>`;
+      h2.innerHTML = `<a href="product.html?id=${products[i].id}">${brand} -${name}</a>`;
       pSize.textContent = `Size: ${size}`;
       pColour.textContent = `Colour: ${colour}`;
       pPrice.textContent = `Price: £${price}`;
@@ -98,31 +151,40 @@ function createCartHtml(){
       detailsItem.appendChild(pPrice);
       detailsItem.appendChild(pQuantity);
       detailsItem.appendChild(pQuantityUpdater);
-      
+
       detailsItem.appendChild(btnRemove);
     }
-  } else{
+  } else {
     submitBtn.disabled = true;
     cartItemsContainer.innerHTML = "<p>Nothing in cart =(</p>"
   }
-
   createCartPrices()
+}
 
+//gets the brand name out of the attribute data
+function getBrand(products){
+  let brand ="";
+  for(let i = 0; i < products.attributes.length; i++){
+    if(products.attributes[i].name === "Brand"){
+      brand = products.attributes[i].options[0];
+    }
+  }
+  return brand;
 }
 
 //add to quantity
-function addItem(i){
+function addItem(i) {
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity + 1;
 
   //enables minus button
-  if(newQuantity > 1){
+  if (newQuantity > 1) {
     minusButton[i].disabled = false;
   }
 
-  totalPrice = totalPrice + products[cartItems[i][0]].price[0]
+  totalPrice = totalPrice + Number(cartArrayData[i].price);
   createCartPrices()
   quantityContainer[i].innerText = newQuantity;
   cartItems[i][3] = newQuantity;
@@ -130,18 +192,18 @@ function addItem(i){
 }
 
 //minus quantity
-function minusItem(i){
+function minusItem(i) {
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity - 1;
 
   //disables minus button at 1 quantity
-  if(newQuantity < 2){
+  if (newQuantity < 2) {
     minusButton[i].disabled = true;
   }
 
-  totalPrice = totalPrice - products[cartItems[i][0]].price[0]
+  totalPrice = totalPrice - Number(cartArrayData[i].price);
   createCartPrices()
   quantityContainer[i].innerText = newQuantity;
   cartItems[i][3] = newQuantity;
@@ -149,7 +211,7 @@ function minusItem(i){
 }
 
 //fills in the cart prices
-function createCartPrices(){
+function createCartPrices() {
   let subtotal = totalPrice * 0.875;
   let vat = totalPrice * 0.125;
   //js does some random math some times fixed to 2 dp.
@@ -158,55 +220,53 @@ function createCartPrices(){
   totalPriceContainer.innerHTML = "£" + (totalPrice + deliveryPrice).toFixed(2);
 }
 
-// delivery options
-const standardDeliveryBtn = document.querySelector("#standard-delivery");
-const expressDeliveryBtn = document.querySelector("#express-delivery");
-const nextDayDeliveryBtn = document.querySelector("#next-day-delivery");
-const deliveryRadioBtns = document.querySelectorAll('input[type="radio"]');
 
-deliveryRadioBtns.forEach(function(event){
+
+deliveryRadioBtns.forEach(function (event) {
   event.addEventListener("click", updateDeliveryPrice);
 })
 
-let deliveryType = "";
-let deliveryDetails = [];
+
 
 //updates delivery price
-function updateDeliveryPrice(){
-  if(standardDeliveryBtn.checked){
+function updateDeliveryPrice() {
+  if (standardDeliveryBtn.checked) {
     deliveryPrice = 0;
     deliveryType = "Standard delivery";
     totalPriceContainer.innerHTML = "£" + (totalPrice + deliveryPrice).toFixed(2);
-  } else if(expressDeliveryBtn.checked){
+  } else if (expressDeliveryBtn.checked) {
     deliveryPrice = 5;
     deliveryType = "Express delivery";
     totalPriceContainer.innerHTML = "£" + (totalPrice + deliveryPrice).toFixed(2);
-  } else if(nextDayDeliveryBtn.checked){
+  } else if (nextDayDeliveryBtn.checked) {
     deliveryPrice = 10;
     deliveryType = "Next day delivery";
     totalPriceContainer.innerHTML = "£" + (totalPrice + deliveryPrice).toFixed(2);
   }
- console.log(deliveryPrice);
+  console.log(deliveryPrice);
   deliveryContainer.innerHTML = `£${deliveryPrice.toFixed(2)}`
   deliveryDetails = [deliveryType, deliveryPrice];
 }
 
 // remove an item from your cart, updates local storage and re-creates html
-function removeItem(index){
+function removeItem(index) {
   cartItems.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems));
-  createCartHtml();
+  //update cart array data and create new html
+  cartArrayData = createCartArrayData(data);
+  createCartHtml(cartArrayData);
+  createCartPrices();
   checkCart();
 }
 
-createCartHtml()
-
 // add relevant details to a local storage value for use later, and go to next page
-function submitAndPay(submit){
+function submitAndPay(submit) {
   updateDeliveryPrice();
   submit.preventDefault();
   localStorage.setItem("delivery", JSON.stringify(deliveryDetails))
   window.location = "details_checkout.html"
 }
+
+
 
 form.addEventListener("submit", submitAndPay);

@@ -1,7 +1,8 @@
 import products from "./data/data.js";
-import {firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsLocalStorage} from "./data/constants.js";
-import {checkCart, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
+import { searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsLocalStorage} from "./data/constants.js";
+import {checkCart, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
 // page containers and inputs
 const loginSection = document.querySelector(".login");

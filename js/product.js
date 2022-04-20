@@ -1,12 +1,12 @@
-import products from "./data/data.js";
-import {checkCart, createProductItemHTML, getProductPriceHTML, createSuccessLightbox, createColourSelector, createSizeSelector, createToggleContent} from "./data/components.js"
+import {baseUrl, keys, searchForm} from "./data/constants.js";
+import {checkCart, callApi, createSuccessLightbox, createToggleContent, errorMessage, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const idNumber = Number(id) - 1;
-const product = products[idNumber];
+const idNumber = Number(id);
 
 //selectors for page containers
 const title = document.querySelector("title");
@@ -15,66 +15,82 @@ const priceContainer  = document.querySelector(".price-container");
 const colourSelector = document.querySelector("#colour");
 const imageProduct = document.querySelector(".images-container");
 const imageProductThumbnails = document.querySelector(".product-thumbnails");
-const sizeSelector = document.querySelector(".size-selection");
+const sizeSelector = document.querySelector("#size");
 const productDetailsContainer = document.querySelector(".product-details-container");
 const productSpecificationContainer = document.querySelector(".product-specification-container");
 const relatedProductsContainer = document.querySelector(".product-list-grid");
 const lightboxPageContainer = document.querySelector("#lightbox-container");
 const sectionHeading = document.querySelectorAll(".product-section-heading");
 const sectionContainer = document.querySelectorAll(".product-section");
+const stockLevelContainer = document.querySelector(".stock-level-container");
 
-title.innerText = `${product.name} || Rainydays`
-
-//creating price html, colour selector, and size selector.
-let price =  getProductPriceHTML(product.price[0], product.on_sale, product.sale_price[0]);
-let colourSelections = createColourSelector(product.colours);
-let sizeSelection = createSizeSelector(product.sizes);
-
-
-//variables for image and thumbs.
-let thumbnails = "";
-let productImage = "";
-let checked = "";
-
-//creating product images
-for (let i = 0; i < product.images.length; i++){
-  let imageSRC = product.images[i].src
-  let imageAlt = product.images[i].alt
-  if(i === 0){
-    checked = `checked="checked"`;
-  } else{
-    checked = "";
-  }
-  let imageIDLowerCase = product.images[i].alt.replace(/ /g,"-").toLowerCase();
-  productImage += `<div>
-                    <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
-                    <img src=${imageSRC} alt=${imageAlt} />
-                  </div>`;
-
-  thumbnails += `<label for=${imageIDLowerCase} class="checked">
-                    <img src=${imageSRC} alt=${imageAlt} />
-                 </label>`;       
-}
-
-//Product details list
-let productDetails = "";
-for (let i = 0; i < product.product_details.length; i++){
-  let details = product.product_details[i];
-  
-  productDetails += `<li>${details}</li>`;
-}
-
-//Product specification list
-let productSpecification = "";
-for (let i = 0; i < product.product_details.length; i++){
-  let specs = product.Product_Specification[i];
-  
-  productSpecification += `<li>${specs}</li>`;
-}
+const url = baseUrl + "/" + id + keys;
+const variantUrl = baseUrl + "/" + id + "/variations" + keys;
+let itemData = {};
+let variantItemData = {};
 
 createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product");
 
+async function buildPageContent(url) {
+  try{
+    const data = await callApi(url)
+    itemData = data;
+    createHTML(data);
+    title.innerText = `${data.name} || Rainydays`
+    
+    //get variants for stock levels of each
+    const variantResponse = await fetch(variantUrl);
+    variantItemData = await variantResponse.json();
+  } catch(error){
+    console.log(error);
+    errorMessage(imageProduct);
+  }
+}
+
+buildPageContent(url);
+
 function createHTML(data){
+  //price
+  let currentPrice = data.price;
+  let onSale = data.on_sale
+  let regularPrice = (data.price_html).match(/[\d\.]+/);
+  let price = getProductPriceHTML(regularPrice, onSale, currentPrice);
+
+  //colours
+  let colourSelections = createColourSelector(data.attributes);
+
+  //variables for image and thumbs.
+  let thumbnails = "";
+  let productImage = "";
+  let checked = "";
+
+  //creating product images
+  for (let i = 0; i < data.images.length; i++){
+    let imageSRC = data.images[i].src
+    let imageAlt = data.images[i].alt
+    if(i === 0){
+      checked = `checked="checked"`;
+    } else{
+      checked = "";
+    }
+    let imageIDLowerCase = data.images[i].alt.replace(/ /g,"-").toLowerCase();
+    productImage += `<div>
+                      <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
+                      <img src=${imageSRC} alt=${imageAlt} />
+                    </div>`;
+
+    thumbnails += `<label for=${imageIDLowerCase} class="checked">
+                      <img src=${imageSRC} alt=${imageAlt} />
+                  </label>`;       
+  }
+
+  let sizeSelection = createSizeSelector(data.attributes);
+
+  let productDetails = data.description;
+  let productSpecification = createProductSpec(data);
+  //Product specification list
+
+  //filling the page
   headingContainer.innerHTML = data.name;
   priceContainer.innerHTML = `Price: ${price}`;
   colourSelector.innerHTML = colourSelections;
@@ -83,27 +99,54 @@ function createHTML(data){
   sizeSelector.innerHTML = sizeSelection;
   productDetailsContainer.innerHTML = productDetails;
   productSpecificationContainer.innerHTML = productSpecification;
+
 }
 
-createHTML(product);
+function createProductSpec(data){
+  let productSpecification = "";
+  for (let i = 0; i < data.attributes.length; i++){
+    if(data.attributes[i].name === "Specification"){
+      for (let j = 0; j < data.attributes[i].options.length; j++){
+        let specs = data.attributes[i].options[j];
+        productSpecification += `<li>${specs}</li>`;
+      }
+    }
+  }
+
+  return productSpecification
+}
+
+// check stock levels
+
+function checkStockLevel(){
+  console.log("woohoo")
+  // variantItemData
+  // stockLevelContainer
+  // colourSelector
+}
+
+sizeSelector.addEventListener("change", checkStockLevel());
+colourSelector.addEventListener("change", checkStockLevel());
 
 //add product to local storage/cart
 function submitProductToLocalStorage(){
 
   const colourSelected = document.querySelector("#colour");
-  const sizeRadioButtons = document.querySelector(".input-checked:checked");
+  const sizeSelected = document.querySelector("#size");
   const quantityInput = document.querySelector("#quantity");
   const getCart = JSON.parse(localStorage.getItem("cart"));
   const errorSelectSize = document.querySelector(".select-size-error");
 
   let item = [];
 
-  if(sizeRadioButtons){
- 
+
     let colour = colourSelected.value;
-    let size = sizeRadioButtons.value;
+    let size = sizeSelected.value;
     let quantity = quantityInput.value;
-    let currentItem = [idNumber, colour, size, quantity];
+    //no idea if I want this yet
+    let variantIdList = itemData.variations.toString();
+    let itemStockLevel = 0;
+    let currentItem = [idNumber, colour, size, quantity, variantIdList];
     let duplicateCheck = false;
 
     //check if existing cart contains same item and updates quantity if true
@@ -123,10 +166,8 @@ function submitProductToLocalStorage(){
 
     localStorage.setItem("cart", JSON.stringify(item));
     errorSelectSize.innerText = "";
-    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, product.name, product.images[0].src, product.images[0].alt)
-  } else {
-    errorSelectSize.innerText = "Please select a size.";
-  }
+    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, itemData.name, itemData.images[0].src, itemData.images[0].alt)
+
 }
 
 function submitItemDetails(submission){
@@ -136,19 +177,3 @@ function submitItemDetails(submission){
 
 const productForm = document.querySelector(".product-form");
 productForm.addEventListener("submit", submitItemDetails);
-
-
-
-// related products
-function createRelatedProducts() {
-  let relatedProducts = "";
-  //gets 4 products matching sex and not the id of the current product, and slices them into an array.
-  let related = products.filter(products => products.id !== product.id && products.sex === product.sex).slice(0, 4);
-  for (let i=0; i < related.length; i++){
-    let price = getProductPriceHTML(related[i].price[0], related[i].on_sale, related[i].sale_price[0]);
-    relatedProducts += createProductItemHTML(related[i].id, related[i].images[0].src, products[i].images[0].alt, related[i].name, related[i].brand, related[i].colours, price);
-  }
-  relatedProductsContainer.innerHTML = relatedProducts;
-}
-
-// createRelatedProducts();

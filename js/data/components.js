@@ -18,6 +18,22 @@ export function checkCart(){
 }
 // --- utilities ---
 
+// call api
+export async function callApi(url){
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data;
+}
+
+// catch error message generator
+export function errorMessage(container){
+  container.innerHTML = `<div class="error message">
+                          <p> An error occurred while fetching the data </p>
+                          <p> Please try reloading the page, if this error persists please contact us using a query form </p>
+                        </div>`;
+}
+
 // collapsable content toggle toggles a class, accepts node list of clickables and containers.
 export function createToggleContent(clickables, contentContainer, toggleClass){
   for(let i=0; i < clickables.length; i++){
@@ -34,7 +50,13 @@ export function createToggleContentSingle(clickables, contentContainer){
     })
 }
 
+// search function
 
+export function productSearch(submit) {
+  submit.preventDefault();
+  const searchInput = document.querySelector(".search-bar");
+  window.location = `products.html?search="${searchInput.value}"`;
+}
 
 // --- Input Validations ---
 
@@ -172,6 +194,31 @@ export function getProductPriceHTML(itemPrice, onSale, salePrice){
   return price;
 }
 
+//Function to get the colours out of the attributes
+export function getColours(product){
+  let colours = "";
+  for(let j = 0; j < product.attributes.length; j++){
+    if(product.attributes[j].name === "Colours"){
+      colours = product.attributes[j].options[0];
+      for(let k = 1; k < product.attributes[j].options.length; k++){
+        colours += ", " + product.attributes[j].options[k];
+      }
+    }
+  }
+  return colours
+}
+
+//Function to get the brand out of the attributes
+export function getBrand(product){
+  let brand = "";
+  for(let j = 0; j < product.attributes.length; j++){
+  if(product.attributes[j].name === "Brand"){
+    brand = product.attributes[j].options[0];
+    }
+  }
+  return brand
+}
+
 // create the html for product cards on various pages
 export function createProductItemHTML(id, imageSrc, imageAlt, name, brand, colours, price){
   let item = `<div class="product-item">
@@ -187,6 +234,29 @@ export function createProductItemHTML(id, imageSrc, imageAlt, name, brand, colou
                 </div>
               </div> `
   return item
+}
+
+//create a featured product section
+
+export function createFeaturedProducts(products, container) {
+  let bestSellers = ""
+  let l = 0
+  for (let i=0; i < products.length; i++){
+    let brand = getBrand(products[i]);
+
+    //get the colours of the product
+    let colours = getColours(products[i]);
+
+    //price variable assignment for sale or not
+    let price = products[i].price;
+    let onSale = products[i].on_sale
+    let regularPrice = (products[i].price_html).match(/[\d\.]+/);
+    price = getProductPriceHTML(regularPrice, onSale, price)
+    l = l + 1; 
+    if(l > 4){break}
+    bestSellers += createProductItemHTML(products[i].id, products[i].images[0].src, products[i].images[0].alt, products[i].name, brand, colours, price); 
+  }
+  container.innerHTML = bestSellers;
 }
 
 // create a success lightbox
@@ -249,24 +319,29 @@ export function createSuccessLightbox (container, colour, size, quantity, name, 
 // create colour selector
 export function createColourSelector(colours){
   let colourSelections = "";
-  for (let i = 0; i < colours.length; i++){
-    let colour = colours[i].charAt(0).toUpperCase() + colours[i].slice(1);
-    colourSelections += `<option value="${colours[i]}">${colour}</option>`;
+  for(let i = 0; i < colours.length; i++){
+    if(colours[i].name === "Colours"){
+      for (let j = 0; j < colours[i].options.length; j++){
+        let colour = colours[i].options[j];
+        console.log(colour)
+        colourSelections += `<option value="${colour}">${colour}</option>`;
+      }
+    }
   }
-
   return colourSelections;
 }
 
 //create size selector
-
 export function createSizeSelector(sizes){
-  let sizeSelection = `<p class="size-label">Choose Your Size:</p>`
-  for (let i = 0; i < sizes.length; i++){
-    let size = sizes[i];
-    let sizeCapital = size.toLocaleUpperCase();
-    sizeSelection += `<input type="radio" name="size" id=${size} value=${size} class="input-checked" />
-                      <label for=${size} class="label-checked">${sizeCapital}</label>`;
-  }
+  let sizeSelections = "";
+  for(let i = 0; i < sizes.length; i++){
+    if(sizes[i].name === "Sizes"){
+      for (let j = 0; j < sizes[i].options.length; j++){
+        let size = sizes[i].options[j];
+        sizeSelections += `<option value="${size}">${size}</option>`;
 
-  return sizeSelection
+      }
+    }
+  }
+  return sizeSelections
 }

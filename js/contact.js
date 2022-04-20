@@ -1,6 +1,8 @@
-import {checkCart, validateEmailInput, validatedInputLength, validatedNumberInputLength} from "./data/components.js"
+import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import {checkCart, productSearch, validateEmailInput, validatedInputLength, validatedNumberInputLength} from "./data/components.js"
 
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
 // defined page containers
 const contactForm = document.querySelector("#contact-form");

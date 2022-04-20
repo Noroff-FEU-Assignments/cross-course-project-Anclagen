@@ -1,14 +1,16 @@
-import products from "./data/data.js";
-import {checkCart, createProductItemHTML, getProductPriceHTML, createToggleContent} from "./data/components.js"
+import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import {checkCart, callApi, createToggleContent, errorMessage, createProductItemHTML, getProductPriceHTML, getBrand, getColours, productSearch} from "./data/components.js"
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
 //query string grabs
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const sex = params.get("sex");
 const saleOn = params.get("on_sale");
+const searchTerms = params.get("search");
 
-//containers and elements
+ //containers and elements
 const h1 = document.querySelector("h1");
 const title = document.querySelector("title");
 const productList = document.querySelector(".products-page-grid");
@@ -18,41 +20,92 @@ const womensLink = document.querySelector(".womens-products");
 const filterCategoriesLiHeading = document.querySelectorAll(".filter-items");
 const filterCategoriesUl = document.querySelectorAll(".filter-container");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
+const productsContainer = document.querySelector(".products-page-grid");
 
-//set the current page on navigation
+//creating url to call
+let url = baseUrl + keys + increaseResults;
+
+// variable for initial filtered data to use with filter options
+let filteredData = [];
+
+//set the current page/titles/headings/search-terms
 if(sex === "women"){
+  const capSex = sex.charAt(0).toUpperCase() + sex.slice(1);
   womensLink.setAttribute("id","current");
+  h1.innerText = `${capSex}'s Products`;
+  title.innerText = `Browse ${capSex}'s Jackets | Rainydays`
 } else if(sex === "men"){
+  const capSex = sex.charAt(0).toUpperCase() + sex.slice(1);
+  h1.innerText = `${capSex}'s Products`;
+  title.innerText = `Browse ${capSex}'s Jackets | Rainydays`
   mensLink.setAttribute("id", "current");
 } else if(saleOn === "true"){
+  title.innerText = `Browse Sale Jackets | Rainydays`
   saleLink.setAttribute("id","current");
+  h1.innerText = "Sale Items";
+} else if(searchTerms !== null){
+  title.innerText = `Search Products | Rainydays`
+  h1.innerText = `Searching for: ${searchTerms}`;
+  url = baseUrl + keys + increaseResults + `&search=${searchTerms}`
 }
 
 //filters products for sex or on-sale
-function filterSexSale(data){
-if (saleOn === String(data.on_sale)){ //turn the boolean to a fecking string.
-    title.innerText = `Browse Sale Jackets | Rainydays`
-    h1.innerText = "Sale Items";
-    return true;
-  } else if (sex === data.sex){
-    const capSex = data.sex.charAt(0).toUpperCase() + data.sex.slice(1);
-    title.innerText = `Browse ${capSex}'s Jackets | Rainydays`
-    h1.innerText = `${capSex}'s Products`;
+function filterSale(data){
+  if (data.on_sale){ 
+      return true;
+    } 
+  } 
+
+function filterSex(data){
+  const capSex = sex.charAt(0).toUpperCase() + sex.slice(1);
+  if(data.attributes[3].options[0] === capSex || data.attributes[3].options[1] === capSex){
     return true;
   }
-} 
-
-//initial page list for sale/men/women/all
-let initialFilteredList = [];
-if (saleOn === null && sex === null){
-  initialFilteredList = products;
-  h1.innerText = "All Products";
-}else {
-  initialFilteredList = products.filter(filterSexSale);
-};
+}
 
 // collapsable filter categories, toggles a class
 createToggleContent(filterCategoriesLiHeading, filterCategoriesUl, "collapsed-section");
+
+async function buildPageContent(url) {
+  try{
+    const data = await callApi(url);
+    
+    //filter for sex/sale
+    if(saleOn === "true"){
+      filteredData = data.filter(filterSale);
+    } else if(sex === "women" || sex === "men"){
+      filteredData = data.filter(filterSex);
+    } else {
+      filteredData = data;
+    }
+
+    createProductsHtml(filteredData);
+  } catch(error){
+    console.log(error);
+    errorMessage(productsContainer);
+  }
+}
+
+buildPageContent(url);
+
+function createProductsHtml(data){
+  for(let i = 0; i < data.length; i++){
+    let id = data[i].id;
+    let img = data[i].images[0].src;
+    let alt = data[i].images[0].alt;
+    let name = data[i].name;
+    let brand = getBrand(data[i]);
+    let colours = getColours(data[i]);
+
+    //price of product updated if its on sale
+    let regularPrice = (data[i].price_html).match(/[\d\.]+/);
+    let price = getProductPriceHTML(regularPrice, data[i].on_sale, data[i].price)
+
+    productsContainer.innerHTML += createProductItemHTML(id, img, alt, name, brand, colours, price)
+  }
+}
+
+// --- The page filters ---
 
 //defining filter variables
 let filterSettings = [];
@@ -80,28 +133,26 @@ checkboxes.forEach(function(checkbox) {
       } else if(filterSettings[i][0] === "price"){
         filter.price.push(JSON.parse(filterSettings[i][1]));
       } //else if required in case other checkboxes checked.
-
     }
 
+    productList.innerHTML = "";
     //filters initial product list with current filter setting and updates the html
-      filteredList = createFilteredArray(filter, initialFilteredList);
-      console.log(filter)
-      productList.innerHTML = "";
-      getProductList(filteredList, productList);
+    filteredList = createFilteredArray(filter, filteredData);
+    createProductsHtml(filteredList)
   })  
 });
 
 
 // creates a new list of products based on the initial list and the filter settings
-function createFilteredArray(filter, initialFilteredList){
+function createFilteredArray(filter, filteredData){
   let list = [];
-
-  //function for comparing Arrays from filter object to initial product list array
+  console.log(list);
+  //function for comparing Arrays in the filter object and initial product list.
   function compareArrays(list, filter) {
     return list.some(property => filter.includes(property));
   }
 
-  //not technically right but needs to be change to inputs with a range between a high and low value
+  //filters products within range between a high and low value
   function checkPriceRange(filter, price){
     let x = filter.length - 1;
     if(price > filter[0][0] && price < filter[x][1]){
@@ -110,37 +161,20 @@ function createFilteredArray(filter, initialFilteredList){
       return false;
     }
   }
-
   // used to filter out results based on filter object settings
-  for(let i = 0; i < initialFilteredList.length; i++){
-    if (filter.category.length === 0 || compareArrays(initialFilteredList[i].category, filter.category)){
-      if (filter.brand.length === 0 || filter.brand.includes(initialFilteredList[i].brand)){
-        if (filter.sizes.length === 0 || compareArrays(initialFilteredList[i].sizes, filter.sizes)){
-          if (filter.colours.length === 0 || compareArrays(initialFilteredList[i].colours, filter.colours)){
-            if (filter.price.length === 0 || checkPriceRange(filter.price, initialFilteredList[i].price[0])){
-              list.push(initialFilteredList[i]);
+  for(let i = 0; i < filteredData.length; i++){
+    if (filter.category.length === 0 || compareArrays(filteredData[i].attributes[5].options, filter.category)){
+      if (filter.brand.length === 0 || filter.brand.includes(filteredData[i].attributes[2].options[0])){
+        if (filter.sizes.length === 0 || compareArrays(filteredData[i].attributes[1].options, filter.sizes)){
+          if (filter.colours.length === 0 || compareArrays(filteredData[i].attributes[0].options, filter.colours)){
+            if (filter.price.length === 0 || checkPriceRange(filter.price, filteredData[i].price)){
+              list.push(filteredData[i]);
             }
           }
         }
       } 
     } 
   };
+
   return list
 }
-
-//loops through data to get product list and creates html
-function getProductList(data, container){
-for (let i = 0; i < data.length; i++){
-  createProductItem(data[i], container);
-  }
-}
-
-//function to create product items for lists
-function createProductItem(product, container) {
-  const colours = product.colours;
-  let price = getProductPriceHTML(product.price[0], product.on_sale, product.sale_price[0]);
-  container.innerHTML += createProductItemHTML(product.id, product.images[0].src, product.images[0].alt, product.name, product.brand, colours, price);
-}
-
-
-getProductList(initialFilteredList, productList);

@@ -65,7 +65,11 @@ form.product-form label {
 
 /*size selector*/
 
-.size-selection input {
+.size-selection{
+  margin-top: 15px;
+}
+
+/*.size-selection input {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   padding: 0;
@@ -77,7 +81,7 @@ form.product-form label {
   white-space: nowrap;
 }
 
-.size-selection label {
+ .size-selection label {
   border: 1px solid black;
   display: inline-block;
   width: 41px;
@@ -90,7 +94,7 @@ form.product-form label {
   width: 37px;
   padding: 9px 0px;
   font-weight: 700;
-}
+} */
 
 table {
   width: 100%;

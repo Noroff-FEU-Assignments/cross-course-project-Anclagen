@@ -1,3 +1,10 @@
+export const baseUrl = "https://fluffypiranha.one/rainydays/wp-json/wc/v3/products";
+export const keys = "?consumer_key=ck_c8a0d358f632fe5216b5c5a6e74f66cc906a3deb&consumer_secret=cs_5664fa81e9a949e8fc8d630a6c2acb973d6f5c00";
+export const increaseResults = "&per_page=100";
+
+//search bar
+export const searchForm = document.querySelector("#search-form");
+
 // Page containers and inputs for account and checkout page
 export const paymentForm = document.querySelector("#details-form");
 export const firstName = document.querySelector("#first-name");

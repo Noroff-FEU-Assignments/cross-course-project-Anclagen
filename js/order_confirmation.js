@@ -1,6 +1,8 @@
 import products from "./data/data.js";
-import {checkCart} from "./data/components.js";
+import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import {checkCart, productSearch} from "./data/components.js";
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
 //  containers and elements
 const addressContainer = document.querySelector("address");

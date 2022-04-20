@@ -1,7 +1,7 @@
-import {firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsSessionStorage, detailsLocalStorage} from "./data/constants.js";
-import {checkCart, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js"
+import {baseUrl, keys, increaseResults, searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsSessionStorage, detailsLocalStorage} from "./data/constants.js";
+import {checkCart, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js"
 checkCart();
-
+searchForm.addEventListener("submit", productSearch);
 // Page containers and inputs
 const paymentForm = document.querySelector("#details-form");
 const rememberDetails = document.querySelector("#remember-me");

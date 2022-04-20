@@ -1,24 +1,21 @@
-import products from "./data/data.js";
-import {checkCart, createProductItemHTML, getProductPriceHTML} from "./data/components.js"
+import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import {checkCart, createFeaturedProducts, errorMessage, callApi, productSearch} from "./data/components.js"
 checkCart();
+searchForm.addEventListener("submit", productSearch);
 
-const bestSellersContainer = document.querySelector(".product-list-grid");
+const featuredProductsContainer = document.querySelector(".product-list-grid");
+//creating url to call
+let url = baseUrl + keys + increaseResults + "&featured=true";
 
-// related products
-
-function createBestSellers() {
-  let bestSellers = ""
-  let j = 0
-    for (let i=0; i < products.length; i++){
-      //price variable assignment for sale or not
-      let price = getProductPriceHTML(products[i].price[0], products[i].on_sale, products[i].sale_price[0]);
-      if(products[i].on_sale){
-        j = j + 1; 
-        if(j > 4){break}
-        bestSellers += createProductItemHTML(products[i].id, products[i].images[0].src, products[i].images[0].alt, products[i].name, products[i].brand, products[i].colours, price); 
-      }
-    }
-    bestSellersContainer.innerHTML = bestSellers;
+//gets featured products from api
+async function getFeaturedProducts(url) {
+  try{
+    const data = await callApi(url);
+    createFeaturedProducts(data, featuredProductsContainer);
+  } catch(error){
+    console.log(error);
+    errorMessage(featuredProductsContainer);
   }
+}
 
-createBestSellers();
+getFeaturedProducts(url);

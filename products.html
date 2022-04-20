@@ -57,7 +57,7 @@
             <input type="checkbox" id="search-drop-down" />
             <ul class="search main-nav-search">
               <li>
-                <form action="products.html">
+                <form id="search-form">
                   <div class="input-container search-drop">
                     <input type="search" name="search" class="search-bar" />
                     <input type="submit" value="search" class="search-button" />
@@ -105,23 +105,27 @@
                   <li class="filter-items"><h3>Category</h3></li>
                   <li>
                     <label for="waterproof">Waterproof Jackets</label>
-                    <input type="checkbox" id="waterproof" name="waterproof" key="category" />
+                    <input type="checkbox" id="waterproof" name="Waterproof" key="category" />
+                  </li>
+                  <li>
+                    <label for="water-resistant">Water Resistant Jackets</label>
+                    <input type="checkbox" id="water-resistant" name="Water Resistant" key="category" />
                   </li>
                   <li>
                     <label for="hiking">Hiking Jackets</label>
-                    <input type="checkbox" id="hiking" name="hiking" key="category" />
+                    <input type="checkbox" id="hiking" name="Hiking" key="category" />
                   </li>
                   <li>
                     <label for="ski">Ski Jackets</label>
-                    <input type="checkbox" id="ski" name="ski" key="category" />
+                    <input type="checkbox" id="ski" name="Ski" key="category" />
                   </li>
                   <li>
                     <label for="casual">Casual Jackets</label>
-                    <input type="checkbox" id="casual" name="casual" key="category" />
+                    <input type="checkbox" id="casual" name="Casual" key="category" />
                   </li>
                   <li>
                     <label for="watersports">Water Sports Jackets</label>
-                    <input type="checkbox" id="watersports" name="casual" key="category" />
+                    <input type="checkbox" id="watersports" name="Watersports" key="category" />
                   </li>
                 </ul>
               </li>
@@ -159,27 +163,27 @@
                   <li class="filter-items"><h3>Size</h3></li>
                   <li>
                     <label for="s">Small</label>
-                    <input type="checkbox" id="s" name="s" key="sizes" />
+                    <input type="checkbox" id="s" name="Small" key="sizes" />
                   </li>
                   <li>
                     <label for="m">Medium</label>
-                    <input type="checkbox" id="m" name="m" key="sizes" />
+                    <input type="checkbox" id="m" name="Medium" key="sizes" />
                   </li>
                   <li>
                     <label for="l">Large</label>
-                    <input type="checkbox" id="l" name="l" key="sizes" />
+                    <input type="checkbox" id="l" name="Large" key="sizes" />
                   </li>
                   <li>
                     <label for="xl">X Large</label>
-                    <input type="checkbox" id="xl" name="xl" key="sizes" />
+                    <input type="checkbox" id="xl" name="X-Large" key="sizes" />
                   </li>
                   <li>
                     <label for="xxl">XX Large</label>
-                    <input type="checkbox" id="xxl" name="xxl" key="sizes" />
+                    <input type="checkbox" id="xxl" name="XX-Large" key="sizes" />
                   </li>
                   <li>
                     <label for="3xl">3X Large</label>
-                    <input type="checkbox" id="3xl" name="3xl" key="sizes" />
+                    <input type="checkbox" id="3xl" name="3X-Large" key="sizes" />
                   </li>
                 </ul>
               </li>
@@ -215,6 +219,7 @@
               <li>
                 <ul class="collapsed-section filter-container">
                   <li class="filter-items"><h3>Price</h3></li>
+                  <li><label>Select an additional option for the prices between them.</label></li>
                   <li>
                     <label for="39-less">£39.99 or less</label>
                     <input type="checkbox" id="39-less" name="[0, 39.99]" key="price" />

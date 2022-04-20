@@ -59,7 +59,7 @@
             <input type="checkbox" id="search-drop-down" />
             <ul class="search main-nav-search">
               <li>
-                <form action="products.html">
+                <form id="search-form">
                   <div class="input-container search-drop">
                     <input type="search" name="search" class="search-bar" />
                     <input type="submit" value="search" class="search-button" />
@@ -95,7 +95,7 @@
       <div class="page-bread-crumbs">
         <a onclick="history.back()">&#60; previous page</a>
       </div>
-      <h1 id="main-content">Peter Storm - Men's Zip Down Waterproof II Jacket</h1>
+      <h1 id="main-content">Loading Product Details</h1>
       <section>
         <div class="product-page-container">
           <div class="product-image-container">
@@ -119,12 +119,18 @@
                 </select>
               </div>
               <div class="size-selection">
-                <!-- JS adds radio buttons for available sizes -->
+                <label for="size">Choose Your Size:</label>
+                <select name="size" id="size">
+                  <!-- JS adds radio buttons for available sizes -->
+                </select>
               </div>
               <div class="select-size-error"></div>
               <div class="quantity">
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" value="1" />
+              </div>
+              <div class="stock-level-container">
+                <!-- JS adds stock levels when size selected -->
               </div>
               <div class="button-container">
                 <input type="submit" value="Add To Cart" class="cta" id="submit-product" />
@@ -145,9 +151,9 @@
       <section class="further-details">
         <div class="collapsed-section-product product-section">
           <h2 class="product-section-heading">Product Details</h2>
-          <ul class="product-details-container">
+          <div class="product-details-container">
             <!-- JS fills product details-->
-          </ul>
+          </div>
         </div>
         <div class="collapsed-section-product product-section">
           <h2 class="product-section-heading">Product Specification</h2>
