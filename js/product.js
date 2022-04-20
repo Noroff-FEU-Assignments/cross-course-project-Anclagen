@@ -73,14 +73,15 @@ function createHTML(data){
     } else{
       checked = "";
     }
+
     let imageIDLowerCase = data.images[i].alt.replace(/ /g,"-").toLowerCase();
     productImage += `<div>
                       <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
-                      <img src=${imageSRC} alt=${imageAlt} />
+                      <img src="${imageSRC}" alt="${imageAlt}" />
                     </div>`;
 
     thumbnails += `<label for=${imageIDLowerCase} class="checked">
-                      <img src=${imageSRC} alt=${imageAlt} />
+                      <img src="${imageSRC}" alt="${imageAlt}" />
                   </label>`;       
   }
 

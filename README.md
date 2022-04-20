@@ -8,7 +8,7 @@
 
 **Product by id** `/wp-json/wc/v3/products/{id}`
 
-**Multiple product by id** `/wp-json/wc/v3/products?includes={id},{id},{id}`
+**Multiple product by id** `/wp-json/wc/v3/products?include={id},{id},{id}`
 
 **Increase number of result** `/wp-json/wc/v3/products?per_page={number}`
 

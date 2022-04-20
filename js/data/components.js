@@ -177,6 +177,21 @@ export function createPaymentDetails(firstName, lastName, addressLine1, addressL
   return JSON.stringify(details);
 };
 
+//create cart data
+export function createCartArrayData(data, cartItems){
+  let arrayData = [];
+  for(let j = 0; j < cartItems.length; j++){
+    for(let i = 0; i < data.length; i++){
+      if(Number(cartItems[j][0]) === data[i].id){
+        arrayData.push(data[i]);
+        break;
+      }
+    }
+  }
+  return arrayData;
+}
+
+
 // --- Content Creators ---
 
 // create a products price html depending on if on sale

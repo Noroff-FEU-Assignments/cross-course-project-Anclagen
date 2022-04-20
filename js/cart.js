@@ -1,5 +1,5 @@
 import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
-import { checkCart, callApi, errorMessage, productSearch} from "./data/components.js"
+import { checkCart, callApi, errorMessage, productSearch, createCartArrayData} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -34,22 +34,22 @@ if(localStorage.getItem("cart") !== undefined){
 
 async function callApiGenerateCart(){
   if (cartItems[0] !== undefined){
-
-    //gets ids for api query
-    let id = cartItems[0][0];
-    for(let i = 1; i < cartItems.length; i++){
-      id += "," + cartItems[i][0];
+    try{
+      //gets ids for api query
+      let id = cartItems[0][0];
+      for(let i = 1; i < cartItems.length; i++){
+        id += "," + cartItems[i][0];
+      }
+      //creates url to call
+      let url = baseUrl  + keys + "&include=" + id + increaseResults;
+      data = await callApi(url);
+      //creates an array of items as duplicate IDs in call are consolidated in the call data. Probably a better way of doing it, to explore later when I have more time but for now I am integrating the calls into existing code.
+      cartArrayData = createCartArrayData(data, cartItems);
+      createCartHtml(cartArrayData);
+    } catch(error){
+      console.log(error);
+      errorMessage(imageProduct);
     }
-
-    //creates url to call
-    let url = baseUrl  + keys + "&includes=" + id + increaseResults;
-    data = await callApi(url);
-    console.log(data)
-    //creates an array of items as duplicate IDs in call are consolidated in the call data. Probably a better way of doing it, to explore later when I have more time but for now I am integrating the calls into existing code.
-    cartArrayData = createCartArrayData(data);
-    console.log(cartArrayData)
-    createCartHtml(cartArrayData);
-
   } else {
     cartItemsContainer.innerHTML = "<p>Nothing in cart :(</p>";
   }
@@ -58,18 +58,6 @@ async function callApiGenerateCart(){
 
 callApiGenerateCart()
 
-function createCartArrayData(data){
-  let arrayData = [];
-  for(let j = 0; j < cartItems.length; j++){
-    for(let i = 0; i < data.length; i++){
-      if(Number(cartItems[j][0]) === data[i].id){
-        arrayData.push(data[i]);
-        break;
-      }
-    }
-  }
-  return arrayData;
-}
 
 //creates cart items and updates prices.
 function createCartHtml(products) {

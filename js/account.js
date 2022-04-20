@@ -1,6 +1,6 @@
 import products from "./data/data.js";
-import { searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsLocalStorage} from "./data/constants.js";
-import {checkCart, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
+import {baseUrl, keys, increaseResults, searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsLocalStorage} from "./data/constants.js";
+import {checkCart, callApi, errorMessage, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -164,6 +164,34 @@ function validateUpdatedDetails(submission){
 
 detailsForm.addEventListener("submit", validateUpdatedDetails);
 
+// --- Create order history ---
+
+async function callApiGenerateOrderHistory(){
+  try{
+    const orderHistoryArray = JSON.parse(orderHistoryJSON);
+
+    //gets ids for api query
+    let id = "";
+    for(let j = 0; j < orderHistoryArray.length; j++){
+      id = orderHistoryArray[j].productsArray[0][0];
+      for(let i = 1; i < orderHistoryArray[j].productsArray.length; i++){
+        id += "," + orderHistoryArray[j].productsArray[i][0];
+      }
+    }
+
+    //creates url to call
+    let url = baseUrl  + keys + "&include=" + id + increaseResults;
+    console.log(url)
+    let data = await callApi(url);
+    console.log(data)
+    createOrderHistory();
+  } catch(error){
+    console.log(error);
+    errorMessage(itemsContainer);
+  }
+}
+
+
 function createOrderHistory(){
   let totalPrice = 0;
   const orderHistory = JSON.parse(orderHistoryJSON);
@@ -203,5 +231,5 @@ function createOrderHistory(){
 
 if(orderHistoryJSON){
   console.log("hello");
-  createOrderHistory();
+  callApiGenerateOrderHistory();
 } 

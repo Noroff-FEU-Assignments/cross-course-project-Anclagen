@@ -1,6 +1,6 @@
-import products from "./data/data.js";
+
 import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
-import {checkCart, productSearch} from "./data/components.js";
+import {checkCart, callApi, errorMessage, productSearch, createCartArrayData} from "./data/components.js";
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -24,7 +24,7 @@ if(window.sessionStorage.getItem("Payment Details")){
 }
 //if undefined will cause error on some browsers when parsed so check for undefined first
 const orderHistoryJSON = localStorage.getItem("Order History");
-
+let cartArrayData = [];
 
 // order summary details
 const address= `${paymentDetails.firstName} ${paymentDetails.lastName}<br />
@@ -41,10 +41,37 @@ let totalPrice = deliveryDetails[1];
 
 
 console.log(cartItems[0][0]);
-console.log(products[3].id)
+
+async function callApiGenerateConfirmation(){
+  if (cartItems[0] !== undefined){
+    try{
+      //gets ids for api query
+      let id = cartItems[0][0];
+      for(let i = 1; i < cartItems.length; i++){
+        id += "," + cartItems[i][0];
+      }
+
+      //creates url to call
+      let url = baseUrl  + keys + "&includes=" + id + increaseResults;
+      let data = await callApi(url);
+      //creates an array of items as duplicate IDs in call are consolidated in the call data. Probably a better way of doing it, to explore later when I have more time but for now I am integrating the calls into existing code.
+      cartArrayData = createCartArrayData(data, cartItems);
+      console.log(cartArrayData);
+
+      createOrderSummary(cartArrayData);
+    } catch(error){
+      console.log(error);
+      errorMessage(itemsContainer);
+    }
+  } else {
+    cartItemsContainer.innerHTML = "<p>Nothing in cart :(</p>";
+  }
+}
+
+callApiGenerateConfirmation();
 
 //  creates order summary based on stored info from cart, delivery, and payment details.
-function createOrderSummary(){
+function createOrderSummary(products){
   //add address
 
   addressContainer.innerHTML = address;
@@ -56,15 +83,14 @@ function createOrderSummary(){
   
 
   for (let i = 0; i < cartItems.length; i++){
-    let id = cartItems[i][0];
-    let price = products[id].price[0];
+    let price = (Number(products[i].price) * Number(cartItems[i][3])).toFixed(2);
 
-    totalPrice += products[id].price[0];
+    totalPrice += Number(products[i].price) * Number(cartItems[i][3]);
 
     //creates a table item for each item in cart
     itemsContainer.innerHTML +=    `<tr>
                                       <td class="product-name">
-                                        <a href="product.html?id=${products[id].id}"  target="_blank">${products[id].name}</a>
+                                        <a href="product.html?id=${products[i].id}"  target="_blank">${products[i].name}</a>
                                       </td>
                                       <td>${cartItems[i][3]}</td>
                                       <td>£${price}</td>
@@ -76,7 +102,7 @@ function createOrderSummary(){
   priceContainer.innerText = `£${totalPrice}`;
 }
 
-createOrderSummary()
+
 
 //order
   let orderItem = {
