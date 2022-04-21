@@ -132,7 +132,31 @@ function sortData(){
     filteredData.sort((a, b) => b.price - a.price);
   } else if(selector.value === "price-low-high"){
     filteredData.sort((a, b) => a.price - b.price);
-  }
+  }else if(selector.value === "brand-a-z"){
+    filteredData.sort(function(a, b){
+      const brandA = a.attributes[2].options[0].toUpperCase();
+      const brandB = b.attributes[2].options[0].toUpperCase();
+      if(brandA < brandB){
+        return -1;
+      }
+      if(brandA > brandB){
+        return 1;
+      }
+      return 0;
+    }); 
+  } else if(selector.value === "brand-z-a"){
+    filteredData.sort(function(a, b){
+      const brandA = a.attributes[2].options[0].toUpperCase();
+      const brandB = b.attributes[2].options[0].toUpperCase();
+      if(brandA < brandB){
+        return 1;
+      }
+      if(brandA > brandB){
+        return -1;
+      }
+      return 0;
+    }); 
+  } 
   //maintains selected filter options 
   filteredList = createFilteredArray(filter, filteredData);
 
