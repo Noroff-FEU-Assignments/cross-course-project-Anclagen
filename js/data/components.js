@@ -194,6 +194,16 @@ export function createCartArrayData(data, cartItems){
 
 // --- Content Creators ---
 
+// create loader for api fetches
+
+export function addLoader(container){
+  container.innerHTML = `<div class="loader">
+                          <div class="outer-loader"></div>
+                          <div class="inner-loader"></div>
+                          <p>Getting products, please wait...</p>
+                        </div>`;
+}
+
 // create a products price html depending on if on sale
 export function getProductPriceHTML(itemPrice, onSale, salePrice){
   let price = "";

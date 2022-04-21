@@ -1,5 +1,5 @@
 import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
-import {checkCart, createFeaturedProducts, errorMessage, callApi, productSearch} from "./data/components.js"
+import {checkCart, addLoader, createFeaturedProducts, errorMessage, callApi, productSearch} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -10,6 +10,7 @@ let url = baseUrl + keys + increaseResults + "&featured=true";
 //gets featured products from api
 async function getFeaturedProducts(url) {
   try{
+    addLoader(featuredProductsContainer);
     const data = await callApi(url);
     createFeaturedProducts(data, featuredProductsContainer);
   } catch(error){

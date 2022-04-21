@@ -1,5 +1,5 @@
 import {baseUrl, keys, searchForm} from "./data/constants.js";
-import {checkCart, callApi, createSuccessLightbox, createToggleContent, errorMessage, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
+import {checkCart, callApi, addLoader, createSuccessLightbox, createToggleContent, errorMessage, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -33,6 +33,7 @@ createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product
 
 async function buildPageContent(url) {
   try{
+    addLoader(imageProduct);
     const data = await callApi(url)
     itemData = data;
     createHTML(data);

@@ -1,5 +1,5 @@
 import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
-import { checkCart, callApi, errorMessage, productSearch, createCartArrayData} from "./data/components.js"
+import { checkCart, addLoader, callApi, errorMessage, productSearch, createCartArrayData} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -40,6 +40,7 @@ async function callApiGenerateCart(){
       for(let i = 1; i < cartItems.length; i++){
         id += "," + cartItems[i][0];
       }
+      addLoader(cartItemsContainer);
       //creates url to call
       let url = baseUrl  + keys + "&include=" + id + increaseResults;
       data = await callApi(url);

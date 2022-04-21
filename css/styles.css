@@ -756,6 +756,55 @@ footer .footer-copyright {
   rotate: 0deg;
 }
 
+/* Loader styles*/
+.loader{
+  padding: 30px;
+  grid-column: -1/1;
+  position: relative;
+  text-align: center;
+}
+
+.inner-loader,
+.outer-loader {
+  display: inline-block;
+  border: 16px solid var(--grey);
+  border-top: 16px solid var(--light-blue);
+  border-bottom: 16px solid var(--light-blue);
+  border-radius: 100%;
+  width: 120px;
+  height: 120px;
+  animation: inner-spin 2s linear infinite;
+}
+
+.inner-loader {
+  border: 12px solid var(--grey);
+  border-top: 12px solid var(--light-blue);
+  border-bottom: 12px solid var(--light-blue);
+  width: 60px;
+  height: 60px;
+  animation: outer-spin 2s linear infinite;
+  margin-bottom: 33px;
+  margin-left: -120px;
+}
+
+@keyframes inner-spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes outer-spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: -360deg;
+  }
+} 
+
 /*allows down to around 300px width smallest screen on data shows 320px*/
 @media only screen and (max-width: 380px) {
   nav li {

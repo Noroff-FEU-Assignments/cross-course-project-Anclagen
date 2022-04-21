@@ -1,5 +1,5 @@
 import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
-import {checkCart, callApi, createToggleContent, errorMessage, createProductItemHTML, getProductPriceHTML, getBrand, getColours, productSearch} from "./data/components.js"
+import {checkCart, callApi, addLoader, createToggleContent, errorMessage, createProductItemHTML, getProductPriceHTML, getBrand, getColours, productSearch} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -93,6 +93,7 @@ function sortData(){
 
 async function buildPageContent(url) {
   try{
+    addLoader(productsContainer);
     const data = await callApi(url);
     
     //filter for sex/sale
@@ -104,8 +105,9 @@ async function buildPageContent(url) {
       filteredData = data;
     }
 
-    // sorts pages initial results by default low-high
+    //sorts pages initial results by default low-high
     filteredData.sort((a, b) => a.price - b.price);
+
     createProductsHtml(filteredData);
   } catch(error){
     console.log(error);
@@ -116,6 +118,7 @@ async function buildPageContent(url) {
 buildPageContent(url);
 
 function createProductsHtml(data){
+  productsContainer.innerHTML = "";
   for(let i = 0; i < data.length; i++){
     let id = data[i].id;
     let img = data[i].images[0].src;
