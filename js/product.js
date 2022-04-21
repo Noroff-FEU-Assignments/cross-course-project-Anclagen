@@ -1,4 +1,4 @@
-import {baseUrl, keys, searchForm} from "./data/constants.js";
+import {baseUrl, keys, searchForm, increaseResults} from "./data/constants.js";
 import {checkCart, callApi, addLoader, createSuccessLightbox, createToggleContent, errorMessage, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
@@ -25,7 +25,7 @@ const sectionContainer = document.querySelectorAll(".product-section");
 const stockLevelContainer = document.querySelector(".stock-container");
 
 const url = baseUrl + "/" + id + keys;
-const variantUrl = baseUrl + "/" + id + "/variations" + keys;
+const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
 let itemData = {};
 let variantItemData = {};
 let currentVariant = {};
@@ -44,6 +44,7 @@ async function buildPageContent(url) {
     //get variants for stock levels of each
     const variantResponse = await fetch(variantUrl);
     variantItemData = await variantResponse.json();
+    console.log(variantItemData)
     getStockNumber();
 
   } catch(error){
@@ -137,48 +138,35 @@ function submitProductToLocalStorage(){
   let item = [];
 
 
-    let colour = colourSelected.value;
-    let size = sizeSelected.value;
-    let quantity = quantityInput.value;
-    //no idea if I want this yet
-    let variantIdList = itemData.variations.toString();
-    let itemStockLevel = 0;
-    let currentItem = [idNumber, colour, size, quantity, variantIdList];
-    let duplicateCheck = false;
+  let colour = colourSelected.value;
+  let size = sizeSelected.value;
+  let quantity = quantityInput.value;
+  //no idea if I want this yet
+  let currentItem = [idNumber, colour, size, quantity, currentVariant.stock_quantity];
+  let duplicateCheck = false;
 
-    //check if existing cart contains same item and updates quantity if true
-    if (getCart !== null){
-      item = getCart;
-      for (let i = 0; i < item.length; i++)
-        if(idNumber === item[i][0] && colour === item[i][1] && size === item[i][2]){
-          item[i][3] = Number(item[i][3]) + Number(quantity);
-          duplicateCheck = true;
-        }
-    }
+  //check if existing cart contains same item and updates quantity if true
+  if (getCart !== null){
+    item = getCart;
+    for (let i = 0; i < item.length; i++)
+      if(idNumber === item[i][0] && colour === item[i][1] && size === item[i][2]){
+        item[i][3] = Number(item[i][3]) + Number(quantity);
+        duplicateCheck = true;
+      }
+  }
 
-    //if not a duplicate pushes to current item
-    if(!duplicateCheck){
-      item.push(currentItem);
-    }
+  //if not a duplicate pushes to current item
+  if(!duplicateCheck){
+    item.push(currentItem);
+  }
 
-    localStorage.setItem("cart", JSON.stringify(item));
-    errorSelectSize.innerText = "";
-    createSuccessLightbox (lightboxPageContainer, colour, size, quantity, itemData.name, itemData.images[0].src, itemData.images[0].alt)
+  localStorage.setItem("cart", JSON.stringify(item));
+  errorSelectSize.innerText = "";
+  createSuccessLightbox (lightboxPageContainer, colour, size, quantity, itemData.name, itemData.images[0].src, itemData.images[0].alt)
 
 }
 
 // quantity and stock functions
-console.log(sizeSelector);
-
-function getStock(data){
-  for(let i = 0; i < data.length; i++){
-    if(data[i].attributes[1].option === sizeSelector.value && data[i].attributes[0].option === colourSelector.value){
-      currentVariant = data[i];
-    }
-  }
-  
-  getStockNumber();
-}
 
 function getStockNumber(){
   for(let i = 0; i < variantItemData.length; i++){
