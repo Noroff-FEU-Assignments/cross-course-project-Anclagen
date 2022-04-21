@@ -165,12 +165,17 @@ function getBrand(products){
 function addItem(i) {
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
+  const plusButton = document.getElementsByClassName("plus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity + 1;
 
   //enables minus button
   if (newQuantity > 1) {
     minusButton[i].disabled = false;
+  }
+  //Disables if it reached the stock level for the item
+  if (newQuantity === Number(cartItems[i][4])) {
+    plusButton[i].disabled = true;
   }
 
   totalPrice = totalPrice + Number(cartArrayData[i].price);
@@ -184,6 +189,7 @@ function addItem(i) {
 function minusItem(i) {
   const quantityContainer = document.getElementsByClassName("quantity-value");
   const minusButton = document.getElementsByClassName("minus-button");
+  const plusButton = document.getElementsByClassName("plus-button");
   let itemQuantity = Number(quantityContainer[i].innerText);
   let newQuantity = itemQuantity - 1;
 
@@ -191,6 +197,7 @@ function minusItem(i) {
   if (newQuantity < 2) {
     minusButton[i].disabled = true;
   }
+  plusButton[i].disabled = false;
 
   totalPrice = totalPrice - Number(cartArrayData[i].price);
   createCartPrices()

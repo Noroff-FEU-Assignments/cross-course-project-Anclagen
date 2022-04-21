@@ -44,7 +44,6 @@ async function buildPageContent(url) {
     //get variants for stock levels of each
     const variantResponse = await fetch(variantUrl);
     variantItemData = await variantResponse.json();
-    console.log(variantItemData)
     getStockNumber();
 
   } catch(error){
@@ -176,7 +175,6 @@ function getStockNumber(){
   }
   stockLevel = currentVariant.stock_quantity;
   stockLevelContainer.innerText = stockLevel;
-  console.log(currentVariant.stock_quantity);
 }
 
 sizeSelector.addEventListener("change", getStockNumber);
@@ -187,8 +185,6 @@ const minusButton = document.querySelector(".minus-button");
 const plusButton = document.querySelector(".plus-button");
 minusButton.addEventListener("click", minusItem);
 plusButton.addEventListener("click", addItem);
-
-console.log(quantityContainer)
 
 function addItem() {
   quantityContainer.valueAsNumber = quantityContainer.valueAsNumber + 1;
