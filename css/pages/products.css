@@ -11,6 +11,7 @@
   border-radius: 5px;
   color: white;
 }
+
 .sort-products {
   grid-column: -1/1;
   margin-top: 10px;

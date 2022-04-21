@@ -22,12 +22,14 @@ const relatedProductsContainer = document.querySelector(".product-list-grid");
 const lightboxPageContainer = document.querySelector("#lightbox-container");
 const sectionHeading = document.querySelectorAll(".product-section-heading");
 const sectionContainer = document.querySelectorAll(".product-section");
-const stockLevelContainer = document.querySelector(".stock-level-container");
+const stockLevelContainer = document.querySelector(".stock-container");
 
 const url = baseUrl + "/" + id + keys;
 const variantUrl = baseUrl + "/" + id + "/variations" + keys;
 let itemData = {};
 let variantItemData = {};
+let currentVariant = {};
+let stockLevel = 0;
 
 createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product");
 
@@ -42,6 +44,8 @@ async function buildPageContent(url) {
     //get variants for stock levels of each
     const variantResponse = await fetch(variantUrl);
     variantItemData = await variantResponse.json();
+    getStockNumber();
+
   } catch(error){
     console.log(error);
     errorMessage(imageProduct);
@@ -118,17 +122,8 @@ function createProductSpec(data){
   return productSpecification
 }
 
-// check stock levels
 
-function checkStockLevel(){
-  console.log("woohoo")
-  // variantItemData
-  // stockLevelContainer
-  // colourSelector
-}
 
-sizeSelector.addEventListener("change", checkStockLevel());
-colourSelector.addEventListener("change", checkStockLevel());
 
 //add product to local storage/cart
 function submitProductToLocalStorage(){
@@ -170,6 +165,67 @@ function submitProductToLocalStorage(){
     errorSelectSize.innerText = "";
     createSuccessLightbox (lightboxPageContainer, colour, size, quantity, itemData.name, itemData.images[0].src, itemData.images[0].alt)
 
+}
+
+// quantity and stock functions
+console.log(sizeSelector);
+
+function getStock(data){
+  for(let i = 0; i < data.length; i++){
+    if(data[i].attributes[1].option === sizeSelector.value && data[i].attributes[0].option === colourSelector.value){
+      currentVariant = data[i];
+    }
+  }
+  
+  getStockNumber();
+}
+
+function getStockNumber(){
+  for(let i = 0; i < variantItemData.length; i++){
+    if(variantItemData[i].attributes[1].option === sizeSelector.value && variantItemData[i].attributes[0].option === colourSelector.value){
+      currentVariant = variantItemData[i];
+    }
+  }
+  stockLevel = currentVariant.stock_quantity;
+  stockLevelContainer.innerText = stockLevel;
+  console.log(currentVariant.stock_quantity);
+}
+
+sizeSelector.addEventListener("change", getStockNumber);
+colourSelector.addEventListener("change", getStockNumber);
+
+const quantityContainer = document.querySelector("#quantity");
+const minusButton = document.querySelector(".minus-button");
+const plusButton = document.querySelector(".plus-button");
+minusButton.addEventListener("click", minusItem);
+plusButton.addEventListener("click", addItem);
+
+console.log(quantityContainer)
+
+function addItem() {
+  quantityContainer.valueAsNumber = quantityContainer.valueAsNumber + 1;
+
+  //enables minus button
+  if (quantityContainer.valueAsNumber > 1) {
+    minusButton.disabled = false;
+  }
+  if (quantityContainer.valueAsNumber >= currentVariant.stock_quantity) {
+    plusButton.disabled = true;
+  }
+
+}
+
+//minus quantity
+function minusItem() {
+  quantityContainer.valueAsNumber = quantityContainer.valueAsNumber - 1;
+  
+  //disables minus button at 1 quantity
+  if (quantityContainer.valueAsNumber < 2) {
+    minusButton.disabled = true;
+  }
+  if (quantityContainer.valueAsNumber < currentVariant.stock_quantity) {
+    plusButton.disabled = false;
+  }
 }
 
 function submitItemDetails(submission){

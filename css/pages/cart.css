@@ -43,6 +43,7 @@ section.payment-summary {
   cursor: pointer;
 }
 
+.plus-button:disabled
 .minus-button:disabled {
   opacity: 0.5;
   cursor: default;

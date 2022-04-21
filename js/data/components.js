@@ -349,7 +349,6 @@ export function createColourSelector(colours){
     if(colours[i].name === "Colours"){
       for (let j = 0; j < colours[i].options.length; j++){
         let colour = colours[i].options[j];
-        console.log(colour)
         colourSelections += `<option value="${colour}">${colour}</option>`;
       }
     }

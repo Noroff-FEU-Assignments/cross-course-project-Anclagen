@@ -127,10 +127,15 @@
               <div class="select-size-error"></div>
               <div class="quantity">
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" value="1" />
+                <button class="minus-button" type="button">-</button>
+                <input type="number" id="quantity" value="1" readonly="readonly" />
+                <button class="plus-button" type="button">+</button>
               </div>
-              <div class="stock-level-container">
-                <!-- JS adds stock levels when size selected -->
+              <div class="stock">
+                <p>
+                  Stock Level:
+                  <span class="stock-container"><!-- JS adds stock levels when size selected --></span>
+                </p>
               </div>
               <div class="button-container">
                 <input type="submit" value="Add To Cart" class="cta" id="submit-product" />
