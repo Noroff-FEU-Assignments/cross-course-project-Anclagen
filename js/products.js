@@ -75,21 +75,7 @@ function filterSex(data){
 // collapsable filter categories, toggles a class
 createToggleContent(filterCategoriesLiHeading, filterCategoriesUl, "collapsed-section");
 
-//sort products
-selector.addEventListener("change", sortData);
 
-function sortData(){
-  productsContainer.innerHTML= "";
-  if(selector.value === "price-high-low"){
-    filteredData.sort((a, b) => b.price - a.price);
-  } else if(selector.value === "price-low-high"){
-    filteredData.sort((a, b) => a.price - b.price);
-  }
-  //maintains selected filter options 
-  filteredList = createFilteredArray(filter, filteredData);
-
-  createProductsHtml(filteredList);
-}
 
 async function buildPageContent(url) {
   try{
@@ -135,7 +121,23 @@ function createProductsHtml(data){
   }
 }
 
-// --- The page filters ---
+// --- The page filters and sorters ---
+
+//sort products
+selector.addEventListener("change", sortData);
+
+function sortData(){
+  productsContainer.innerHTML= "";
+  if(selector.value === "price-high-low"){
+    filteredData.sort((a, b) => b.price - a.price);
+  } else if(selector.value === "price-low-high"){
+    filteredData.sort((a, b) => a.price - b.price);
+  }
+  //maintains selected filter options 
+  filteredList = createFilteredArray(filter, filteredData);
+
+  createProductsHtml(filteredList);
+}
 
 //defining filter variables
 let filterSettings = [];
