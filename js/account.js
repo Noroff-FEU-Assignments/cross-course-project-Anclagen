@@ -1,6 +1,5 @@
-import products from "./data/data.js";
 import {baseUrl, keys, increaseResults, searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsLocalStorage} from "./data/constants.js";
-import {checkCart, callApi, errorMessage, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
+import {checkCart, callApi, addLoader, errorMessage, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js";
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -169,21 +168,20 @@ detailsForm.addEventListener("submit", validateUpdatedDetails);
 async function callApiGenerateOrderHistory(){
   try{
     const orderHistoryArray = JSON.parse(orderHistoryJSON);
-
     //gets ids for api query
     let id = "";
     for(let j = 0; j < orderHistoryArray.length; j++){
-      id = orderHistoryArray[j].productsArray[0][0];
-      for(let i = 1; i < orderHistoryArray[j].productsArray.length; i++){
+      for(let i = 0; i < orderHistoryArray[j].productsArray.length; i++){
         id += "," + orderHistoryArray[j].productsArray[i][0];
       }
     }
 
+    addLoader(itemsContainer)
+
     //creates url to call
     let url = baseUrl  + keys + "&include=" + id + increaseResults;
-    console.log(url)
     let data = await callApi(url);
-    console.log(data)
+    itemsContainer.innerHTML = "";
     createOrderHistory(data);
   } catch(error){
     console.log(error);
@@ -191,19 +189,32 @@ async function callApiGenerateOrderHistory(){
   }
 }
 
-
+//loops through the order history and creates a summary for each
 function createOrderHistory(data){
   let totalPrice = 0;
   const orderHistory = JSON.parse(orderHistoryJSON);
-  for(let j = (orderHistory.length - 1); j >= 0; j--){
 
+  for(let j = (orderHistory.length - 1); j >= 0; j--){
+    //creates an array of products from the fetch data for this order
+    let currentOrderData = [];
+    for (let i = 0; i < orderHistory[j].productsArray.length; i++){
+      console.log(orderHistory[j])
+      for(let k = 0; k < data.length; k++){
+        console.log(Number(orderHistory[j].productsArray[i][0]))
+        if(Number(orderHistory[j].productsArray[i][0]) === data[k].id){
+          currentOrderData.push(data[k]);
+          break;
+        }
+      }
+    }
+  
     totalPrice = 0;
     let productsOrders = orderHistory[j].productsArray;
 
+    //creates the html for this order
     for (let i = 0; i < productsOrders.length; i++){
-      let id = orderHistory[j].productsArray[i][0];
       let quantity = orderHistory[j].productsArray[i][3];
-      let price = (products[id].price[0]) * quantity;
+      let price = (currentOrderData[i].price) * quantity;
 
       let orderNumber = "";
       if(i === 0){
@@ -216,20 +227,19 @@ function createOrderHistory(data){
       itemsContainer.innerHTML +=  `<tr>
                                       <td>${orderNumber}</td>
                                       <td class="product-name">
-                                        <a href="product.html?id=${products[id].id}"  target="_blank">${products[id].name}</a>
+                                        <a href="product.html?id=${currentOrderData[i].id}"  target="_blank">${currentOrderData[i].name}</a>
                                       </td>
                                       <td></td>
                                     </tr>`;
     }
 
     itemsContainer.innerHTML +=`<tr>
-                                  <th class="total"colspan="4">£${totalPrice}</th>
+                                  <th class="total"colspan="4">£${totalPrice.toFixed(2)}</th>
                                 </tr>`
   }
   
 }
 
 if(orderHistoryJSON){
-  console.log("hello");
   callApiGenerateOrderHistory();
 } 
