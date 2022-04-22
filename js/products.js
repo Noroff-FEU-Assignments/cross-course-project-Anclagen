@@ -163,6 +163,8 @@ function sortData(){
   createProductsHtml(filteredList);
 }
 
+
+
 //defining filter variables
 let filterSettings = [];
 let filter = {category:[], brand:[], sizes:[], colours:[], price:[]};
@@ -203,8 +205,13 @@ checkboxes.forEach(function(checkbox) {
 function createFilteredArray(filter, filteredData){
   let list = [];
   //function for comparing Arrays in the filter object and initial product list.
-  function compareArrays(list, filter) {
+  function compareArraysIncludes(list, filter) {
     return list.some(property => filter.includes(property));
+  }
+
+  //function to check the filtered product contains all the properties in the filter key.
+  function compareArraysIncludesAll(list, filter) {
+    return filter.every(property => list.includes(property));
   }
 
   //filters products within range between a high and low value
@@ -218,10 +225,10 @@ function createFilteredArray(filter, filteredData){
   }
   // used to filter out results based on filter object settings
   for(let i = 0; i < filteredData.length; i++){
-    if (filter.category.length === 0 || compareArrays(filteredData[i].attributes[5].options, filter.category)){
+    if (filter.category.length === 0 || compareArraysIncludesAll(filteredData[i].attributes[5].options, filter.category)){
       if (filter.brand.length === 0 || filter.brand.includes(filteredData[i].attributes[2].options[0])){
-        if (filter.sizes.length === 0 || compareArrays(filteredData[i].attributes[1].options, filter.sizes)){
-          if (filter.colours.length === 0 || compareArrays(filteredData[i].attributes[0].options, filter.colours)){
+        if (filter.sizes.length === 0 || compareArraysIncludes(filteredData[i].attributes[1].options, filter.sizes)){
+          if (filter.colours.length === 0 || compareArraysIncludes(filteredData[i].attributes[0].options, filter.colours)){
             if (filter.price.length === 0 || checkPriceRange(filter.price, filteredData[i].price)){
               list.push(filteredData[i]);
             }

@@ -219,7 +219,7 @@ export function getProductPriceHTML(itemPrice, onSale, salePrice){
   return price;
 }
 
-//Function to get the colours out of the attributes
+//Function to get the colours out of the attributes technically not needed after sorting attributes in woo-commerce
 export function getColours(product){
   let colours = "";
   for(let j = 0; j < product.attributes.length; j++){
