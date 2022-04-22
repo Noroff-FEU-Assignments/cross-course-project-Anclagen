@@ -27,7 +27,7 @@ let totalPrice = 0;
 let deliveryType = "";
 let deliveryDetails = [];
 //Check if cart exist before parse avoid error on mobile and tablet.
-let cartItems = undefined;
+let cartItems = [];
 if(localStorage.getItem("cart") !== undefined){
   cartItems = JSON.parse(localStorage.getItem("cart"));
 }
@@ -65,6 +65,7 @@ function createCartHtml(products) {
   totalPrice = 0;
   cartItemsContainer.innerHTML = "";
   if (cartItems[0] !== undefined) {
+    submitBtn.disabled = false;
     for (let i = 0; i < cartItems.length; i++) {
       let colour = cartItems[i][1];
       let size = cartItems[i][2];

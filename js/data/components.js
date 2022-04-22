@@ -51,7 +51,6 @@ export function createToggleContentSingle(clickables, contentContainer){
 }
 
 // search function
-
 export function productSearch(submit) {
   submit.preventDefault();
   const searchInput = document.querySelector(".search-bar");
