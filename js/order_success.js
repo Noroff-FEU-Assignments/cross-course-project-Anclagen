@@ -22,4 +22,4 @@ const dates = new Date();
 let month = months[dates.getMonth()];
 let day = dates.getDate();
 let day2 = (dates.getDate() + 2);
-deliveryDateContainer.innerText = `Between ${month}, ${day} - ${day2}. `; 
+deliveryDateContainer.innerText = `Between ${month}, ${day} - ${day2}.`; 

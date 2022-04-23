@@ -19,11 +19,9 @@ const signUpText = document.querySelector(".paragraph");
 const signUpBtn = document.querySelector("#sign-up");
 const accountDetailsSection = document.querySelector(".account-details");
 const orderHistorySection = document.querySelector(".order-history");
-
 // local storage grabs
 const orderHistoryJSON = localStorage.getItem("Order History");
 const userLoginJSON = localStorage.getItem("User Login");
-
 //user login info variable
 let userLoginData = {email: "", password: "", loggedIn: false,}
 //checks if there is stored login info before filling data
@@ -32,7 +30,6 @@ if(userLoginJSON){
   loginEmail.value = userLoginData.email;
 }
 
-
 // check if user details exist to fill page on load defaults to session storage for the moment.
 if(detailsLocalStorage){
   prefillFormFields(detailsLocalStorage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year);
@@ -40,7 +37,6 @@ if(detailsLocalStorage){
 } else {
   itemsContainer.innerHTML = "<p>No Orders Found<p>"
 }
-
 
 // --- Login/Sign Up Form ---
 
@@ -93,7 +89,6 @@ if(userLoginData.loggedIn){
 //validates login or signup
 function validateLoginSignUp(submit){
   submit.preventDefault();
-  
   //checks if form is login or sign up
   if(submitBtn.value === "Login"){
     if(userLoginData.email === loginEmail.value && userLoginData.password === passwordInput.value && userLoginData.email !== ""){
@@ -127,7 +122,6 @@ function validateLoginSignUp(submit){
 loginForm.addEventListener("submit", validateLoginSignUp);
 signUpBtn.addEventListener("click", displaySignUpForm);
 
-
 // validate the users updates
 function validateUpdatedDetails(submission){
   submission.preventDefault();
@@ -145,7 +139,6 @@ function validateUpdatedDetails(submission){
   const j = validatedNumberInputLength(securityCode, 3, securityCodeError);
   const k = validateDateMM(month);
   const l = validateDateYY(year);
-
   if(!l || !k){
     dateError.innerText = "Please enter valid date";
   } else {
@@ -155,7 +148,6 @@ function validateUpdatedDetails(submission){
   //if all variables true goes to order summary/confirmation 
   if(a && b && c && d && e && f && g && h && i && j && k && l) {
     const userDetails = createPaymentDetails(firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year);
-
     localStorage.setItem("Payment Details", userDetails);
     window.location.reload();
   }
@@ -175,9 +167,7 @@ async function callApiGenerateOrderHistory(){
         id += "," + orderHistoryArray[j].productsArray[i][0];
       }
     }
-
     addLoader(itemsContainer)
-
     //creates url to call
     let url = baseUrl  + keys + "&include=" + id + increaseResults;
     let data = await callApi(url);
@@ -198,31 +188,24 @@ function createOrderHistory(data){
     //creates an array of products from the fetch data for this order
     let currentOrderData = [];
     for (let i = 0; i < orderHistory[j].productsArray.length; i++){
-      console.log(orderHistory[j])
       for(let k = 0; k < data.length; k++){
-        console.log(Number(orderHistory[j].productsArray[i][0]))
         if(Number(orderHistory[j].productsArray[i][0]) === data[k].id){
           currentOrderData.push(data[k]);
           break;
         }
       }
     }
-  
     totalPrice = 0;
     let productsOrders = orderHistory[j].productsArray;
-
     //creates the html for this order
     for (let i = 0; i < productsOrders.length; i++){
       let quantity = orderHistory[j].productsArray[i][3];
       let price = (currentOrderData[i].price) * quantity;
-
       let orderNumber = "";
       if(i === 0){
         orderNumber = orderHistory[j].orderNumber;
       }
-
       totalPrice += price;
-
       //creates a table item for each item in cart
       itemsContainer.innerHTML +=  `<tr>
                                       <td>${orderNumber}</td>
@@ -232,12 +215,10 @@ function createOrderHistory(data){
                                       <td></td>
                                     </tr>`;
     }
-
     itemsContainer.innerHTML +=`<tr>
                                   <th class="total"colspan="4">£${totalPrice.toFixed(2)}</th>
                                 </tr>`
   }
-  
 }
 
 if(orderHistoryJSON){

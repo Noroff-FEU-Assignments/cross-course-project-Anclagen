@@ -23,43 +23,41 @@ const lightboxPageContainer = document.querySelector("#lightbox-container");
 const sectionHeading = document.querySelectorAll(".product-section-heading");
 const sectionContainer = document.querySelectorAll(".product-section");
 const stockLevelContainer = document.querySelector(".stock-container");
-
+//urls for fetch
 const url = baseUrl + "/" + id + keys;
 const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
+//data variables to update
 let itemData = {};
 let variantItemData = {};
 let currentVariant = {};
 let stockLevel = 0;
 
+//toggle hide/show on details
 createToggleContent(sectionHeading, sectionContainer, "collapsed-section-product");
 
-async function buildPageContent(url) {
+//api calls for product, variations for stock levels and related products, to build page content
+async function buildPageContent() {
   try{
     addLoader(imageProduct);
     const data = await callApi(url)
     itemData = data;
     createHTML(data);
     title.innerText = `${data.name} || Rainydays`
-  
     //get variants for stock levels of each
     //additional fetched needed as some items only get list of variant ids
-    const variantResponse = await fetch(variantUrl);
-    variantItemData = await variantResponse.json();
-
-    getStockNumber(variantItemData);
-
+    variantItemData = await callApi(variantUrl);
+    getStockNumber();
     //creates list of related jackets based product data
     const relatedUrl = baseUrl + keys + "&include=" + data.related_ids;
     getFeaturedProducts(relatedUrl, relatedProductsContainer);
-
   } catch(error){
     console.log(error);
     errorMessage(imageProduct);
   }
 }
+buildPageContent();
 
-buildPageContent(url);
-
+// filling the pages product details
 function createHTML(data){
   //price
   let currentPrice = data.price;
@@ -67,8 +65,11 @@ function createHTML(data){
   let regularPrice = (data.price_html).match(/[\d\.]+/);
   let price = getProductPriceHTML(regularPrice, onSale, currentPrice);
   let brand = getBrand(data);
-  //colours
+  //loops colour and size arrays to create options for selectors
   let colourSelections = createColourSelector(data.attributes);
+  let sizeSelection = createSizeSelector(data.attributes);
+  let productDetails = data.description;
+  let productSpecification = createProductSpec(data);
 
   //variables for image and thumbs.
   let thumbnails = "";
@@ -84,7 +85,6 @@ function createHTML(data){
     } else{
       checked = "";
     }
-
     let imageIDLowerCase = data.images[i].alt.replace(/ /g,"-").toLowerCase();
     productImage += `<div>
                       <input type="radio" name="image-selector" id=${imageIDLowerCase} value=${imageIDLowerCase} ${checked} />
@@ -96,12 +96,6 @@ function createHTML(data){
                   </label>`;       
   }
 
-  let sizeSelection = createSizeSelector(data.attributes);
-
-  let productDetails = data.description;
-  let productSpecification = createProductSpec(data);
-  //Product specification list
-
   //filling the page
   headingContainer.innerHTML =`${brand} - ${data.name}`;
   priceContainer.innerHTML = `Price: ${price}`;
@@ -111,9 +105,9 @@ function createHTML(data){
   sizeSelector.innerHTML = sizeSelection;
   productDetailsContainer.innerHTML = productDetails;
   productSpecificationContainer.innerHTML = productSpecification;
-
 }
 
+//creates specification html
 function createProductSpec(data){
   let productSpecification = "";
   for (let i = 0; i < data.attributes.length; i++){
@@ -124,12 +118,8 @@ function createProductSpec(data){
       }
     }
   }
-
   return productSpecification
 }
-
-
-
 
 //add product to local storage/cart
 function submitProductToLocalStorage(){
@@ -139,17 +129,13 @@ function submitProductToLocalStorage(){
   const quantityInput = document.querySelector("#quantity");
   const getCart = JSON.parse(localStorage.getItem("cart"));
   const errorSelectSize = document.querySelector(".select-size-error");
-
-  let item = [];
-
-
   let colour = colourSelected.value;
   let size = sizeSelected.value;
   let quantity = quantityInput.value;
-  //no idea if I want this yet
+  let item = [];
+  //no idea if I want all this yet
   let currentItem = [idNumber, colour, size, quantity, currentVariant.stock_quantity];
   let duplicateCheck = false;
-
   //check if existing cart contains same item and updates quantity if true
   if (getCart !== null){
     item = getCart;
@@ -159,34 +145,31 @@ function submitProductToLocalStorage(){
         duplicateCheck = true;
       }
   }
-
   //if not a duplicate pushes to current item
   if(!duplicateCheck){
     item.push(currentItem);
   }
-
   localStorage.setItem("cart", JSON.stringify(item));
   errorSelectSize.innerText = "";
   createSuccessLightbox (lightboxPageContainer, colour, size, quantity, itemData.name, itemData.images[0].src, itemData.images[0].alt)
-
 }
 
-// quantity and stock functions
-
-function getStockNumber(variantItemData){
+// quantity functions and listeners, loops variant array to find stock level for specific colour/size variation
+function getStockNumber(){
   for(let i = 0; i < variantItemData.length; i++){
-    if(variantItemData[i].attributes[1].option === sizeSelector.value &&      variantItemData[i].attributes[0].option === colourSelector.value){
+    if(variantItemData[i].attributes[1].option === sizeSelector.value && variantItemData[i].attributes[0].option === colourSelector.value){
       currentVariant = variantItemData[i];
       }
-
   }
   stockLevel = currentVariant.stock_quantity;
   stockLevelContainer.innerText = stockLevel;
 }
 
+// updates stock levels based on variation
 sizeSelector.addEventListener("change", getStockNumber);
 colourSelector.addEventListener("change", getStockNumber);
 
+// plus and minus button for quantity input
 const quantityContainer = document.querySelector("#quantity");
 const minusButton = document.querySelector(".minus-button");
 const plusButton = document.querySelector(".plus-button");
@@ -195,30 +178,30 @@ plusButton.addEventListener("click", addItem);
 
 function addItem() {
   quantityContainer.valueAsNumber = quantityContainer.valueAsNumber + 1;
-
-  //enables minus button
+  //enables minus button when value is about 1
   if (quantityContainer.valueAsNumber > 1) {
     minusButton.disabled = false;
   }
+  //disables plus button if max stock level is reached
   if (quantityContainer.valueAsNumber >= currentVariant.stock_quantity) {
     plusButton.disabled = true;
   }
-
 }
 
 //minus quantity
 function minusItem() {
   quantityContainer.valueAsNumber = quantityContainer.valueAsNumber - 1;
-  
   //disables minus button at 1 quantity
   if (quantityContainer.valueAsNumber < 2) {
     minusButton.disabled = true;
   }
+  //enables plus button after minus to counter stock max disable
   if (quantityContainer.valueAsNumber < currentVariant.stock_quantity) {
     plusButton.disabled = false;
   }
 }
 
+//submits form details to local storage and creates success overlay
 function submitItemDetails(submission){
   submission.preventDefault();
   submitProductToLocalStorage();

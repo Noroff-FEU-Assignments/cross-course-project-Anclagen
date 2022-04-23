@@ -1,4 +1,4 @@
-import {baseUrl, keys, increaseResults, searchForm} from "./data/constants.js";
+import {searchForm} from "./data/constants.js";
 import {checkCart, productSearch, validateEmailInput, validatedInputLength, validatedNumberInputLength} from "./data/components.js"
 
 checkCart();

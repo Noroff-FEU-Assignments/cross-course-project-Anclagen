@@ -8,6 +8,8 @@
 
 **Product by id** `/wp-json/wc/v3/products/{id}`
 
+**Get all product variations of id** `/wp-json/wc/v3/products/{id}/variations`
+
 **Multiple product by id** `/wp-json/wc/v3/products?include={id},{id},{id}`
 
 **Increase number of result** `/wp-json/wc/v3/products?per_page={number}`

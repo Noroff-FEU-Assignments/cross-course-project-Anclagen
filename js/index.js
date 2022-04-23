@@ -7,4 +7,5 @@ const featuredProductsContainer = document.querySelector(".product-list-grid");
 //creating url to call
 let url = baseUrl + keys + increaseResults + featuredQuery;
 
+//fills the featured products
 getFeaturedProducts(url, featuredProductsContainer);

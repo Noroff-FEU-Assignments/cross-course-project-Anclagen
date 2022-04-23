@@ -1,4 +1,4 @@
-import {baseUrl, keys, increaseResults, searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsSessionStorage, detailsLocalStorage} from "./data/constants.js";
+import {searchForm, firstName, firstNameError, lastName, lastNameError, addressLine1, addressLine1Error, addressLine2, city, cityError, postCode, postCodeError, country, countryError, email, emailError, cardNumber, cardNumberError, nameCard, nameCardError, securityCode, securityCodeError, month, year, dateError, detailsSessionStorage, detailsLocalStorage} from "./data/constants.js";
 import {checkCart, productSearch, prefillFormFields, createPaymentDetails, validateEmailInput, validatedInputLength, validatedNumberInputLength, validateDateYY, validateDateMM} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
@@ -8,15 +8,12 @@ const rememberDetails = document.querySelector("#remember-me");
 
 // check if user details exist to fill page on load defaults to session storage for the moment.
 if(detailsSessionStorage){
-  console.log("WOO!!");
   prefillFormFields(detailsSessionStorage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year);
 }else if(detailsLocalStorage){
-  console.log("YEAH!!");
   prefillFormFields(detailsLocalStorage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year);
 };
 
 //---- validating the whole form -----
-
 function validatePaymentDetails(submission){
   submission.preventDefault();
 
