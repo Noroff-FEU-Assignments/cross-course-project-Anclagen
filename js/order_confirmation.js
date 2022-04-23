@@ -86,7 +86,7 @@ function createOrderSummary(products){
   }
   // delivery and total price values
   deliveryContainer.innerText = delivery;
-  priceContainer.innerText = `£${totalPrice}`;
+  priceContainer.innerText = `£${totalPrice.toFixed(2)}`;
 }
 
 // order item to add to order history
@@ -95,7 +95,7 @@ let orderItem = {
   productsArray: cartItems,
   deliveryText: delivery,
   deliveryAddressHTML: address,
-  totalText: totalPrice,
+  totalText: totalPrice.toFixed(2),
   email: email,
 }
 
