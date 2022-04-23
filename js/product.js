@@ -1,5 +1,5 @@
 import {baseUrl, keys, searchForm, increaseResults} from "./data/constants.js";
-import {checkCart, callApi, addLoader, createSuccessLightbox, createToggleContent, errorMessage, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
+import {checkCart, callApi, addLoader, createSuccessLightbox, createToggleContent, errorMessage, getFeaturedProducts, getBrand, getProductPriceHTML, createColourSelector, createSizeSelector, productSearch} from "./data/components.js"
 checkCart();
 searchForm.addEventListener("submit", productSearch);
 
@@ -45,6 +45,10 @@ async function buildPageContent(url) {
     const variantResponse = await fetch(variantUrl);
     variantItemData = await variantResponse.json();
     getStockNumber();
+
+    //creates list of related jackets based product data
+    const relatedUrl = baseUrl + keys + "&include=" + data.related_ids;
+    getFeaturedProducts(relatedUrl, relatedProductsContainer);
 
   } catch(error){
     console.log(error);

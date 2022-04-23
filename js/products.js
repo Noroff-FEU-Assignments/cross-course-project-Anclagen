@@ -49,11 +49,7 @@ if(sex === "women"){
   title.innerText = `Search Products | Rainydays`
   h1.innerText = "Search Results:";
   let searchTermsArray = searchTerms.split(",");
-  let searchText = searchTermsArray[0];
-  for(let i = 1; i < searchTermsArray.length; i++){
-    searchText += ", " + searchTermsArray[i];
-  }
-  searchTermContainer.innerHTML = `<p>Keywords: ${searchText}</p>`
+  searchTermContainer.innerHTML = `<p>Keywords: ${searchTermsArray.join(", ")}</p>`
   console.log(searchTerms)
   url = baseUrl + keys + increaseResults + `&search=${searchTerms}`
 }
@@ -92,7 +88,8 @@ async function buildPageContent(url) {
     }
 
     //sorts pages initial results by default low-high
-    filteredData.sort((a, b) => a.price - b.price);
+    sortData();
+    // filteredData.sort((a, b) => a.price - b.price);
 
     createProductsHtml(filteredData);
   } catch(error){
@@ -223,6 +220,7 @@ function createFilteredArray(filter, filteredData){
       return false;
     }
   }
+
   // used to filter out results based on filter object settings
   for(let i = 0; i < filteredData.length; i++){
     if (filter.category.length === 0 || compareArraysIncludesAll(filteredData[i].attributes[5].options, filter.category)){

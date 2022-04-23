@@ -26,12 +26,16 @@ export async function callApi(url){
   return data;
 }
 
-// catch error message generator
-export function errorMessage(container){
-  container.innerHTML = `<div class="error message">
-                          <p> An error occurred while fetching the data </p>
-                          <p> Please try reloading the page, if this error persists please contact us using a query form </p>
-                        </div>`;
+//gets featured products from api
+export async function getFeaturedProducts(url, featuredProductsContainer) {
+  try{
+    addLoader(featuredProductsContainer);
+    const data = await callApi(url);
+    createFeaturedProducts(data, featuredProductsContainer);
+  } catch(error){
+    console.log(error);
+    errorMessage(featuredProductsContainer);
+  }
 }
 
 // collapsable content toggle toggles a class, accepts node list of clickables and containers.
@@ -87,7 +91,6 @@ export function validatedNumberInputLength(input, length, errorContainer){
 }
 
 // validate date input
-
 export function validateDateMM(mm){
     if(mm.value.length === 2 && mm.value > 0 && mm.value < 13){
       mm.style.border ="2px solid green";
@@ -122,7 +125,7 @@ export function validateEmailInput(email, errorContainer) {
   }
 }
 
-// --- Payment details and account details page ---
+// --- Payment/account pages prefill forms/store form data storage ---
 
 //function to prefill form with existing user data, probably a tidier way to do this.
 export function prefillFormFields(storage, firstName, lastName, addressLine1, addressLine2, city, postCode, country, email,cardNumber, nameCard, securityCode, month, year){
@@ -203,6 +206,16 @@ export function addLoader(container){
                         </div>`;
 }
 
+// catch error message generator
+export function errorMessage(container){
+  container.innerHTML = `<div class="error message">
+                          <p> An error occurred while fetching the data </p>
+                          <p> Please try reloading the page, if this error persists please contact us using a query form </p>
+                        </div>`;
+}
+
+// --- create product cards ----
+
 // create a products price html depending on if on sale
 export function getProductPriceHTML(itemPrice, onSale, salePrice){
   let price = "";
@@ -215,7 +228,6 @@ export function getProductPriceHTML(itemPrice, onSale, salePrice){
             <span class="previous-price"> £${itemPrice}</span> 
             <span class="save-price"> Save £${savings}</span>`
   }
-
   return price;
 }
 
@@ -224,10 +236,7 @@ export function getColours(product){
   let colours = "";
   for(let j = 0; j < product.attributes.length; j++){
     if(product.attributes[j].name === "Colours"){
-      colours = product.attributes[j].options[0];
-      for(let k = 1; k < product.attributes[j].options.length; k++){
-        colours += ", " + product.attributes[j].options[k];
-      }
+      colours = product.attributes[j].options.join(", ");
     }
   }
   return colours
@@ -262,7 +271,6 @@ export function createProductItemHTML(id, imageSrc, imageAlt, name, brand, colou
 }
 
 //create a featured product section
-
 export function createFeaturedProducts(products, container) {
   let bestSellers = ""
   let l = 0
@@ -282,6 +290,37 @@ export function createFeaturedProducts(products, container) {
     bestSellers += createProductItemHTML(products[i].id, products[i].images[0].src, products[i].images[0].alt, products[i].name, brand, colours, price); 
   }
   container.innerHTML = bestSellers;
+}
+
+// --- Product page ---
+
+// create colour selector
+export function createColourSelector(colours){
+  let colourSelections = "";
+  for(let i = 0; i < colours.length; i++){
+    if(colours[i].name === "Colours"){
+      for (let j = 0; j < colours[i].options.length; j++){
+        let colour = colours[i].options[j];
+        colourSelections += `<option value="${colour}">${colour}</option>`;
+      }
+    }
+  }
+  return colourSelections;
+}
+
+//create size selector
+export function createSizeSelector(sizes){
+  let sizeSelections = "";
+  for(let i = 0; i < sizes.length; i++){
+    if(sizes[i].name === "Sizes"){
+      for (let j = 0; j < sizes[i].options.length; j++){
+        let size = sizes[i].options[j];
+        sizeSelections += `<option value="${size}">${size}</option>`;
+
+      }
+    }
+  }
+  return sizeSelections
 }
 
 // create a success lightbox
@@ -339,33 +378,4 @@ export function createSuccessLightbox (container, colour, size, quantity, name, 
   contentContainer.appendChild(buttonDiv);
   buttonDiv.appendChild(continueShoppingLink);
   buttonDiv.appendChild(cartLink);
-}
-
-// create colour selector
-export function createColourSelector(colours){
-  let colourSelections = "";
-  for(let i = 0; i < colours.length; i++){
-    if(colours[i].name === "Colours"){
-      for (let j = 0; j < colours[i].options.length; j++){
-        let colour = colours[i].options[j];
-        colourSelections += `<option value="${colour}">${colour}</option>`;
-      }
-    }
-  }
-  return colourSelections;
-}
-
-//create size selector
-export function createSizeSelector(sizes){
-  let sizeSelections = "";
-  for(let i = 0; i < sizes.length; i++){
-    if(sizes[i].name === "Sizes"){
-      for (let j = 0; j < sizes[i].options.length; j++){
-        let size = sizes[i].options[j];
-        sizeSelections += `<option value="${size}">${size}</option>`;
-
-      }
-    }
-  }
-  return sizeSelections
 }
