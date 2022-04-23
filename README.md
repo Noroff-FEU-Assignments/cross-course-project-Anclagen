@@ -26,13 +26,13 @@ Variable products from WooCommerce when on sale don't provide the regular price,
 
 ### **keys for an individual product**
 
-**price:** gives current price
+**price:** gives current price `data.price`
 
-**on_sale:** boolean for if item is on sale
+**on_sale:** boolean for if item is on sale. `data.on_sale`
 
-**regular_price:** blank on the base variable product page, but present when calling variant IDs.
+**regular_price:** blank on the base variable product page, but present when calling variant IDs. `data.regular_price`
 
-**price_html:** will contain the regular price and sale price on base product, so regular price can be extracted with `match(/[\d\.]+/)` as it is the first price in the html.
+**price_html:** will contain the regular price and sale price on base product, so regular price can be extracted with `match(/[\d\.]+/)` as it is the first price in the html. `data.price_html`
 
 ## **Product Attributes**
 
@@ -40,16 +40,24 @@ I used attributes to add product details as the received data was more easily ma
 
 ### Colours - Array of colours the product is a available in.
 
-Used for variable product variations.
+Used for variable product variations. `data.attributes[0].options`
 
 ### Sizes - Array of sizes the product is a available in.
 
-Used for variable product variations.
+Used for variable product variations. `data.attributes[1].options`
 
 ### Brand - Array with 1 item that is the brand name.
 
+`data.attributes[2].options`
+
 ### Sex - Array with the sex the item is intended for.
+
+`data.attributes[3].options`
 
 ### Specification - Array with specification details for item.
 
+`data.attributes[4].options`
+
 ### Category - Array with relevant categories for item.
+
+`data.attributes[5].options`

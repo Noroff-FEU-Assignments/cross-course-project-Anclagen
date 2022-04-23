@@ -25,7 +25,7 @@ const sectionContainer = document.querySelectorAll(".product-section");
 const stockLevelContainer = document.querySelector(".stock-container");
 
 const url = baseUrl + "/" + id + keys;
-const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
+//const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
 let itemData = {};
 let variantItemData = {};
 let currentVariant = {};
@@ -40,11 +40,13 @@ async function buildPageContent(url) {
     itemData = data;
     createHTML(data);
     title.innerText = `${data.name} || Rainydays`
-    
+  
     //get variants for stock levels of each
+    //additional fetched needed as some items only get list of variant ids
     const variantResponse = await fetch(variantUrl);
     variantItemData = await variantResponse.json();
-    getStockNumber();
+
+    getStockNumber(variantItemData);
 
     //creates list of related jackets based product data
     const relatedUrl = baseUrl + keys + "&include=" + data.related_ids;
@@ -64,7 +66,7 @@ function createHTML(data){
   let onSale = data.on_sale
   let regularPrice = (data.price_html).match(/[\d\.]+/);
   let price = getProductPriceHTML(regularPrice, onSale, currentPrice);
-
+  let brand = getBrand(data);
   //colours
   let colourSelections = createColourSelector(data.attributes);
 
@@ -101,7 +103,7 @@ function createHTML(data){
   //Product specification list
 
   //filling the page
-  headingContainer.innerHTML = data.name;
+  headingContainer.innerHTML =`${brand} - ${data.name}`;
   priceContainer.innerHTML = `Price: ${price}`;
   colourSelector.innerHTML = colourSelections;
   imageProduct.innerHTML = productImage;
@@ -171,11 +173,12 @@ function submitProductToLocalStorage(){
 
 // quantity and stock functions
 
-function getStockNumber(){
+function getStockNumber(variantItemData){
   for(let i = 0; i < variantItemData.length; i++){
-    if(variantItemData[i].attributes[1].option === sizeSelector.value && variantItemData[i].attributes[0].option === colourSelector.value){
-      currentVariant = variantItemData[i];
-    }
+    // if(variantItemData[i].attributes[1].option === sizeSelector.value && variantItemData[i].attributes[0].option === colourSelector.value){
+    //   currentVariant = variantItemData[i];
+    // }
+
   }
   stockLevel = currentVariant.stock_quantity;
   stockLevelContainer.innerText = stockLevel;
