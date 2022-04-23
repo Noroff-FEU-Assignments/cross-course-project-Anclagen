@@ -25,7 +25,7 @@ const sectionContainer = document.querySelectorAll(".product-section");
 const stockLevelContainer = document.querySelector(".stock-container");
 
 const url = baseUrl + "/" + id + keys;
-//const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
+const variantUrl = baseUrl + "/" + id + "/variations" + keys + increaseResults;
 let itemData = {};
 let variantItemData = {};
 let currentVariant = {};
@@ -175,9 +175,9 @@ function submitProductToLocalStorage(){
 
 function getStockNumber(variantItemData){
   for(let i = 0; i < variantItemData.length; i++){
-    // if(variantItemData[i].attributes[1].option === sizeSelector.value && variantItemData[i].attributes[0].option === colourSelector.value){
-    //   currentVariant = variantItemData[i];
-    // }
+    if(variantItemData[i].attributes[1].option === sizeSelector.value &&      variantItemData[i].attributes[0].option === colourSelector.value){
+      currentVariant = variantItemData[i];
+      }
 
   }
   stockLevel = currentVariant.stock_quantity;
