@@ -156,7 +156,6 @@ function sortData(){
   } 
   //maintains selected filter options 
   filteredList = createFilteredArray(filter, filteredData);
-
   createProductsHtml(filteredList);
 }
 
@@ -164,7 +163,7 @@ function sortData(){
 
 //defining filter variables
 let filterSettings = [];
-let filter = {category:[], brand:[], sizes:[], colours:[], price:[]};
+let filter = {category:[], brand:[], sizes:[], colours:[], price:[], featured:[]};
 let filteredList = [];
 
 //looping through all the checkboxes, to push the values for the filter settings
@@ -175,7 +174,7 @@ checkboxes.forEach(function(checkbox) {
     filterSettings = Array.from(checkboxes).filter(i => i.checked).map(i => [i.getAttribute("key"), i.name]);
 
     //sorts the array into an object with keys for all categories, and arrays of the values
-    filter = {category:[], brand:[], sizes:[], colours:[], price:[]};
+    filter = {category:[], brand:[], sizes:[], colours:[], price:[], featured:[]};
     for (let i = 0; i < filterSettings.length; i++){
       if(filterSettings[i][0] === "category"){
         filter.category.push(filterSettings[i][1]);
@@ -187,6 +186,9 @@ checkboxes.forEach(function(checkbox) {
         filter.colours.push(filterSettings[i][1]);
       } else if(filterSettings[i][0] === "price"){
         filter.price.push(JSON.parse(filterSettings[i][1]));
+      } else if(filterSettings[i][0] === "featured"){
+        console.log("yes")
+        filter.featured.push(filterSettings[i][1]);
       } //else if required in case other checkboxes checked.
     }
 
@@ -228,6 +230,7 @@ function createFilteredArray(filter, filteredData){
         if (filter.sizes.length === 0 || compareArraysIncludes(filteredData[i].attributes[1].options, filter.sizes)){
           if (filter.colours.length === 0 || compareArraysIncludes(filteredData[i].attributes[0].options, filter.colours)){
             if (filter.price.length === 0 || checkPriceRange(filter.price, filteredData[i].price)){
+              if(filter.featured.length === 0 || filteredData[i].featured)
               list.push(filteredData[i]);
             }
           }
